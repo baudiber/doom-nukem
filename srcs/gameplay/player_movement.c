@@ -6,11 +6,11 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/28 21:54:08 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:24:42 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 bool			is_blocked(t_env *e, t_point *new_pos, int y)
 {
@@ -90,7 +90,8 @@ void			move_player(t_env *e)
 		strafe(e, &new_pos, &tmpangle);
 	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
 		walk_forward_and_backward(e, &new_pos, &tmpangle);
-	collision(e, &new_pos);
+	//collision(e, &new_pos);
+	e->player.pos = new_pos;
 }
 
 void			mouse_aim(t_env *e)

@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 12:12:50 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/20 16:46:04 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void			parse_init(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 20:19:29 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/28 22:04:00 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void		clean_up(t_env *e)
 {

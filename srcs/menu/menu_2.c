@@ -6,11 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/21 19:22:20 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void	load_screen_2(t_env *e, int check, SDL_Event ev)
 {

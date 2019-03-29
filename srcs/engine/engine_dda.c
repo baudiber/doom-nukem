@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/20 16:55:11 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 19:12:15 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void					horizontal_dda(t_env *e, int tid)
 {
@@ -24,7 +24,7 @@ void					horizontal_dda(t_env *e, int tid)
 			e->ray[tid].hor.dist = 2147483647;
 			break ;
 		}
-		else if (e->data.map[e->ray[tid].hor.map.y][e->ray[tid].hor.map.x])
+		else if (e->data.map[e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x])
 		{
 			e->ray[tid].hor.dist = (e->ray[tid].hor.x - e->player.pos.x) \
 				* e->i_cos_table[e->ray[tid].angle];
@@ -78,7 +78,7 @@ void					vertical_dda(t_env *e, int tid)
 			e->ray[tid].vert.dist = 2147483647;
 			break ;
 		}
-		else if (e->data.map[e->ray[tid].vert.map.y][e->ray[tid].vert.map.x])
+		else if (e->data.map[e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x])
 		{
 			e->ray[tid].vert.dist = (e->ray[tid].vert.y - e->player.pos.y) \
 	* e->i_sin_table[e->ray[tid].angle];

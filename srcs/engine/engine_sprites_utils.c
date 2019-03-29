@@ -6,11 +6,11 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/26 16:42:56 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:50:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void	clip_start(int *start, int *offset)
 {
@@ -41,7 +41,7 @@ void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite)
 {
 	draw->ratio = (float)TILE_SIZE / sprite->height;
 	draw->end.y = (int)((e->player.plane_dist / sprite->dist) \
-	* e->player.height + e->horizon);
+		* e->player.height + e->horizon);
 	draw->start.y = draw->end.y - sprite->height;
 	clip_start(&draw->start.y, &draw->offset.y);
 	draw->start.y--;

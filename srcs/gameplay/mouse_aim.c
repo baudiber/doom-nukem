@@ -6,11 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:45:35 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/26 12:01:41 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void	mouse_aim_x(t_env *e)
 {

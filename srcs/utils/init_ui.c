@@ -6,11 +6,11 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/26 12:02:06 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 static void	init_guns(t_env *e)
 {

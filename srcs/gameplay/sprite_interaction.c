@@ -6,11 +6,11 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/28 22:05:00 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void			pick_up_obj(t_env *e, int nb)
 {

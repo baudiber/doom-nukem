@@ -6,11 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/25 20:24:44 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/28 21:54:16 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void		weapon_fire(t_env *e)
 {

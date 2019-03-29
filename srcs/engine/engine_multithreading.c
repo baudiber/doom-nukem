@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/20 18:15:33 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 int		thread_nb(t_env *e)
 {

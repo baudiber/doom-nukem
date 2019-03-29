@@ -6,11 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 16:44:09 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/25 15:15:56 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void		init_struct_minimap(t_env *e)
 {

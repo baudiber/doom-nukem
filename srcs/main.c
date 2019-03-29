@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/24 15:41:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:47:41 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void					exit_error(int type)
 {
@@ -54,8 +54,7 @@ int					main(int argc, char **argv)
 		exit_error(7);
 
 	ft_bzero(&e, sizeof(t_env));
-	parse_read(&e.data, argv[1]);
-	parse_sprite(&e);
+	fake_parse(&e);
 	init_sdl(&e);
 	init_vars(&e);
 	init_player(&e);

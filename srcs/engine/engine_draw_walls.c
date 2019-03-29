@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/28 22:19:58 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 19:39:58 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 int			ray_is_in_the_map(int x, int y, t_env *e)
 {
@@ -39,10 +39,10 @@ void		get_wall_height(t_env *e, int column, int tid)
 		e->wall[tid].bottom = 0;
 	else
 	{
-		e->wall[tid].bottom = ceil((e->player.plane_dist / e->wall[tid].dist) \
-		* e->player.height + e->horizon);
 		e->wall[tid].height = WALL_HEIGHT * e->player.plane_dist \
 		/ e->wall[tid].dist;
+		e->wall[tid].bottom = (ceil((e->player.plane_dist / e->wall[tid].dist) \
+		* e->player.height + e->horizon)) - e->wall[tid].height * e->ray[tid].layer;
 		e->wall_heights[column] = e->wall[tid].height;
 		e->wall[tid].top = e->wall[tid].bottom - (int)e->wall[tid].height;
 	}
@@ -70,7 +70,7 @@ void		draw_wall(t_env *e, int column, int tid)
 	ratio = TILE_SIZE / e->wall[tid].height;
 	crop_wall(e, &texture_y, ratio, tid);
 	y = e->wall[tid].top - 1;
-	while (++y < e->wall[tid].bottom)
+	while (++y < e->wall[tid].bottom + 1)
 	{
 		e->buff[y * WIN_W + column] = \
 	e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) \

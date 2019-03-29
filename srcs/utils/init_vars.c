@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 17:54:00 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/26 10:38:17 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 static void				checking(t_env *e, int i)
 {

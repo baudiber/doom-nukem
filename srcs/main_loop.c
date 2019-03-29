@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/26 16:33:12 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:26:28 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void	clear_buffer(t_env *e)
 {
@@ -44,7 +44,7 @@ void	renderer(t_env *e)
 	multithreaded_render(e);
 	draw_sprites(e);
 	draw_ui_base(e);
-	draw_ui(e);
+	//draw_ui(e);
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
 	e->draw.fps_surface = \
 	TTF_RenderText_Solid(e->draw.font, e->draw.str, e->draw.white);
@@ -62,8 +62,8 @@ void	renderer(t_env *e)
 void	engine_loop(t_env *e)
 {
 	e->state = SDL_GetKeyboardState(NULL);
-	load_screen(e);
-	ft_menu(e);
+//	load_screen(e);
+//	ft_menu(e);
 	while (1)
 	{
 		e->time.new_time = SDL_GetTicks();
@@ -76,8 +76,8 @@ void	engine_loop(t_env *e)
 			{
 				if (e->event.type == SDL_QUIT || e->state[SDL_SCANCODE_ESCAPE])
 				{
-					e->menu.check = 0;
-					ft_menu(e);
+					//ft_menu(e);
+					exit (0);
 				}
 				(e->event.type == SDL_MOUSEMOTION) ? mouse_aim(e) : 0;
 			}

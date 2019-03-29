@@ -6,17 +6,19 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/23 16:06:51 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 19:19:03 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 void	floor_casting(t_env *e, int column, int tid)
 {
 	t_floor		floor;
 	int			y;
 
+	if (e->ray[tid].layer > 0)
+		return ;
 	ft_bzero(&floor, sizeof(t_floor));
 	y = e->wall[tid].bottom - 1;
 	y = (y < 0) ? -1 : y;

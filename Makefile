@@ -6,11 +6,11 @@
 #    By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 22:43:42 by baudiber          #+#    #+#              #
-#    Updated: 2019/03/26 12:22:20 by baudiber         ###   ########.fr        #
+#    Updated: 2019/03/29 18:34:10 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	wolf3d
+NAME		=	doom-nukem
 
 SRC_DIR		=	./srcs
 INC_DIR		=	./includes
@@ -26,6 +26,7 @@ SRC			=	main.c								\
 				engine/engine_raycasting.c			\
 				engine/engine_sprites.c				\
 				engine/engine_sprites_utils.c		\
+				engine/engine_draw_ceiling.c		\
 				gameplay/player_movement.c			\
 				gameplay/mouse_aim.c				\
 				gameplay/move_player.c				\
@@ -36,11 +37,7 @@ SRC			=	main.c								\
 				gameplay/minimap_drawmap.c			\
 				gameplay/weapon_switch.c			\
 				gameplay/weapon_fire.c				\
-				parser/parse_read.c					\
-				parser/parse_process.c				\
-				parser/parse_stock.c				\
-				parser/parse_sprite.c				\
-				parser/parse_utils.c				\
+				parser/fake_parse.c					\
 				menu/menu.c							\
 				menu/menu_2.c						\
 				menu/menu_options.c					\
@@ -59,7 +56,7 @@ O			=	\033[33m
 CC 			=	gcc
 FLAGS		=	-Wall -Werror -Wextra
 INCLUDES	=	-I $(INC_DIR)
-HEADER_H	=	$(INC_DIR)/$(NAME).h
+HEADER_H	=	$(INC_DIR)/doom_nukem.h
 OBJ 		=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 LIBS 		=	-L $(LIBFT_DIR) -lft
 
@@ -86,16 +83,7 @@ lib:
 #	@brew install sdl2_ttf sdl2_mixer
 
 art:
-	@echo "$(G)  __       __   ______   __        ________  ______         __ "
-	@echo " /  |  _  /  | /      \ /  |      /        |/      \       /  |"
-	@echo " $(R)## $(G)| / \ $(R)## $(G)|/$(R)######  $(G)|$(R)## $(G)|      $(R)########$(G)//$(R)######  $(G)|  ____$(R)## $(G)|"
-	@echo " $(R)## $(G)|/$(R)# $(G)  $(R)## $(G)|$(R)## $(G)|  $(R)## $(G)|$(R)## $(G)|      $(R)## $(G)|__   $(R)## $(G)___$(R)## $(G)| /    $(R)## $(G)|"
-	@echo " $(R)## $(G)/$(R)###  ## $(G)|$(R)## $(G)|  $(R)## $(G)|$(R)## $(G)|      $(R)##  $(G)  |    /   $(R)##$(G)< /$(R)####### $(G)|"
-	@echo " $(R)## ##$(G)/$(R)## ## $(G)|$(R)## $(G)| $(R) ## $(G)|$(R)## $(G)|     $(R) #####$(G)/    _$(R)#####  $(G)|$(R)## $(G)| $(R) ## $(G)|"
-	@echo " $(R)####$(G)/ $(R) #### $(G)|$(R)## $(G)\__$(R)## $(G)|$(R)## $(G)|_____ $(R)## $(G)|     /  \__$(R)## $(G)|$(R)## $(G)\__$(R)## $(G)|"
-	@echo " $(R)###$(G)/    $(R)### $(G)|$(R)##    ##$(G)/ $(R)##      $(G) |$(R)## $(G)| $(R)    ##    ##$(G)/ $(R)##    ## $(G)|"
-	@echo " $(R)##$(G)/      $(R)##$(G)/  $(R)######$(G)/  $(R)########$(G)/ $(R)##$(G)/       $(R)######$(G)/   $(R)#######$(G)/ "
-	@echo "$(W)                                                               "
+	@echo "$(G)lol"
 
 clean:
 	@rm -f $(OBJ)
@@ -106,12 +94,8 @@ fclean: clean
 	@make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
 
-run:
-	@$(MAKE)
-	@./wolf3d maps/castle
-
 re:
 	@$(MAKE) fclean
 	@$(MAKE)
 
-.PHONY: all art run lib clean fclean re
+.PHONY: all art lib clean fclean re

@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/26 15:23:44 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 19:09:59 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define WOLF3D_H
 # define FOV 60
-# define WIN_W 1280
-# define WIN_H 800
+# define WIN_W 800
+# define WIN_H 600
 # define DEBUG 0
 # define MAX_FPS 600
 # define MAX_MAPSIZE 128
@@ -62,7 +62,7 @@ typedef struct		s_data
 	int				max_y;
 	char			*scan;
 	char			**process;
-	int				map[128][128];
+	int				map[2][128][128];
 	char			sprite[128][128];
 }					t_data;
 
@@ -203,6 +203,7 @@ typedef struct		s_ray
 	t_vert			vert;
 	t_hor			hor;
 	int				angle;
+	int				layer;
 }					t_ray;
 
 typedef struct		s_floor
@@ -377,4 +378,6 @@ extern void			draw_ui_base(t_env *e);
 extern void			draw_ui(t_env *e);
 extern void			animations(t_env *e);
 extern void			init_ui_structs(t_env *e);
+extern void			fake_parse(t_env *e);
+extern void			draw_ceilings(t_env *e, int x, int tid);
 #endif

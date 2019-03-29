@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/26 12:23:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/29 18:26:15 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 double					angle_to_rad(int angle, t_env *e)
 {
@@ -39,8 +39,8 @@ void					init_sdl(t_env *e)
 
 void					init_player(t_env *e)
 {
-	e->player.pos.x = (e->data.pos_x + 0.5) * TILE_SIZE;
-	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
+//	e->player.pos.x = (e->data.pos_x + 0.5) * TILE_SIZE;
+//	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
 	e->render_limit = (WIN_H / 4) * 3.2;
 	e->ui.ui_size = WIN_H - e->render_limit;
 	e->horizon = e->render_limit / 2;

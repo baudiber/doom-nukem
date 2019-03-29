@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 11:30:15 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/19 16:35:11 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "doom_nukem.h"
 
 static bool			check_cell(char *cell)
 {
