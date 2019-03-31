@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/31 17:20:31 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:50:16 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void					horizontal_dda(t_env *e, int tid)
 			e->ray[tid].hor.dist = (e->ray[tid].hor.x - e->player.pos.x) \
 				* e->i_cos_table[e->ray[tid].angle];
 			e->spotvis[e->ray[tid].hor.map.y][e->ray[tid].hor.map.x] = 1;
+			e->ray[tid].hor.tex = e->data.map[0][e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x];
 			break ;
 		}
 		else
@@ -83,6 +84,7 @@ void					vertical_dda(t_env *e, int tid)
 			e->ray[tid].vert.dist = (e->ray[tid].vert.y - e->player.pos.y) \
 	* e->i_sin_table[e->ray[tid].angle];
 			e->spotvis[e->ray[tid].vert.map.y][e->ray[tid].vert.map.x] = 1;
+			e->ray[tid].vert.tex = e->data.map[0][e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x];
 			break ;
 		}
 		else

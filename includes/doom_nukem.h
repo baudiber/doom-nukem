@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/31 17:34:39 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 19:06:56 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@
 # define WIN_W 800
 # define WIN_H 600
 # define DEBUG 0
-# define MAX_FPS 600
+# define MAX_FPS 100
 # define MAX_MAPSIZE 128
 # define UI_Y2 300
 # define GRID_SIZE_STR "256"
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
+# define FLIGHT 1
 # define MAX_THREADS 8
 # define MAX_VISIBLE_SPRITE 30
 # define VALID_CHAR "0123456789abcz "
@@ -62,7 +63,7 @@ typedef struct		s_data
 	int				max_y;
 	char			*scan;
 	char			**process;
-	int				map[2][2][128][128];
+	int				map[2][3][128][128];
 	char			sprite[128][128];
 }					t_data;
 
@@ -139,6 +140,7 @@ typedef struct		s_player
 	t_point			pos;
 	t_point_int		map;
 	int				plane_dist;
+	int				floor;
 	int				height;
 	int				angle;
 	int				speed;
@@ -168,6 +170,7 @@ typedef struct		s_sprite_draw
 
 typedef struct		s_wall
 {
+	bool			hor;
 	int				tex;
 	int				top;
 	int				bottom;
@@ -185,6 +188,7 @@ typedef struct		s_vert
 	double			dist;
 	double			y;
 	double			next_y;
+	int				tex;
 	t_point_int		map;
 }					t_vert;
 
@@ -195,6 +199,7 @@ typedef struct		s_hor
 	int				next_y;
 	double			x;
 	double			next_x;
+	int				tex;
 	t_point_int		map;
 }					t_hor;
 
@@ -378,6 +383,10 @@ extern void			draw_ui_base(t_env *e);
 extern void			draw_ui(t_env *e);
 extern void			animations(t_env *e);
 extern void			init_ui_structs(t_env *e);
-extern void			fake_parse(t_env *e);
+
+//new doom fts
 extern void			draw_ceilings(t_env *e, int x, int tid);
+extern void			fake_parse(t_env *e);
+extern void			get_player_floor(t_env *e);
+
 #endif

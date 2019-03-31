@@ -6,11 +6,16 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 19:24:04 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 19:01:22 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
+
+void	get_player_floor(t_env *e)
+{
+	e->player.floor = e->player.height >> e->tile_shift;
+}
 
 void	angle_overflow(int *angle, t_env *e)
 {
@@ -28,6 +33,7 @@ void	*raycaster_mt(void *arg)
 
 	e = (t_env *)arg;
 	tid = thread_nb(e);
+	get_player_floor(e);
 	e->ray[tid].layer = 0;
 	while (e->ray[tid].layer < 2)
 	{

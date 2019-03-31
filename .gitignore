@@ -1,4 +1,5 @@
 objs
 vimscript
 doom-nukem
+.DS*
 

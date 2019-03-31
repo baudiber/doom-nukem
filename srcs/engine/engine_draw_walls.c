@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 19:39:58 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 18:39:24 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ void		get_wall_height(t_env *e, int column, int tid)
 	e->wall[tid].texture_x = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) \
 	? (Uint32)(e->ray[tid].hor.x) % TILE_SIZE : (Uint32)(e->ray[tid].vert.y) \
 	% TILE_SIZE;
-	if (!e->wall[tid].tex && (e->ray[tid].angle > 0 \
-	&& e->ray[tid].angle < e->angle.a_180))
-		e->wall[tid].tex = 2;
-	else if (e->wall[tid].tex && (e->ray[tid].angle > e->angle.a_90 \
-	&& e->ray[tid].angle < e->angle.a_270))
-		e->wall[tid].tex = 3;
+	e->wall[tid].tex = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) \
+					   ? e->ray[tid].hor.tex - 1: e->ray[tid].vert.tex - 1;
 	e->wall[tid].dist *= e->fisheye_table[column];
 	e->wall[tid].dist < 0.1 ? e->wall[tid].dist = 0.1 : 0;
+	e->wall[tid].hor = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? true : false;
 	if (e->wall[tid].dist <= 0)
 		e->wall[tid].bottom = 0;
 	else
@@ -64,6 +61,7 @@ static void	crop_wall(t_env *e, float *offset, double ratio, int tid)
 void		draw_wall(t_env *e, int column, int tid)
 {
 	int			y;
+	int			color;
 	double		ratio;
 	float		texture_y;
 
@@ -72,9 +70,18 @@ void		draw_wall(t_env *e, int column, int tid)
 	y = e->wall[tid].top - 1;
 	while (++y < e->wall[tid].bottom + 1)
 	{
-		e->buff[y * WIN_W + column] = \
-	e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) \
-	+ e->wall[tid].texture_x];
+		color = e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) + e->wall[tid].texture_x];
+		if (e->wall[tid].hor)
+		{
+			if (e->data.map[0][e->ray[tid].layer + 1][e->ray[tid].hor.map.y + 1][e->ray[tid].hor.map.x])
+				color = (color >> 1) & 8355711;
+		}
+		else
+		{
+			if (e->data.map[0][e->ray[tid].layer + 1][e->ray[tid].vert.map.y + 1][e->ray[tid].vert.map.x])
+				color = (color >> 1) & 8355711;
+		}
+		e->buff[y * WIN_W + column] = color;
 		texture_y += ratio;
 		if (texture_y >= TILE_SIZE)
 			break ;

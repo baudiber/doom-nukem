@@ -6,7 +6,7 @@
 #    By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/20 22:43:42 by baudiber          #+#    #+#              #
-#    Updated: 2019/03/29 18:34:10 by baudiber         ###   ########.fr        #
+#    Updated: 2019/03/31 18:46:49 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ B			=	\033[34m
 W			=	\033[0m
 O			=	\033[33m
 CC 			=	gcc
-FLAGS		=	-Wall -Werror -Wextra
+FLAGS		=	-g -Wall -Werror -Wextra
 INCLUDES	=	-I $(INC_DIR)
 HEADER_H	=	$(INC_DIR)/doom_nukem.h
 OBJ 		=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))

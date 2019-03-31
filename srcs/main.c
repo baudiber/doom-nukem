@@ -6,10 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 17:47:41 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 18:47:01 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//rm -g in makefile
 #include "doom_nukem.h"
 
 void					exit_error(int type)
