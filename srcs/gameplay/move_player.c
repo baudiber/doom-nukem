@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:50:24 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:25:52 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	crouch_and_jump(t_env *e)
 {
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C])
-		e->player.height = TILE_SIZE * 0.25;
+		e->player.height -= 5;
 	else if (e->state[SDL_SCANCODE_SPACE])
-		e->player.height = TILE_SIZE * 0.5;
+		e->player.height += 5;
 }
 
 void	walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle)

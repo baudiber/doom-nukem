@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 18:26:28 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:24:30 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	renderer(t_env *e)
 		display_skybox(e);
 	multithreaded_render(e);
 	draw_sprites(e);
-	draw_ui_base(e);
+	//draw_ui_base(e);
 	//draw_ui(e);
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
 	e->draw.fps_surface = \

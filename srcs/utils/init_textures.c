@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:37:21 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,12 @@ void	load_textures(t_env *e)
 	load_ui_textures(e);
 	load_gun_textures(e);
 	load_death_textures(e);
+	if (!(e->files.image[34] = SDL_LoadBMP("textures/floor1"GRID_SIZE_STR".bmp")))
+		exit_error(2);
 	e->files.wall[0] = (unsigned int *)e->files.image[0]->pixels;
 	e->files.wall[1] = (unsigned int *)e->files.image[1]->pixels;
 	e->files.wall[2] = (unsigned int *)e->files.image[2]->pixels;
 	e->files.wall[3] = (unsigned int *)e->files.image[3]->pixels;
-	e->files.floor = (unsigned int *)e->files.image[4]->pixels;
 	e->files.sprite[0] = (unsigned int *)e->files.image[5]->pixels;
 	e->files.sprite[1] = (unsigned int *)e->files.image[6]->pixels;
 	e->files.sprite[2] = (unsigned int *)e->files.image[7]->pixels;
@@ -173,10 +174,12 @@ void	load_textures(t_env *e)
 	e->files.shotgun[3] = (unsigned int *)e->files.image[26]->pixels;
 	e->files.shotgun[4] = (unsigned int *)e->files.image[27]->pixels;
 	e->files.shotgun[5] = (unsigned int *)e->files.image[28]->pixels;
-	e->files.sprite[4] =  (unsigned int *)e->files.image[29]->pixels;
-	e->files.sprite[5] =  (unsigned int *)e->files.image[30]->pixels;
-	e->files.sprite[6] =  (unsigned int *)e->files.image[31]->pixels;
-	e->files.sprite[7] =  (unsigned int *)e->files.image[32]->pixels;
-	e->files.sprite[8] =  (unsigned int *)e->files.image[33]->pixels;
+	e->files.sprite[4] = (unsigned int *)e->files.image[29]->pixels;
+	e->files.sprite[5] = (unsigned int *)e->files.image[30]->pixels;
+	e->files.sprite[6] = (unsigned int *)e->files.image[31]->pixels;
+	e->files.sprite[7] = (unsigned int *)e->files.image[32]->pixels;
+	e->files.sprite[8] = (unsigned int *)e->files.image[33]->pixels;
+	e->files.floor[0] = (unsigned int *)e->files.image[4]->pixels;
+	e->files.floor[1] = (unsigned int *)e->files.image[34]->pixels;
 	//CHECK texture size == TILE_SIZE
 }

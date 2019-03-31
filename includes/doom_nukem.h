@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/29 19:09:59 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:34:39 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ typedef struct		s_files
 {
 	unsigned int	*wall[4];
 	unsigned int	*sprite[9];
-	unsigned int	*floor;
+	unsigned int	*floor[2];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[34];
+	SDL_Surface		*image[35];
 	SDL_Surface		*skybox;
 	SDL_Surface     *ui_surf;
 }					t_files;
@@ -62,7 +62,7 @@ typedef struct		s_data
 	int				max_y;
 	char			*scan;
 	char			**process;
-	int				map[2][128][128];
+	int				map[2][2][128][128];
 	char			sprite[128][128];
 }					t_data;
 

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 19:19:03 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/03/31 17:36:38 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	floor_casting(t_env *e, int column, int tid)
 {
 	t_floor		floor;
 	int			y;
+	int			tex;
 
 	if (e->ray[tid].layer > 0)
 		return ;
@@ -35,9 +36,10 @@ void	floor_casting(t_env *e, int column, int tid)
 		floor.map.y = floor.y >> e->tile_shift;
 		if (ray_is_in_the_map(floor.map.x, floor.map.y, e))
 		{
+			tex = e->data.map[1][e->ray[tid].layer][floor.map.y][floor.map.x];
 			floor.y = floor.y % TILE_SIZE;
 			floor.x = floor.x % TILE_SIZE;
-			e->buff[y * WIN_W + column] = e->files.floor[(floor.y \
+			e->buff[y * WIN_W + column] = e->files.floor[tex][(floor.y \
 					<< e->tile_shift) + floor.x];
 		}
 	}
