@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/03 00:19:10 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 01:18:50 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ void	floor_casting(t_env *e, int column, int tid)
 
 	if (e->player.floor < e->ray[tid].layer)
 		return ;
+/*	if (e->ray[tid].layer == 0)
+		return ;	*/
 	ft_bzero(&floor, sizeof(t_floor));
 	y = e->wall[tid].bottom - 1;
 	y = (y < 0) ? -1 : y;
 	while (++y < e->render_limit)
 	{
-		floor.dist = (double)e->player.height / (y - e->horizon) \
+		floor.dist = ((double)e->player.height - TILE_SIZE * e->ray[tid].layer + 1 ) / (y - e->horizon) \
 	* (double)e->player.plane_dist;
 		floor.dist *= e->i_fisheye_table[column];
 		floor.y = (int)(floor.dist * e->sin_table[e->ray[tid].angle]);

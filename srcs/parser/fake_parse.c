@@ -46,27 +46,27 @@ void	fake_parse(t_env *e)
 	while (++y < 60)
 	{
 		int x;
-		e->data.map[0][0][y][29] = 1;
-		e->data.map[0][0][y][60] = 1;
+		e->data.map[0][0][y][29] = 3;
+		e->data.map[0][0][y][60] = 3;
 		x = 29;
 		while (++x < 35)
-			e->data.map[0][1][y][x] = 1;
+			e->data.map[0][1][y][x] = 3;
 		x = 34;
 		while (++x < 41)
-			e->data.map[0][2][y][x] = 1;
+			e->data.map[0][2][y][x] = 3;
 		x = 40;
 		while (++x < 45)
-			e->data.map[0][3][y][x] = 1;
-		e->data.map[0][3][y][50] = 1;
+			e->data.map[0][3][y][x] = 3;
+		e->data.map[0][3][y][50] = 3;
 		x = 44;
 		while (++x < 50)
-			e->data.map[0][4][y][x] = 1;
+			e->data.map[0][4][y][x] = 3;
 		x = 49;
 		while (++x < 55)
-			e->data.map[0][2][y][x] = 1;
+			e->data.map[0][2][y][x] = 3;
 		x = 54;
 		while (++x < 60)
-			e->data.map[0][1][y][x] = 1;
+			e->data.map[0][1][y][x] = 3;
 	}
 	e->player.pos.x = 5600;
 	e->player.pos.y = 5600;
