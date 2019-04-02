@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/31 19:06:56 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 00:15:19 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 # define WIN_W 800
 # define WIN_H 600
 # define DEBUG 0
-# define MAX_FPS 100
+# define MAX_FPS 1000
 # define MAX_MAPSIZE 128
 # define UI_Y2 300
 # define GRID_SIZE_STR "256"
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
-# define FLIGHT 1
+# define FLIGHT 0
 # define MAX_THREADS 8
 # define MAX_VISIBLE_SPRITE 30
 # define VALID_CHAR "0123456789abcz "
@@ -63,7 +63,7 @@ typedef struct		s_data
 	int				max_y;
 	char			*scan;
 	char			**process;
-	int				map[2][3][128][128];
+	int				map[2][5][128][128];
 	char			sprite[128][128];
 }					t_data;
 

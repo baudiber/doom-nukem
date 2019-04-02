@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/31 18:39:24 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 00:09:58 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		get_wall_height(t_env *e, int column, int tid)
 	? (Uint32)(e->ray[tid].hor.x) % TILE_SIZE : (Uint32)(e->ray[tid].vert.y) \
 	% TILE_SIZE;
 	e->wall[tid].tex = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) \
-					   ? e->ray[tid].hor.tex - 1: e->ray[tid].vert.tex - 1;
+					   ? e->ray[tid].hor.tex : e->ray[tid].vert.tex;
 	e->wall[tid].dist *= e->fisheye_table[column];
 	e->wall[tid].dist < 0.1 ? e->wall[tid].dist = 0.1 : 0;
 	e->wall[tid].hor = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? true : false;

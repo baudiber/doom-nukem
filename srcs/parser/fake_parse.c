@@ -1,5 +1,6 @@
 #include "doom_nukem.h"
 
+/*
 void	fake_parse(t_env *e)
 {
 	int		y;
@@ -34,4 +35,41 @@ void	fake_parse(t_env *e)
 	e->player.pos.y = 1000;
 	e->data.max_x = 20;
 	e->data.max_y = 20;
+}
+*/
+
+void	fake_parse(t_env *e)
+{
+	int		y;
+
+	y = 29;
+	while (++y < 60)
+	{
+		int x;
+		e->data.map[0][0][y][29] = 1;
+		e->data.map[0][0][y][60] = 1;
+		x = 29;
+		while (++x < 35)
+			e->data.map[0][1][y][x] = 1;
+		x = 34;
+		while (++x < 41)
+			e->data.map[0][2][y][x] = 1;
+		x = 40;
+		while (++x < 45)
+			e->data.map[0][3][y][x] = 1;
+		e->data.map[0][3][y][50] = 1;
+		x = 44;
+		while (++x < 50)
+			e->data.map[0][4][y][x] = 1;
+		x = 49;
+		while (++x < 55)
+			e->data.map[0][2][y][x] = 1;
+		x = 54;
+		while (++x < 60)
+			e->data.map[0][1][y][x] = 1;
+	}
+	e->player.pos.x = 5600;
+	e->player.pos.y = 5600;
+	e->data.max_x = 70;
+	e->data.max_y = 70;
 }

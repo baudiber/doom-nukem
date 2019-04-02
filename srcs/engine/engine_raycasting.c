@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/31 19:01:22 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 00:16:06 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	*raycaster_mt(void *arg)
 	e = (t_env *)arg;
 	tid = thread_nb(e);
 	get_player_floor(e);
-	e->ray[tid].layer = 0;
-	while (e->ray[tid].layer < 2)
+	e->ray[tid].layer = 4;
+	while (e->ray[tid].layer >= 0)
 	{
 		e->ray[tid].angle = (e->player.angle - e->angle.a_half_fov) \
 							+ e->thread_col_size * tid;
@@ -55,7 +55,7 @@ void	*raycaster_mt(void *arg)
 			if (e->ray[tid].angle >= e->angle.a_360)
 				e->ray[tid].angle -= e->angle.a_360;
 		}
-		e->ray[tid].layer++;
+		e->ray[tid].layer--;
 	}
 	pthread_exit(0);
 }

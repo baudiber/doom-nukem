@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:28:48 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/31 19:02:41 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 00:34:58 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_ceilings(t_env *e, int x, int tid)
 	int			y;
 
 	ft_bzero(&ceil, sizeof(t_floor));
-	//get player floor pos
 	if (e->player.floor > e->ray[tid].layer)
 		return ;
 	y = e->wall[tid].top;
@@ -28,8 +27,7 @@ void	draw_ceilings(t_env *e, int x, int tid)
 		y = WIN_H;
 	while (--y > 0)
 	{
-		ceil.dist = ((double)TILE_SIZE - (e->player.height % TILE_SIZE)) / (e->horizon - y) \
-	* (double)e->player.plane_dist;
+		ceil.dist = ((double)(TILE_SIZE * (e->ray[tid].layer + 1)) - (e->player.height)) / (e->horizon - y) * (double)e->player.plane_dist;
 		ceil.dist *= e->i_fisheye_table[x];
 		ceil.y = ceilf(ceil.dist * e->sin_table[e->ray[tid].angle]);
 		ceil.x = ceilf(ceil.dist * e->cos_table[e->ray[tid].angle]);
