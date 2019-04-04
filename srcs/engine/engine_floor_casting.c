@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/03 01:18:50 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:39:29 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	floor_casting(t_env *e, int column, int tid)
 
 	if (e->player.floor < e->ray[tid].layer)
 		return ;
-/*	if (e->ray[tid].layer == 0)
-		return ;	*/
 	ft_bzero(&floor, sizeof(t_floor));
 	y = e->wall[tid].bottom - 1;
 	y = (y < 0) ? -1 : y;
@@ -39,11 +37,11 @@ void	floor_casting(t_env *e, int column, int tid)
 		floor.map.y = floor.y >> e->tile_shift;
 		if (ray_is_in_the_map(floor.map.x, floor.map.y, e))
 		{
-			tex = e->data.map[1][e->ray[tid].layer][floor.map.y][floor.map.x];
+			tex = e->data.map[DFLOOR][e->ray[tid].layer][floor.map.y][floor.map.x];
 			floor.y = floor.y % TILE_SIZE;
 			floor.x = floor.x % TILE_SIZE;
 			color = e->files.floor[tex][(floor.y << e->tile_shift) + floor.x];
-			if (e->data.map[0][e->ray[tid].layer + 1][floor.map.y][floor.map.x])
+			if (e->data.map[DLIGHT][e->ray[tid].layer][floor.map.y][floor.map.x])
 				color = (color >> 1) & 8355711;
 			e->buff[y * WIN_W + column] = color;
 		}

@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/03 00:15:19 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/04 14:48:26 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,15 @@
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
-# define MAX_THREADS 8
+# define MAX_THREADS 1
 # define MAX_VISIBLE_SPRITE 30
 # define VALID_CHAR "0123456789abcz "
+
+# define DWALL 0
+# define DFLOOR 1
+# define DSPRITE 2
+# define DLIGHT 3
+# define DEVENT 4
 
 # include <unistd.h>
 # include <sys/types.h>
@@ -42,7 +48,7 @@
 
 typedef struct		s_files
 {
-	unsigned int	*wall[4];
+	unsigned int	*wall[5];
 	unsigned int	*sprite[9];
 	unsigned int	*floor[2];
 	unsigned int	*ui;
@@ -63,7 +69,7 @@ typedef struct		s_data
 	int				max_y;
 	char			*scan;
 	char			**process;
-	int				map[2][5][128][128];
+	int				map[4][5][128][128];
 	char			sprite[128][128];
 }					t_data;
 
@@ -171,6 +177,7 @@ typedef struct		s_sprite_draw
 typedef struct		s_wall
 {
 	bool			hor;
+	bool			is_prev;
 	int				tex;
 	int				top;
 	int				bottom;
@@ -183,6 +190,7 @@ typedef struct		s_wall
 
 typedef struct		s_vert
 {
+	bool			in_map;
 	int				x;
 	int				next_x;
 	double			dist;
@@ -194,6 +202,7 @@ typedef struct		s_vert
 
 typedef struct		s_hor
 {
+	bool			in_map;
 	double			dist;
 	int				y;
 	int				next_y;
@@ -265,6 +274,7 @@ typedef struct		s_env
 	pthread_t		tids[MAX_THREADS];
 	t_ray			ray[MAX_THREADS];
 	t_wall			wall[MAX_THREADS];
+	t_wall			prev_wall[MAX_THREADS];
 	t_floor			floor[MAX_THREADS];
 	t_angles		angle;
 	double			sin_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
@@ -290,8 +300,8 @@ typedef struct		s_env
 	t_draw_scaled	shotgun_info;
 	t_ui			ui;
 	int				sprite_nb;
-	bool			spotvis[MAX_MAPSIZE][MAX_MAPSIZE];
-	double			wall_heights[WIN_W];
+	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
+	double			wall_heights[5][WIN_W];
 	int				horizon;
 	int				tile_shift;
 	int				thread_col_size;
@@ -341,11 +351,13 @@ extern void			gif_load_screen(t_env *e);
 extern void			clean_up(t_env *e);
 
 extern void			get_vertical_hit(t_env *e, int tid);
+extern void			vertical_dda(t_env *e, int tid);
+extern void			horizontal_dda(t_env *e, int tid);
 extern void			get_horizontal_hit(t_env *e, int tid);
 extern int			ray_is_in_the_map(int x, int y, t_env *e);
 extern void			angle_overflow(int *angle, t_env *e);
 extern double		angle_to_rad(int angle, t_env *e);
-extern void			get_wall_height(t_env *e, int column, int tid);
+extern int			get_wall_height(t_env *e, int column, int tid);
 extern void			draw_wall(t_env *e, int column, int tid);
 extern void			floor_casting(t_env *e, int	column, int tid);
 extern void			moving_rects(t_env *e);

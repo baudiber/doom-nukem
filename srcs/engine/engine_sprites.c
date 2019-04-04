@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 19:48:14 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	draw_sprites(t_env *e)
 		calc.map.x = e->sprites[sprite].x >> e->tile_shift;
 		calc.map.y = e->sprites[sprite].y >> e->tile_shift;
 		change_tex(e, sprite);
-		if (!e->spotvis[calc.map.y][calc.map.x] || !e->sprites[sprite].visible)
+		if (!e->spotvis[0][calc.map.y][calc.map.x] || !e->sprites[sprite].visible)
 			continue;
 		else
 		{

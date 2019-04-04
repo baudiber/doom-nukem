@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/03 00:09:58 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/04 19:32:22 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,30 @@ int			ray_is_in_the_map(int x, int y, t_env *e)
 	return (1);
 }
 
-void		get_wall_height(t_env *e, int column, int tid)
+static int	crop_next_wall(t_env *e, int tid)
+{
+	if (e->wall[tid].top >= e->prev_wall[tid].top && e->wall[tid].bottom <= e->prev_wall[tid].bottom)
+	{
+		//printf("no draw\n");
+		return (1);
+	}
+	if (e->wall[tid].bottom < e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
+		return (0);
+	if (e->wall[tid].top > e->prev_wall[tid].bottom && e->wall[tid].bottom > e->prev_wall[tid].bottom)
+		return (0);
+	if (e->wall[tid].bottom > e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
+	{
+		e->wall[tid].bottom = e->prev_wall[tid].top;
+	}
+	else if (e->wall[tid].top < e->prev_wall[tid].bottom)
+	{
+		e->wall[tid].top = e->prev_wall[tid].bottom;
+		//offset pb here // maybe save the diff or do that somewhere else
+	}
+	return (0);
+}
+
+int			get_wall_height(t_env *e, int column, int tid)
 {
 	e->wall[tid].tex = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? 0 : 1;
 	e->wall[tid].dist = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? \
@@ -32,7 +55,7 @@ void		get_wall_height(t_env *e, int column, int tid)
 	e->wall[tid].dist *= e->fisheye_table[column];
 	e->wall[tid].dist < 0.1 ? e->wall[tid].dist = 0.1 : 0;
 	e->wall[tid].hor = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? true : false;
-	if (e->wall[tid].dist <= 0)
+	if (e->wall[tid].dist <= 0 || e->wall[tid].dist == 2147483647)
 		e->wall[tid].bottom = 0;
 	else
 	{
@@ -40,9 +63,13 @@ void		get_wall_height(t_env *e, int column, int tid)
 		/ e->wall[tid].dist;
 		e->wall[tid].bottom = (ceil((e->player.plane_dist / e->wall[tid].dist) \
 		* e->player.height + e->horizon)) - e->wall[tid].height * e->ray[tid].layer;
-		e->wall_heights[column] = e->wall[tid].height;
+		e->wall_heights[e->ray[tid].layer][column] = e->wall[tid].height;
 		e->wall[tid].top = e->wall[tid].bottom - (int)e->wall[tid].height;
+		if (e->prev_wall[tid].is_prev)
+			if (crop_next_wall(e, tid))
+				return (0);
 	}
+	return (1);
 }
 
 static void	crop_wall(t_env *e, float *offset, double ratio, int tid)
@@ -73,12 +100,12 @@ void		draw_wall(t_env *e, int column, int tid)
 		color = e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) + e->wall[tid].texture_x];
 		if (e->wall[tid].hor)
 		{
-			if (e->data.map[0][e->ray[tid].layer + 1][e->ray[tid].hor.map.y + 1][e->ray[tid].hor.map.x])
+			if (e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x])
 				color = (color >> 1) & 8355711;
 		}
 		else
 		{
-			if (e->data.map[0][e->ray[tid].layer + 1][e->ray[tid].vert.map.y + 1][e->ray[tid].vert.map.x])
+			if (e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x])
 				color = (color >> 1) & 8355711;
 		}
 		e->buff[y * WIN_W + column] = color;

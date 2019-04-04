@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:28:48 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/03 00:34:58 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 18:43:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	draw_ceilings(t_env *e, int x, int tid)
 		ceil.map.y = ceil.y >> e->tile_shift;
 		if (ray_is_in_the_map(ceil.map.x, ceil.map.y, e))
 		{
-			if (e->data.map[0][e->ray[tid].layer + 1][ceil.map.y][ceil.map.x])
+			if (e->data.map[DWALL][e->ray[tid].layer + 1][ceil.map.y][ceil.map.x])
 			{
 				ceil.y = ceil.y % TILE_SIZE;
 				ceil.x = ceil.x % TILE_SIZE;
