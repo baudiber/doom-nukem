@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/31 17:21:37 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/03 19:25:33 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ void			get_delta(int angle, t_env *e, t_point *new_pos)
 	new_pos->y += e->sin_table[angle] * (e->player.speed * e->time.delta_time);
 }
 
+void			get_jump_pos(t_env *e, t_point *new_pos)
+{
+	float g;
+	g = 1.62;
+	e->player.height += -0.5 * g * pow(e->time.delta_time, 2) + e->time.delta_time * e->player.speed * e->sin_table[e->angle.a_270];
+	get_delta(e->player.angle, e, new_pos);
+}
+
 void			collision(t_env *e, t_point *new_pos)
 {
 	if (!is_blocked(e, new_pos, 0))
@@ -58,6 +66,8 @@ void			move_player(t_env *e)
 	t_point		new_pos;
 
 	new_pos = e->player.pos;
+	if (e->player.height > WALL_HEIGHT / 2 && !e->state[SDL_SCANCODE_SPACE]) 
+		get_jump_pos(e, &new_pos);
 	if (e->state[SDL_SCANCODE_LSHIFT])
 	{
 		e->player.speed = e->max_speed * 2;
