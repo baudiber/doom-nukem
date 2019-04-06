@@ -43,7 +43,6 @@ void	*raycaster_mt(void *arg)
 		column = e->thread_col_size * tid - 1;
 		while (++column < (e->thread_col_size * (tid + 1)))
 		{
-			//printf("------column %d-------\n", column);
 			if (column >= WIN_W)
 				break ;
 
@@ -64,18 +63,19 @@ void	*raycaster_mt(void *arg)
 					break;
 				if (get_wall_height(e, column, tid))
 					draw_wall(e, column, tid);
-				//printf("wallisdrawn\n");
-				e->prev_wall[tid].top = e->wall[tid].top;
-				e->prev_wall[tid].bottom = e->wall[tid].bottom;
+				if (e->prev_wall[tid].is_prev) 
+					e->prev_wall[tid] = e->tmp[tid];
+				else 
+					e->prev_wall[tid] = e->wall[tid];
 				e->prev_wall[tid].is_prev = true;
 				e->ray[tid].hor.x += e->ray[tid].hor.next_x;
 				e->ray[tid].hor.y += e->ray[tid].hor.next_y;
 				e->ray[tid].vert.y += e->ray[tid].vert.next_y;
 				e->ray[tid].vert.x += e->ray[tid].vert.next_x;
-				//printf("horx %f hory %d vertx %d verty %f\n",e->ray[tid].hor.x, e->ray[tid].hor.y, e->ray[tid].vert.x, e->ray[tid].vert.y);
+				e->ray[tid].vert.skip = false;
+				e->ray[tid].hor.skip = false;
 			}
-			//printf("tid %d out of loop\n", tid);
-				//floor_casting(e, column, tid);
+			//floor_casting(e, column, tid);
 			//draw_ceilings(e, column, tid);
 			e->ray[tid].angle++;
 			if (e->ray[tid].angle >= e->angle.a_360)

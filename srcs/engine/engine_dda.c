@@ -34,6 +34,7 @@ void					horizontal_dda(t_env *e, int tid)
 		}
 		else
 		{
+			e->ray[tid].hor.skip = true;
 			e->ray[tid].hor.x += e->ray[tid].hor.next_x;
 			e->ray[tid].hor.y += e->ray[tid].hor.next_y;
 			e->spotvis[e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x] = 1;
@@ -94,6 +95,7 @@ void					vertical_dda(t_env *e, int tid)
 		{
 			e->ray[tid].vert.y += e->ray[tid].vert.next_y;
 			e->ray[tid].vert.x += e->ray[tid].vert.next_x;
+			e->ray[tid].vert.skip = true;
 			e->spotvis[e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x] = 1;
 		}
 	}

@@ -19,31 +19,61 @@ int			ray_is_in_the_map(int x, int y, t_env *e)
 	return (1);
 }
 
+
 static int	crop_next_wall(t_env *e, int tid)
 {
+	e->tmp[tid] = e->wall[tid];
+	/*
 	if (e->wall[tid].top >= e->prev_wall[tid].top && e->wall[tid].bottom <= e->prev_wall[tid].bottom)
 	{
-		//printf("no draw\n");
+		printf("case 1: inside of prev\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
+		return (1);
+	}
+	if (e->wall[tid].top <= e->prev_wall[tid].top && e->wall[tid].bottom >= e->prev_wall[tid].bottom)
+	{
+		printf("case 0: bigger than prev\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		return (1);
 	}
 	if (e->wall[tid].bottom < e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
+	{
+		printf("case 2: fully above prev\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		return (0);
+	}
 	if (e->wall[tid].top > e->prev_wall[tid].bottom && e->wall[tid].bottom > e->prev_wall[tid].bottom)
+	{
+		printf("case 3: fully below prev\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		return (0);
+	}
 	if (e->wall[tid].bottom > e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
 	{
+		printf("case 4: we can see the top part\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		e->wall[tid].bottom = e->prev_wall[tid].top;
+		return (0);
 	}
 	else if (e->wall[tid].top < e->prev_wall[tid].bottom)
 	{
+		printf("case 5: we can see the bottom part\n");
+		printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		e->wall[tid].top = e->prev_wall[tid].bottom;
 		//offset pb here // maybe save the diff or do that somewhere else
+		return (0);
 	}
+	if (e->wall[tid].top >= e->prev_wall[tid].top)
+		return (1);
+	printf("case unknown, top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
+	*/
 	return (0);
 }
 
 int			get_wall_height(t_env *e, int column, int tid)
 {
+	if (!e->ray[tid].hor.skip && !e->ray[tid].vert.skip)
+		return (0);
 	e->wall[tid].tex = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? 0 : 1;
 	e->wall[tid].dist = (e->ray[tid].hor.dist <= e->ray[tid].vert.dist) ? \
 		e->ray[tid].hor.dist : e->ray[tid].vert.dist;

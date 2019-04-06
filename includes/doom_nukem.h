@@ -191,6 +191,7 @@ typedef struct		s_wall
 typedef struct		s_vert
 {
 	bool			in_map;
+	bool			skip;
 	int				x;
 	int				next_x;
 	double			dist;
@@ -203,6 +204,7 @@ typedef struct		s_vert
 typedef struct		s_hor
 {
 	bool			in_map;
+	bool			skip;
 	double			dist;
 	int				y;
 	int				next_y;
@@ -274,6 +276,7 @@ typedef struct		s_env
 	pthread_t		tids[MAX_THREADS];
 	t_ray			ray[MAX_THREADS];
 	t_wall			wall[MAX_THREADS];
+	t_wall			tmp[MAX_THREADS];
 	t_wall			prev_wall[MAX_THREADS];
 	t_floor			floor[MAX_THREADS];
 	t_angles		angle;

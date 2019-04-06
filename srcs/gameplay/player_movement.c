@@ -66,8 +66,8 @@ void			move_player(t_env *e)
 	t_point		new_pos;
 
 	new_pos = e->player.pos;
-	if (e->player.height > WALL_HEIGHT / 2 && !e->state[SDL_SCANCODE_SPACE]) 
-		get_jump_pos(e, &new_pos);
+/*	if (e->player.height > WALL_HEIGHT / 2 && !e->state[SDL_SCANCODE_SPACE]) 
+		get_jump_pos(e, &new_pos);*/
 	if (e->state[SDL_SCANCODE_LSHIFT])
 	{
 		e->player.speed = e->max_speed * 2;
