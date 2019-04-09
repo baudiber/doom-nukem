@@ -14,8 +14,11 @@
 
 bool			is_blocked(t_env *e, t_point *new_pos, int y)
 {
-	if (!ray_is_in_the_map((int)new_pos->x >> e->tile_shift, \
-		(int)new_pos->y >> e->tile_shift, e))
+	t_point_int		pt;
+
+	pt.x = (int)new_pos->x >> e->tile_shift;
+	pt.y = (int)new_pos->y >> e->tile_shift;
+	if (!ray_is_in_the_map(pt, e))
 		return (false);
 	if (y)
 	{
@@ -66,8 +69,8 @@ void			move_player(t_env *e)
 	t_point		new_pos;
 
 	new_pos = e->player.pos;
-/*	if (e->player.height > WALL_HEIGHT / 2 && !e->state[SDL_SCANCODE_SPACE]) 
-		get_jump_pos(e, &new_pos);*/
+	if (e->player.height > WALL_HEIGHT / 2 && !e->state[SDL_SCANCODE_SPACE]) 
+		get_jump_pos(e, &new_pos);
 	if (e->state[SDL_SCANCODE_LSHIFT])
 	{
 		e->player.speed = e->max_speed * 2;
@@ -100,7 +103,7 @@ void			move_player(t_env *e)
 		strafe(e, &new_pos, &tmpangle);
 	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
 		walk_forward_and_backward(e, &new_pos, &tmpangle);
-	//collision(e, &new_pos);
+	collision(e, &new_pos);
 	e->player.pos = new_pos;
 }
 

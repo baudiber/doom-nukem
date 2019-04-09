@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine_main_loop.c                                 :+:      :+:    :+:   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/04 18:17:15 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 19:28:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,46 @@ void	world_interaction(t_env *e)
 	animations(e);
 }
 
+void	get_floor_order(t_env *e)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	i = 0;
+	while (++j < e->player.floor)
+		e->floor_order[i++] = j;
+	j = e->floor_nb;
+	while (--j >= e->player.floor)
+		e->floor_order[i++] = j;
+	/*
+	i = -1;
+	printf("floor order :");
+	while (++i < (int)e->floor_nb)
+		printf("%d ", e->floor_order[i]);
+	printf("\n");
+	*/
+}
+
+
 void	renderer(t_env *e)
 {
 	clear_buffer(e);
 	moving_rects(e);
 	if (e->horizon > 0)
 		display_skybox(e);
+	get_player_floor(e);
+	get_floor_order(e);
 	multithreaded_render(e);
-	draw_sprites(e);
-	//draw_ui_base(e);
-	//draw_ui(e);
+	//draw_sprites(e);
+	draw_ui(e);
+	//printf("--------------------\n");
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
 	e->draw.fps_surface = \
 	TTF_RenderText_Solid(e->draw.font, e->draw.str, e->draw.white);
 	SDL_BlitSurface(e->draw.fps_surface, NULL, e->screen, NULL);
 	SDL_FreeSurface(e->draw.fps_surface);
-	ft_strdel(&e->draw.str);
+	(e->draw.str) ? ft_strdel(&e->draw.str) : 0;
 	e->draw.skybox_x += 0.2;
 	if (e->draw.skybox_x > 1226)
 		e->draw.skybox_x = 0;

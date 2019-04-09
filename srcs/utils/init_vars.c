@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 17:54:00 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 15:18:50 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void					init_vars(t_env *e)
 	e->tile_shift = (TILE_SIZE == 128) ? 7 : e->tile_shift;
 	e->tile_shift = (TILE_SIZE == 256) ? 8 : e->tile_shift;
 	if (TILE_SIZE != 64 && TILE_SIZE != 128 && TILE_SIZE != 256)
-		exit_error(12);
+		exit_error(19, ERR_9);
 	set_angle(e);
 	i = -1;
 	while (++i < e->angle.a_360)

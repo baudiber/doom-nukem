@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/28 17:49:08 by baudiber          #+#    #+#             */
-/*   Updated: 2018/06/28 23:08:56 by baudiber         ###   ########.fr       */
+/*   Created: 2019/03/25 13:40:11 by clrichar          #+#    #+#             */
+/*   Updated: 2019/03/25 13:40:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
 #include <stdio.h>
 
 static int		rec(int nb, int pow)

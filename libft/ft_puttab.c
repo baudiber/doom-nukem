@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puttab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 21:25:55 by baudiber          #+#    #+#             */
-/*   Updated: 2018/05/14 17:14:54 by baudiber         ###   ########.fr       */
+/*   Created: 2019/03/25 13:40:00 by clrichar          #+#    #+#             */
+/*   Updated: 2019/03/25 13:43:17 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 void	ft_puttab(char **tab)
 {

@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*   doom_nukem.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/20 17:06:00 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/04 14:48:26 by baudiber         ###   ########.fr       */
+/*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/09 23:36:31 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
+#ifndef DOOM_NUKEM_H
 
-# define WOLF3D_H
+# define DOOM_NUKEM_H
 # define FOV 60
 # define WIN_W 800
 # define WIN_H 600
-# define DEBUG 0
+//# define DEBUG 0
 # define MAX_FPS 1000
-# define MAX_MAPSIZE 128
+# define MAX_MAPSIZE 64
 # define UI_Y2 300
 # define GRID_SIZE_STR "256"
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
-# define MAX_THREADS 1
+# define MAX_THREADS 8
 # define MAX_VISIBLE_SPRITE 30
-# define VALID_CHAR "0123456789abcz "
+
+# define VALID_CHAR "0123456789abcdez,- "
+# define WALL_TEXT_MAX 9
+# define FLOOR_TEXT_MAX 9
+# define LIGHT_TEXT_MAX 9
+# define EVENT_TEXT_MAX 9
 
 # define DWALL 0
 # define DFLOOR 1
@@ -34,11 +39,18 @@
 # define DLIGHT 3
 # define DEVENT 4
 
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <fcntl.h>
-# include <stdlib.h>
+# define ERR_BASE "Usage: ./doom-nukem map"
+# define ERR_0 "Error: Can not open given file"
+# define ERR_1 "Error: Malloc failed to allocate memory"
+# define ERR_2 "Error: Ressource file not found"
+# define ERR_3 "Error: Ressource can not be opened"
+# define ERR_4 "Error: Map is not valid"
+# define ERR_5 "Error: Please provide a spawn point for the player ('z')"
+# define ERR_6 "Error: Please provide less than 100 sprite per map"
+# define ERR_7 "Error: SDL initialisation encounter an error"
+# define ERR_8 "Error: FOV value is wrong, must be between 60 - 130"
+# define ERR_9 "Error: Grid size value is wrong must be: 64, 128, 256"
+
 # include <stdbool.h>
 # include <pthread.h>
 # include "SDL.h"
@@ -50,27 +62,31 @@ typedef struct		s_files
 {
 	unsigned int	*wall[5];
 	unsigned int	*sprite[9];
-	unsigned int	*floor[2];
+	unsigned int	*floor[4];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[35];
+	SDL_Surface		*image[37];
 	SDL_Surface		*skybox;
 	SDL_Surface     *ui_surf;
 }					t_files;
 
 typedef struct		s_data
 {
+	int				tier_ind;
+	int				tier_size;
 	int				pos_y;
 	int				pos_x;
+	int				pos_z;
 	int				max_x;
 	int				max_y;
 	char			*scan;
-	char			**process;
-	int				map[4][5][128][128];
-	char			sprite[128][128];
+	char			**tier;
+	char			**stage;
+	char			**cell;
+	unsigned int	map[5][5][64][64];
 }					t_data;
 
 typedef struct		s_draw
@@ -78,7 +94,7 @@ typedef struct		s_draw
 	char			*str;
 	SDL_Rect		sky_rect;
 	SDL_Rect		sky_rect2;
-	float			skybox_x;
+	double			skybox_x;
 	int				skybox_y;
 	TTF_Font		*font;
 	SDL_Surface		*fps_surface;
@@ -133,9 +149,11 @@ typedef struct		s_sprite
 {
 	int				tex;
 	bool			visible;
-	float			dead;
+	double			dead;
 	int				x;
 	int				y;
+	int				z;
+	int				floor;
 	double			dist;
 	int				height;
 	int				screen_x;
@@ -183,6 +201,7 @@ typedef struct		s_wall
 	int				bottom;
 	int				texture_x;
 	int				texture_y;
+	int				shadow;
 	double			dist;
 	double			height;
 	double			color;
@@ -190,8 +209,6 @@ typedef struct		s_wall
 
 typedef struct		s_vert
 {
-	bool			in_map;
-	bool			skip;
 	int				x;
 	int				next_x;
 	double			dist;
@@ -203,8 +220,6 @@ typedef struct		s_vert
 
 typedef struct		s_hor
 {
-	bool			in_map;
-	bool			skip;
 	double			dist;
 	int				y;
 	int				next_y;
@@ -218,8 +233,10 @@ typedef struct		s_ray
 {
 	t_vert			vert;
 	t_hor			hor;
+	bool			skip;
 	int				angle;
 	int				layer;
+	int				max_column;
 }					t_ray;
 
 typedef struct		s_floor
@@ -245,10 +262,10 @@ typedef struct		s_angles
 
 typedef struct		s_draw_scaled
 {
-	float			x_start;
-	float			y_start;
-	float			x_end;
-	float			y_end;
+	double			x_start;
+	double			y_start;
+	double			x_end;
+	double			y_end;
 	int				w;
 	unsigned int	**buffer;
 	double			x_ratio;
@@ -280,14 +297,15 @@ typedef struct		s_env
 	t_wall			prev_wall[MAX_THREADS];
 	t_floor			floor[MAX_THREADS];
 	t_angles		angle;
-	double			sin_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			i_sin_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			cos_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			i_cos_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			tan_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			i_tan_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			x_step_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
-	double			y_step_table[(int)(360 * ((double)WIN_W / FOV) + 1)];
+	unsigned int	floor_order[5];
+	double			sin_table[7681];
+	double			i_sin_table[7681];
+	double			cos_table[7681];
+	double			i_cos_table[7681];
+	double			tan_table[7681];
+	double			i_tan_table[7681];
+	double			x_step_table[7681];
+	double			y_step_table[7681];
 	double			fisheye_table[WIN_W];
 	double			i_fisheye_table[WIN_W];
 	t_menu			menu;
@@ -298,14 +316,16 @@ typedef struct		s_env
 	t_sound			sound;
 	t_minimap		minimap;
 	t_draw_scaled	face_info;
+	t_draw_scaled	ui_info;
 	t_draw_scaled	inv_info;
 	t_draw_scaled	pistol_info;
 	t_draw_scaled	shotgun_info;
 	t_ui			ui;
 	int				sprite_nb;
 	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
-	double			wall_heights[5][WIN_W];
+	double			wall_dist[5][WIN_W];
 	int				horizon;
+	Uint32			floor_nb;
 	int				tile_shift;
 	int				thread_col_size;
 	int				render_limit;
@@ -328,16 +348,17 @@ extern void			init_sdl(t_env *e);
 extern void			init_player(t_env *e);
 extern void			init_sound(t_env *e);
 extern void			init_vars(t_env *e);
-extern void			exit_error(int type);
 
 extern void			parse_init(t_data *data);
-extern void			parse_read(t_data *data, char *map);
-extern void			parse_process(t_data *data);
+extern void			parse_start(t_data *data, char *map);
+extern void			parse_scan(t_data *data, char *map);
+extern void			parse_tier(t_data *data);
+extern void			parse_stage(t_data *data);
 extern void			parse_stock(int y, int x, t_data *data, char *cell);
 extern void			parse_pos(t_data *data);
 extern void			parse_sprite(t_env *e);
-extern void			parse_quit(t_data *data, int type);
-extern void			exit_error(int type);
+extern void			parse_quit(t_data *data, int type, char *msg);
+extern void			exit_error(int type, char *msg);
 
 extern void			load_screen(t_env *e);
 extern void			load_screen_2(t_env *e, int check, SDL_Event ev);
@@ -353,22 +374,22 @@ extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
 extern void			gif_load_screen(t_env *e);
 extern void			clean_up(t_env *e);
 
-extern void			get_vertical_hit(t_env *e, int tid);
-extern void			vertical_dda(t_env *e, int tid);
-extern void			horizontal_dda(t_env *e, int tid);
-extern void			get_horizontal_hit(t_env *e, int tid);
-extern int			ray_is_in_the_map(int x, int y, t_env *e);
+extern void			get_vertical_hit(t_env *e, register int tid);
+extern void			vertical_dda(t_env *e, register int tid);
+extern void			horizontal_dda(t_env *e, register int tid);
+extern void			get_horizontal_hit(t_env *e, register int tid);
+extern int			ray_is_in_the_map(t_point_int pt, t_env *e);
 extern void			angle_overflow(int *angle, t_env *e);
 extern double		angle_to_rad(int angle, t_env *e);
-extern int			get_wall_height(t_env *e, int column, int tid);
-extern void			draw_wall(t_env *e, int column, int tid);
-extern void			floor_casting(t_env *e, int	column, int tid);
+extern void			get_wall_height(t_env *e, int column, register int tid);
+extern void			draw_wall(t_env *e, int column, register int tid);
+extern void			floor_casting(t_env *e, int	column, register int tid);
 extern void			moving_rects(t_env *e);
 extern void			display_skybox(t_env *e);
 extern void			multithreaded_render(t_env *e);
 extern void			*raycaster_mt(void *arg);
 extern int			thread_nb(t_env *e);
-extern void			draw_sprites(t_env *e);
+extern void			draw_sprites(t_env *e, int max_col, int tid);
 extern void			move_player(t_env *e);
 extern void			get_delta(int angle, t_env *e, t_point *new_pos);
 extern void			walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle);
@@ -377,7 +398,7 @@ extern void			strafe_backward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			crouch_and_jump(t_env *e);
 extern void			mouse_aim(t_env *e);
-extern bool			check_walls(t_env *e, int height, int *offset, int x);
+extern bool			check_walls(t_env *e, int height, int *offset, int x, int tid);
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc, int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite);
 extern void			clip_end(int *end, int y);
@@ -403,5 +424,6 @@ extern void			init_ui_structs(t_env *e);
 extern void			draw_ceilings(t_env *e, int x, int tid);
 extern void			fake_parse(t_env *e);
 extern void			get_player_floor(t_env *e);
+extern void			double_dda(t_env *e, int tid, int column);
 
 #endif

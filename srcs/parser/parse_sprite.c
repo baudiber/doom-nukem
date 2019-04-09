@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 23:36:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,37 @@
 
 static bool			count_sprite(t_data *data)
 {
+	int				z;
 	int				y;
 	int				x;
 	int				ret;
 
-	y = 0;
 	ret = 0;
-	while (y < data->max_y)
+	z = -1;
+	while (++z < data->tier_ind)
 	{
-		x = 0;
-		while (x < data->max_x)
+		y = -1;
+		while (++y < data->max_y)
 		{
-			if (ft_strnchr("abc", data->sprite[y][x]) > 0)
-				ret++;
-			x++;
+			x = -1;
+			while (++x < data->max_x)
+			{
+				if (ft_strnchr("abc", (int)data->map[DSPRITE][z][y][x]) > 0)
+					ret++;
+			}
 		}
-		y++;
 	}
 	return (ret < 100) ? true : false;
 }
 
-static void			stock_sprite(int ind, int y, int x, t_env *e)
+static void			stock_sprite(int z, int y, int x, t_env *e)
 {
-	if (ind > 100)
-		return ;
-	e->sprites[ind].tex = e->data.sprite[y][x] - 97;
-	e->sprites[ind].visible = true;
-	e->sprites[ind].y = (y + 0.5) * TILE_SIZE;
-	e->sprites[ind].x = (x + 0.5) * TILE_SIZE;
+	e->sprites[e->sprite_nb].tex = (int)e->data.map[DSPRITE][z][y][x] - 97;
+	e->sprites[e->sprite_nb].y = (y + 0.5) * TILE_SIZE;
+	e->sprites[e->sprite_nb].x = (x + 0.5) * TILE_SIZE;
+	e->sprites[e->sprite_nb].z = z << e->tile_shift;
+	e->sprites[e->sprite_nb].floor = z;
+	e->sprites[e->sprite_nb].visible = true;
 	e->sprite_nb++;
 }
 
@@ -49,29 +52,27 @@ static void			scan_sprite(t_env *e, t_data *data)
 {
 	int				y;
 	int				x;
-	int				i;
+	int				z;
 
-	i = 0;
-	y = 0;
-	while (y < data->max_y)
+	z = -1;
+	while (++z < data->tier_ind)
 	{
-		x = 0;
-		while (x < data->max_x)
+		y = -1;
+		while (++y < data->max_y)
 		{
-			if (ft_strnchr("abc", data->sprite[y][x]) > 0)
+			x = -1;
+			while (++x < data->max_x)
 			{
-				stock_sprite(i, y, x, e);
-				i++;
+				if (ft_strnchr("abc", (int)data->map[DSPRITE][z][y][x]) > 0)
+					(e->sprite_nb < 100) ? stock_sprite(z, y, x, e) : 0;
 			}
-			x++;
 		}
-		y++;
 	}
 }
 
 void				parse_sprite(t_env *e)
 {
 	if (!count_sprite(&e->data))
-		exit_error(10);
+		exit_error(6, ERR_6);
 	scan_sprite(e, &e->data);
 }

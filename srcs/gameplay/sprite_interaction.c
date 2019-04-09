@@ -16,6 +16,7 @@ void			pick_up_obj(t_env *e, int nb)
 {
 	int		range;
 
+	//check obj height too
 	if (e->sprites[nb].tex != 1)
 		return;
 	range = TILE_SIZE * 0.75;

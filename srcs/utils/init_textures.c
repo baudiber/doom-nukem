@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/04 14:48:52 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 15:21:36 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,98 +53,98 @@ void	load_textures_menu(t_env *e)
 void	load_gun_textures(t_env *e)
 {
 	if (!(e->files.image[17] = SDL_LoadBMP("textures/guns/pistol_f0.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[18] = SDL_LoadBMP("textures/guns/pistol_f1.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[19] = SDL_LoadBMP("textures/guns/pistol_f2.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[20] = SDL_LoadBMP("textures/guns/pistol_f3.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[21] = SDL_LoadBMP("textures/guns/pistol_f4.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[22] = SDL_LoadBMP("textures/guns/pistol_f5.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[23] = SDL_LoadBMP("textures/guns/shotgun_f0.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[24] = SDL_LoadBMP("textures/guns/shotgun_f1.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[25] = SDL_LoadBMP("textures/guns/shotgun_f2.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[26] = SDL_LoadBMP("textures/guns/shotgun_f3.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[27] = SDL_LoadBMP("textures/guns/shotgun_f4.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[28] = SDL_LoadBMP("textures/guns/shotgun_f5.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 }
 
 void	load_ui_textures(t_env *e)
 {
 	if (!(e->files.image[9] = SDL_LoadBMP("textures/UI/face.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[10] = SDL_LoadBMP("textures/UI/face2.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[11] = SDL_LoadBMP("textures/UI/face3.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[12] = SDL_LoadBMP("textures/UI/face_s.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[13] = SDL_LoadBMP("textures/UI/face_shoot.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[14] = SDL_LoadBMP("textures/UI/pistol_selec_ns.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[15] = SDL_LoadBMP("textures/UI/pistol_selec_s.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[16] = SDL_LoadBMP("textures/UI/shotgun_selec.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 }
 
 void	load_death_textures(t_env *e)
 {
 	if (!(e->files.image[29] = SDL_LoadBMP("textures/sprites/evil_sarge_d0"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[30] = SDL_LoadBMP("textures/sprites/evil_sarge_d1"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[31] = SDL_LoadBMP("textures/sprites/evil_sarge_d2"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[32] = SDL_LoadBMP("textures/sprites/evil_sarge_d3"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[33] = SDL_LoadBMP("textures/sprites/evil_sarge_d4"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 }
 
 void	load_textures(t_env *e)
 {
 	if (!(e->files.skybox = SDL_LoadBMP("textures/skybox.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.ui_surf = SDL_LoadBMP("textures/UI/ui.bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[0] = \
 		SDL_LoadBMP("textures/walls/plates"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[1] = \
 		SDL_LoadBMP("textures/walls/brown_metal"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[2] = \
 		SDL_LoadBMP("textures/walls/warning"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[3] = \
 		SDL_LoadBMP("textures/walls/bumpy"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[4] = SDL_LoadBMP("textures/floor"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[5] = SDL_LoadBMP("textures/sprites/evil_sarge"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[6] = SDL_LoadBMP("textures/sprites/shotgun"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[7] = SDL_LoadBMP("textures/sprites/barrel_0"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	if (!(e->files.image[8] = SDL_LoadBMP("textures/sprites/barrel_1"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	load_ui_textures(e);
 	load_gun_textures(e);
 	load_death_textures(e);
 	if (!(e->files.image[34] = SDL_LoadBMP("textures/floor1"GRID_SIZE_STR".bmp")))
-		exit_error(2);
+		exit_error(2, ERR_2);
 	e->files.wall[1] = (unsigned int *)e->files.image[0]->pixels;
 	e->files.wall[2] = (unsigned int *)e->files.image[1]->pixels;
 	e->files.wall[3] = (unsigned int *)e->files.image[2]->pixels;
@@ -181,5 +181,11 @@ void	load_textures(t_env *e)
 	e->files.sprite[8] = (unsigned int *)e->files.image[33]->pixels;
 	e->files.floor[0] = (unsigned int *)e->files.image[4]->pixels;
 	e->files.floor[1] = (unsigned int *)e->files.image[34]->pixels;
+	if (!(e->files.image[35] = SDL_LoadBMP("textures/floors/floor_trou"GRID_SIZE_STR".bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[36] = SDL_LoadBMP("textures/floors/floor_joli"GRID_SIZE_STR".bmp")))
+		exit_error(2, ERR_2);
+	e->files.floor[2] = (unsigned int *)e->files.image[35]->pixels;
+	e->files.floor[3] = (unsigned int *)e->files.image[36]->pixels;
 	//CHECK texture size == TILE_SIZE
 }

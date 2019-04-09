@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:28:48 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/03 18:43:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 23:56:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	draw_ceilings(t_env *e, int x, int tid)
 	ft_bzero(&ceil, sizeof(t_floor));
 	if (e->player.floor > e->ray[tid].layer)
 		return ;
-	y = e->wall[tid].top;
+	if (e->ray[tid].layer == (int)e->floor_nb - 1)
+		return ;
+	y = e->horizon;
 	if (y <= 0)
 		return;
 	if (y > WIN_H)
@@ -35,9 +37,10 @@ void	draw_ceilings(t_env *e, int x, int tid)
 		ceil.y += e->player.pos.y;
 		ceil.map.x = ceil.x >> e->tile_shift;
 		ceil.map.y = ceil.y >> e->tile_shift;
-		if (ray_is_in_the_map(ceil.map.x, ceil.map.y, e))
+		if (ray_is_in_the_map(ceil.map, e))
 		{
-			if (e->data.map[DWALL][e->ray[tid].layer + 1][ceil.map.y][ceil.map.x])
+			if (e->data.map[DWALL][e->ray[tid].layer + 1][ceil.map.y][ceil.map.x]
+			&& !e->data.map[DWALL][e->ray[tid].layer][ceil.map.y][ceil.map.x])
 			{
 				ceil.y = ceil.y % TILE_SIZE;
 				ceil.x = ceil.x % TILE_SIZE;

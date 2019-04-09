@@ -18,10 +18,14 @@ void	crouch_and_jump(t_env *e)
 //	int tmp;
 	
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C])
-		e->player.height -= 5;
+	{
+		if (e->player.height > 10)
+			e->player.height -= 10;
+	}
 	else if (e->state[SDL_SCANCODE_SPACE])
-		//e->player.height += e->player.speed * e->time.delta_time + 140;
-		e->player.height += 5;
+		if (e->player.height < (int)e->floor_nb << e->tile_shift)
+			e->player.height += e->player.speed * e->time.delta_time + 140;
+		//	e->player.height += 10;
 }
 
 void	walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle)
