@@ -6,18 +6,22 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:50:24 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/31 17:25:52 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 16:43:46 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
+
 void	crouch_and_jump(t_env *e)
 {
+//	float g = 9.81;
+//	int tmp;
+	
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C])
 		e->player.height -= 5;
 	else if (e->state[SDL_SCANCODE_SPACE])
-		e->player.height += 5;
+		e->player.jumping = 1;
 }
 
 void	walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle)

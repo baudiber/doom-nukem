@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/31 17:21:37 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 18:56:31 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void			get_delta(int angle, t_env *e, t_point *new_pos)
 	new_pos->y += e->sin_table[angle] * (e->player.speed * e->time.delta_time);
 }
 
+void			get_jump_pos(t_env *e, t_point *new_pos)
+{
+	float g;
+	g = 3;
+	e->player.height += -0.5 * g * pow(e->time.delta_time, 2) + \
+		e->time.delta_time * e->player.speed * e->sin_table[e->angle.a_270];
+	get_delta(e->player.angle, e, new_pos);
+}
+
 void			collision(t_env *e, t_point *new_pos)
 {
 	if (!is_blocked(e, new_pos, 0))
@@ -52,12 +61,36 @@ void			collision(t_env *e, t_point *new_pos)
 		e->player.pace -= 360;
 }
 
+void	jump_anim(t_env *e)
+{
+	static double jump_time;
+
+	if (e->player.jumping && jump_time <= 0.17)
+	{
+		jump_time += e->time.frame_time;
+		e->player.height += (e->player.speed + 3) * e->time.delta_time;
+	}
+		
+	else
+	{
+		e->player.falling = 1;
+		e->player.jumping = 0;
+		jump_time = 0;
+	}
+}
+
 void			move_player(t_env *e)
 {
 	int			tmpangle;
 	t_point		new_pos;
 
 	new_pos = e->player.pos;
+	jump_anim(e);
+	if (e->player.height <= WALL_HEIGHT / 2 * (e->player.floor + 1))
+		e->player.falling = 0;
+	if (!e->player.jumping && e->player.height > (WALL_HEIGHT / 2) * \
+		(e->player.floor + 1))
+		get_jump_pos(e, &new_pos);
 	if (e->state[SDL_SCANCODE_LSHIFT])
 	{
 		e->player.speed = e->max_speed * 2;
@@ -70,7 +103,7 @@ void			move_player(t_env *e)
 			e->face_info.index = 0;
 	}
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C] \
-		|| e->state[SDL_SCANCODE_SPACE])
+		|| (e->state[SDL_SCANCODE_SPACE] && !e->player.jumping && !e->player.falling))
 		crouch_and_jump(e);
 	if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_W] \
 			|| e->state[SDL_SCANCODE_S] || e->state[SDL_SCANCODE_D])
