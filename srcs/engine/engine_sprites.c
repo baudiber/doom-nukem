@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 00:06:01 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 01:46:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_visible(t_env *e, t_sprite *sprite, int tid)
 	t_sprite_draw	draw;
 	int				x;
 
-	get_screen_coord(e, &draw, sprite);
+	get_screen_coord(e, &draw, sprite, tid);
 	while (++draw.start.y < draw.end.y)
 	{
 		x = draw.start.x - 1;

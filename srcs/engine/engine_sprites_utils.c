@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/09 23:46:51 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 01:45:36 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	clip_end(int *end, int y)
 	}
 }
 
-void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite)
+void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, int tid)
 {
 	draw->ratio = (float)TILE_SIZE / sprite->height;
-	draw->end.y = (int)((e->player.plane_dist / sprite->dist) \
-		* e->player.height + e->horizon);
+	draw->end.y = ceil(((e->player.plane_dist / sprite->dist) \
+		* e->player.height + e->horizon) - sprite->height * e->ray[tid].layer);
 	draw->start.y = draw->end.y - sprite->height;
 	clip_start(&draw->start.y, &draw->offset.y);
 	draw->start.y--;

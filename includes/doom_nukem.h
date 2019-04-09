@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 01:31:13 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 01:46:33 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -402,7 +402,7 @@ extern void			crouch_and_jump(t_env *e);
 extern void			mouse_aim(t_env *e);
 extern bool			check_walls(t_env *e, int height, int *offset, int x, int tid);
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc, int sprite);
-extern void			get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite);
+extern void			get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, int tid);
 extern void			clip_end(int *end, int y);
 extern void			clip_start(int *start, int *offset);
 extern void			mouse_aim_x(t_env *e);
