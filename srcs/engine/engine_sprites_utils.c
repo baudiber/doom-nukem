@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/29 17:50:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/09 23:46:51 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite)
 	clip_end(&draw->end.x, 0);
 }
 
-bool	check_walls(t_env *e, int height, int *offset, int x)
+bool	check_walls(t_env *e, int height, int *offset, int x, int tid)
 {
-	if (e->wall_heights[x] > height)
+	if (e->wall_dist[e->ray[tid].layer][x] > height)
 	{
 		++*offset;
 		return (true);

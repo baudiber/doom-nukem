@@ -36,6 +36,18 @@ static void	init_guns(t_env *e)
 	e->ui.shotgun_ystart = e->shotgun_info.y_start;
 }
 
+void		init_base_ui(t_env *e)
+{
+	e->ui_info.x_start = 0;
+	e->ui_info.y_start = e->render_limit - 1;
+	e->ui_info.y_ratio = e->files.ui_surf->h / (double)e->ui.ui_size;
+	e->ui_info.x_ratio = e->files.ui_surf->w / (double)WIN_W;
+	e->ui_info.x_end = WIN_W;
+	e->ui_info.y_end = WIN_H;
+	e->ui_info.buffer = &e->files.ui;
+	e->ui_info.w = e->files.ui_surf->w;
+}
+
 void		init_ui_structs(t_env *e)
 {
 	e->face_info.x_start = WIN_W * 0.5 - WIN_W / 12.0 * 0.5;
@@ -56,4 +68,5 @@ void		init_ui_structs(t_env *e)
 	e->inv_info.buffer = &e->files.inv[0];
 	e->inv_info.w = e->files.image[14]->w;
 	init_guns(e);
+	init_base_ui(e);
 }

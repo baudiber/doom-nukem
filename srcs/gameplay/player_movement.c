@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/09 18:56:31 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/10 01:29:20 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 bool			is_blocked(t_env *e, t_point *new_pos, int y)
 {
-	if (!ray_is_in_the_map((int)new_pos->x >> e->tile_shift, \
-		(int)new_pos->y >> e->tile_shift, e))
+	t_point_int		pt;
+
+	pt.x = (int)new_pos->x >> e->tile_shift;
+	pt.y = (int)new_pos->y >> e->tile_shift;
+	if (!ray_is_in_the_map(pt, e))
 		return (false);
 	if (y)
 	{
@@ -123,7 +126,7 @@ void			move_player(t_env *e)
 		strafe(e, &new_pos, &tmpangle);
 	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
 		walk_forward_and_backward(e, &new_pos, &tmpangle);
-	//collision(e, &new_pos);
+	collision(e, &new_pos);
 	e->player.pos = new_pos;
 }
 

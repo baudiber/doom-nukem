@@ -92,35 +92,10 @@ void	bob(t_env *e)
 
 void	draw_ui(t_env *e)
 {
+	draw_scaled(e, &e->ui_info);
 	draw_crosshair(e);
 	bob(e);
 	draw_scaled(e, &e->face_info);
 	draw_scaled(e, &e->inv_info);
 	e->ui.weapon == 0 ? draw_scaled(e, &e->pistol_info) : draw_scaled(e, &e->shotgun_info);
-}
-
-void	draw_ui_base(t_env *e)
-{
-	int		y;
-	int		x;
-	double	ratiox;
-	double	ratioy;
-	float	x_offset;
-	float	y_offset;
-
-	ratioy = e->files.ui_surf->h / (double)e->ui.ui_size;
-	ratiox = e->files.ui_surf->w / (double)WIN_W;
-	y = e->render_limit - 1;
-	y_offset = 0;
-	while (++y < WIN_H)
-	{
-		x_offset = 0;
-		x = -1;
-		while (++x < WIN_W)
-		{
-			e->buff[y * WIN_W + x] = e->files.ui[(int)y_offset * e->files.ui_surf->w + (int)x_offset];
-			x_offset += ratiox;
-		}
-		y_offset += ratioy;
-	}
 }

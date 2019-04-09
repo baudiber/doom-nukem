@@ -5,60 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/14 17:25:40 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/19 14:40:58 by clrichar         ###   ########.fr       */
+/*   Created: 2019/03/25 13:40:11 by clrichar          #+#    #+#             */
+/*   Updated: 2019/03/25 13:40:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char			*ft_strcut_free(char *s1, char c)
+static char			*ft_freejoin(char *dst, char *src)
 {
-	int		i;
 	char	*tmp;
 
+	if (!dst)
+		dst = ft_memalloc(sizeof(char));
+	tmp = ft_strdup(dst);
+	ft_strdel(&dst);
+	if ((dst = ft_strjoin(tmp, src)) == NULL)
+		return (NULL);
+	ft_strdel(&tmp);
+	return (dst);
+}
+
+static char			*ft_strcdup(const char *s, char c)
+{
+	char	*str;
+	int		i;
+	int		size;
+
 	i = 0;
-	while (s1[i] != c)
+	size = 0;
+	while (s[size] && s[size] != c)
+		size++;
+	if (!(str = (char*)ft_memalloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	while (s[i] && s[i] != c)
+	{
+		str[i] = s[i];
 		i++;
-	i++;
-	tmp = ft_strdup(&(s1[i]));
-	ft_strdel(&s1);
-	return (tmp);
+	}
+	str[i] = '\0';
+	return (str);
 }
 
-static int			ft_check(char **line, int fd)
+int					get_next_line(const int fd, char **line)
 {
-	if (fd < 0 || fd >= 800 || line == NULL || (*line = NULL))
-		return (-1);
-	else
-		return (1);
-}
-
-int					get_next_line(int fd, char **line)
-{
-	static char		*stc[800];
 	char			buf[BUFF_SIZE + 1];
+	static char		*remains[42000];
+	char			*tmp;
 	int				ret;
 
-	ret = ft_check(line, fd);
-	while ((!stc[fd] || !ft_strchr(stc[fd], '\n'))
-			&& (ret = (int)read(fd, buf, BUFF_SIZE)) > 0)
-	{
-		buf[ret] = '\0';
-		stc[fd] = !stc[fd] ? ft_strdup(buf) : ft_strjoinfree(stc[fd], buf, 1);
-	}
-	if (ret <= 0 && stc[fd])
-	{
-		if (*stc[fd] == '\n' || *stc[fd] == '\0')
-			return ((ret == -1) ? -1 : 0);
-		*line = ft_strdup(stc[fd]);
-		ft_strdel(&stc[fd]);
-		return (1);
-	}
-	else if (ret <= 0 && !stc[fd])
-		return ((ret == -1) ? -1 : 0);
-	*line = ft_strsub(stc[fd], 0, (ft_strlen(stc[fd])
-				- ft_strlen(ft_strchr(stc[fd], '\n'))));
-	stc[fd] = ft_strcut_free(stc[fd], '\n');
+	if ((ret = 1) && (fd < 0 || !line || BUFF_SIZE < 1))
+		return (-1);
+	ft_bzero(buf, BUFF_SIZE + 1);
+	if (!(tmp = NULL) && remains[fd] && remains[fd][0])
+		tmp = ft_strdup(remains[fd]);
+	while (!ft_strchr(tmp, '\n') && (ret = read(fd, &buf, BUFF_SIZE)) != 0)
+		if (ret < 0 || (!(buf[ret] = 0)
+		&& !(tmp = ft_freejoin(tmp, buf))))
+			return (-1);
+	if (remains[fd])
+		free(remains[fd]);
+	if (ret == 0 && !tmp && !(remains[fd] = NULL))
+		return (0);
+	remains[fd] = ft_strchr(tmp, '\n') ?
+	ft_strdup(ft_strchr(tmp, '\n') + 1) : NULL;
+	*line = ft_strcdup(tmp, '\n');
+	free(tmp);
 	return (1);
 }

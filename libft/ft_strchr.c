@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/13 11:48:41 by baudiber          #+#    #+#             */
-/*   Updated: 2017/11/13 12:01:43 by baudiber         ###   ########.fr       */
+/*   Created: 2019/03/25 13:40:01 by clrichar          #+#    #+#             */
+/*   Updated: 2019/03/25 13:40:01 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	int		count;
 	int		len;
 
+	if (!s)
+		return (NULL);
 	count = 0;
 	len = ft_strlen((char*)s) + 1;
 	while (len--)

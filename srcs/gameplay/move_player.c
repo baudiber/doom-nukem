@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:50:24 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:43:46 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/10 01:29:51 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 void	crouch_and_jump(t_env *e)
 {
-//	float g = 9.81;
-//	int tmp;
-	
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C])
-		e->player.height -= 5;
+	{
+		if (e->player.height > 10)
+			e->player.height -= 10;
+	}
 	else if (e->state[SDL_SCANCODE_SPACE])
 		e->player.jumping = 1;
 }
