@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:37:01 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 20:11:04 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:29:26 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void	saving(t_e *e)
+void	saving(t_env *e)
 {
 	int fd;
 	int x;

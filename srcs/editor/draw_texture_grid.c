@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:16:55 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:22:27 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void	draw_texture_grid(t_e *e)
+void	draw_texture_grid(t_env *e)
 {
 	int x;
 	int y;

@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:23:23 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-unsigned int		*apply_texture(t_e *e)
+unsigned int		*apply_texture(t_env *e)
 {
 	unsigned int	*texture;
 	int				type;
@@ -35,7 +35,7 @@ unsigned int		*apply_texture(t_e *e)
 	return (texture);
 }
 
-void				redraw_block(t_e *e, int posx, int posy)
+void				redraw_block(t_env *e, int posx, int posy)
 {
 	int x;
 	int y;
@@ -58,7 +58,7 @@ void				redraw_block(t_e *e, int posx, int posy)
 	}
 }
 
-void				redraw(t_e *e)
+void				redraw(t_env *e)
 {
 	int x;
 	int y;

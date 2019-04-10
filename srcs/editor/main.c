@@ -6,24 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 14:44:50 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:26:49 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		exit_error(int type)
-{
-	if (type == 1)
-		ft_putendl("SDL Init Error");
-	else if (type == 2)
-		ft_putendl("Error Malloc of e->tab[e->type][e->tier] in init_tab(t_e *)");
-	else if (type == 3)
-		ft_putendl("Error Malloc of tmp_tab in malloc_tmp_tab(t_e *, int **)");
-	exit(type);
-}
-
-static bool				basic_err(void)
+bool				basic_err(void)
 {
 	int					ret;
 
@@ -46,9 +35,15 @@ static bool				basic_err(void)
 	return (ret == 0) ? true : false;
 }
 
+void				exit_error(int type, char *msg)
+{
+	ft_putendl(msg);
+	exit(type);
+}
+
 int		main(int ac, char **av)
 {
-	t_e		e;
+	t_env		e;
 	int		fd;
 
 	if (!basic_err())
@@ -67,6 +62,8 @@ int		main(int ac, char **av)
 		else
 		{
 			//NEED TO INIT FROM PARSING
+			parse_start(&e.data, av[1]);
+			parse_sprite(&e);
 		}
 		engine_loop(&e);
 	}

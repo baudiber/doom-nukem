@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 14:44:17 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:24:38 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,36 @@
 //# include "SDL_image.h"
 # include "libft.h"
 
+typedef struct		s_data
+{
+	int				tier_ind;
+	int				tier_size;
+	int				pos_y;
+	int				pos_x;
+	int				pos_z;
+	int				max_x;
+	int				max_y;
+	char			*scan;
+	char			**tier;
+	char			**stage;
+	char			**cell;
+	unsigned int	map[5][5][64][64];
+}					t_data;
+
+typedef struct		s_sprite
+{
+	int				tex;
+	bool			visible;
+	double			dead;
+	int				x;
+	int				y;
+	int				z;
+	int				floor;
+	double			dist;
+	int				height;
+	int				screen_x;
+}					t_sprite;
+
 typedef struct		s_draw
 {
 	SDL_Rect		position;
@@ -101,7 +131,7 @@ typedef struct		s_texture
 	SDL_Surface		*image[8];
 }					t_texture;
 
-typedef	struct		s_e
+typedef	struct		s_env
 {
 	int				wellcome_screen;
 	Uint32			*buff;
@@ -109,49 +139,61 @@ typedef	struct		s_e
 	t_draw			draw[4];
 	t_grid			grid;
 	t_texture		texture;
+	t_data			data;
+	t_sprite		sprites[100];
 	int				tier;
 	int				type;
 	unsigned int	tab[5][TIER][MAX_SIZE][MAX_SIZE];
 	int				dif_size;
-	void			(*f[5])(struct s_e *e);
+	void			(*f[5])(struct s_env *e);
 	int				panel_index;
 	int				argc;
 	char			**argv;
-}					t_e;
+}					t_env;
 
 extern int				main(int ac, char **av);
-extern void				exit_error(int type);
-extern void				init(t_e *e);
-extern void				init_tab(t_e *e);
-extern void				save(t_e *e);
-extern void				engine_loop(t_e *e);
-extern void				editor(t_e *e);
-extern void				draw_panel_floor(t_e *e);
-extern void				draw_panel_wall(t_e *e);
-extern void				draw_panel_sprite(t_e *e);
-extern void				draw_panel_light(t_e *e);
-extern void				draw_panel_event(t_e *e);
-extern void				draw_panel_tier(t_e *e);
-extern void				draw_panel_grid_size(t_e *e);
-extern void				draw_grid(t_e *e);
-extern void				draw_texture_grid(t_e *e);
-extern void				erase_texture_grid(t_e *e);
-extern void				key_input(t_e *e);
-extern void				realloc_tab(t_e *e);
-extern unsigned int		*apply_texture(t_e *e);
-extern void				redraw(t_e *e);
-extern void				refresh_grid_var(t_e *e);
-extern void				change_panel(t_e *e);
-extern void				change_tier(t_e *e);
-extern void				change_grid_size(t_e *e);
-extern void				select_grid_block(t_e *e);
-extern void				saving(t_e *e);
-extern void				init_var_texture(t_e *e);
-extern void				load_texture(t_e *e);
-extern void				load_wall_texture(t_e *e);
-extern void				load_floor_texture(t_e *e);
-extern void				load_sprite_texture(t_e *e);
-extern void				copy_texture(t_e *e);
+extern void				init(t_env *e);
+extern void				init_tab(t_env *e);
+extern void				save(t_env *e);
+extern void				engine_loop(t_env *e);
+extern void				editor(t_env *e);
+extern void				draw_panel_floor(t_env *e);
+extern void				draw_panel_wall(t_env *e);
+extern void				draw_panel_sprite(t_env *e);
+extern void				draw_panel_light(t_env *e);
+extern void				draw_panel_event(t_env *e);
+extern void				draw_panel_tier(t_env *e);
+extern void				draw_panel_grid_size(t_env *e);
+extern void				draw_grid(t_env *e);
+extern void				draw_texture_grid(t_env *e);
+extern void				erase_texture_grid(t_env *e);
+extern void				key_input(t_env *e);
+extern void				realloc_tab(t_env *e);
+extern unsigned int		*apply_texture(t_env *e);
+extern void				redraw(t_env *e);
+extern void				refresh_grid_var(t_env *e);
+extern void				change_panel(t_env *e);
+extern void				change_tier(t_env *e);
+extern void				change_grid_size(t_env *e);
+extern void				select_grid_block(t_env *e);
+extern void				saving(t_env *e);
+extern void				init_var_texture(t_env *e);
+extern void				load_texture(t_env *e);
+extern void				load_wall_texture(t_env *e);
+extern void				load_floor_texture(t_env *e);
+extern void				load_sprite_texture(t_env *e);
+extern void				copy_texture(t_env *e);
+
+extern void				parse_init(t_data *data);
+extern void				parse_start(t_data *data, char *map);
+extern void				parse_scan(t_data *data, char *map);
+extern void				parse_tier(t_data *data);
+extern void				parse_stage(t_data *data);
+extern void				parse_stock(int y, int x, t_data *data, char *cell);
+extern void				parse_pos(t_data *data);
+extern void				parse_sprite(t_env *e);
+extern void				parse_quit(t_data *data, int type, char *msg);
+extern void				exit_error(int type, char *msg);
 
 #endif
 extern

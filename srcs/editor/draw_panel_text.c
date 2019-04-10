@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:59:58 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:22:23 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void	draw_panel_tier(t_e *e)
+void	draw_panel_tier(t_env *e)
 {
 	char *str;
 
@@ -36,7 +36,7 @@ void	draw_panel_tier(t_e *e)
 	SDL_BlitSurface(e->draw[3].text, NULL, e->window.screen, &e->draw[3].position);
 }
 
-void	draw_panel_grid_size(t_e *e)
+void	draw_panel_grid_size(t_env *e)
 {
 	char *str;
 

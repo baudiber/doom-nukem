@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 20:06:00 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:29:05 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		init_var_texture(t_e *e)
+void		init_var_texture(t_env *e)
 {
 	e->texture.texture = 0;
 	e->type = 0;
@@ -22,7 +22,7 @@ void		init_var_texture(t_e *e)
 	// WARNING, GIVE THE TEXTURE TO e->texture.texture IN A SIDE MENU
 }
 
-void		load_texture(t_e *e)
+void		load_texture(t_env *e)
 {
 	load_wall_texture(e);
 	load_floor_texture(e);
@@ -34,7 +34,7 @@ void		load_texture(t_e *e)
 	e->texture.image[4] = SDL_LoadBMP("textures/editor_panel/editeur_panel_event.bmp");
 }
 
-void		copy_texture(t_e *e)
+void		copy_texture(t_env *e)
 {
 	e->texture.tex[0] = (unsigned int *)e->texture.image[0]->pixels;
 	e->texture.tex[1] = (unsigned int *)e->texture.image[1]->pixels;

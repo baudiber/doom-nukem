@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:22:34 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		wellcome(t_e *e)
+void		wellcome(t_env *e)
 {
 	e->draw[0].text = TTF_RenderText_Solid(e->draw[0].font, "Press     Enter", e->draw[0].white);
 	e->draw[0].position.x = WIN_W / 2 - 390;
@@ -27,7 +27,7 @@ void		wellcome(t_e *e)
 		}
 }
 
-void		engine_loop(t_e *e)
+void		engine_loop(t_env *e)
 {
 	while (1)
 	{

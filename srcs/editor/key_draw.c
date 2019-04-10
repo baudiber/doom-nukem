@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:49:15 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:23:30 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void	select_grid_block(t_e *e)
+void	select_grid_block(t_env *e)
 {
 	e->grid.mouseposgridx = ((e->grid.mouseposx - MARGIN - PANEL) / e->grid.padx);
 	e->grid.mouseposgridy = ((e->grid.mouseposy - MARGIN) / e->grid.pady);

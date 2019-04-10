@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:22:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:22:13 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		refresh_grid_var(t_e *e)
+void		refresh_grid_var(t_env *e)
 {
 	e->grid.padx = (WIN_W - (MARGIN * 2) - PANEL) / (float)e->grid.x;
 	e->grid.pady = (WIN_H - (MARGIN * 2)) / (float)e->grid.y;
@@ -22,7 +22,7 @@ void		refresh_grid_var(t_e *e)
 	e->grid.countpady = 1;
 }
 
-void		draw_line_in_grid(t_e *e)
+void		draw_line_in_grid(t_env *e)
 {
 	int	x;
 	int	y;
@@ -49,7 +49,7 @@ void		draw_line_in_grid(t_e *e)
 	}
 }
 
-void		draw_outline_grid(t_e *e)
+void		draw_outline_grid(t_env *e)
 {
 	int x;
 	int y;
@@ -68,7 +68,7 @@ void		draw_outline_grid(t_e *e)
 	}
 }
 
-void		draw_grid(t_e *e)
+void		draw_grid(t_env *e)
 {
 	//SI VAR BOUGE PAS, NE PAS REFRESH
 	refresh_grid_var(e);

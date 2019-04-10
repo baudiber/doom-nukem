@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:37:38 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:23:30 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void	mouse_click(t_e *e)
+void	mouse_click(t_env *e)
 {
 	SDL_GetMouseState(&e->grid.mouseposx, &e->grid.mouseposy);
 	if (e->grid.mouseposx >= (MARGIN + PANEL) && e->grid.mouseposx \
@@ -21,7 +21,7 @@ void	mouse_click(t_e *e)
 		select_grid_block(e);
 }
 
-void	key_input(t_e *e)
+void	key_input(t_env *e)
 {
 	change_tier(e);
 	change_grid_size(e);
