@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 19:28:11 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:02:59 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	clear_buffer(t_env *e)
 
 void	world_interaction(t_env *e)
 {
+	get_player_floor(e);
 	move_player(e);
 	weapon_fire(e);
 	weapon_switch(e);
@@ -63,7 +64,6 @@ void	renderer(t_env *e)
 	moving_rects(e);
 	if (e->horizon > 0)
 		display_skybox(e);
-	get_player_floor(e);
 	get_floor_order(e);
 	multithreaded_render(e);
 	//draw_sprites(e);

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 14:17:25 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:03:34 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@
 # include "SDL_ttf.h"
 # include "SDL_mixer.h"
 # include "libft.h"
+
+# define IS_STAND 0
+# define IS_MOVING 1
+# define IS_JUMPING 2
+# define IS_FALLING 4
 
 typedef struct		s_files
 {
@@ -337,6 +342,7 @@ typedef struct		s_env
 	t_point			mouse;
 	t_draw			draw;
 	t_time			time;
+	int				player_state;
 }					t_env;
 
 extern int			main(int argc, char **argv);
