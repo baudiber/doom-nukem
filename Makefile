@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 13:01:57 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/10 16:49:37 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,13 +160,13 @@ $(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(HEADER_DOOM) $(HEADER_EDITOR)
 	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
 
 $(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)/engine
-	@mkdir -p $(OBJ_DIR)/parser
-	@mkdir -p $(OBJ_DIR)/utils
-	@mkdir -p $(OBJ_DIR)/gameplay
-	@mkdir -p $(OBJ_DIR)/menu
-	@mkdir -p $(OBJ_DIR)/editor
+	@mkdir -p $@
+	@mkdir -p $@/engine
+	@mkdir -p $@/parser
+	@mkdir -p $@/utils
+	@mkdir -p $@/gameplay
+	@mkdir -p $@/menu
+	@mkdir -p $@/editor
 
 
 $(LIBFT):
