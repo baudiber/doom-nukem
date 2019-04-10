@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 01:23:10 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/10 12:25:54 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,7 +127,7 @@ L_FT				:=			$(LIB_DIR)
 all:					$(NAMEA) $(NAMEB)
 
 
-$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(HEADER_DOOM) $(OBJA) 
+$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(OBJA)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗  $(O) ███$(R)╗  $(O)    ███$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O) ██$(R)╗$(O)███████$(R)╗$(O)███$(R)╗ $(O)  ███$(R)╗\n"
@@ -141,7 +141,7 @@ $(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(HEADER_DOOM) $(OBJA)
 	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEA) is done."
 	@printf ""
 
-$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(HEADER_EDITOR) $(OBJB)
+$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(OBJB)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗   $(O)███$(R)╗      $(O)███████$(R)╗$(O)██████$(R)╗ $(O)██$(R)╗$(O)████████$(R)╗ $(O)██████$(R)╗ $(O)██████$(R)╗ \n"
@@ -155,7 +155,7 @@ $(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(HEADER_EDITOR) $(OBJB)
 	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEB) is done."
 	@printf ""
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(HEADER_DOOM) $(HEADER_EDITOR)
 	@printf "\033[33mCOMPILING\033[0m %s                                 \r" $<
 	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
 
