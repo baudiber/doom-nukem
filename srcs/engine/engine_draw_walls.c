@@ -26,31 +26,34 @@ static void	crop_next_wall(t_env *e, int tid)
 	e->wall[tid].offsave = 0;
 	if (e->wall[tid].top >= e->prev_wall[tid].top && e->wall[tid].bottom <= e->prev_wall[tid].bottom)
 	{
-		//printf("case 1: inside of prev\n");
+		printf("case 1: inside of prev\n");
 		e->wall[tid].bottom = 0;
 		return ;
 	}
-	if (e->wall[tid].bottom < e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
+	if (e->wall[tid].bottom <= e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
 	{
-		//printf("case 2: fully above prev\n");
+		printf("case 2: fully above prev\n");
 		return ;
 	}
-	if (e->wall[tid].top > e->prev_wall[tid].bottom && e->wall[tid].bottom > e->prev_wall[tid].bottom)
+	if (e->wall[tid].top >= e->prev_wall[tid].bottom && e->wall[tid].bottom > e->prev_wall[tid].bottom)
 	{
-		//printf("case 3: fully below prev\n");
+		printf("case 3: fully below prev\n");
 		return ;
 	}
 	if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
 	{
+		printf("case 4: can see the top\n");
 		e->wall[tid].bottom = e->prev_wall[tid].top;
 		return ;
 	}
 	else if (e->wall[tid].top <= e->prev_wall[tid].bottom)
 	{
-		//printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
-		e->wall[tid].offsave = e->prev_wall[tid].bottom - e->wall[tid].top;
+		printf("case 5: can see the bot\n");
+		e->wall[tid].offsave = abs(e->wall[tid].top - e->prev_wall[tid].bottom);
+		printf("offsave %d\n", e->wall[tid].offsave);
+		printf("top %d\n", e->wall[tid].top);
 		e->wall[tid].top = e->prev_wall[tid].bottom;
-		//offset pb here // maybe save the diff or do that somewhere else
+		printf("newtop %d\n", e->wall[tid].top);
 		return ;
 	}
 	printf("case unknown, top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
@@ -64,7 +67,6 @@ void		get_wall_height(t_env *e, int column, int tid)
 		e->wall[tid].bottom = 0;
 	else
 	{
-		// (WALL_HEIGHT << e->player.plane_dist) / e->wall[tid].dist ??
 		e->wall[tid].height = WALL_HEIGHT * e->player.plane_dist \
 		/ e->wall[tid].dist;
 		e->wall[tid].bottom = ceil(((e->player.plane_dist / e->wall[tid].dist) \
@@ -76,15 +78,15 @@ void		get_wall_height(t_env *e, int column, int tid)
 	}
 }
 
-static void	crop_wall(t_env *e, float *offset, double ratio, int tid)
+static void	crop_wall(t_env *e, float *texture_y, double ratio, int tid)
 {
 	if (e->wall[tid].top < 0)
 	{
-		*offset = -(e->wall[tid].top * ratio);
+		*texture_y = -(e->wall[tid].top * ratio);
 		e->wall[tid].top = 0;
 	}
 	else
-		*offset = 0;
+		*texture_y = 0;
 	if (e->wall[tid].bottom >= e->render_limit)
 		e->wall[tid].bottom = e->render_limit;
 }

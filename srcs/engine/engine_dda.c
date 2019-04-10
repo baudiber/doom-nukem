@@ -46,11 +46,11 @@ void					double_dda(t_env *e, int tid, int column)
 					e->wall[tid].shadow = e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x];
 					e->wall[tid].texture_x = (Uint32)(e->ray[tid].hor.x) % TILE_SIZE;
 					get_wall_height(e, column, tid);
-					draw_wall(e, column, tid);
 					if (e->prev_wall[tid].is_prev) 
 						e->prev_wall[tid] = e->tmp[tid];
 					else 
 						e->prev_wall[tid] = e->wall[tid];
+					draw_wall(e, column, tid);
 					e->prev_wall[tid].is_prev = true;
 				}
 				e->ray[tid].hor.x += e->ray[tid].hor.next_x;
@@ -79,11 +79,11 @@ void					double_dda(t_env *e, int tid, int column)
 					e->wall[tid].shadow = e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x];
 					e->wall[tid].texture_x = (Uint32)(e->ray[tid].vert.y) % TILE_SIZE;
 					get_wall_height(e, column, tid);
-					draw_wall(e, column, tid);
 					if (e->prev_wall[tid].is_prev) 
 						e->prev_wall[tid] = e->tmp[tid];
 					else 
 						e->prev_wall[tid] = e->wall[tid];
+					draw_wall(e, column, tid);
 					e->prev_wall[tid].is_prev = true;
 				}
 				e->ray[tid].vert.x += e->ray[tid].vert.next_x;
