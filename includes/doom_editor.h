@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:57:00 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:33:40 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # define TEX_SIZE 256
 # define MAX_SIZE 64
 
-# define NTEX 6
+# define NTEX 8
 # define NWALL 3
-# define NFLOOR 1
-# define NSPRITE 1
+# define NFLOOR 2
+# define NSPRITE 2
 # define NLIGHT 1
 # define NEVENT 0
 
@@ -134,8 +134,8 @@ typedef struct		s_texture
 	float			x;
 	float			y;
 	int				texture;
-	unsigned int	*tex[11];
-	SDL_Surface		*image[11];
+	unsigned int	*tex[13];
+	SDL_Surface		*image[13];
 }					t_texture;
 
 typedef	struct		s_env
@@ -178,7 +178,6 @@ extern void				draw_grid(t_env *e);
 extern void				draw_texture_grid(t_env *e);
 extern void				erase_texture_grid(t_env *e);
 extern void				key_input(t_env *e);
-extern void				realloc_tab(t_env *e);
 extern unsigned int		*apply_texture(t_env *e);
 extern void				redraw(t_env *e);
 extern void				refresh_grid_var(t_env *e);

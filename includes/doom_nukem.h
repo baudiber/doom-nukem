@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 20:22:43 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:32:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@
 # define MAX_THREADS 4
 # define MAX_VISIBLE_SPRITE 30
 # define MAX_FLOORS 6
+
+# define IS_STAND 0
+# define IS_MOVING 1
+# define IS_JUMPING 2
+# define IS_FALLING 4
 
 # define VALID_CHAR "0123456789abcdez,- "
 # define WALL_TEXT_MAX 9
@@ -57,11 +62,6 @@
 # include "SDL_ttf.h"
 # include "SDL_mixer.h"
 # include "libft.h"
-
-# define IS_STAND 0
-# define IS_MOVING 1
-# define IS_JUMPING 2
-# define IS_FALLING 4
 
 typedef struct		s_files
 {
