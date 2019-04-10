@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 16:08:29 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:22:26 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	clear_buffer(t_env *e)
 
 void	world_interaction(t_env *e)
 {
+	get_player_floor(e);
 	move_player(e);
 	weapon_fire(e);
 	weapon_switch(e);
