@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 14:38:40 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:44:50 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ static bool				basic_err(void)
 	int					ret;
 
 	ret = 0;
-	if (FOV != 60)
+	if (ret == 0 && (MAX_SIZE < 1 || MAX_SIZE > 64))
 		ret = 1;
-	if (ret == 0 && (MAX_SIZE < 1 || MAX_MAPSIZE > 64))
-		ret = 1;
-	if (ret == 0 && margin != 40)
+	if (ret == 0 && MARGIN != 40)
 		ret = 1;
 	if (ret == 0 && (WIN_W < 320 && WIN_W > 1920))
 		ret = 1;
@@ -40,7 +38,7 @@ static bool				basic_err(void)
 		ret = 1;
 	if (ret == 0 && TIER != 5)
 		ret = 1;
-	if (ret == 0 && TILE_SIZE != 256)
+	if (ret == 0 && TEX_SIZE != 256)
 		ret = 1;
 	if (ret == 0 && (DWALL != 0 || DFLOOR != 1 || DSPRITE != 2 || DLIGHT != 3 \
 		|| DEVENT != 4))
