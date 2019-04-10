@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:10:55 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 15:02:46 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:10:30 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "doom_editor.h"
 
 static void			stock_data(t_data *data, char *line)
 {

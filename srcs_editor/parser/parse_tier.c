@@ -6,11 +6,11 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:41:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 15:09:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:10:30 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "doom_nukem.h"
+#include "doom_editor.h"
 
 static bool			check_tier(t_data *data)
 {

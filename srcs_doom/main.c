@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 14:18:32 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:16:43 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int					main(int argc, char **argv)
 	else if (argc == 2 && ft_strequ("", argv[1]))
 		exit_error(7, ERR_BASE);
 	ft_bzero(e, sizeof(t_env));
+	e->tile_shift = (TILE_SIZE == 256) ? 8 : e->tile_shift;
 //	fake_parse(&e);
 	parse_start(&e->data, argv[1]);
 	parse_sprite(e);

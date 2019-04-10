@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 19:41:27 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:19:49 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ int		main(int ac, char **av)
 		ft_putendl("ERROR: Please do not modify define in header file");
 		return (0);
 	}
-	// a revoir
+	ft_bzero(&e, sizeof(t_env));
+	e.tile_shift = 8;
 	e.argc = ac;
 	e.argv = av;
 	fd = open(av[1], O_RDONLY);
