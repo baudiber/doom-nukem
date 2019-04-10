@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 13:37:06 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:18:32 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_env					*call(void)
 	return(&e);
 }
 
-bool		basic_err(void)
+static bool				basic_err(void)
 {
-	int		ret;
+	int					ret;
 
 	ret = 0;
 	if (FOV != 60)
@@ -38,10 +38,13 @@ bool		basic_err(void)
 		ret = 1;
 	if (ret == 0 && TILE_SIZE != 256)
 		ret = 1;
+	if (ret == 0 && (DWALL != 0 || DFLOOR != 1 || DSPRITE != 2 || DLIGHT != 3 \
+		|| DEVENT != 4))
+		ret = 1;
 	return (ret == 0) ? true : false;
 }
 
-void		exit_error(int type, char *msg)
+void				exit_error(int type, char *msg)
 {
 	ft_putendl(msg);
 	exit(type);
