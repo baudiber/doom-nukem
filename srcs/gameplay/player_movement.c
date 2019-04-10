@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 18:18:39 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:28:38 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,13 @@ void	jump_anim(t_env *e)
 void	get_floor_dist(t_env *e)
 {
 //	printf("player floor = %d\n", e->player.floor);
-	if(e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x] == 1)
+	if (e->player.floor && e->data.map[DWALL][e->player.floor - 1][(int)\
+		(e->player.pos.y - 32) >>e->tile_shift][e->player.map.x] \
+		&& e->data.map[DWALL][e->player.floor - 1][(int)(e->player.pos.y + 32) \
+		>> e->tile_shift][e->player.map.x] && e->data.map[DWALL]\
+		[e->player.floor - 1][e->player.map.y][(int)(e->player.pos.x - 32) \
+		>> e->tile_shift] && e->data.map[DWALL][e->player.floor - 1]\
+		[e->player.map.y][(int)(e->player.pos.x + 32) >> e->tile_shift])
 	{
 //		printf("wall below = %d\n", e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x]);
 		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2; 
