@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:16:55 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:22:27 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:30:40 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	draw_texture_grid(t_env *e)
 	unsigned int *texture;
 
 	texture = apply_texture(e);
+	if (!texture)
+		return ;
 	e->texture.y = 0;
 	y = e->grid.mouseposgridy * e->grid.pady + MARGIN;
 	while (++y < ((e->grid.mouseposgridy + 1) * e->grid.pady + MARGIN) \

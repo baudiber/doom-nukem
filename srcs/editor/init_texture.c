@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:29:05 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:30:59 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void		copy_texture(t_env *e)
 	e->texture.tex[5] = (unsigned int *)e->texture.image[5]->pixels;
 	e->texture.tex[6] = (unsigned int *)e->texture.image[6]->pixels;
 	e->texture.tex[7] = (unsigned int *)e->texture.image[7]->pixels;
+	e->texture.tex[8] = (unsigned int *)e->texture.image[8]->pixels;
 }
