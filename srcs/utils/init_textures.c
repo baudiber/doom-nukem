@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 15:21:36 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:26:00 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,10 @@ void	load_textures(t_env *e)
 		exit_error(2, ERR_2);
 	if (!(e->files.image[8] = SDL_LoadBMP("textures/sprites/barrel_1"GRID_SIZE_STR".bmp")))
 		exit_error(2, ERR_2);
+	if (!(e->files.image[37] = SDL_LoadBMP("textures/walls/vent"GRID_SIZE_STR".bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[38] = SDL_LoadBMP("textures/walls/GRATE.bmp")))
+		exit_error(2, ERR_2);
 	load_ui_textures(e);
 	load_gun_textures(e);
 	load_death_textures(e);
@@ -149,6 +153,8 @@ void	load_textures(t_env *e)
 	e->files.wall[2] = (unsigned int *)e->files.image[1]->pixels;
 	e->files.wall[3] = (unsigned int *)e->files.image[2]->pixels;
 	e->files.wall[4] = (unsigned int *)e->files.image[3]->pixels;
+	e->files.wall[5] = (unsigned int *)e->files.image[37]->pixels;
+	e->files.wall[6] = (unsigned int *)e->files.image[38]->pixels;
 	e->files.sprite[0] = (unsigned int *)e->files.image[5]->pixels;
 	e->files.sprite[1] = (unsigned int *)e->files.image[6]->pixels;
 	e->files.sprite[2] = (unsigned int *)e->files.image[7]->pixels;

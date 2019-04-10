@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:35:28 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void		init_base_ui(t_env *e)
 {
 	e->ui_info.x_start = 0;
 	e->ui_info.y_start = e->render_limit - 1;
-	e->ui_info.y_ratio = e->files.ui_surf->h / (double)e->ui.ui_size;
-	e->ui_info.x_ratio = e->files.ui_surf->w / (double)WIN_W;
+	e->ui_info.y_ratio = (double)(e->files.ui_surf->h / (double)e->ui.ui_size);
+	e->ui_info.x_ratio = (double)(e->files.ui_surf->w / (double)WIN_W);
 	e->ui_info.x_end = WIN_W;
 	e->ui_info.y_end = WIN_H;
 	e->ui_info.buffer = &e->files.ui;
@@ -52,11 +52,11 @@ void		init_ui_structs(t_env *e)
 {
 	e->face_info.x_start = WIN_W * 0.5 - WIN_W / 12.0 * 0.5;
 	e->face_info.y_start = e->render_limit * 1.005;
-	e->face_info.y_ratio = e->files.image[9]->h / ((double)e->ui.ui_size \
-							* 0.975);
+	e->face_info.y_ratio = (double)(e->files.image[9]->h / ((double)e->ui.ui_size \
+							* 0.975));
 	e->face_info.x_ratio = e->files.image[9]->w / (WIN_W / 12.0);
 	e->face_info.x_end = e->face_info.x_start + WIN_W / 12.0;
-	e->face_info.y_end = e->face_info.y_start + ((double)e->ui.ui_size * 0.975);
+	e->face_info.y_end = (double)(e->face_info.y_start + ((double)e->ui.ui_size * 0.975));
 	e->face_info.buffer = &e->files.face[0];
 	e->face_info.w = e->files.image[9]->w;
 	e->inv_info.x_start = WIN_W / 3.02;
