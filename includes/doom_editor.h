@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 19:11:04 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:33:40 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,6 @@ extern void				draw_grid(t_env *e);
 extern void				draw_texture_grid(t_env *e);
 extern void				erase_texture_grid(t_env *e);
 extern void				key_input(t_env *e);
-extern void				realloc_tab(t_env *e);
 extern unsigned int		*apply_texture(t_env *e);
 extern void				redraw(t_env *e);
 extern void				refresh_grid_var(t_env *e);

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:44:18 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:32:05 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		wellcome(t_env *e)
 
 void		engine_loop(t_env *e)
 {
-	while (1)
+	while (true)
 	{
 		while (SDL_PollEvent(&e->window.event))
 		{
