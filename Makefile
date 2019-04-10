@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 19:23:48 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/10 22:52:53 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ NAMEB				:=				doom-editor
 #------------------------------------------------------------------------------#
 #                               DIRECTORIES                                    #
 
-SRC_DIR				:=			./srcs
 INC_DIR				:=			./includes
-OBJ_DIR				:=			./objs
+SRC_DIRA			:=			./srcs_doom
+SRC_DIRB			:=			./srcs_editor
+OBJ_DIRA			:=			./objs_doom
+OBJ_DIRB			:=			./objs_editor
 LIB_DIR				:=			./libft
 LIBFT				:=			./libft/libft.a
 
@@ -64,24 +66,24 @@ SRCA			=				main.c								\
 								utils/init_ui.c						\
 								utils/init_textures.c
 
-SRCB			=				editor/main.c						\
-								editor/init.c						\
-								editor/init_texture.c				\
-								editor/engine_loop.c				\
-								editor/editor.c						\
-								editor/load_texture.c				\
-								editor/draw_grid.c					\
-								editor/draw_panel.c					\
-								editor/draw_panel_text.c			\
-								editor/draw_texture_grid.c			\
-								editor/erase_texture_grid.c			\
-								editor/key_input.c					\
-								editor/key_gridsize.c				\
-								editor/key_panel.c					\
-								editor/key_draw.c					\
-								editor/redraw.c						\
-								editor/saving.c						\
-								editor/copy_from_parser.c			\
+SRCB			=				main.c						\
+								init.c						\
+								init_texture.c				\
+								engine_loop.c				\
+								editor.c						\
+								load_texture.c				\
+								draw_grid.c					\
+								draw_panel.c					\
+								draw_panel_text.c			\
+								draw_texture_grid.c			\
+								erase_texture_grid.c			\
+								key_input.c					\
+								key_gridsize.c				\
+								key_panel.c					\
+								key_draw.c					\
+								redraw.c						\
+								saving.c						\
+								copy_from_parser.c			\
 								parser/parse_scan.c					\
 								parser/parse_stage.c				\
 								parser/parse_tier.c					\
@@ -89,8 +91,8 @@ SRCB			=				editor/main.c						\
 								parser/parse_sprite.c				\
 								parser/parse_utils.c				\
 
-OBJA				:=			$(addprefix $(OBJ_DIR)/,$(SRCA:.c=.o))
-OBJB				:=			$(addprefix $(OBJ_DIR)/,$(SRCB:.c=.o))
+OBJA				:=			$(addprefix $(OBJ_DIRA)/,$(SRCA:.c=.o))
+OBJB				:=			$(addprefix $(OBJ_DIRB)/,$(SRCB:.c=.o))
 
 #==============================================================================#
 #------------------------------------------------------------------------------#
@@ -126,8 +128,11 @@ L_FT				:=			$(LIB_DIR)
 
 all:					$(NAMEA) $(NAMEB)
 
+doom:					$(NAMEA)
 
-$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(OBJA)
+editor:					$(NAMEB)
+
+$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIRA) $(OBJA)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗  $(O) ███$(R)╗  $(O)    ███$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O) ██$(R)╗$(O)███████$(R)╗$(O)███$(R)╗ $(O)  ███$(R)╗\n"
@@ -136,12 +141,11 @@ $(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(OBJA)
 	@printf "\t$(O)██$(R)║ $(O) ██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║╚════╝$(O)██$(R)║╚$(O)██$(R)╗$(O)██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)╔═$(O)██$(R)╗ $(O)██$(R)╔══╝ $(O) ██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║\n"
 	@printf "\t$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝$(O)██$(R)║ ╚═╝$(O) ██$(R)║ $(O)     ██$(R)║ ╚$(O)████$(R)║╚$(O)██████$(R)╔╝$(O)██$(R)║ $(O) ██$(R)╗$(O)███████$(R)╗$(O)██$(R)║ ╚═╝$(O) ██$(R)║\n"
 	@printf "\t$(R)╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝\n$(W)"
-	@printf "\n"
 	@$(CC) $(OBJA) -o $(NAMEA) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer -lpthread
-	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEA) is done."
-	@printf ""
+	@printf '\033[40m %s\n\033[0m$(W)' "          Compilation of $(NAMEA) is done.        "
+	@printf "\n"
 
-$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(OBJB)
+$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIRB) $(OBJB)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗   $(O)███$(R)╗      $(O)███████$(R)╗$(O)██████$(R)╗ $(O)██$(R)╗$(O)████████$(R)╗ $(O)██████$(R)╗ $(O)██████$(R)╗ \n"
@@ -149,24 +153,30 @@ $(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(OBJB)
 	@printf "\t$(O)██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)╔$(O)████$(R)╔$(O)██$(R)║$(O)█████$(R)╗$(O)█████$(R)╗ $(O) ██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║$(O)██████$(R)╔╝\n"
 	@printf "\t$(O)██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║╚════╝$(O)██$(R)╔══╝ $(O) ██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║$(O)██$(R)╔══$(O)██$(R)╗\n"
 	@printf "\t$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝$(O)██$(R)║ ╚═╝ $(O)██$(R)║      $(O)███████$(R)╗$(O)██████$(R)╔╝$(O)██$(R)║   $(O)██$(R)║   ╚$(O)██████$(R)╔╝$(O)██$(R)║  $(O)██$(R)║\n"
-	@printf "\t╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝\n"
-	@printf "\n"
+	@printf "\t╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝\n$(W)"
 	@$(CC) $(OBJB) -o $(NAMEB) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer
-	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEB) is done."
-	@printf ""
+	@printf '\033[40m %s\n\033[0m$(W)' "          Compilation of $(NAMEB) is done.               "
+	@printf "\n"
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c $(HEADER_DOOM) $(HEADER_EDITOR)
+$(OBJ_DIRA)/%.o:			$(SRC_DIRA)/%.c $(HEADER_DOOM)
 	@printf "\033[33mCOMPILING\033[0m %s                                 \r" $<
 	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
 
-$(OBJ_DIR):
+$(OBJ_DIRB)/%.o:			$(SRC_DIRB)/%.c $(HEADER_EDITOR)
+	@printf "\033[33mCOMPILING\033[0m %s                                 \r" $<
+	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
+
+$(OBJ_DIRA):
 	@mkdir -p $@
 	@mkdir -p $@/engine
 	@mkdir -p $@/parser
 	@mkdir -p $@/utils
 	@mkdir -p $@/gameplay
 	@mkdir -p $@/menu
-	@mkdir -p $@/editor
+
+$(OBJ_DIRB):
+	@mkdir -p $@
+	@mkdir -p $@/parser
 
 
 $(LIBFT):
@@ -174,8 +184,8 @@ $(LIBFT):
 #	@brew install sdl2_ttf sdl2_mixer
 
 clean:
-	@make -C $(L_FT) clean --no-print-directory  
-	@rm -rf $(OBJ_DIR)
+	@make -C $(L_FT) clean --no-print-directory
+	@rm -rf $(OBJ_DIRA) $(OBJ_DIRB)
 	@printf '\033[33m[ KILL ] %s\n\033[0m' "Clean of $(NAME) is done ---"
 
 
@@ -187,4 +197,4 @@ fclean: 				clean
 
 re:						fclean all
 
-.PHONY: all clean fclean re build cbuild
+.PHONY: all clean fclean re build cbuild doom editor
