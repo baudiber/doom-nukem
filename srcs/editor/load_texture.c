@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:56:21 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:34:15 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void		load_wall_texture(t_env *e)
 void		load_floor_texture(t_env *e)
 {
 	e->texture.image[8] = SDL_LoadBMP("textures/floor256.bmp");
+	e->texture.image[9] = SDL_LoadBMP("textures/floors/floor_joli256.bmp");
 }
 
 void		load_sprite_texture(t_env *e)
 {
-	e->texture.image[9] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp");
+	e->texture.image[10] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp");
 }
 
 void		load_light_texture(t_env *e)
 {
-	e->texture.image[10] = SDL_LoadBMP("textures/editor_textures/black_case.bmp");
+	e->texture.image[11] = SDL_LoadBMP("textures/editor_textures/black_case.bmp");
 }

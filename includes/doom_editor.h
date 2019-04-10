@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:57:00 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:33:36 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define TEX_SIZE 256
 # define MAX_SIZE 64
 
-# define NTEX 6
+# define NTEX 7
 # define NWALL 3
-# define NFLOOR 1
+# define NFLOOR 2
 # define NSPRITE 1
 # define NLIGHT 1
 # define NEVENT 0
@@ -134,8 +134,8 @@ typedef struct		s_texture
 	float			x;
 	float			y;
 	int				texture;
-	unsigned int	*tex[11];
-	SDL_Surface		*image[11];
+	unsigned int	*tex[12];
+	SDL_Surface		*image[12];
 }					t_texture;
 
 typedef	struct		s_env
