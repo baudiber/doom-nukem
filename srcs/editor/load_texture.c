@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 19:31:16 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:19:44 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ void		load_floor_texture(t_env *e)
 
 void		load_sprite_texture(t_env *e)
 {
-	e->texture.image[10] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp");
-	e->texture.image[11] = SDL_LoadBMP("textures/editor_textures/item_shotgun.bmp");
+	if (!(e->texture.image[10] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[11] = SDL_LoadBMP("textures/editor_textures/item_shotgun.bmp")))
+		exit_error(2, ERR_2);
 }
 
 void		load_light_texture(t_env *e)
