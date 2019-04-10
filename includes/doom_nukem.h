@@ -203,6 +203,7 @@ typedef struct		s_wall
 	int				bottom;
 	int				texture_x;
 	int				texture_y;
+	int				offsave;
 	int				shadow;
 	double			dist;
 	double			height;
@@ -380,7 +381,7 @@ extern void			get_vertical_hit(t_env *e, register int tid);
 extern void			vertical_dda(t_env *e, register int tid);
 extern void			horizontal_dda(t_env *e, register int tid);
 extern void			get_horizontal_hit(t_env *e, register int tid);
-extern int			ray_is_in_the_map(t_point_int pt, t_env *e);
+extern bool			ray_is_in_the_map(t_point_int pt, t_env *e);
 extern void			angle_overflow(int *angle, t_env *e);
 extern double		angle_to_rad(int angle, t_env *e);
 extern void			get_wall_height(t_env *e, int column, register int tid);
