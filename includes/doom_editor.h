@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:32:06 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:45:45 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # define TEX_SIZE 256
 # define MAX_SIZE 64
 
-# define NTEX 4
+# define NTEX 5
 # define NWALL 3
 # define NFLOOR 1
-# define NSPRITE 0
+# define NSPRITE 1
+# define NEVENT 0
 
 # define VALID_CHAR "0123456789abcdez,- "
 # define WALL_TEXT_MAX 9
@@ -132,13 +133,14 @@ typedef struct		s_texture
 	float			x;
 	float			y;
 	int				texture;
-	unsigned int	*tex[9];
-	SDL_Surface		*image[9];
+	unsigned int	*tex[10];
+	SDL_Surface		*image[10];
 }					t_texture;
 
 typedef	struct		s_env
 {
 	int				wellcome_screen;
+	int				parsed;
 	Uint32			*buff;
 	t_window		window;
 	t_draw			draw[4];
@@ -158,6 +160,7 @@ typedef	struct		s_env
 
 extern int				main(int ac, char **av);
 extern void				init(t_env *e);
+extern void				init_from_parser(t_env *e);
 extern void				init_tab(t_env *e);
 extern void				save(t_env *e);
 extern void				engine_loop(t_env *e);

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:28:38 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 15:57:50 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@ void		init_grid_var(t_env *e)
 	e->grid.grid_rect.h = WIN_H - MARGIN;
 	e->grid.mouseposgridx = -1;
 	e->grid.mouseposgridy = -1;
-	e->grid.x = 10;
-	e->grid.y = 10;
+	if (e->parsed)
+	{
+		e->grid.x = e->data.max_x;
+		e->grid.y = e->data.tier_size;
+	}
+	else
+	{
+		e->grid.x = 10;
+		e->grid.y = 10;
+	}
 }
 
 void		init_draw_var(t_env *e)
@@ -58,6 +66,17 @@ void		init_sdl(t_env *e)
 		exit_error(1, ERR_7);
 	SDL_SetWindowResizable(e->window.win, SDL_FALSE);
 	e->buff = (Uint32 *)e->window.screen->pixels;
+}
+
+void		init_from_parser(t_env *e)
+{
+	e->parsed = 1;
+	init_sdl(e);
+	init_draw_var(e);
+	init_grid_var(e);
+	init_var_texture(e);
+	load_texture(e);
+	copy_texture(e);
 }
 
 void		init(t_env *e)
