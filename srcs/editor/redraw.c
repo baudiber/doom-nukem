@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 18:07:14 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:36:04 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ void				redraw(t_env *e)
 		}
 	}
 	if (e->window.event.type == SDL_KEYDOWN)
-	{
-		draw_panel_tier(e);
-		draw_panel_grid_size(e);
-	}
+					draw_panel_text(e);
+//		draw_panel_tier(e);
+//		draw_panel_grid_size(e);
 }
