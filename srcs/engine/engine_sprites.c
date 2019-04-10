@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 11:54:31 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:42:56 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	draw_sprites(t_env *e, int max_col, int tid)
 	ptr = &visible[0];
 	sprite = -1;
 	visnb = 0;
-	while (++sprite < e->sprite_nb)
+	while (++sprite < e->sprite_nb && visnb < MAX_VISIBLE_SPRITE)
 	{
 		if (e->sprites[sprite].floor != e->ray[tid].layer)
 			continue;
