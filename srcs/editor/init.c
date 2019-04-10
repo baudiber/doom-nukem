@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:57:50 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:31:52 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		init_from_parser(t_env *e)
 	init_var_texture(e);
 	load_texture(e);
 	copy_texture(e);
+	copy_from_parser(e);
 }
 
 void		init(t_env *e)

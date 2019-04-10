@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:48:59 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:44:18 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void		engine_loop(t_env *e)
 			else
 			{
 				key_input(e);
-				ft_putnbr(e->type);
-				ft_putchar('\n');
 				editor(e);
 				if (e->wellcome_screen == 0)
 				{
 					draw_panel_grid_size(e);
 					draw_panel_tier(e);
+					redraw(e);
+					draw_grid(e);
 					e->wellcome_screen = 2;
 				}
 			}

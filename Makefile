@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 16:49:37 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/10 17:10:11 by roddavid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,19 +69,20 @@ SRCB			=				editor/main.c						\
 								editor/init_texture.c				\
 								editor/init_tab.c					\
 								editor/engine_loop.c				\
-								editor/editor.c					\
+								editor/editor.c						\
 								editor/load_texture.c				\
 								editor/draw_grid.c					\
-								editor/draw_panel.c				\
+								editor/draw_panel.c					\
 								editor/draw_panel_text.c			\
 								editor/draw_texture_grid.c			\
-								editor/erase_texture_grid.c		\
+								editor/erase_texture_grid.c			\
 								editor/key_input.c					\
 								editor/key_gridsize.c				\
 								editor/key_panel.c					\
 								editor/key_draw.c					\
-								editor/redraw.c					\
-								editor/saving.c					\
+								editor/redraw.c						\
+								editor/saving.c						\
+								editor/copy_from_parser.c			\
 								parser/parse_scan.c					\
 								parser/parse_stage.c				\
 								parser/parse_tier.c					\

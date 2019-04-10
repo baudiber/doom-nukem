@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 16:45:45 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:57:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # define TEX_SIZE 256
 # define MAX_SIZE 64
 
-# define NTEX 5
+# define NTEX 6
 # define NWALL 3
 # define NFLOOR 1
 # define NSPRITE 1
+# define NLIGHT 1
 # define NEVENT 0
 
 # define VALID_CHAR "0123456789abcdez,- "
@@ -133,8 +134,8 @@ typedef struct		s_texture
 	float			x;
 	float			y;
 	int				texture;
-	unsigned int	*tex[10];
-	SDL_Surface		*image[10];
+	unsigned int	*tex[11];
+	SDL_Surface		*image[11];
 }					t_texture;
 
 typedef	struct		s_env
@@ -155,6 +156,7 @@ typedef	struct		s_env
 	void			(*f[5])(struct s_env *e);
 	int				panel_index;
 	int				argc;
+	int				sprite_nb;
 	char			**argv;
 }					t_env;
 
@@ -190,7 +192,9 @@ extern void				load_texture(t_env *e);
 extern void				load_wall_texture(t_env *e);
 extern void				load_floor_texture(t_env *e);
 extern void				load_sprite_texture(t_env *e);
+extern void				load_light_texture(t_env *e);
 extern void				copy_texture(t_env *e);
+extern void				copy_from_parser(t_env *e);
 
 extern void				parse_init(t_data *data);
 extern void				parse_start(t_data *data, char *map);

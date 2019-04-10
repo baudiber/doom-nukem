@@ -6,11 +6,27 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:31:29 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 18:07:14 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
+
+int					get_number_of_texture(t_env *e)
+{
+	if (e->type == 0)
+		return (NWALL);
+	else if (e->type == 1)
+		return (NFLOOR);
+	else if (e->type == 2)
+		return (NSPRITE);
+	else if (e->type == 3)
+		return (NLIGHT);
+	else if (e->type == 4)
+		return (NEVENT);
+	else
+		return (0);
+}
 
 unsigned int		*apply_texture(t_env *e)
 {
@@ -27,15 +43,11 @@ unsigned int		*apply_texture(t_env *e)
 	else if (e->type == 3)
 		type = NWALL + NFLOOR + NSPRITE;
 	else if (e->type == 4)
-		type = 0;
-	if (e->texture.texture >= 1 && e->texture.texture <= (NTEX - type))
+		type = NWALL + NFLOOR + NSPRITE + NLIGHT;
+	if (e->texture.texture >= 1 && e->texture.texture <= (get_number_of_texture(e)))
 		texture = e->texture.tex[e->texture.texture + 4 + type];
 	else
-	{
-		ft_putendl("YOPOOOO");
 		texture = NULL;
-		ft_putendl("YOPOOOO");
-	}
 	return (texture);
 }
 
@@ -85,13 +97,7 @@ void				redraw(t_env *e)
 	}
 	if (e->window.event.type == SDL_KEYDOWN)
 	{
-		if (e->window.event.key.keysym.sym != SDLK_KP_PLUS
-		&& e->window.event.key.keysym.sym != SDLK_KP_MINUS
-		&& e->window.event.key.keysym.sym != SDLK_KP_DIVIDE
-		&& e->window.event.key.keysym.sym != SDLK_KP_MULTIPLY)
-		{
-			draw_panel_tier(e);
-			draw_panel_grid_size(e);
-		}
+		draw_panel_tier(e);
+		draw_panel_grid_size(e);
 	}
 }
