@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 20:08:01 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:47:44 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		load_wall_texture(t_e *e)
 
 void		load_floor_texture(t_e *e)
 {
-	(void)e;
+	e->texture.image[8] = SDL_LoadBMP("textures/floor256.bmp");
 }
 
 void		load_sprite_texture(t_e *e)
