@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 20:33:40 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:43:31 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,9 @@ extern void				draw_panel_wall(t_env *e);
 extern void				draw_panel_sprite(t_env *e);
 extern void				draw_panel_light(t_env *e);
 extern void				draw_panel_event(t_env *e);
-extern void				draw_panel_tier(t_env *e);
-extern void				draw_panel_grid_size(t_env *e);
+extern void				draw_panel_text(t_env *e);
+//extern void				draw_panel_tier(t_env *e);
+//extern void				draw_panel_grid_size(t_env *e);
 extern void				draw_grid(t_env *e);
 extern void				draw_texture_grid(t_env *e);
 extern void				erase_texture_grid(t_env *e);
