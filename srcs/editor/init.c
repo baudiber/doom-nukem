@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:31:52 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 19:17:22 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void		init_draw_var(t_env *e)
 		e->draw[i].white.g = 255;
 		e->draw[i].white.b = 255;
 		e->draw[i].text = NULL;
-		e->draw[i].font = TTF_OpenFont("font/BEBAS.TTF", 160);
+		if (!(e->draw[i].font = TTF_OpenFont("font/BEBAS.TTF", 160)))
+			exit_error(2, ERR_2);
 	}
 }
 
