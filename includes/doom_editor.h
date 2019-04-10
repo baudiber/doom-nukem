@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 14:12:04 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:44:17 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,34 @@
 # define TEX_SIZE 256
 # define MAX_SIZE 64
 
+# define VALID_CHAR "0123456789abcdez,- "
+# define WALL_TEXT_MAX 9
+# define FLOOR_TEXT_MAX 9
+# define LIGHT_TEXT_MAX 9
+# define EVENT_TEXT_MAX 9
+
+# define DWALL 0
+# define DFLOOR 1
+# define DSPRITE 2
+# define DLIGHT 3
+# define DEVENT 4
+
+# define ERR_BASE "Usage: ./doom-nukem map"
+# define ERR_0 "Error: Can not open given file"
+# define ERR_1 "Error: Malloc failed to allocate memory"
+# define ERR_2 "Error: Ressource file not found"
+# define ERR_3 "Error: Ressource can not be opened"
+# define ERR_4 "Error: Map is not valid"
+# define ERR_5 "Error: Please provide a spawn point for the player ('z')"
+# define ERR_6 "Error: Please provide less than 100 sprite per map"
+# define ERR_7 "Error: SDL initialisation encounter an error"
+# define ERR_8 "Error: FOV value is wrong, must be between 60 - 130"
+# define ERR_9 "Error: Grid size value is wrong must be: 64, 128, 256"
+
 # include <unistd.h>
 # include <sys/types.h>
-# include <sys/uio.h>
+//# include <sys/uio.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include <pthread.h>
