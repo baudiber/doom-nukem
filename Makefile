@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 17:10:11 by roddavid         ###   ########.fr        #
+#    Updated: 2019/04/10 19:23:48 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,6 @@ SRCA			=				main.c								\
 SRCB			=				editor/main.c						\
 								editor/init.c						\
 								editor/init_texture.c				\
-								editor/init_tab.c					\
 								editor/engine_loop.c				\
 								editor/editor.c						\
 								editor/load_texture.c				\

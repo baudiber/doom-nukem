@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 19:17:22 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 19:23:34 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ void		init(t_env *e)
 	init_var_texture(e);
 	load_texture(e);
 	copy_texture(e);
-	init_tab(e);
+	ft_memset(e->tab, 0, sizeof(e->tab));
 }
