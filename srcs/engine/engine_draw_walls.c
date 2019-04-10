@@ -12,18 +12,18 @@
 
 #include "doom_nukem.h"
 
-int			ray_is_in_the_map(t_point_int pt, t_env *e)
+bool		ray_is_in_the_map(t_point_int pt, t_env *e)
 {
-	//pourquoi pas BOOl ?
 	if (pt.x < 0 || pt.x >= e->data.max_x || pt.y < 0 || pt.y >= e->data.max_y)
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
 
 static void	crop_next_wall(t_env *e, int tid)
 {
 	e->tmp[tid] = e->wall[tid];
+	e->wall[tid].offsave = 0;
 	if (e->wall[tid].top >= e->prev_wall[tid].top && e->wall[tid].bottom <= e->prev_wall[tid].bottom)
 	{
 		//printf("case 1: inside of prev\n");
@@ -42,15 +42,13 @@ static void	crop_next_wall(t_env *e, int tid)
 	}
 	if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
 	{
-		//printf("case 4: we can see the top part\n");
-		//printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 		e->wall[tid].bottom = e->prev_wall[tid].top;
 		return ;
 	}
 	else if (e->wall[tid].top <= e->prev_wall[tid].bottom)
 	{
-		//printf("case 5: we can see the bottom part\n");
 		//printf("top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
+		e->wall[tid].offsave = e->prev_wall[tid].bottom - e->wall[tid].top;
 		e->wall[tid].top = e->prev_wall[tid].bottom;
 		//offset pb here // maybe save the diff or do that somewhere else
 		return ;
@@ -99,6 +97,8 @@ void		draw_wall(t_env *e, int column, int tid)
 	float		texture_y;
 
 	ratio = TILE_SIZE / e->wall[tid].height;
+	if (e->wall[tid].offsave)
+		texture_y = ratio * e->wall[tid].offsave;
 	crop_wall(e, &texture_y, ratio, tid);
 	y = e->wall[tid].top - 2;
 	while (++y < e->wall[tid].bottom + 1)

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:26:49 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:16:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int		main(int ac, char **av)
 			init(&e);
 		else
 		{
-			//NEED TO INIT FROM PARSING
+			e.parsed = 1;
 			parse_start(&e.data, av[1]);
 			parse_sprite(&e);
+			init_tab(&e);
+			init_from_parser(&e);
 		}
 		engine_loop(&e);
 	}

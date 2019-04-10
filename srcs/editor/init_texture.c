@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:30:59 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 17:56:32 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void		load_texture(t_env *e)
 	load_wall_texture(e);
 	load_floor_texture(e);
 	load_sprite_texture(e);
+	load_light_texture(e);
 	e->texture.image[0] = SDL_LoadBMP("textures/editor_panel/editeur_panel_mur.bmp");
 	e->texture.image[1] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sol.bmp");
 	e->texture.image[2] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sprites.bmp");
@@ -45,4 +46,6 @@ void		copy_texture(t_env *e)
 	e->texture.tex[6] = (unsigned int *)e->texture.image[6]->pixels;
 	e->texture.tex[7] = (unsigned int *)e->texture.image[7]->pixels;
 	e->texture.tex[8] = (unsigned int *)e->texture.image[8]->pixels;
+	e->texture.tex[9] = (unsigned int *)e->texture.image[9]->pixels;
+	e->texture.tex[10] = (unsigned int *)e->texture.image[10]->pixels;
 }
