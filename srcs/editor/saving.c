@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:37:01 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 18:11:54 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:11:04 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ void	saving(t_e *e)
 			x = -1;
 			while (++x < e->grid.x)
 			{
-				e->type = 0;
-				ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
+				e->type = 2;
+				if (e->tab[e->type][e->tier][y][x] != 0)
+					ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
+				else
+				{
+					e->type = 0;
+					ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
+				}
 				e->type = 1;
 				ft_putchar_fd(',', fd);
 				ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
-				e->type = 2;
-				ft_putchar_fd(',', fd);
-				if (e->tab[e->type][e->tier][y][x] >= 'a' && e->tab[e->type][e->tier][y][x] <= 'z')
-					ft_putchar_fd(e->tab[e->type][e->tier][y][x], fd);
-				else
-					ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
 				e->type = 3;
 				ft_putchar_fd(',', fd);
 				ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
@@ -55,7 +55,7 @@ void	saving(t_e *e)
 			ft_putchar_fd('\n', fd);
 		}
 		if (e->tier < TIER - 1)
-			ft_putstr_fd("PROCHAINE LIGNE TABARNAK\n", fd);
+			ft_putstr_fd("-\n", fd);
 	}
 	e->tier = 0;
 	e->type = savetype;

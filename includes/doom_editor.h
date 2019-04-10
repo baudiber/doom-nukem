@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   doom_editor.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:43:06 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 18:09:53 by clrichar         ###   ########.fr       */
+/*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
+/*   Updated: 2019/04/10 14:12:04 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef DOOM_EDITOR_H
 
@@ -20,12 +19,12 @@
 # define PANEL 440
 # define TIER 5
 # define TEX_SIZE 256
-# define MAX_SIZE 128
+# define MAX_SIZE 64
 
 # include <unistd.h>
 # include <sys/types.h>
-# include <fcntl.h>
 # include <sys/uio.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <pthread.h>
 # include "SDL.h"
@@ -95,38 +94,39 @@ typedef	struct		s_e
 	char			**argv;
 }					t_e;
 
-int					main(int ac, char **av);
-void				exit_error(int type);
-void				init(t_e *e);
-void				init_tab(t_e *e);
-void				save(t_e *e);
-void				engine_loop(t_e *e);
-void				editor(t_e *e);
-void				draw_panel_floor(t_e *e);
-void				draw_panel_wall(t_e *e);
-void				draw_panel_sprite(t_e *e);
-void				draw_panel_light(t_e *e);
-void				draw_panel_event(t_e *e);
-void				draw_panel_tier(t_e *e);
-void				draw_panel_grid_size(t_e *e);
-void				draw_grid(t_e *e);
-void				draw_texture_grid(t_e *e);
-void				erase_texture_grid(t_e *e);
-void				key_input(t_e *e);
-void				realloc_tab(t_e *e);
-unsigned int		*apply_texture(t_e *e);
-void				redraw(t_e *e);
-void				refresh_grid_var(t_e *e);
-void				change_panel(t_e *e);
-void				change_tier(t_e *e);
-void				change_grid_size(t_e *e);
-void				select_grid_block(t_e *e);
-void				saving(t_e *e);
-void				init_var_texture(t_e *e);
-void				load_texture(t_e *e);
-void				load_wall_texture(t_e *e);
-void				load_floor_texture(t_e *e);
-void				load_sprite_texture(t_e *e);
-void				copy_texture(t_e *e);
+extern int				main(int ac, char **av);
+extern void				exit_error(int type);
+extern void				init(t_e *e);
+extern void				init_tab(t_e *e);
+extern void				save(t_e *e);
+extern void				engine_loop(t_e *e);
+extern void				editor(t_e *e);
+extern void				draw_panel_floor(t_e *e);
+extern void				draw_panel_wall(t_e *e);
+extern void				draw_panel_sprite(t_e *e);
+extern void				draw_panel_light(t_e *e);
+extern void				draw_panel_event(t_e *e);
+extern void				draw_panel_tier(t_e *e);
+extern void				draw_panel_grid_size(t_e *e);
+extern void				draw_grid(t_e *e);
+extern void				draw_texture_grid(t_e *e);
+extern void				erase_texture_grid(t_e *e);
+extern void				key_input(t_e *e);
+extern void				realloc_tab(t_e *e);
+extern unsigned int		*apply_texture(t_e *e);
+extern void				redraw(t_e *e);
+extern void				refresh_grid_var(t_e *e);
+extern void				change_panel(t_e *e);
+extern void				change_tier(t_e *e);
+extern void				change_grid_size(t_e *e);
+extern void				select_grid_block(t_e *e);
+extern void				saving(t_e *e);
+extern void				init_var_texture(t_e *e);
+extern void				load_texture(t_e *e);
+extern void				load_wall_texture(t_e *e);
+extern void				load_floor_texture(t_e *e);
+extern void				load_sprite_texture(t_e *e);
+extern void				copy_texture(t_e *e);
 
 #endif
+extern

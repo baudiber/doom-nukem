@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:06:35 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		init_sdl(t_e *e)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
-	if (!(e->window.win = SDL_CreateWindow("Wolf_Editor", SDL_WINDOWPOS_CENTERED, \
+	if (!(e->window.win = SDL_CreateWindow("Doom_Editor", SDL_WINDOWPOS_CENTERED, \
 			SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, SDL_WINDOW_RESIZABLE)))
 		exit_error(1);
 	if (!(e->window.screen = SDL_GetWindowSurface(e->window.win)))
