@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 16:45:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:06:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void		load_texture(t_e *e)
 	load_wall_texture(e);
 	load_floor_texture(e);
 	load_sprite_texture(e);
-	e->texture.image[0] = SDL_LoadBMP("textures/editeur_panel_mur.bmp");
-	e->texture.image[1] = SDL_LoadBMP("textures/editeur_panel_sol.bmp");
-	e->texture.image[2] = SDL_LoadBMP("textures/editeur_panel_sprites.bmp");
-	e->texture.image[3] = SDL_LoadBMP("textures/editeur_panel_lights.bmp");
-	e->texture.image[4] = SDL_LoadBMP("textures/editeur_panel_event.bmp");
+	e->texture.image[0] = SDL_LoadBMP("textures/editor_panel/editeur_panel_mur.bmp");
+	e->texture.image[1] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sol.bmp");
+	e->texture.image[2] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sprites.bmp");
+	e->texture.image[3] = SDL_LoadBMP("textures/editor_panel/editeur_panel_lights.bmp");
+	e->texture.image[4] = SDL_LoadBMP("textures/editor_panel/editeur_panel_event.bmp");
 }
 
 void		copy_texture(t_e *e)
