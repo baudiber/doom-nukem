@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 20:12:26 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 13:13:57 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ static void	crop_next_wall(t_env *e, int tid)
 		e->wall[tid].bottom = 0;
 		return ;
 	}
-	/*if (e->wall[tid].top <= e->prev_wall[tid].top && e->wall[tid].bottom >= e->prev_wall[tid].bottom)
-	{
-		printf("case 0: bigger than prev\n");
-		e->wall[tid].bottom = 0;
-		return ;
-	}
-	*/
 	if (e->wall[tid].bottom < e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
 	{
 		//printf("case 2: fully above prev\n");
@@ -113,7 +106,8 @@ void		draw_wall(t_env *e, int column, int tid)
 		color = e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) + e->wall[tid].texture_x];
 		if (e->wall[tid].shadow)
 			color = (color >> 1) & 8355711;
-		e->buff[y * WIN_W + column] = color;
+		if (color ^ 0xFF00FFFF)
+			e->buff[y * WIN_W + column] = color;
 		texture_y += ratio;
 		if (texture_y >= TILE_SIZE)
 			break ;

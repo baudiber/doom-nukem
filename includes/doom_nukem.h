@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 01:46:33 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:17:25 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 # define DOOM_NUKEM_H
 # define FOV 60
-# define WIN_W 800
-# define WIN_H 600
-# define MAX_FPS 1000
+# define WIN_W 640
+# define WIN_H 400
+# define MAX_FPS 60 
 # define MAX_MAPSIZE 64
 # define UI_Y2 300
 # define GRID_SIZE_STR "256"
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
-# define MAX_THREADS 8
+# define MAX_THREADS 4
 # define MAX_VISIBLE_SPRITE 30
 
 # define VALID_CHAR "0123456789abcdez,- "
@@ -59,7 +59,7 @@
 
 typedef struct		s_files
 {
-	unsigned int	*wall[5];
+	unsigned int	*wall[7];
 	unsigned int	*sprite[9];
 	unsigned int	*floor[4];
 	unsigned int	*ui;
@@ -67,7 +67,7 @@ typedef struct		s_files
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[37];
+	SDL_Surface		*image[39];
 	SDL_Surface		*skybox;
 	SDL_Surface     *ui_surf;
 }					t_files;

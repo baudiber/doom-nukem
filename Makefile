@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 12:25:54 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/10 13:01:57 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,7 @@ O			=	\033[33m
 #                            COMPILER & FLAGS                                  #
 
 CC					:=			gcc
-CFLAGS				:=			-Wall -Wextra -Werror
+CFLAGS				:=			-g -Wall -Wextra -Werror
 OFLAGS				:=			-pipe
 CFLAGS				+=			$(OFLAGS)
 CLIB				:=			-L $(LIB_DIR) -lft
@@ -137,7 +137,7 @@ $(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(OBJA)
 	@printf "\t$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝$(O)██$(R)║ ╚═╝$(O) ██$(R)║ $(O)     ██$(R)║ ╚$(O)████$(R)║╚$(O)██████$(R)╔╝$(O)██$(R)║ $(O) ██$(R)╗$(O)███████$(R)╗$(O)██$(R)║ ╚═╝$(O) ██$(R)║\n"
 	@printf "\t$(R)╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝\n$(W)"
 	@printf "\n"
-	@$(CC) $(OBJA) -o $(NAMEA) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer
+	@$(CC) $(OBJA) -o $(NAMEA) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer -lpthread
 	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEA) is done."
 	@printf ""
 
