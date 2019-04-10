@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 14:17:25 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:09:14 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -323,6 +323,7 @@ typedef struct		s_env
 	t_draw_scaled	inv_info;
 	t_draw_scaled	pistol_info;
 	t_draw_scaled	shotgun_info;
+	t_draw_scaled	skybox;
 	t_ui			ui;
 	int				sprite_nb;
 	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
@@ -422,6 +423,7 @@ extern void			draw_ui_base(t_env *e);
 extern void			draw_ui(t_env *e);
 extern void			animations(t_env *e);
 extern void			init_ui_structs(t_env *e);
+extern void			draw_scaled(t_env *e, t_draw_scaled *info);
 
 //new doom fts
 extern void			draw_ceilings(t_env *e, int x, int tid);
