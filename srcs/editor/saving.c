@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:37:01 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:29:26 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 16:44:31 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ void	saving(t_env *e)
 			{
 				e->type = 2;
 				if (e->tab[e->type][e->tier][y][x] != 0)
-					ft_putnbr_fd(e->tab[e->type][e->tier][y][x], fd);
+				{
+					if (e->tab[e->type][e->tier][y][x] == 1)
+						ft_putchar_fd('z', fd);
+					else
+						ft_putchar_fd(e->tab[e->type][e->tier][y][x], fd);
+				}
 				else
 				{
 					e->type = 0;
