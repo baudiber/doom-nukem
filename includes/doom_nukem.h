@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 18:22:44 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:32:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 # define DOOM_NUKEM_H
 # define FOV 60
-# define WIN_W 640
-# define WIN_H 400
+# define WIN_W 800
+# define WIN_H 600
 # define MAX_FPS 60 
 # define MAX_MAPSIZE 64
 # define UI_Y2 300
@@ -25,6 +25,12 @@
 # define FLIGHT 0
 # define MAX_THREADS 4
 # define MAX_VISIBLE_SPRITE 30
+# define MAX_FLOORS 6
+
+# define IS_STAND 0
+# define IS_MOVING 1
+# define IS_JUMPING 2
+# define IS_FALLING 4
 
 # define VALID_CHAR "0123456789abcdez,- "
 # define WALL_TEXT_MAX 9
@@ -57,11 +63,6 @@
 # include "SDL_mixer.h"
 # include "libft.h"
 
-# define IS_STAND 0
-# define IS_MOVING 1
-# define IS_JUMPING 2
-# define IS_FALLING 4
-
 typedef struct		s_files
 {
 	unsigned int	*wall[7];
@@ -90,7 +91,7 @@ typedef struct		s_data
 	char			**tier;
 	char			**stage;
 	char			**cell;
-	unsigned int	map[5][5][64][64];
+	unsigned int	map[5][MAX_FLOORS][64][64];
 }					t_data;
 
 typedef struct		s_draw
@@ -208,7 +209,7 @@ typedef struct		s_wall
 	int				bottom;
 	int				texture_x;
 	int				texture_y;
-	int				offsave;
+	bool			botwall;
 	int				shadow;
 	double			dist;
 	double			height;
@@ -305,7 +306,7 @@ typedef struct		s_env
 	t_wall			prev_wall[MAX_THREADS];
 	t_floor			floor[MAX_THREADS];
 	t_angles		angle;
-	unsigned int	floor_order[5];
+	unsigned int	floor_order[MAX_FLOORS];
 	double			sin_table[7681];
 	double			i_sin_table[7681];
 	double			cos_table[7681];
@@ -436,5 +437,6 @@ extern void			draw_ceilings(t_env *e, int x, int tid);
 extern void			fake_parse(t_env *e);
 extern void			get_player_floor(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
+extern void			draw_reversed(t_env *e, int column, int tid);
 
 #endif

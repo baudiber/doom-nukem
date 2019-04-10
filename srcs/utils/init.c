@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 22:42:49 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/11 00:58:38 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void					init_player(t_env *e)
 	e->player.plane_dist = (int)((WIN_W / 2) / tan((FOV / 2.0) * LM_PI / 180));
 	e->player.pace = 90;
 	e->player.angle = 1;
-	e->floor_nb = e->data.tier_ind;
+	e->floor_nb = e->data.tier_ind + 1;
 }

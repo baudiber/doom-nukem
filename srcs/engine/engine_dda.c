@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/04 14:44:31 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/10 19:31:33 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ void					double_dda(t_env *e, int tid, int column)
 					e->wall[tid].shadow = e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].hor.map.y][e->ray[tid].hor.map.x];
 					e->wall[tid].texture_x = (Uint32)(e->ray[tid].hor.x) % TILE_SIZE;
 					get_wall_height(e, column, tid);
-					draw_wall(e, column, tid);
 					if (e->prev_wall[tid].is_prev) 
 						e->prev_wall[tid] = e->tmp[tid];
 					else 
 						e->prev_wall[tid] = e->wall[tid];
+					if (!e->wall[tid].botwall)
+						draw_wall(e, column, tid);
+					else
+						draw_reversed(e, column, tid);
 					e->prev_wall[tid].is_prev = true;
 				}
 				e->ray[tid].hor.x += e->ray[tid].hor.next_x;
@@ -79,11 +82,14 @@ void					double_dda(t_env *e, int tid, int column)
 					e->wall[tid].shadow = e->data.map[DLIGHT][e->ray[tid].layer][e->ray[tid].vert.map.y][e->ray[tid].vert.map.x];
 					e->wall[tid].texture_x = (Uint32)(e->ray[tid].vert.y) % TILE_SIZE;
 					get_wall_height(e, column, tid);
-					draw_wall(e, column, tid);
 					if (e->prev_wall[tid].is_prev) 
 						e->prev_wall[tid] = e->tmp[tid];
 					else 
 						e->prev_wall[tid] = e->wall[tid];
+					if (!e->wall[tid].botwall)
+						draw_wall(e, column, tid);
+					else
+						draw_reversed(e, column, tid);
 					e->prev_wall[tid].is_prev = true;
 				}
 				e->ray[tid].vert.x += e->ray[tid].vert.next_x;

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 17:44:18 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/10 21:35:49 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void		wellcome(t_env *e)
 	e->draw[0].position.x = WIN_W / 2 - 390;
 	e->draw[0].position.y = WIN_H / 2 - 100;
 	SDL_BlitSurface(e->draw[0].text, NULL, e->window.screen, &e->draw[0].position); /* Blit du texte */
+	SDL_FreeSurface(e->draw[0].text);
 	if (e->window.event.type == SDL_KEYDOWN)
 		if (e->window.event.key.keysym.sym == SDLK_RETURN)
 		{
@@ -29,7 +30,7 @@ void		wellcome(t_env *e)
 
 void		engine_loop(t_env *e)
 {
-	while (1)
+	while (true)
 	{
 		while (SDL_PollEvent(&e->window.event))
 		{
@@ -44,11 +45,12 @@ void		engine_loop(t_env *e)
 				editor(e);
 				if (e->wellcome_screen == 0)
 				{
-					draw_panel_grid_size(e);
-					draw_panel_tier(e);
+					e->wellcome_screen = 2;
+					draw_panel_text(e);
+//					draw_panel_tier(e);
+//					draw_panel_grid_size(e);
 					redraw(e);
 					draw_grid(e);
-					e->wellcome_screen = 2;
 				}
 			}
 			SDL_UpdateWindowSurface(e->window.win);

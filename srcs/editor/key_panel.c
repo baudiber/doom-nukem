@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:45:43 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 15:23:30 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 20:40:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	choose_texture(t_env *e)
 	//if (e->window.event.button.state == SDL_PRESSED) <=== FOR MOUSE CLICK
 	if (e->window.event.type == SDL_KEYDOWN)
 	{
-		if (e->window.event.key.keysym.sym == SDLK_r)
+		if (e->window.event.key.keysym.sym == SDLK_1)
 			e->texture.texture = 1;
-		if (e->window.event.key.keysym.sym == SDLK_b)
+		if (e->window.event.key.keysym.sym == SDLK_2)
 			e->texture.texture = 2;
-		if (e->window.event.key.keysym.sym == SDLK_g)
+		if (e->window.event.key.keysym.sym == SDLK_3)
 			e->texture.texture = 3;
+		if (e->window.event.key.keysym.sym == SDLK_4)
+			e->texture.texture = 4;
 	}
 }
 

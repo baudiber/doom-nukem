@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 00:55:43 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/11 00:58:19 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,13 @@ void	jump_anim(t_env *e)
 void	get_floor_dist(t_env *e)
 {
 //	printf("player floor = %d\n", e->player.floor);
-	if(e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x] == 1)
+	if (e->player.floor && e->data.map[DWALL][e->player.floor - 1][(int)\
+		(e->player.pos.y - 32) >>e->tile_shift][e->player.map.x] \
+		&& e->data.map[DWALL][e->player.floor - 1][(int)(e->player.pos.y + 32) \
+		>> e->tile_shift][e->player.map.x] && e->data.map[DWALL]\
+		[e->player.floor - 1][e->player.map.y][(int)(e->player.pos.x - 32) \
+		>> e->tile_shift] && e->data.map[DWALL][e->player.floor - 1]\
+		[e->player.map.y][(int)(e->player.pos.x + 32) >> e->tile_shift])
 	{
 //		printf("posy = %d\nposx=%d\n", (int)(e->player.pos.y + 32) >> e->tile_shift, (int)e->player.pos.x >> e->tile_shift);
 //		printf("mapy = %d\nmapx=%d\n", e->player.map.y, e->player.map.x);
