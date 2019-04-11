@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:37:38 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 20:34:03 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:25:21 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,17 @@ void		mouse_click(t_env *e)
 	if (e->grid.mouseposx >= 40 && e->grid.mouseposx <= 180 \
 			&& e->grid.mouseposy >= 1160 && e->grid.mouseposy <= 1230 \
 			&& e->window.event.button.button == SDL_BUTTON_LEFT)
-		saving(e);
+			{
+				ft_putendl("You saved succesfully");
+				saving(e);
+			}
 	if (e->grid.mouseposx >= 260 && e->grid.mouseposx <= 400 \
 			&& e->grid.mouseposy >= 1160 && e->grid.mouseposy <= 1230 \
 			&& e->window.event.button.button == SDL_BUTTON_LEFT)
-		exit(0);
+			{
+				ft_putendl("Goodbye");
+				exit(0);
+			}
 }
 
 
