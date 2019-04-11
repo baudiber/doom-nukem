@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 17:54:00 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 15:18:50 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:23:28 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ void					init_vars(t_env *e)
 	double		radian;
 
 	radian = 0.0;
-	e->tile_shift = (TILE_SIZE == 64) ? 6 : e->tile_shift;
-	e->tile_shift = (TILE_SIZE == 128) ? 7 : e->tile_shift;
-	e->tile_shift = (TILE_SIZE == 256) ? 8 : e->tile_shift;
+	e->tile_shift = 8;
 	if (TILE_SIZE != 64 && TILE_SIZE != 128 && TILE_SIZE != 256)
 		exit_error(19, ERR_9);
 	set_angle(e);

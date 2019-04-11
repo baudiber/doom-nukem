@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 02:54:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:19:25 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	jump_anim(t_env *e)
 		e->player.jumping = 0;
 		jump_time = 0;
 	}
-
 }
 
 void	get_floor_dist(t_env *e)
@@ -116,6 +115,21 @@ void	get_floor_dist(t_env *e)
 //	printf("dist to floor = %d\n", e->player.dist_to_floor);
 }
 
+static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
+{
+	if ((e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D]) \
+	&& e->state[SDL_SCANCODE_W])
+		strafe_forward(e, new_pos, tmpangle);
+	else if (e->state[SDL_SCANCODE_S] && (e->state[SDL_SCANCODE_A] \
+		|| e->state[SDL_SCANCODE_D]))
+		strafe_backward(e, new_pos, tmpangle);
+	else if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D])
+		strafe(e, new_pos, tmpangle);
+	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
+		walk_forward_and_backward(e, new_pos, tmpangle);
+	collision(e, new_pos);
+}
+
 void			move_player(t_env *e)
 {
 	int			tmpangle;
@@ -133,11 +147,7 @@ void			move_player(t_env *e)
 		e->face_info.index = 3;
 	}
 	else
-	{
 		e->player.speed = e->max_speed;
-		if (!e->ui.weapon_firing)
-			e->face_info.index = 0;
-	}
 	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C] \
 		|| (e->state[SDL_SCANCODE_SPACE] && !e->player.jumping && !e->player.falling))
 		crouch_and_jump(e);
@@ -152,17 +162,7 @@ void			move_player(t_env *e)
 		e->player.moving = false;
 		return ;
 	}
-	if ((e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D]) \
-	&& e->state[SDL_SCANCODE_W])
-		strafe_forward(e, &new_pos, &tmpangle);
-	else if (e->state[SDL_SCANCODE_S] && (e->state[SDL_SCANCODE_A] \
-		|| e->state[SDL_SCANCODE_D]))
-		strafe_backward(e, &new_pos, &tmpangle);
-	else if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D])
-		strafe(e, &new_pos, &tmpangle);
-	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
-		walk_forward_and_backward(e, &new_pos, &tmpangle);
-	collision(e, &new_pos);
+	move_player_2(e, &tmpangle, &new_pos);
 }
 
 void			mouse_aim(t_env *e)

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 20:20:55 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:40:34 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@ void	clear_buffer(t_env *e)
 			e->buff[y] = 0xfeaa1b;
 	}
 	ft_bzero(&e->spotvis, sizeof(e->spotvis));
-}
-
-void	world_interaction(t_env *e)
-{
-	get_player_floor(e);
-	move_player(e);
-	weapon_fire(e);
-	weapon_switch(e);
-	animations(e);
 }
 
 void	get_floor_order(t_env *e)
@@ -57,6 +48,15 @@ void	get_floor_order(t_env *e)
 	*/
 }
 
+void	world_interaction(t_env *e)
+{
+	get_player_floor(e);
+	get_floor_order(e);
+	move_player(e);
+	weapon_fire(e);
+	weapon_switch(e);
+	animations(e);
+}
 
 void	renderer(t_env *e)
 {
@@ -65,8 +65,6 @@ void	renderer(t_env *e)
 	if (e->horizon > 0)
 //		draw_scaled(e, &e->skybox);
 	display_skybox(e);
-	get_player_floor(e);
-	get_floor_order(e);
 	multithreaded_render(e);
 	draw_ui(e);
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
@@ -78,7 +76,7 @@ void	renderer(t_env *e)
 	e->draw.skybox_x += 0.2;
 	if (e->draw.skybox_x > 1226)
 		e->draw.skybox_x = 0;
-	minimap(e);
+	//minimap(e);
 	e->ui.weapon_fired = 0;
 	SDL_UpdateWindowSurface(e->win);
 }
@@ -87,7 +85,7 @@ void	engine_loop(t_env *e)
 {
 	e->state = SDL_GetKeyboardState(NULL);
 //	load_screen(e);
-//	ft_menu(e);
+	ft_menu(e);
 	while (1)
 	{
 		e->time.new_time = SDL_GetTicks();
@@ -100,8 +98,8 @@ void	engine_loop(t_env *e)
 			{
 				if (e->event.type == SDL_QUIT || e->state[SDL_SCANCODE_ESCAPE])
 				{
-					//ft_menu(e);
-					exit (0);
+					e->menu.check = 0;
+					ft_menu(e);
 				}
 				(e->event.type == SDL_MOUSEMOTION) ? mouse_aim(e) : 0;
 			}

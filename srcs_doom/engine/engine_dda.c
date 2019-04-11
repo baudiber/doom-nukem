@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 19:31:33 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:21:51 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,7 @@ void					double_dda(t_env *e, int tid, int column)
 void					get_horizontal_hit(t_env *e, int tid)
 {
 	if (e->ray[tid].angle == 0 || e->ray[tid].angle == e->angle.a_180)
-	{
 		e->ray[tid].hor.dist = 2147483647;
-	}
 	else
 	{
 		e->ray[tid].hor.dist = 0;

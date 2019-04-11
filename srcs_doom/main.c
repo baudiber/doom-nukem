@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 02:47:43 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:43:38 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static bool				basic_err(void)
 	if (ret == 0 && (WIN_W < 320 && WIN_W > 1280))
 		ret = 1;
 	if (ret == 0 && (WIN_H < 200 && WIN_H > 800))
-		ret = 1;
-	if (ret == 0 && !ft_strequ(GRID_SIZE_STR, "256"))
 		ret = 1;
 	if (ret == 0 && TILE_SIZE != 256)
 		ret = 1;
@@ -68,14 +66,14 @@ int					main(int argc, char **argv)
 	else if (argc == 2 && ft_strequ("", argv[1]))
 		exit_error(7, ERR_BASE);
 	ft_bzero(e, sizeof(t_env));
-	e->tile_shift = (TILE_SIZE == 256) ? 8 : e->tile_shift;
-//	fake_parse(&e);
 	parse_start(&e->data, argv[1]);
 	parse_sprite(e);
 	init_sdl(e);
 	init_vars(e);
 	init_player(e);
 	load_textures(e);
+	load_textures_menu(e);
+	load_textures_splash(e);
 	init_rects_and_font(e);
 	init_ui_structs(e);
 	init_sound(e);

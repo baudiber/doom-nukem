@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 19:38:56 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:38:41 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*raycaster_mt(void *arg)
 	{
 		e->ray[tid].layer = e->floor_order[i];
 		e->ray[tid].angle = (e->player.angle - e->angle.a_half_fov) \
-							+ e->thread_col_size * tid;
+			+ e->thread_col_size * tid;
 		angle_overflow(&e->ray[tid].angle, e);
 		column = e->thread_col_size * tid - 1;
 		e->ray[tid].max_column = e->thread_col_size * (tid + 1);

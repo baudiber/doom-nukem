@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 19:52:19 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 13:37:40 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,28 @@ static void	crop_next_wall(t_env *e, int tid)
 	e->wall[tid].botwall = false;
 	if (e->wall[tid].top >= e->prev_wall[tid].top && e->wall[tid].bottom <= e->prev_wall[tid].bottom)
 	{
-		//printf("case 1: inside of prev\n");
 		e->wall[tid].bottom = 0;
 		return ;
 	}
-	if (e->wall[tid].bottom <= e->prev_wall[tid].top)
+	else if (e->wall[tid].bottom <= e->prev_wall[tid].top)
 	{
-		//printf("case 2: fully above prev\n");
 		return ;
 	}
-	if (e->wall[tid].top >= e->prev_wall[tid].bottom)
+	else if (e->wall[tid].top >= e->prev_wall[tid].bottom)
 	{
-		//printf("case 3: fully below prev\n");
 		return ;
 	}
-	if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
+	else if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
 	{
-		//printf("case 4: can see the top\n");
 		e->wall[tid].bottom = e->prev_wall[tid].top;
 		return ;
 	}
 	else if (e->wall[tid].top <= e->prev_wall[tid].bottom)
 	{
-		//printf("case 5: can see the bot\n");
 		e->wall[tid].botwall = true;
-		//printf("offsave %d\n", e->wall[tid].offsave);
-		//printf("top %d\n", e->wall[tid].top);
 		e->wall[tid].top = e->prev_wall[tid].bottom;
-		//printf("newtop %d\n", e->wall[tid].top);
 		return ;
 	}
-	//printf("case unknown, top %d ptop %d bottom %d pbottom %d\n", e->wall[tid].top, e->prev_wall[tid].top, e->wall[tid].bottom, e->prev_wall[tid].bottom);
 }
 
 void		get_wall_height(t_env *e, int column, int tid)
@@ -69,7 +60,7 @@ void		get_wall_height(t_env *e, int column, int tid)
 	{
 		e->wall[tid].height = WALL_HEIGHT * e->player.plane_dist \
 		/ e->wall[tid].dist;
-		e->wall[tid].bottom = ceil(((e->player.plane_dist / e->wall[tid].dist) \
+		e->wall[tid].bottom = round(((e->player.plane_dist / e->wall[tid].dist) \
 		* e->player.height + e->horizon) - e->wall[tid].height * e->ray[tid].layer);
 		if (!e->prev_wall[tid].is_prev)
 			e->wall_dist[e->ray[tid].layer][column] = e->wall[tid].height;
@@ -125,7 +116,6 @@ void		draw_reversed(t_env *e, int column, int tid)
 		if (texture_y < 0)
 			break ;
 	}
-
 }
 
 void		draw_wall(t_env *e, int column, int tid)
@@ -137,7 +127,7 @@ void		draw_wall(t_env *e, int column, int tid)
 
 	ratio = TILE_SIZE / e->wall[tid].height;
 	crop_wall(e, &texture_y, ratio, tid);
-	y = e->wall[tid].top - 2;
+	y = e->wall[tid].top - 1;
 	while (++y < e->wall[tid].bottom + 1)
 	{
 		color = e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) + e->wall[tid].texture_x];

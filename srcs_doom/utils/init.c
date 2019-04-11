@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 00:58:38 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/11 15:07:21 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void					init_player(t_env *e)
 	e->ui.ui_size = WIN_H - e->render_limit;
 	e->horizon = e->render_limit / 2;
 	e->max_speed = TILE_SIZE / 25;
-	e->player.height = WALL_HEIGHT / 2;
+	e->player.height = WALL_HEIGHT / 2 + e->data.pos_z * WALL_HEIGHT + 100;
 	e->player.plane_dist = (int)((WIN_W / 2) / tan((FOV / 2.0) * LM_PI / 180));
 	e->player.pace = 90;
 	e->player.angle = 1;

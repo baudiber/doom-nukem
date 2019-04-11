@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 02:09:48 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:46:46 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	load_textures_menu(t_env *e)
 		exit_error(2, ERR_2);
 	if (!(e->menu.image[2] = SDL_LoadBMP("textures/menu/menu_quit.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[3] = SDL_LoadBMP("textures/menu/72270.bmp")))
-		exit_error(2, ERR_2);
+	//removed image 3
 	if (!(e->menu.image[4] = SDL_LoadBMP("textures/menu/options_!mute_0.bmp")))
 		exit_error(2, ERR_2);
 	if (!(e->menu.image[5] = SDL_LoadBMP("textures/menu/options_!mute_25.bmp")))

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 02:29:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:43:26 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # define MAX_FPS 60 
 # define MAX_MAPSIZE 64
 # define UI_Y2 300
-# define GRID_SIZE_STR "256"
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
@@ -252,6 +251,8 @@ typedef struct		s_floor
 {
 	int				x;
 	int				y;
+	int				tex;
+	int 			color;
 	t_point_int		map;
 	double			dist;
 }					t_floor;
@@ -440,5 +441,7 @@ extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
 extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
+extern void			load_textures_splash(t_env *e);
+extern void			load_textures_menu(t_env *e);
 
 #endif

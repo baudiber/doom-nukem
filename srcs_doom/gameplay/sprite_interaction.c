@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 01:49:46 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:24:38 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void			pick_up_obj(t_env *e, int nb)
 {
 	int		range;
 
-	//check obj height too
-	if (e->sprites[nb].tex != 1)
+	if (e->sprites[nb].tex != 1 || !e->sprites[nb].visible)
 		return;
 	range = TILE_SIZE * 0.75;
 	if ((fabs(e->sprites[nb].x - e->player.pos.x) < range) \
@@ -26,7 +25,29 @@ void			pick_up_obj(t_env *e, int nb)
 	{
 		Mix_PlayChannel(-1, e->sound.sound4, 0);
 		e->sprites[nb].visible = false;
-		e->inv_info.index = 1;
+		e->inv_info.index = e->ui.weapon ? 2 : 1;
+	}
+}
+
+static void		gun_animations_2(t_env *e)
+{
+	if (e->shotgun_info.index == 5 || e->pistol_info.index == 5)
+	{
+		e->ui.weapon_firing = 2;
+		e->event.button.button = 0;
+	}
+	if (e->ui.weapon_firing == 2 && e->shotgun_info.index == 3 \
+			&& e->pistol_info.index == 3)
+	{
+		e->ui.weapon_firing = 0;
+		e->shotgun_info.index = 0;
+		e->pistol_info.index = 0;
+	}
+	if (e->shotgun_info.index > 5 || e->pistol_info.index > 5)
+	{
+		e->face_info.index = 0;
+		e->shotgun_info.index = 0;
+		e->pistol_info.index = 0;
 	}
 }
 
@@ -49,23 +70,7 @@ static void		gun_animations(t_env *e)
 				e->shotgun_info.index--;
 				e->pistol_info.index--;
 			}
-			if (e->shotgun_info.index == 5 || e->pistol_info.index == 5)
-			{
-				e->ui.weapon_firing = 2;
-				e->event.button.button = 0;
-			}
-			if (e->ui.weapon_firing == 2 && e->shotgun_info.index == 3 && e->pistol_info.index == 3)
-			{
-				e->ui.weapon_firing = 0;
-				e->shotgun_info.index = 0;
-				e->pistol_info.index = 0;
-			}
-			if (e->shotgun_info.index > 5 || e->pistol_info.index > 5)
-			{
-				e->face_info.index = 0;
-				e->shotgun_info.index = 0;
-				e->pistol_info.index = 0;
-			}
+			gun_animations_2(e);
 			weapon_time = 0;
 		}
 	}
@@ -83,10 +88,10 @@ void			animations(t_env *e)
 		barrel_time = 0;
 	}
 	face_time += e->time.frame_time;
-	if (face_time > 3)
+	if (face_time > 1.25)
 	{
 		e->face_info.index = e->face_info.index \
-							 < 2 ? e->face_info.index + 1 : 0;
+			< 2 ? e->face_info.index + 1 : 0;
 		face_time = 0;
 	}
 	gun_animations(e);
