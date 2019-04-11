@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 21:35:49 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:17:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void		engine_loop(t_env *e)
 	{
 		while (SDL_PollEvent(&e->window.event))
 		{
-			if (e->window.event.type == SDL_KEYDOWN)
-				if (e->window.event.key.keysym.sym == SDLK_ESCAPE)
+			if (e->window.event.type == SDL_QUIT \
+				|| (e->window.event.type == SDL_KEYDOWN \
+					&& e->window.event.key.keysym.sym == SDLK_ESCAPE))
 					exit(0);
 			if (e->wellcome_screen == 1)
 				wellcome(e);
