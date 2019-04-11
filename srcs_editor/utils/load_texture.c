@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 23:41:33 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 23:50:06 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void			load_sprite_texture(t_env *e)
 					"textures/editor_textures/BARREL.bmp")))
 		exit_error(2, ERR_2);
 	if (!(e->texture.image[22] = SDL_LoadBMP(\
-					"textures/editor_textures/SKULL_editor.bmp")))
+					"textures/editor_textures/TRUMPET.bmp")))
 		exit_error(2, ERR_2);
 }
 
