@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 23:16:43 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 02:47:43 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int					main(int argc, char **argv)
 	init_sdl(e);
 	init_vars(e);
 	init_player(e);
+	load_textures(e);
 	init_rects_and_font(e);
 	init_ui_structs(e);
 	init_sound(e);

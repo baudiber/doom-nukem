@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 02:13:48 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 02:29:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@
 typedef struct		s_files
 {
 	unsigned int	*wall[8];
-	unsigned int	*sprite[9];
+	unsigned int	*sprite[13];
 	unsigned int	*floor[6];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[50];
+	SDL_Surface		*image[47];
 	SDL_Surface		*skybox;
 	SDL_Surface     *ui_surf;
 }					t_files;
