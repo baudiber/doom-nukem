@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 15:07:21 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:41:12 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ void					init_player(t_env *e)
 	e->player.pace = 90;
 	e->player.angle = 1;
 	e->floor_nb = e->data.tier_ind + 1;
+	e->player.hp = 100;
 }

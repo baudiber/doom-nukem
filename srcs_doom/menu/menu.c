@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:49:10 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:55:17 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_menu(t_env *e)
 	SDL_ShowCursor(SDL_ENABLE);
 	if (Mix_PlayingMusic() == 0)
 		Mix_PlayMusic(e->sound.music, -1);
-	while (e->meu.check != 1)
+	while (e->menu.check != 1)
 	{
 		ft_menu_3(e, ev, &x, &y);
 		while (SDL_PollEvent(&ev))

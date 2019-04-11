@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 19:59:37 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:00:22 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct		s_player
 	t_point			pos;
 	t_point_int		map;
 	int				plane_dist;
+	int				hp;
 	int				floor;
 	int				height;
 	int				angle;
@@ -377,15 +378,15 @@ extern void			parse_quit(t_data *data, int type, char *msg);
 extern void			exit_error(int type, char *msg);
 
 extern void			load_screen(t_env *e);
-extern void			load_screen_2(t_env *e, int check, SDL_Event ev);
+//extern void			load_screen_2(t_env *e, int check, SDL_Event ev);
 extern void			ft_menu(t_env *e);
 extern void			ft_menu_2(t_env *e, SDL_Event ev);
-extern void			ft_menu_2_2(t_env *e, SDL_Event ev);
+//extern void			ft_menu_2_2(t_env *e, SDL_Event ev);
 extern void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y);
 extern void			mouse_menu_2(t_env *e, int y, SDL_Event ev);
 extern void			ft_menu_options(t_env *e);
-extern void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y);
-extern void			refresh_gif(t_env *e, int i);
+//extern void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y);
+//extern void			refresh_gif(t_env *e, int i);
 extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
 extern void			gif_load_screen(t_env *e);
 extern void			clean_up(t_env *e);
@@ -431,7 +432,7 @@ extern void			draw_player_small(t_env *e);
 extern void			draw_player_big(t_env *e);
 extern void			draw_map_small(t_env *e);
 extern void			draw_map_big(t_env *e);
-extern void			init_struct_minimap(t_env *e);
+//extern void			init_struct_minimap(t_env *e);
 extern void			weapon_switch(t_env *e);
 extern void			weapon_fire(t_env *e);
 
@@ -451,5 +452,6 @@ extern void			rest_of_texture_pointing(t_env *e);
 extern void			load_textures_splash(t_env *e);
 extern void			load_textures_menu(t_env *e);
 extern void			wasted(t_env *e);
+extern void			floor_is_lava(t_env *e);
 
 #endif

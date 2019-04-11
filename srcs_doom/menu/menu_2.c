@@ -6,32 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:49:36 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:59:35 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-static void		load_screen_2(t_env *e, int check, SDL_Event ev)
-{
-	check = 0;
-	while (check != 1)
-	{
-		gif_load_screen(e);
-		check++;
-		while (SDL_PollEvent(&ev))
-		{
-			if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
-				&& ev.type == SDL_KEYDOWN))
-			{
-				clean_up(e);
-				exit(0);
-			}
-		}
-	}
-}
-
-static void		mouse_menu_2(t_env *e, int y, SDL_Event ev)
+void		mouse_menu_2(t_env *e, int y, SDL_Event ev)
 {
 	if (y >= 406 && y <= 456)
 	{
@@ -70,7 +51,7 @@ static void			ft_menu_2_2(t_env *e, SDL_Event ev)
 		}
 }
 
-static void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y)
+void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y)
 {
 	SDL_GetMouseState(x, y);
 	SDL_UpdateWindowSurface(e->win);
