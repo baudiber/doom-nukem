@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:30:27 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)
 	int save;
 
 	save = e->menu.i_img;
-	if (x > 440 && x < 810)
+	if (x > 270 && x < 520)
 	{
-		if (y >= 480 && y <= 540)
+		if (y >= 355 && y <= 405)
 		{
 			e->menu.i_img = 0;
 			if (ev.button.button == SDL_BUTTON_LEFT)

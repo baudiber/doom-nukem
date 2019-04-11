@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:29:16 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:35:01 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void		ft_slider_2(t_env *e, int x)
 {
-	if (x >= 581 && x <= 645)
+	if (x >= 364 && x <= 420)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 6;
 		Mix_VolumeMusic(128 * 0.025);
 		Mix_Volume(-1, 128 * 0.025);
 	}
-	if (x >= 646 && x <= 730)
+	if (x >= 421 && x <= 477)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 7;
 		Mix_VolumeMusic(128 * 0.05);
 		Mix_Volume(-1, 128 * 0.05);
 	}
-	if (x >= 731 && x <= 830)
+	if (x >= 478 && x <= 533)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 8;
@@ -39,16 +39,16 @@ void		ft_slider_2(t_env *e, int x)
 
 void		ft_slider(t_env *e, int x, int y, SDL_Event ev)
 {
-	if (y >= 600 && y <= 650 && ev.button.button == SDL_BUTTON_LEFT)
+	if (y >= 440 && y <= 485 && ev.button.button == SDL_BUTTON_LEFT)
 	{
-		if (x >= 400 && x <= 480)
+		if (x >= 250 && x <= 306)
 		{
 			if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 				e->menu.i_img = 4;
 			Mix_VolumeMusic(128 * 0);
 			Mix_Volume(-1, 128 * 0);
 		}
-		if (x >= 481 && x <= 580)
+		if (x >= 307 && x <= 363)
 		{
 			if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 				e->menu.i_img = 5;

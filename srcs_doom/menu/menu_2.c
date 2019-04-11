@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:08 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:31:19 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	load_screen_2(t_env *e, int check, SDL_Event ev)
 
 void	mouse_menu_2(t_env *e, int y, SDL_Event ev)
 {
-	if (y >= 541 && y <= 600)
+	if (y >= 406 && y <= 456)
 	{
 		e->menu.i_img = 1;
 		if (ev.button.button == SDL_BUTTON_LEFT \
@@ -43,7 +43,7 @@ void	mouse_menu_2(t_env *e, int y, SDL_Event ev)
 			ft_menu_options(e);
 		}
 	}
-	if (y >= 601 && y <= 660)
+	if (y >= 457 && y <= 507)
 	{
 		e->menu.i_img = 2;
 		if (ev.button.button == SDL_BUTTON_LEFT)
