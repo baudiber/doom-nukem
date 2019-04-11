@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:30:27 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:42:57 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void	refresh_gif(t_env *e, int i)
+static void			refresh_gif(t_env *e, int i)
 {
 	SDL_UpdateWindowSurface(e->win);
 	SDL_BlitSurface(e->menu.image[i], NULL, e->screen, NULL);
@@ -97,7 +97,7 @@ void	ft_menu(t_env *e)
 	SDL_ShowCursor(SDL_ENABLE);
 	if (Mix_PlayingMusic() == 0)
 		Mix_PlayMusic(e->sound.music, -1);
-	while (e->menu.check != 1)
+	while (e->meu.check != 1)
 	{
 		ft_menu_3(e, ev, &x, &y);
 		while (SDL_PollEvent(&ev))
