@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:29:16 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:35:01 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:44:52 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void		ft_slider_2(t_env *e, int x)
+static void		ft_slider_2(t_env *e, int x)
 {
 	if (x >= 364 && x <= 420)
 	{

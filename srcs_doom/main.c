@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 14:43:38 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:35:29 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,25 @@ static bool				basic_err(void)
 	return (ret == 0) ? true : false;
 }
 
+static void			launch_init(t_env *e)
+{
+	init_sdl(e);
+	init_vars(e);
+	init_player(e);
+	load_textures(e);
+	load_textures_menu(e);
+	load_textures_splash(e);
+	init_rects_and_font(e);
+	init_ui_structs(e);
+	init_sound(e);
+}
+
 void				exit_error(int type, char *msg)
 {
+//	t_env			*e;
+
+//	e = call();
+//	clean_up(e);
 	ft_putendl(msg);
 	exit(type);
 }
@@ -68,15 +85,7 @@ int					main(int argc, char **argv)
 	ft_bzero(e, sizeof(t_env));
 	parse_start(&e->data, argv[1]);
 	parse_sprite(e);
-	init_sdl(e);
-	init_vars(e);
-	init_player(e);
-	load_textures(e);
-	load_textures_menu(e);
-	load_textures_splash(e);
-	init_rects_and_font(e);
-	init_ui_structs(e);
-	init_sound(e);
+	launch_init(e);
 	engine_loop(e);
 	return (0);
 }

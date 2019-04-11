@@ -6,13 +6,13 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 14:40:34 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:48:56 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void	clear_buffer(t_env *e)
+static void		clear_buffer(t_env *e)
 {
 	int			y;
 
@@ -27,7 +27,7 @@ void	clear_buffer(t_env *e)
 	ft_bzero(&e->spotvis, sizeof(e->spotvis));
 }
 
-void	get_floor_order(t_env *e)
+static void		get_floor_order(t_env *e)
 {
 	int		i;
 	int		j;
@@ -48,7 +48,7 @@ void	get_floor_order(t_env *e)
 	*/
 }
 
-void	world_interaction(t_env *e)
+static void		world_interaction(t_env *e)
 {
 	get_player_floor(e);
 	get_floor_order(e);
@@ -58,7 +58,7 @@ void	world_interaction(t_env *e)
 	animations(e);
 }
 
-void	renderer(t_env *e)
+static void		renderer(t_env *e)
 {
 	clear_buffer(e);
 	moving_rects(e);
@@ -81,10 +81,10 @@ void	renderer(t_env *e)
 	SDL_UpdateWindowSurface(e->win);
 }
 
-void	engine_loop(t_env *e)
+void			engine_loop(t_env *e)
 {
 	e->state = SDL_GetKeyboardState(NULL);
-//	load_screen(e);
+	load_screen(e);
 	ft_menu(e);
 	while (1)
 	{
