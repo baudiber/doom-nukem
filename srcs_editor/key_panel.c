@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:45:43 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 20:40:00 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 02:36:30 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	choose_texture(t_env *e)
 			e->texture.texture = 3;
 		if (e->window.event.key.keysym.sym == SDLK_4)
 			e->texture.texture = 4;
+		if (e->window.event.key.keysym.sym == SDLK_5)
+			e->texture.texture = 5;
+		if (e->window.event.key.keysym.sym == SDLK_6)
+			e->texture.texture = 6;
+		if (e->window.event.key.keysym.sym == SDLK_7)
+			e->texture.texture = 7;
 	}
 }
 
