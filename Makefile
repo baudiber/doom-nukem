@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/11 16:58:47 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/11 21:37:10 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,66 +30,67 @@ LIBFT				:=			./libft/libft.a
 #------------------------------------------------------------------------------#
 #                                  FILES                                       #
 
-SRCA			=				main.c								\
-								main_loop.c							\
-								engine/engine_dda.c					\
-								engine/engine_draw_walls.c			\
-								engine/engine_floor_casting.c		\
-								engine/engine_multithreading.c		\
-								engine/engine_raycasting.c			\
-								engine/engine_sprites.c				\
-								engine/engine_sprites_utils.c		\
-								engine/engine_draw_ceiling.c		\
-								gameplay/player_movement.c			\
-								gameplay/mouse_aim.c				\
-								gameplay/move_player.c				\
-								gameplay/ui.c						\
-								gameplay/sprite_interaction.c		\
-								gameplay/minimap.c					\
-								gameplay/minimap_drawplayer.c		\
-								gameplay/minimap_drawmap.c			\
-								gameplay/weapon_switch.c			\
-								gameplay/weapon_fire.c				\
-								parser/parse_scan.c					\
-								parser/parse_stage.c				\
-								parser/parse_tier.c					\
-								parser/parse_stock.c				\
-								parser/parse_sprite.c				\
-								parser/parse_utils.c				\
-								menu/menu.c							\
-								menu/menu_2.c						\
-								menu/menu_options.c					\
-								menu/menu_options_slider.c			\
-								utils/init.c						\
-								utils/init_vars.c					\
-								utils/init_sound.c					\
-								utils/init_ui.c						\
-								utils/init_enemies_and_texture_checks.c	\
-								utils/init_font_and_menus.c	\
-								utils/init_textures.c
+SRCA			=				main.c										\
+								main_loop.c									\
+								engine/engine_dda.c							\
+								engine/engine_draw_walls.c					\
+								engine/engine_floor_casting.c				\
+								engine/engine_multithreading.c				\
+								engine/engine_raycasting.c					\
+								engine/engine_sprites.c						\
+								engine/engine_sprites_utils.c				\
+								engine/engine_draw_ceiling.c				\
+								gameplay/player_movement.c					\
+								gameplay/mouse_aim.c						\
+								gameplay/move_player.c						\
+								gameplay/ui.c								\
+								gameplay/sprite_interaction.c				\
+								gameplay/minimap.c							\
+								gameplay/minimap_drawplayer.c				\
+								gameplay/minimap_drawmap.c					\
+								gameplay/weapon_switch.c					\
+								gameplay/weapon_fire.c						\
+								parser/parse_scan.c							\
+								parser/parse_stage.c						\
+								parser/parse_tier.c							\
+								parser/parse_stock.c						\
+								parser/parse_sprite.c						\
+								parser/parse_utils.c						\
+								menu/menu.c									\
+								menu/menu_2.c								\
+								menu/menu_options.c							\
+								menu/menu_options_slider.c					\
+								utils/init.c								\
+								utils/init_vars.c							\
+								utils/init_sound.c							\
+								utils/init_ui.c								\
+								utils/init_enemies_and_texture_checks.c		\
+								utils/init_font_and_menus.c					\
+								utils/init_textures.c						\
+								utils/clean_up.c
 
-SRCB			=				main.c								\
-								main_loop.c							\
-								utils/init.c						\
-								utils/init_from_parser.c			\
-								utils/init_texture.c				\
-								utils/load_texture.c				\
-								utils/saving.c						\
-								draw/redraw.c						\
-								draw/draw_grid.c					\
-								draw/draw_panel.c					\
-								draw/draw_panel_text.c				\
-								draw/draw_texture_grid.c			\
-								draw/erase_texture_grid.c			\
-								input/key_input.c					\
-								input/key_gridsize.c				\
-								input/key_panel.c					\
-								input/key_draw.c					\
-								parser/parse_scan.c					\
-								parser/parse_stage.c				\
-								parser/parse_tier.c					\
-								parser/parse_stock.c				\
-								parser/parse_utils.c				\
+SRCB			=				main.c										\
+								main_loop.c									\
+								utils/init.c								\
+								utils/init_from_parser.c					\
+								utils/init_texture.c						\
+								utils/load_texture.c						\
+								utils/saving.c								\
+								draw/redraw.c								\
+								draw/draw_grid.c							\
+								draw/draw_panel.c							\
+								draw/draw_panel_text.c						\
+								draw/draw_texture_grid.c					\
+								draw/erase_texture_grid.c					\
+								input/key_input.c							\
+								input/key_gridsize.c						\
+								input/key_panel.c							\
+								input/key_draw.c							\
+								parser/parse_scan.c							\
+								parser/parse_stage.c						\
+								parser/parse_tier.c							\
+								parser/parse_stock.c						\
+								parser/parse_utils.c						\
 
 OBJA				:=			$(addprefix $(OBJ_DIRA)/,$(SRCA:.c=.o))
 OBJB				:=			$(addprefix $(OBJ_DIRB)/,$(SRCB:.c=.o))

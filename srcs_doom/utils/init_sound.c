@@ -6,25 +6,11 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 20:19:29 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/09 15:26:07 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:36:01 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
-
-void		clean_up(t_env *e)
-{
-	Mix_FreeChunk(e->sound.sound1);
-	Mix_FreeChunk(e->sound.sound2);
-	Mix_FreeChunk(e->sound.sound3);
-	Mix_FreeChunk(e->sound.sound4);
-	Mix_FreeChunk(e->sound.sound5);
-	Mix_FreeChunk(e->sound.sound6);
-	Mix_FreeMusic(e->sound.music);
-	Mix_CloseAudio();
-	SDL_DestroyWindow(e->win);
-	SDL_Quit();
-}
 
 void		init_sound(t_env *e)
 {
