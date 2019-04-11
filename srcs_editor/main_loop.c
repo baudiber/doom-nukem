@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:46:52 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:33:26 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void				welcome(t_env *e)
 	if (e->window.event.type == SDL_KEYDOWN)
 		if (e->window.event.key.keysym.sym == SDLK_RETURN)
 		{
-			SDL_FillRect(e->window.screen, NULL, 0xE0E0E0);
 			e->f[e->panel_index](e);
 			e->wellcome_screen = 0;
 		}

@@ -6,11 +6,29 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:38:15 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:57:27 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
+
+static void						fill_rect(t_env *e)
+{
+	int						i;
+	int						j;
+
+	i = 0;
+	while (i < WIN_H)
+	{
+		j = PANEL;
+		while (j < WIN_W)
+		{
+			e->buff[WIN_W * i + j] = 0xE0E0E0;
+			j++;
+		}
+		i++;
+	}
+}
 
 static int					get_number_of_texture(t_env *e)
 {
@@ -84,7 +102,8 @@ void						redraw(t_env *e)
 	int y;
 
 	// ERROR SDL
-	SDL_FillRect(e->window.screen, &e->grid.grid_rect, 0xE0E0E0);
+	fill_rect(e);
+
 	// FU
 	y = -1;
 	while (++y < e->grid.y)
