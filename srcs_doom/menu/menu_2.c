@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:42:51 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:49:36 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,8 @@ static void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y)
 	SDL_UpdateWindowSurface(e->win);
 	SDL_BlitSurface(e->menu.image[e->menu.i_img], NULL, \
 		e->screen, NULL);
-	if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
-		&& ev.type == SDL_KEYDOWN))
-	{
-		clean_up(e);
-		exit(0);
-	}
+	if ((ev.key.keysym.sym == SDLK_ESCAPE && ev.type == SDL_KEYDOWN))
+		e->menu.check = 1;
 }
 
 void	ft_menu_2(t_env *e, SDL_Event ev)

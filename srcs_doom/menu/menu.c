@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:42:57 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:49:10 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void			refresh_gif(t_env *e, int i)
 {
 	SDL_UpdateWindowSurface(e->win);
 	SDL_BlitSurface(e->menu.image[i], NULL, e->screen, NULL);
-	SDL_Delay(100);
+	SDL_Delay(150);
 }
 
 void	gif_load_screen(t_env *e)
@@ -43,13 +43,12 @@ void	load_screen(t_env *e)
 	SDL_Event	ev;
 	int			check;
 
+	sleep(1);
 	check = 0;
 	while (check != 1)
 	{
 		while (SDL_PollEvent(&ev))
 		{
-			SDL_UpdateWindowSurface(e->win);
-			SDL_BlitSurface(NULL, NULL, e->screen, NULL);
 			if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
 				&& ev.type == SDL_KEYDOWN))
 			{
@@ -57,13 +56,9 @@ void	load_screen(t_env *e)
 				exit(0);
 			}
 		}
-		if (check == 0)
-		{
-			sleep(1);
-			check = 1;
-		}
+		gif_load_screen(e);
+		check++;
 	}
-	load_screen_2(e, check, ev);
 }
 
 void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)

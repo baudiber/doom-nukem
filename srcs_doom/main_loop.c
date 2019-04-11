@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 21:31:59 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 21:48:56 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void		renderer(t_env *e)
 void			engine_loop(t_env *e)
 {
 	e->state = SDL_GetKeyboardState(NULL);
-//	load_screen(e);
+	load_screen(e);
 	ft_menu(e);
 	while (1)
 	{
