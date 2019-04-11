@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 18:11:33 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:14:28 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-static void		load_wall_texture(t_env *e)
+static void			load_wall_texture(t_env *e)
 {
 	if (!(e->texture.image[5] = SDL_LoadBMP("textures/walls/ROCK.bmp")))
 		exit_error(2, ERR_2);
@@ -32,7 +32,7 @@ static void		load_wall_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-static void		load_floor_texture(t_env *e)
+static void			load_floor_texture(t_env *e)
 {
 	if (!(e->texture.image[13] = SDL_LoadBMP("textures/floors/JOLI.bmp")))
 		exit_error(2, ERR_2);
@@ -46,40 +46,51 @@ static void		load_floor_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-static void		load_sprite_texture(t_env *e)
+static void			load_sprite_texture(t_env *e)
 {
-	if (!(e->texture.image[18] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp")))
+	if (!(e->texture.image[18] = SDL_LoadBMP(\
+					"textures/editor_textures/player_spawn.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[19] = SDL_LoadBMP("textures/editor_textures/SARGE.bmp")))
+	if (!(e->texture.image[19] = SDL_LoadBMP(\
+					"textures/editor_textures/SARGE.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[20] = SDL_LoadBMP("textures/editor_textures/item_shotgun.bmp")))
+	if (!(e->texture.image[20] = SDL_LoadBMP(\
+					"textures/editor_textures/item_shotgun.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[21] = SDL_LoadBMP("textures/editor_textures/BARREL.bmp")))
+	if (!(e->texture.image[21] = SDL_LoadBMP(\
+					"textures/editor_textures/BARREL.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[22] = SDL_LoadBMP("textures/editor_textures/SKULL_editor.bmp")))
+	if (!(e->texture.image[22] = SDL_LoadBMP(\
+					"textures/editor_textures/SKULL_editor.bmp")))
 		exit_error(2, ERR_2);
 }
 
-static void		load_light_texture(t_env *e)
+static void			load_light_texture(t_env *e)
 {
-	if (!(e->texture.image[23] = SDL_LoadBMP("textures/editor_textures/SHADOW.bmp")))
+	if (!(e->texture.image[23] = SDL_LoadBMP(\
+					"textures/editor_textures/SHADOW.bmp")))
 		exit_error(2, ERR_2);
 }
 
-void		load_texture(t_env *e)
+void				load_texture(t_env *e)
 {
 	load_wall_texture(e);
 	load_floor_texture(e);
 	load_sprite_texture(e);
 	load_light_texture(e);
-	if (!(e->texture.image[0] = SDL_LoadBMP("textures/editor_panel/editeur_panel_mur.bmp")))
+	if (!(e->texture.image[0] = SDL_LoadBMP(\
+					"textures/editor_panel/editeur_panel_mur.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[1] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sol.bmp")))
+	if (!(e->texture.image[1] = SDL_LoadBMP(\
+					"textures/editor_panel/editeur_panel_sol.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[2] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sprites.bmp")))
+	if (!(e->texture.image[2] = SDL_LoadBMP(\
+					"textures/editor_panel/editeur_panel_sprites.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[3] = SDL_LoadBMP("textures/editor_panel/editeur_panel_lights.bmp")))
+	if (!(e->texture.image[3] = SDL_LoadBMP(\
+					"textures/editor_panel/editeur_panel_lights.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[4] = SDL_LoadBMP("textures/editor_panel/editeur_panel_event.bmp")))
+	if (!(e->texture.image[4] = SDL_LoadBMP(\
+					"textures/editor_panel/editeur_panel_event.bmp")))
 		exit_error(2, ERR_2);
 }

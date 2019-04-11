@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 18:17:56 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:02:53 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-static void		copy_texture(t_env *e)
+static void			copy_texture(t_env *e)
 {
 	e->texture.tex[0] = (unsigned int *)e->texture.image[0]->pixels;
 	e->texture.tex[1] = (unsigned int *)e->texture.image[1]->pixels;
@@ -40,7 +40,7 @@ static void		copy_texture(t_env *e)
 	e->texture.tex[23] = (unsigned int *)e->texture.image[23]->pixels;
 }
 
-void		init_var_texture(t_env *e)
+void				init_var_texture(t_env *e)
 {
 	e->texture.texture = 0;
 	e->type = 0;
@@ -49,5 +49,4 @@ void		init_var_texture(t_env *e)
 	e->texture.y = 0;
 	load_texture(e);
 	copy_texture(e);
-	// WARNING, GIVE THE TEXTURE TO e->texture.texture IN A SIDE MENU
 }

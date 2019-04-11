@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 16:55:13 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 18:58:26 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-static void		init_grid_var(t_env *e)
+static void				init_grid_var(t_env *e)
 {
 	e->grid.grid_rect.x = PANEL + MARGIN;
 	e->grid.grid_rect.y = MARGIN;
@@ -32,9 +32,9 @@ static void		init_grid_var(t_env *e)
 	}
 }
 
-static void		init_draw_var(t_env *e)
+static void				init_draw_var(t_env *e)
 {
-	int		i;
+	int					i;
 
 	i = -1;
 	e->wellcome_screen = 1;
@@ -58,12 +58,13 @@ static void		init_draw_var(t_env *e)
 	}
 }
 
-static void		init_sdl(t_env *e)
+static void				init_sdl(t_env *e)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
-	if (!(e->window.win = SDL_CreateWindow("Doom_Editor", SDL_WINDOWPOS_CENTERED, \
-			SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, SDL_WINDOW_RESIZABLE)))
+	if (!(e->window.win = SDL_CreateWindow("Doom_Editor", \
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, \
+			SDL_WINDOW_RESIZABLE)))
 		exit_error(1, ERR_7);
 	if (!(e->window.screen = SDL_GetWindowSurface(e->window.win)))
 		exit_error(1, ERR_7);
@@ -71,13 +72,11 @@ static void		init_sdl(t_env *e)
 	e->buff = (Uint32 *)e->window.screen->pixels;
 }
 
-void		init(t_env *e)
+void					init(t_env *e)
 {
 	ft_memset(e->tab, 0, sizeof(e->tab));
 	init_sdl(e);
 	init_draw_var(e);
 	init_grid_var(e);
 	init_var_texture(e);
-//	load_texture(e);
-//	copy_texture(e);
 }
