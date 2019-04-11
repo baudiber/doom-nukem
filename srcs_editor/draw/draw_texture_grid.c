@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:16:55 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:31:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:45:35 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-static void			text_assign(t_env *e, int y, int x)
+static void			text_assign(t_env *e, int y, int x, unsigned int *texture)
 {
 	e->buff[WIN_W * y + x] = texture[((int)e->texture.y * TEX_SIZE) \
 		+ (int)e->texture.x];
@@ -37,7 +37,7 @@ void				draw_texture_grid(t_env *e)
 		x = e->grid.mouseposgridx * e->grid.padx + MARGIN + PANEL;
 		while (++x < ((e->grid.mouseposgridx + 1) * e->grid.padx + MARGIN \
 		+ PANEL) && e->grid.mouseposgridx < e->grid.x)
-			text_assign(e, y, x);
+			text_assign(e, y, x, texture);
 		e->texture.y += e->texture.ratioy;
 	}
 	if (e->grid.mouseposgridy < e->grid.y && e->grid.mouseposgridx < e->grid.x)

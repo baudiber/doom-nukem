@@ -6,11 +6,28 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 18:45:42 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:44:41 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
+
+static void				launch_init(t_env *e, int ac, char **av)
+{
+	int					fd;
+
+	fd = open(av[1], O_RDONLY);
+	e->tile_shift = 8;
+	e->argc = ac;
+	e->argv = av;
+	if (fd == -1)
+		init(e);
+	else
+	{
+		parse_start(&e->data, av[1]);
+		init_from_parser(e);
+	}
+}
 
 static bool				basic_err(void)
 {
@@ -35,7 +52,7 @@ static bool				basic_err(void)
 	return (ret == 0) ? true : false;
 }
 
-static void			print_man(void)
+static void				print_man(void)
 {
 	ft_putendl("");
 	ft_putendl("\t\t*-------------------------------------------------------*");
@@ -56,16 +73,15 @@ static void			print_man(void)
 	ft_putendl("");
 }
 
-void				exit_error(int type, char *msg)
+void					exit_error(int type, char *msg)
 {
 	ft_putendl(msg);
 	exit(type);
 }
 
-int		main(int ac, char **av)
+int						main(int ac, char **av)
 {
-	t_env		e;
-	int		fd;
+	t_env				e;
 
 	if (!basic_err())
 	{
@@ -73,24 +89,13 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	ft_bzero(&e, sizeof(t_env));
-	e.tile_shift = 8;
-	e.argc = ac;
-	e.argv = av;
-	fd = open(av[1], O_RDONLY);
 	if (ac == 2)
 	{
-		if (fd == -1)
-			init(&e);
-		else
-		{
-//			e.parsed = 1;
-			parse_start(&e.data, av[1]);
-			init_from_parser(&e);
-		}
+		launch_init(&e, ac, av);
 		print_man();
 		main_loop(&e);
 	}
 	else
-		ft_putendl("Please give me the name of your map or the name of the map you want to open");
+		ft_putendl("Usage: ./doom-editor mapname or filename of the map");
 	return (0);
 }
