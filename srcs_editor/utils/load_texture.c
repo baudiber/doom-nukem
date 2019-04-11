@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 03:03:27 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:51:24 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		load_wall_texture(t_env *e)
+static void		load_wall_texture(t_env *e)
 {
 	if (!(e->texture.image[5] = SDL_LoadBMP("textures/walls/ROCK.bmp")))
 		exit_error(2, ERR_2);
@@ -30,7 +30,7 @@ void		load_wall_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-void		load_floor_texture(t_env *e)
+static void		load_floor_texture(t_env *e)
 {
 	if (!(e->texture.image[12] = SDL_LoadBMP("textures/floors/JOLI.bmp")))
 		exit_error(2, ERR_2);
@@ -44,7 +44,7 @@ void		load_floor_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-void		load_sprite_texture(t_env *e)
+static void		load_sprite_texture(t_env *e)
 {
 	if (!(e->texture.image[17] = SDL_LoadBMP("textures/editor_textures/player_spawn.bmp")))
 		exit_error(2, ERR_2);
@@ -54,8 +54,26 @@ void		load_sprite_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-void		load_light_texture(t_env *e)
+static void		load_light_texture(t_env *e)
 {
 	if (!(e->texture.image[20] = SDL_LoadBMP("textures/editor_textures/SHADOW.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void		load_texture(t_env *e)
+{
+	load_wall_texture(e);
+	load_floor_texture(e);
+	load_sprite_texture(e);
+	load_light_texture(e);
+	if (!(e->texture.image[0] = SDL_LoadBMP("textures/editor_panel/editeur_panel_mur.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[1] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sol.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[2] = SDL_LoadBMP("textures/editor_panel/editeur_panel_sprites.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[3] = SDL_LoadBMP("textures/editor_panel/editeur_panel_lights.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[4] = SDL_LoadBMP("textures/editor_panel/editeur_panel_event.bmp")))
 		exit_error(2, ERR_2);
 }

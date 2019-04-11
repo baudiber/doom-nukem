@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_from_parser.c                                 :+:      :+:    :+:   */
+/*   init_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/10 17:09:25 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 19:52:26 by roddavid         ###   ########.fr       */
+/*   Created: 2019/04/11 16:40:17 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/11 16:44:32 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void			copy_from_parser(t_env *e)
+static void		copy_from_parser(t_env *e)
 {
 	int		i;
 	int		j;
@@ -40,4 +40,11 @@ void			copy_from_parser(t_env *e)
 			}
 		}
 	}
+}
+
+void		init_from_parser(t_env *e)
+{
+	e->parsed = 1;
+	init(e);
+	copy_from_parser(e);
 }

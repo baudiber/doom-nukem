@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/11 16:18:31 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/11 16:58:47 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,24 +68,23 @@ SRCA			=				main.c								\
 								utils/init_font_and_menus.c	\
 								utils/init_textures.c
 
-SRCB			=				main.c						\
-								init.c						\
-								init_texture.c				\
-								engine_loop.c				\
-								editor.c						\
-								load_texture.c				\
-								draw_grid.c					\
-								draw_panel.c					\
-								draw_panel_text.c			\
-								draw_texture_grid.c			\
-								erase_texture_grid.c			\
-								key_input.c					\
-								key_gridsize.c				\
-								key_panel.c					\
-								key_draw.c					\
-								redraw.c						\
-								saving.c						\
-								copy_from_parser.c			\
+SRCB			=				main.c								\
+								main_loop.c							\
+								utils/init.c						\
+								utils/init_from_parser.c			\
+								utils/init_texture.c				\
+								utils/load_texture.c				\
+								utils/saving.c						\
+								draw/redraw.c						\
+								draw/draw_grid.c					\
+								draw/draw_panel.c					\
+								draw/draw_panel_text.c				\
+								draw/draw_texture_grid.c			\
+								draw/erase_texture_grid.c			\
+								input/key_input.c					\
+								input/key_gridsize.c				\
+								input/key_panel.c					\
+								input/key_draw.c					\
 								parser/parse_scan.c					\
 								parser/parse_stage.c				\
 								parser/parse_tier.c					\
@@ -177,8 +176,10 @@ $(OBJ_DIRA):
 
 $(OBJ_DIRB):
 	@mkdir -p $@
+	@mkdir -p $@/draw
+	@mkdir -p $@/input
 	@mkdir -p $@/parser
-
+	@mkdir -p $@/utils
 
 $(LIBFT):
 	@make -C $(L_FT) --no-print-directory

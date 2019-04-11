@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine_loop.c                                      :+:      :+:    :+:   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 16:17:00 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:49:01 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		wellcome(t_env *e)
+static void		welcome(t_env *e)
 {
 	e->draw[0].text = TTF_RenderText_Solid(e->draw[0].font, "Press     Enter", e->draw[0].white);
 	e->draw[0].position.x = WIN_W / 2 - 390;
@@ -28,7 +28,7 @@ void		wellcome(t_env *e)
 		}
 }
 
-void		engine_loop(t_env *e)
+void		main_loop(t_env *e)
 {
 	while (true)
 	{
@@ -39,17 +39,15 @@ void		engine_loop(t_env *e)
 					&& e->window.event.key.keysym.sym == SDLK_ESCAPE))
 					exit(0);
 			if (e->wellcome_screen == 1)
-				wellcome(e);
+				welcome(e);
 			else
 			{
 				key_input(e);
-				editor(e);
+				draw_grid(e);
 				if (e->wellcome_screen == 0)
 				{
 					e->wellcome_screen = 2;
 					draw_panel_text(e);
-//					draw_panel_tier(e);
-//					draw_panel_grid_size(e);
 					redraw(e);
 					draw_grid(e);
 				}

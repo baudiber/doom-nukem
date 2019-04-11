@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 23:19:37 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:55:13 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		init_grid_var(t_env *e)
+static void		init_grid_var(t_env *e)
 {
 	e->grid.grid_rect.x = PANEL + MARGIN;
 	e->grid.grid_rect.y = MARGIN;
@@ -32,7 +32,7 @@ void		init_grid_var(t_env *e)
 	}
 }
 
-void		init_draw_var(t_env *e)
+static void		init_draw_var(t_env *e)
 {
 	int		i;
 
@@ -58,7 +58,7 @@ void		init_draw_var(t_env *e)
 	}
 }
 
-void		init_sdl(t_env *e)
+static void		init_sdl(t_env *e)
 {
 	SDL_Init(SDL_INIT_VIDEO);
 	TTF_Init();
@@ -71,19 +71,6 @@ void		init_sdl(t_env *e)
 	e->buff = (Uint32 *)e->window.screen->pixels;
 }
 
-void		init_from_parser(t_env *e)
-{
-	e->parsed = 1;
-	ft_memset(e->tab, 0, sizeof(e->tab));
-	init_sdl(e);
-	init_draw_var(e);
-	init_grid_var(e);
-	init_var_texture(e);
-	load_texture(e);
-	copy_texture(e);
-	copy_from_parser(e);
-}
-
 void		init(t_env *e)
 {
 	ft_memset(e->tab, 0, sizeof(e->tab));
@@ -91,6 +78,6 @@ void		init(t_env *e)
 	init_draw_var(e);
 	init_grid_var(e);
 	init_var_texture(e);
-	load_texture(e);
-	copy_texture(e);
+//	load_texture(e);
+//	copy_texture(e);
 }

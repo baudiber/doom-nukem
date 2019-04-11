@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 16:17:06 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:58:07 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-bool				basic_err(void)
+static bool				basic_err(void)
 {
 	int					ret;
 
@@ -62,11 +62,11 @@ int		main(int ac, char **av)
 			init(&e);
 		else
 		{
-			e.parsed = 1;
+//			e.parsed = 1;
 			parse_start(&e.data, av[1]);
 			init_from_parser(&e);
 		}
-		engine_loop(&e);
+		main_loop(&e);
 	}
 	else
 		ft_putendl("Please give me the name of your map or the name of the map you want to open");
