@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 14:46:46 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:15:05 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	init_rects_and_font(t_env *e)
 
 void	load_textures_splash(t_env *e)
 {
-	if (!(e->menu.image[10] = SDL_LoadBMP("textures/load_screen/frame0.bmp")))
+	if (!(e->menu.image[10] = SDL_LoadBMP("textures/load_screen/F0.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[11] = SDL_LoadBMP("textures/load_screen/frame1.bmp")))
+	if (!(e->menu.image[11] = SDL_LoadBMP("textures/load_screen/F1.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[12] = SDL_LoadBMP("textures/load_screen/frame2.bmp")))
+	if (!(e->menu.image[12] = SDL_LoadBMP("textures/load_screen/F2.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[13] = SDL_LoadBMP("textures/load_screen/frame3.bmp")))
+	if (!(e->menu.image[13] = SDL_LoadBMP("textures/load_screen/F3.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[14] = SDL_LoadBMP("textures/load_screen/frame4.bmp")))
+	if (!(e->menu.image[14] = SDL_LoadBMP("textures/load_screen/F4.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[15] = SDL_LoadBMP("textures/load_screen/frame5.bmp")))
+	if (!(e->menu.image[15] = SDL_LoadBMP("textures/load_screen/F5.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[16] = SDL_LoadBMP("textures/load_screen/frame6.bmp")))
+	if (!(e->menu.image[16] = SDL_LoadBMP("textures/load_screen/F6.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->menu.image[17] = SDL_LoadBMP("textures/load_screen/frame7.bmp")))
+	if (!(e->menu.image[17] = SDL_LoadBMP("textures/load_screen/F7.bmp")))
 		exit_error(2, ERR_2);
 }
 
