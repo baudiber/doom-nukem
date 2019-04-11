@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 16:54:29 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 18:17:56 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ static void		copy_texture(t_env *e)
 	e->texture.tex[18] = (unsigned int *)e->texture.image[18]->pixels;
 	e->texture.tex[19] = (unsigned int *)e->texture.image[19]->pixels;
 	e->texture.tex[20] = (unsigned int *)e->texture.image[20]->pixels;
+	e->texture.tex[21] = (unsigned int *)e->texture.image[21]->pixels;
+	e->texture.tex[22] = (unsigned int *)e->texture.image[22]->pixels;
+	e->texture.tex[23] = (unsigned int *)e->texture.image[23]->pixels;
 }
 
 void		init_var_texture(t_env *e)
@@ -48,4 +51,3 @@ void		init_var_texture(t_env *e)
 	copy_texture(e);
 	// WARNING, GIVE THE TEXTURE TO e->texture.texture IN A SIDE MENU
 }
-
