@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:14:28 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 23:41:33 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,13 @@ static void			load_sprite_texture(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-static void			load_light_texture(t_env *e)
+static void			load_light_event_texture(t_env *e)
 {
 	if (!(e->texture.image[23] = SDL_LoadBMP(\
 					"textures/editor_textures/SHADOW.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->texture.image[24] = SDL_LoadBMP(\
+					"textures/editor_textures/DMG.bmp")))
 		exit_error(2, ERR_2);
 }
 
@@ -77,7 +80,7 @@ void				load_texture(t_env *e)
 	load_wall_texture(e);
 	load_floor_texture(e);
 	load_sprite_texture(e);
-	load_light_texture(e);
+	load_light_event_texture(e);
 	if (!(e->texture.image[0] = SDL_LoadBMP(\
 					"textures/editor_panel/editeur_panel_mur.bmp")))
 		exit_error(2, ERR_2);
