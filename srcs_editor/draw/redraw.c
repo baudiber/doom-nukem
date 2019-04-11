@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 21:36:04 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:05:35 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-int					get_number_of_texture(t_env *e)
+static int					get_number_of_texture(t_env *e)
 {
 	if (e->type == 0)
 		return (NWALL);
@@ -37,7 +37,7 @@ unsigned int		*apply_texture(t_env *e)
 		type = 0;
 	else if (e->type == 1)
 		type = NWALL; 	//	type = le nombre de toute les textures avant ce type la si type == 2 \
-					//	alors compter toutes les texture de type 0 et type 1 et les additionner
+	//	alors compter toutes les texture de type 0 et type 1 et les additionner
 	else if (e->type == 2)
 		type = NWALL + NFLOOR;
 	else if (e->type == 3)
@@ -51,7 +51,7 @@ unsigned int		*apply_texture(t_env *e)
 	return (texture);
 }
 
-void				redraw_block(t_env *e, int posx, int posy)
+static void				redraw_block(t_env *e, int posx, int posy)
 {
 	int x;
 	int y;
@@ -69,7 +69,7 @@ void				redraw_block(t_env *e, int posx, int posy)
 		while (++x < ((posx + 1) * e->grid.padx + MARGIN + PANEL))
 		{
 			e->buff[WIN_W * y + x] = texture[((int)e->texture.y * TEX_SIZE) \
-				+ (int)e->texture.x];
+									 + (int)e->texture.x];
 			e->texture.x += e->texture.ratiox;
 		}
 		e->texture.y += e->texture.ratioy;
@@ -96,7 +96,5 @@ void				redraw(t_env *e)
 		}
 	}
 	if (e->window.event.type == SDL_KEYDOWN)
-					draw_panel_text(e);
-//		draw_panel_tier(e);
-//		draw_panel_grid_size(e);
+		draw_panel_text(e);
 }

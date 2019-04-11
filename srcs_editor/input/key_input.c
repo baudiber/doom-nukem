@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 17:37:38 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 16:25:21 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:06:44 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		mouse_click(t_env *e)
+static void		mouse_click(t_env *e)
 {
 	SDL_GetMouseState(&e->grid.mouseposx, &e->grid.mouseposy);
 	if (e->grid.mouseposx >= (MARGIN + PANEL) && e->grid.mouseposx \

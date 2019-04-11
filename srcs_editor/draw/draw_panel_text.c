@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:59:58 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 22:29:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:04:29 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void		draw_panel_tier(t_env *e)
+static void		draw_panel_tier(t_env *e)
 {
 	char		*str;
 
@@ -26,7 +26,7 @@ void		draw_panel_tier(t_env *e)
 	(str) ? ft_strdel(&str) : 0;
 }
 
-void			draw_panel_grid_y(t_env *e)
+static void			draw_panel_grid_y(t_env *e)
 {
 	char			*str;
 
@@ -39,7 +39,7 @@ void			draw_panel_grid_y(t_env *e)
 	(str) ? ft_strdel(&str) : 0;
 }
 
-void			draw_panel_grid_x(t_env *e)
+static void			draw_panel_grid_x(t_env *e)
 {
 	char			*str;
 
