@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 17:20:23 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:59:37 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define FOV 60
 # define WIN_W 800
 # define WIN_H 600
-# define MAX_FPS 60 
+# define MAX_FPS 60
 # define MAX_MAPSIZE 64
 # define UI_Y2 300
 # define TILE_SIZE 256
@@ -74,7 +74,7 @@ typedef struct		s_files
 	unsigned int	*shotgun[6];
 	SDL_Surface		*image[47];
 	SDL_Surface		*skybox;
-	SDL_Surface     *ui_surf;
+	SDL_Surface		*ui_surf;
 }					t_files;
 
 typedef struct		s_data
@@ -252,7 +252,7 @@ typedef struct		s_floor
 	int				x;
 	int				y;
 	int				tex;
-	int 			color;
+	int				color;
 	t_point_int		map;
 	double			dist;
 }					t_floor;
@@ -408,15 +408,19 @@ extern int			thread_nb(t_env *e);
 extern void			draw_sprites(t_env *e, int max_col, int tid);
 extern void			move_player(t_env *e);
 extern void			get_delta(int angle, t_env *e, t_point *new_pos);
-extern void			walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle);
+extern void			walk_forward_and_backward(t_env *e, t_point *new_pos,\
+					int *tmpangle);
 extern void			strafe(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_backward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			crouch_and_jump(t_env *e);
 extern void			mouse_aim(t_env *e);
-extern bool			check_walls(t_env *e, int height, int *offset, int x, int tid);
-extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc, int sprite);
-extern void			get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, int tid);
+extern bool			check_walls(t_env *e, int height, int *offset, int x,\
+					int tid);
+extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
+					int sprite);
+extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
+					t_sprite *sprite, int tid);
 extern void			clip_end(int *end, int y);
 extern void			clip_start(int *start, int *offset);
 extern void			mouse_aim_x(t_env *e);
@@ -437,7 +441,6 @@ extern void			animations(t_env *e);
 extern void			init_ui_structs(t_env *e);
 extern void			draw_scaled(t_env *e, t_draw_scaled *info);
 
-//new doom fts
 extern void			draw_ceilings(t_env *e, int x, int tid);
 extern void			fake_parse(t_env *e);
 extern void			get_player_floor(t_env *e);
