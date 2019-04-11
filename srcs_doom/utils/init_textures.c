@@ -1,0 +1,150 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
+/*   Updated: 2019/04/11 02:19:04 by baudiber         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "doom_nukem.h"
+
+void	load_gun_textures(t_env *e)
+{
+	if (!(e->files.image[17] = SDL_LoadBMP("textures/guns/PISTOL_0.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[18] = SDL_LoadBMP("textures/guns/PISTOL_1.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[19] = SDL_LoadBMP("textures/guns/PISTOL_2.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[20] = SDL_LoadBMP("textures/guns/PISTOL_3.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[21] = SDL_LoadBMP("textures/guns/PISTOL_4.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[22] = SDL_LoadBMP("textures/guns/PISTOL_5.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[23] = SDL_LoadBMP("textures/guns/SHOTGUN_0.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[24] = SDL_LoadBMP("textures/guns/SHOTGUN_1.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[25] = SDL_LoadBMP("textures/guns/SHOTGUN_2.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[26] = SDL_LoadBMP("textures/guns/SHOTGUN_3.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[27] = SDL_LoadBMP("textures/guns/SHOTGUN_4.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[28] = SDL_LoadBMP("textures/guns/SHOTGUN_5.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void	load_ui_textures(t_env *e)
+{
+	if (!(e->files.image[9] = SDL_LoadBMP("textures/UI/FACE.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[10] = SDL_LoadBMP("textures/UI/FACE2.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[11] = SDL_LoadBMP("textures/UI/FACE3.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[12] = SDL_LoadBMP("textures/UI/FACE_S.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[13] = SDL_LoadBMP("textures/UI/FACE_C.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[14] = SDL_LoadBMP("textures/UI/PISTOL_SELEC_NS.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[15] = SDL_LoadBMP("textures/UI/PISTOL_SELEC_S.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[16] = SDL_LoadBMP("textures/UI/SHOTGUN_SELEC.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.ui_surf = SDL_LoadBMP("textures/UI/UI.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void	load_sprite_textures(t_env *e)
+{
+	if (!(e->files.image[7] = SDL_LoadBMP("textures/sprites/SHOTGUN.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[8] = SDL_LoadBMP("textures/sprites/BARREL_0.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[9] = SDL_LoadBMP("textures/sprites/BARREL_1.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[10] = SDL_LoadBMP("textures/sprites/SERGE_BACK.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[11] = SDL_LoadBMP("textures/sprites/SERGE_RIGHT.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[12] = SDL_LoadBMP("textures/sprites/SERGE_LEFT.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[13] = SDL_LoadBMP("textures/sprites/SERGE_FRONT.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[14] = SDL_LoadBMP("textures/sprites/SKULL.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void	load_walls_textures(t_env *e)
+{
+	if (!(e->files.image[0] = SDL_LoadBMP("textures/walls/ROCK.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[1] = SDL_LoadBMP("textures/walls/RUNES.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[2] = SDL_LoadBMP("textures/walls/METAL.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[3] = SDL_LoadBMP("textures/walls/CARVED.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[4] = SDL_LoadBMP("textures/walls/SPLASH.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[5] = SDL_LoadBMP("textures/walls/GRATE.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[6] = SDL_LoadBMP("textures/walls/VENT.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void	load_floor_textures(t_env *e)
+{
+	if (!(e->files.image[35] = SDL_LoadBMP("textures/floors/STONE_TILE.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[36] = SDL_LoadBMP("textures/floors/JOLI.bmp")))
+		exit_error(2, ERR_2);
+		exit_error(2, ERR_2);
+	if (!(e->files.image[37] = SDL_LoadBMP("textures/floors/TROU.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[38] = SDL_LoadBMP("textures/floors/IS_LAVA.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[39] = SDL_LoadBMP("textures/floors/CEILING.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[40] = SDL_LoadBMP("textures/floors/CRACKLED.bmp")))
+		exit_error(2, ERR_2);
+}
+
+void	load_textures(t_env *e)
+{
+	if (!(e->files.skybox = SDL_LoadBMP("textures/skybox.bmp")))
+		exit_error(2, ERR_2);
+	load_walls_textures(e);
+	load_ui_textures(e);
+	load_gun_textures(e);
+	load_sprite_textures(e);
+	load_death_textures(e);
+	//check_textures_size(e);
+	e->files.wall[1] = (unsigned int *)e->files.image[0]->pixels;
+	e->files.wall[2] = (unsigned int *)e->files.image[1]->pixels;
+	e->files.wall[3] = (unsigned int *)e->files.image[2]->pixels;
+	e->files.wall[4] = (unsigned int *)e->files.image[3]->pixels;
+	e->files.wall[5] = (unsigned int *)e->files.image[4]->pixels;
+	e->files.wall[6] = (unsigned int *)e->files.image[5]->pixels;
+	e->files.wall[7] = (unsigned int *)e->files.image[6]->pixels;
+	e->files.floor[0] = (unsigned int *)e->files.image[35]->pixels;
+	e->files.floor[1] = (unsigned int *)e->files.image[36]->pixels;
+	e->files.floor[2] = (unsigned int *)e->files.image[37]->pixels;
+	e->files.floor[3] = (unsigned int *)e->files.image[38]->pixels;
+	e->files.floor[4] = (unsigned int *)e->files.image[39]->pixels;
+	e->files.floor[5] = (unsigned int *)e->files.image[40]->pixels;
+	e->files.sprite[0] = (unsigned int *)e->files.image[13]->pixels;
+	e->files.sprite[1] = (unsigned int *)e->files.image[7]->pixels;
+	e->files.sprite[2] = (unsigned int *)e->files.image[8]->pixels;
+	e->files.sprite[3] = (unsigned int *)e->files.image[9]->pixels;
+	e->files.sprite[4] = (unsigned int *)e->files.image[33]->pixels;
+	rest_of_texture_pointing(e);
+	e->draw.skybox_y = e->horizon - e->files.skybox->h;
+}

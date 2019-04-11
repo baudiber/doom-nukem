@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 21:32:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 02:13:48 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,15 @@
 
 typedef struct		s_files
 {
-	unsigned int	*wall[7];
+	unsigned int	*wall[8];
 	unsigned int	*sprite[9];
-	unsigned int	*floor[4];
+	unsigned int	*floor[6];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[39];
+	SDL_Surface		*image[50];
 	SDL_Surface		*skybox;
 	SDL_Surface     *ui_surf;
 }					t_files;
@@ -438,5 +438,7 @@ extern void			fake_parse(t_env *e);
 extern void			get_player_floor(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
+extern void			load_death_textures(t_env *e);
+extern void			rest_of_texture_pointing(t_env *e);
 
 #endif

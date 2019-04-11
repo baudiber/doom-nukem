@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/10 21:43:31 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:13:16 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define PANEL 440
 # define TIER 5
 # define TEX_SIZE 256
+# define TILE_SIZE 256
 # define MAX_SIZE 64
 
 # define NTEX 8
@@ -150,6 +151,7 @@ typedef	struct		s_env
 	t_data			data;
 	t_sprite		sprites[100];
 	int				tier;
+	int				tile_shift;
 	int				type;
 	unsigned int	tab[5][TIER][MAX_SIZE][MAX_SIZE];
 	int				dif_size;
@@ -208,4 +210,3 @@ extern void				parse_quit(t_data *data, int type, char *msg);
 extern void				exit_error(int type, char *msg);
 
 #endif
-extern
