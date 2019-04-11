@@ -51,12 +51,14 @@ static void			get_sprite_tex(t_env *e, int z, int y, int x)
 	value = (int)e->data.map[DSPRITE][z][y][x] - 97;
 	if (value == 0)
 		e->sprites[e->sprite_nb].tex = 0;
-	if (value == 1)
+	else if (value == 1)
 		e->sprites[e->sprite_nb].tex = 4;
-	if (value == 2)
+	else if (value == 2)
 		e->sprites[e->sprite_nb].tex = 5;
-	if (value == 3)
+	else if (value == 3)
 		e->sprites[e->sprite_nb].tex = 7;
+	else
+		e->sprites[e->sprite_nb].tex = 0;
 }
 
 static void			stock_sprite(int z, int y, int x, t_env *e)
