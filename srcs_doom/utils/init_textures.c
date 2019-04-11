@@ -134,28 +134,29 @@ void	load_textures(t_env *e)
 	e->files.wall[5] = (unsigned int *)e->files.image[32]->pixels;
 	e->files.wall[6] = (unsigned int *)e->files.image[33]->pixels;
 	e->files.wall[7] = (unsigned int *)e->files.image[34]->pixels;
+	e->files.wall[8] = (unsigned int *)e->files.image[35]->pixels;
 	e->files.floor[0] = (unsigned int *)e->files.image[35]->pixels;
 	e->files.floor[1] = (unsigned int *)e->files.image[36]->pixels;
 	e->files.floor[2] = (unsigned int *)e->files.image[37]->pixels;
 	e->files.floor[3] = (unsigned int *)e->files.image[38]->pixels;
 	e->files.floor[4] = (unsigned int *)e->files.image[39]->pixels;
 	e->files.floor[5] = (unsigned int *)e->files.image[40]->pixels;
+	//shotgun
+	e->files.sprite[4] = (unsigned int *)e->files.image[20]->pixels;
+	//barrel
+	e->files.sprite[5] = (unsigned int *)e->files.image[21]->pixels;
+	//barrel 1
+	e->files.sprite[6] = (unsigned int *)e->files.image[22]->pixels;
+	//skull
+	e->files.sprite[7] = (unsigned int *)e->files.image[27]->pixels;
 	//SERGE FRONT 
 	e->files.sprite[0] = (unsigned int *)e->files.image[26]->pixels;
-	//shotgun
-	e->files.sprite[1] = (unsigned int *)e->files.image[20]->pixels;
-	//barrel
-	e->files.sprite[2] = (unsigned int *)e->files.image[21]->pixels;
-	//skull
-	e->files.sprite[3] = (unsigned int *)e->files.image[27]->pixels;
-	//barrel 1
-	e->files.sprite[4] = (unsigned int *)e->files.image[22]->pixels;
 	//serge b
-	e->files.sprite[5] = (unsigned int *)e->files.image[23]->pixels;
+	e->files.sprite[1] = (unsigned int *)e->files.image[23]->pixels;
 	//serge r
-	e->files.sprite[6] = (unsigned int *)e->files.image[24]->pixels;
+	e->files.sprite[2] = (unsigned int *)e->files.image[24]->pixels;
 	//serge l
-	e->files.sprite[7] = (unsigned int *)e->files.image[25]->pixels;
+	e->files.sprite[3] = (unsigned int *)e->files.image[25]->pixels;
 	//death anim
 	e->files.sprite[8] = (unsigned int *)e->files.image[41]->pixels;
 	e->files.sprite[9] = (unsigned int *)e->files.image[42]->pixels;

@@ -64,7 +64,7 @@
 
 typedef struct		s_files
 {
-	unsigned int	*wall[8];
+	unsigned int	*wall[9];
 	unsigned int	*sprite[13];
 	unsigned int	*floor[6];
 	unsigned int	*ui;
@@ -263,10 +263,14 @@ typedef struct		s_angles
 	int				a_5;
 	int				a_half_fov;
 	int				a_40;
+	int				a_45;
 	int				a_90;
 	int				a_140;
+	int				a_135;
 	int				a_180;
 	int				a_270;
+	int				a_225;
+	int				a_315;
 	int				a_360;
 }					t_angles;
 

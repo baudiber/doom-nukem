@@ -64,7 +64,7 @@ bool	check_walls(t_env *e, int height, int *offset, int x, int tid)
 
 /*
 ** t.y = dist of the Sprite from the Player
-** S		- t.y
+** S		-   t.y
 **  		|
 **  		|
 **      	|
@@ -84,8 +84,9 @@ void	sprite_rotation(t_env *e, t_sprite_calculation *calc, int nb)
 	calc->t.y = calc->r.x * e->cos_table[e->player.angle] \
 	+ calc->r.y * e->sin_table[e->player.angle];
 	e->sprites[nb].dist = calc->t.y;
-	if (fabs(calc->t.x) < spread && e->ui.weapon_fired && !e->sprites[nb].dead && !e->sprites[nb].tex)
-		e->sprites[nb].dead = 4;
+	if (fabs(calc->t.x) < spread && e->ui.weapon_fired && !e->sprites[nb].dead \
+			&& e->sprites[nb].tex < 4)
+		e->sprites[nb].dead = 8;
 	calc->height = TILE_SIZE * e->player.plane_dist / calc->t.y;
 	e->sprites[nb].height = calc->height;
 	calc->screen_x = (WIN_W / 2 - calc->t.x / TILE_SIZE * calc->height);

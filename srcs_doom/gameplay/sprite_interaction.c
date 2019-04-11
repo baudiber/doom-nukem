@@ -16,7 +16,7 @@ void			pick_up_obj(t_env *e, int nb)
 {
 	int		range;
 
-	if (e->sprites[nb].tex != 1 || !e->sprites[nb].visible)
+	if (e->sprites[nb].tex != 4 || !e->sprites[nb].visible)
 		return;
 	range = TILE_SIZE * 0.75;
 	if ((fabs(e->sprites[nb].x - e->player.pos.x) < range) \
