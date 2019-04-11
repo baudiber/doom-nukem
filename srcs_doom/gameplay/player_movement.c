@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 14:19:25 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:00:44 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,19 @@ void			get_delta(int angle, t_env *e, t_point *new_pos)
 	new_pos->y += e->sin_table[angle] * (e->player.speed * e->time.delta_time);
 }
 
-void			get_jump_pos(t_env *e, t_point *new_pos)
+void			get_jump_pos(t_env *e, t_point *new_pos, double *fall_time)
 {
-	static double fall_time;
 	float g;
 	g = 9;
-	if (e->player.falling && fall_time <= 0.20)
+	if (e->player.falling)
 	{
-		fall_time += e->time.frame_time;
-		e->player.height -= 18;
+		*fall_time += e->time.frame_time;
+		e->player.height += -0.5 * g * pow(*fall_time, 2) + \
+			*fall_time * (e->player.speed * 5) * e->sin_table[e->angle.a_270];
 	}
+//	if (e->player.falling)
+//		e->player.height -= 5;
 //	printf("player height = %d\nfloorheight = %d\n", e->player.height, (WALL_HEIGHT / 2) * (e->player.floor + 1));
-	else
-	{
-		e->player.height += -0.5 * g * pow(e->time.delta_time, 2) + \
-			e->time.delta_time * e->player.speed * e->sin_table[e->angle.a_270];
-	}
-	if (e->player.height <= e->player.dist_to_floor)
-		fall_time = 0;
-//	printf("%d\n", e->player.falling);
 	get_delta(e->player.angle, e, new_pos);
 }
 
@@ -80,16 +74,15 @@ void			collision(t_env *e, t_point *new_pos)
 void	jump_anim(t_env *e)
 {
 	static double	jump_time;
-
+	printf ("ceil height = %d\n player height= %d\n", (e->player.floor + 1) * TILE_SIZE, e->player.height);
 	//printf("floor_height = %d\nplayer_height = %d\n", (e->player.floor + 1) << e->tile_shift, e->player.height);
-	if (e->player.jumping && jump_time <= 0.25)
+	if (e->player.jumping && jump_time <= 0.25 )
 	{
 		jump_time += e->time.frame_time;
-		e->player.height += (e->player.speed) * e->time.delta_time;
+		e->player.height += (e->player.speed + 3) * e->time.delta_time;
 	}
 	else
 	{
-		e->player.falling = 1;
 		e->player.jumping = 0;
 		jump_time = 0;
 	}
@@ -98,13 +91,7 @@ void	jump_anim(t_env *e)
 void	get_floor_dist(t_env *e)
 {
 //	printf("player floor = %d\n", e->player.floor);
-	if (e->player.floor && e->data.map[DWALL][e->player.floor - 1][(int)\
-		(e->player.pos.y - 32) >>e->tile_shift][e->player.map.x] \
-		&& e->data.map[DWALL][e->player.floor - 1][(int)(e->player.pos.y + 32) \
-		>> e->tile_shift][e->player.map.x] && e->data.map[DWALL]\
-		[e->player.floor - 1][e->player.map.y][(int)(e->player.pos.x - 32) \
-		>> e->tile_shift] && e->data.map[DWALL][e->player.floor - 1]\
-		[e->player.map.y][(int)(e->player.pos.x + 32) >> e->tile_shift])
+	if (e->player.map.x && e->player.map.y && e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x])
 	{
 //		printf("posy = %d\nposx=%d\n", (int)(e->player.pos.y + 32) >> e->tile_shift, (int)e->player.pos.x >> e->tile_shift);
 //		printf("mapy = %d\nmapx=%d\n", e->player.map.y, e->player.map.x);
@@ -134,11 +121,17 @@ void			move_player(t_env *e)
 {
 	int			tmpangle;
 	t_point		new_pos;
+	static double fall_time;
 
 	new_pos = e->player.pos;
 //	printf("%f\n", e->player.pos.x);
 	if (e->player.height <= e->player.dist_to_floor)
+	{
 		e->player.falling = 0;
+		e->player.height = e->player.dist_to_floor;
+	}
+	else
+		e->player.falling = 1;
 //	printf("%d\n", e->player.falling);
 	get_floor_dist(e);
 	if (e->state[SDL_SCANCODE_LSHIFT])
@@ -153,7 +146,9 @@ void			move_player(t_env *e)
 		crouch_and_jump(e);
 	jump_anim(e);
 	if (!e->player.jumping && e->player.height > e->player.dist_to_floor)
-		get_jump_pos(e, &new_pos);
+		get_jump_pos(e, &new_pos, &fall_time);
+	else
+		fall_time = 0;
 	if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_W] \
 			|| e->state[SDL_SCANCODE_S] || e->state[SDL_SCANCODE_D])
 		e->player.moving = true;
