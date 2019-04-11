@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 00:00:40 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 00:47:05 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,12 +167,16 @@ void			move_player(t_env *e)
 
 void			mouse_aim(t_env *e)
 {
-	mouse_aim_x(e);
-	mouse_aim_y(e);
-//	if (e->player.angle >= e->angle.a_360)
-//		e->player.angle -= e->angle.a_360;
-//	if (e->player.angle < 0)
-//		e->player.angle = e->angle.a_360 + e->player.angle;
+	int			x;
+	int			y;
+
+	SDL_GetRelativeMouseState(&x, &y);
+	e->player.angle += x * 2;
+	e->draw.skybox_x -= x * 2;
+	e->horizon -= y * 2;
+	e->draw.skybox_y -= y * 2;
+//	mouse_aim_x(e);
+//	mouse_aim_y(e);
 	angle_overflow(&e->player.angle, e);
 	if (e->draw.skybox_x > 1199)
 		e->draw.skybox_x = 0;

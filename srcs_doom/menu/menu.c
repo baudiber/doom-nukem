@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:55:17 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 00:20:07 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,8 @@ void	ft_menu(t_env *e)
 			ft_menu_2(e, ev);
 		}
 	}
-	SDL_ShowCursor(SDL_DISABLE);
+	if (!(SDL_SetRelativeMouseMode(SDL_TRUE) == 0))
+		exit_error(17, ERR_7);
+//	SDL_ShowCursor(SDL_DISABLE);
+	SDL_ShowCursor(SDL_ENABLE);
 }
