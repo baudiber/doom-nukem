@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 14:19:25 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 00:00:40 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,10 +169,11 @@ void			mouse_aim(t_env *e)
 {
 	mouse_aim_x(e);
 	mouse_aim_y(e);
-	if (e->player.angle >= e->angle.a_360)
-		e->player.angle -= e->angle.a_360;
-	if (e->player.angle < 0)
-		e->player.angle = e->angle.a_360 + e->player.angle;
+//	if (e->player.angle >= e->angle.a_360)
+//		e->player.angle -= e->angle.a_360;
+//	if (e->player.angle < 0)
+//		e->player.angle = e->angle.a_360 + e->player.angle;
+	angle_overflow(&e->player.angle, e);
 	if (e->draw.skybox_x > 1199)
 		e->draw.skybox_x = 0;
 	else if (e->draw.skybox_x < 0)
