@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 14:43:26 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:20:23 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -447,5 +447,6 @@ extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
 extern void			load_textures_splash(t_env *e);
 extern void			load_textures_menu(t_env *e);
+extern void			wasted(t_env *e);
 
 #endif
