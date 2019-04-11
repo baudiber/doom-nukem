@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:22:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 17:03:37 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:26:45 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		draw_outline_grid(t_env *e)
 	}
 }
 
-void		refresh_grid_var(t_env *e)
+void			refresh_grid_var(t_env *e)
 {
 	e->grid.padx = (WIN_W - (MARGIN * 2) - PANEL) / (float)e->grid.x;
 	e->grid.pady = (WIN_H - (MARGIN * 2)) / (float)e->grid.y;
@@ -68,9 +68,9 @@ void		refresh_grid_var(t_env *e)
 	e->grid.countpady = 1;
 }
 
-void		draw_grid(t_env *e)
+void			draw_grid(t_env *e)
 {
-	//SI VAR BOUGE PAS, NE PAS REFRESH
+//	SI VAR BOUGE PAS, NE PAS REFRESH
 	refresh_grid_var(e);
 	draw_outline_grid(e);
 	draw_line_in_grid(e);

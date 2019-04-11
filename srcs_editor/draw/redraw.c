@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 17:05:35 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:38:15 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,36 @@ static int					get_number_of_texture(t_env *e)
 		return (0);
 }
 
-unsigned int		*apply_texture(t_env *e)
+unsigned int				*apply_texture(t_env *e)
 {
-	unsigned int	*texture;
-	int				type;
+	int						type;
+	unsigned int			*texture;
 
 	if (e->type == 0)
 		type = 0;
 	else if (e->type == 1)
-		type = NWALL; 	//	type = le nombre de toute les textures avant ce type la si type == 2 \
-	//	alors compter toutes les texture de type 0 et type 1 et les additionner
+		type = NWALL;
+//	type = le nombre de toute les textures avant ce type la si type == 2 \
+//	alors compter toutes les texture de type 0 et type 1 et les additionner
 	else if (e->type == 2)
 		type = NWALL + NFLOOR;
 	else if (e->type == 3)
 		type = NWALL + NFLOOR + NSPRITE;
 	else if (e->type == 4)
 		type = NWALL + NFLOOR + NSPRITE + NLIGHT;
-	if (e->texture.texture >= 1 && e->texture.texture <= (get_number_of_texture(e)))
+	if (e->texture.texture >= 1 \
+			&& e->texture.texture <= (get_number_of_texture(e)))
 		texture = e->texture.tex[e->texture.texture + 4 + type];
 	else
 		texture = NULL;
 	return (texture);
 }
 
-static void				redraw_block(t_env *e, int posx, int posy)
+static void					redraw_block(t_env *e, int posx, int posy)
 {
-	int x;
-	int y;
-	unsigned int *texture;
+	int						x;
+	int						y;
+	unsigned int			*texture;
 
 	e->texture.y = 0;
 	texture = apply_texture(e);
@@ -69,19 +71,21 @@ static void				redraw_block(t_env *e, int posx, int posy)
 		while (++x < ((posx + 1) * e->grid.padx + MARGIN + PANEL))
 		{
 			e->buff[WIN_W * y + x] = texture[((int)e->texture.y * TEX_SIZE) \
-									 + (int)e->texture.x];
+				+ (int)e->texture.x];
 			e->texture.x += e->texture.ratiox;
 		}
 		e->texture.y += e->texture.ratioy;
 	}
 }
 
-void				redraw(t_env *e)
+void						redraw(t_env *e)
 {
 	int x;
 	int y;
 
+	// ERROR SDL
 	SDL_FillRect(e->window.screen, &e->grid.grid_rect, 0xE0E0E0);
+	// FU
 	y = -1;
 	while (++y < e->grid.y)
 	{
