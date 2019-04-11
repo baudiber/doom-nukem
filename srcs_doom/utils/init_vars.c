@@ -60,9 +60,13 @@ static void				set_angle(t_env *e)
 	e->angle.a_2 = ((double)WIN_W / FOV) * 2;
 	e->angle.a_half_fov = ((double)WIN_W / 2);
 	e->angle.a_40 = ((double)WIN_W / FOV) * 40;
+	e->angle.a_45 = ((double)WIN_W / FOV) * 45;
 	e->angle.a_90 = ((double)WIN_W / FOV) * 90;
 	e->angle.a_140 = ((double)WIN_W / FOV) * 140;
+	e->angle.a_135 = ((double)WIN_W / FOV) * 135;
 	e->angle.a_180 = ((double)WIN_W / FOV) * 180;
+	e->angle.a_225 = ((double)WIN_W / FOV) * 225;
+	e->angle.a_315 = ((double)WIN_W / FOV) * 315;
 	e->angle.a_270 = ((double)WIN_W / FOV) * 270;
 	e->angle.a_360 = ((double)WIN_W / FOV) * 360;
 }

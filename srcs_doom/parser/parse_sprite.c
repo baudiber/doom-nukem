@@ -37,9 +37,31 @@ static bool			count_sprite(t_data *data)
 	return (ret < 100) ? true : false;
 }
 
+/*
+** SERGE ED   = 0  ----->   SERGE INGAME   = 0
+** SHOTGUN ED = 1  ----->   SHOTGUN INGAME = 4
+** BARREL ED  = 2  ----->   BARREL INGAME  = 5
+** SKULL ED   = 3  ----->   SKULL INGAME   = 7
+*/
+
+static void			get_sprite_tex(t_env *e, int z, int y, int x)
+{
+	int		value;
+
+	value = (int)e->data.map[DSPRITE][z][y][x] - 97;
+	if (value == 0)
+		e->sprites[e->sprite_nb].tex = 0;
+	if (value == 1)
+		e->sprites[e->sprite_nb].tex = 4;
+	if (value == 2)
+		e->sprites[e->sprite_nb].tex = 5;
+	if (value == 3)
+		e->sprites[e->sprite_nb].tex = 7;
+}
+
 static void			stock_sprite(int z, int y, int x, t_env *e)
 {
-	e->sprites[e->sprite_nb].tex = (int)e->data.map[DSPRITE][z][y][x] - 97;
+	get_sprite_tex(e, z, y, x);	
 	e->sprites[e->sprite_nb].y = (y + 0.5) * TILE_SIZE;
 	e->sprites[e->sprite_nb].x = (x + 0.5) * TILE_SIZE;
 	e->sprites[e->sprite_nb].z = z << e->tile_shift;

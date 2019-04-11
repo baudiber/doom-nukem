@@ -12,7 +12,7 @@
 
 #include "doom_nukem.h"
 
-void	draw_visible(t_env *e, t_sprite *sprite, int tid)
+static void		draw_visible(t_env *e, t_sprite *sprite, int tid)
 {
 	t_sprite_draw	draw;
 	int				x;
@@ -40,7 +40,7 @@ void	draw_visible(t_env *e, t_sprite *sprite, int tid)
 	}
 }
 
-void	sort_sprites(t_env *e, t_sprite *farthest, int visnb, t_sprite *ptr, int tid)
+static void		sort_sprites(t_env *e, t_sprite *farthest, int visnb, t_sprite *ptr, int tid)
 {
 	int			height;
 	int			biggest;
@@ -69,18 +69,34 @@ void	sort_sprites(t_env *e, t_sprite *farthest, int visnb, t_sprite *ptr, int ti
 	}
 }
 
-void	change_tex(t_env *e, int nb)
+static void		change_tex(t_env *e, int nb)
 {
-	if (e->sprites[nb].tex == 2 || e->sprites[nb].tex == 3)
-		e->sprites[nb].tex = 2 + e->barrel_tick;
-	if (e->sprites[nb].dead && e->sprites[nb].dead < 8)
+	if (e->sprites[nb].dead && e->sprites[nb].dead < 12)
 	{
 		e->sprites[nb].dead += 0.1;
 		e->sprites[nb].tex = (int)e->sprites[nb].dead;
 	}
 }
 
-void	draw_sprites(t_env *e, int max_col, int tid)
+static void		change_tex_when_vis(t_env *e, int nb)
+{
+	if (e->sprites[nb].tex == 5 || e->sprites[nb].tex == 6)
+		e->sprites[nb].tex = 5 + e->barrel_tick;
+	if (e->sprites[nb].tex < 4)
+	{
+		if (e->player.angle >= e->angle.a_135 && e->player.angle < e->angle.a_225)
+			e->sprites[nb].tex = 2;
+		else if (e->player.angle >= e->angle.a_225 && e->player.angle < e->angle.a_315)
+			e->sprites[nb].tex = 0;
+		else if (e->player.angle >= e->angle.a_45 && e->player.angle < e->angle.a_135)
+			e->sprites[nb].tex = 1;
+		else
+			e->sprites[nb].tex = 3;
+	}
+
+}
+
+void			draw_sprites(t_env *e, int max_col, int tid)
 {
 	t_sprite				visible[MAX_VISIBLE_SPRITE];
 	t_sprite				*ptr;
@@ -108,6 +124,7 @@ void	draw_sprites(t_env *e, int max_col, int tid)
 			if (calc.screen_x > max_col || calc.screen_x \
 				< max_col - e->thread_col_size)
 				continue;
+			change_tex_when_vis(e, sprite);
 			++visnb;
 			*ptr++ = e->sprites[sprite];
 		}
