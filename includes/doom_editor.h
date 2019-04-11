@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 03:03:12 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:17:55 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,6 @@ typedef struct		s_data
 	unsigned int	map[5][5][64][64];
 }					t_data;
 
-typedef struct		s_sprite
-{
-	int				tex;
-	bool			visible;
-	double			dead;
-	int				x;
-	int				y;
-	int				z;
-	int				floor;
-	double			dist;
-	int				height;
-	int				screen_x;
-}					t_sprite;
-
 typedef struct		s_draw
 {
 	SDL_Rect		position;
@@ -149,7 +135,6 @@ typedef	struct		s_env
 	t_grid			grid;
 	t_texture		texture;
 	t_data			data;
-	t_sprite		sprites[100];
 	int				tier;
 	int				tile_shift;
 	int				type;
@@ -158,7 +143,6 @@ typedef	struct		s_env
 	void			(*f[5])(struct s_env *e);
 	int				panel_index;
 	int				argc;
-	int				sprite_nb;
 	char			**argv;
 }					t_env;
 
@@ -205,7 +189,6 @@ extern void				parse_tier(t_data *data);
 extern void				parse_stage(t_data *data);
 extern void				parse_stock(int y, int x, t_data *data, char *cell);
 extern void				parse_pos(t_data *data);
-extern void				parse_sprite(t_env *e);
 extern void				parse_quit(t_data *data, int type, char *msg);
 extern void				exit_error(int type, char *msg);
 

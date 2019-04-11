@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/11 02:04:23 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/11 16:18:31 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,6 @@ SRCB			=				main.c						\
 								parser/parse_stage.c				\
 								parser/parse_tier.c					\
 								parser/parse_stock.c				\
-								parser/parse_sprite.c				\
 								parser/parse_utils.c				\
 
 OBJA				:=			$(addprefix $(OBJ_DIRA)/,$(SRCA:.c=.o))
