@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 17:27:03 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:28:32 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void			pick_up_obj(t_env *e, int nb)
 		else if (e->sprites[nb].tex == 13 && e->ui.trumpet)
 		{
 			Mix_PlayChannel(-1, e->sound.sound4, 0);
+			e->player.win = true;
 			end_game(e, "YOU WIN");
 		}
 		else if (e->sprites[nb].tex == 7)
