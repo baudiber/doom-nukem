@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:50:24 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 05:16:13 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:31:54 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,9 @@ void	fly_mode(t_env * e)
 void	crouch_and_jump(t_env *e)
 {
 	if ((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY))
-	{
-		e->player.height /= 2;
-	}
+		e->player.height -= 64;
 	if (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_FLY))
-	{
 		e->player_state |= IS_JUMPING;
-	}
 }
 
 void	walk_forward_and_backward(t_env *e, t_point *new_pos, int *tmpangle)
