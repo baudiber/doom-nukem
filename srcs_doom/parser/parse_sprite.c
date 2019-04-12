@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 01:31:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 05:46:08 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ static bool			count_sprite(t_data *data)
 }
 
 /*
-** SERGE ED   = 0  ----->   SERGE INGAME   = 0
-** SHOTGUN ED = 1  ----->   SHOTGUN INGAME = 4
-** BARREL ED  = 2  ----->   BARREL INGAME  = 5
-** TRUMPET ED = 3  ----->   TRUMPET INGAME = 7
+** SERGE ED    = 0  ----->   SERGE INGAME    = 0
+** SHOTGUN ED  = 1  ----->   SHOTGUN INGAME  = 4
+** BARREL ED   = 2  ----->   BARREL INGAME   = 5
+** TRUMPET ED  = 3  ----->   TRUMPET INGAME  = 7
+** SKELETOR ED = 4  ----->   SKELETOR INGAME = 13
 */
 
 static void			get_sprite_tex(t_env *e, int z, int y, int x)
@@ -57,6 +58,8 @@ static void			get_sprite_tex(t_env *e, int z, int y, int x)
 		e->sprites[e->sprite_nb].tex = 5;
 	else if (value == 3)
 		e->sprites[e->sprite_nb].tex = 7;
+	else if (value == 4)
+		e->sprites[e->sprite_nb].tex = 13;
 	else
 		e->sprites[e->sprite_nb].tex = 0;
 }
@@ -87,7 +90,7 @@ static void			scan_sprite(t_env *e, t_data *data)
 			x = -1;
 			while (++x < data->max_x)
 			{
-				if (ft_strnchr("abcd", (int)data->map[DSPRITE][z][y][x]) > 0)
+				if (ft_strnchr("abcde", (int)data->map[DSPRITE][z][y][x]) > 0)
 					(e->sprite_nb < 100) ? stock_sprite(z, y, x, e) : 0;
 			}
 		}

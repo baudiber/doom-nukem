@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 04:37:52 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:23:32 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
-# define MAX_THREADS 4
+# define MAX_THREADS 1
 # define MAX_VISIBLE_SPRITE 30
 # define MAX_FLOORS 6
 
@@ -44,7 +44,6 @@
 # define DEVENT 4
 
 # define END_GAME 1
-# define CONSOLE 2
 
 # define ERR_BASE "Usage: ./doom-nukem map"
 # define ERR_0 "Error: Can not open given file"
@@ -68,14 +67,14 @@
 typedef struct		s_files
 {
 	unsigned int	*wall[9];
-	unsigned int	*sprite[13];
+	unsigned int	*sprite[14];
 	unsigned int	*floor[6];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[48];
+	SDL_Surface		*image[49];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
 }					t_files;

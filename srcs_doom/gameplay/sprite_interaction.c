@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 05:16:36 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:09:50 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void			pick_up_obj(t_env *e, int nb)
 {
 	int		range;
 
-	if ((e->sprites[nb].tex != 4 && e->sprites[nb].tex != 7) \
-		|| !e->sprites[nb].visible)
+	if ((e->sprites[nb].tex != 4 && e->sprites[nb].tex != 7 \
+		&& e->sprites[nb].tex != 13)|| !e->sprites[nb].visible)
 		return;
 	range = TILE_SIZE * 0.75;
 	if ((fabs(e->sprites[nb].x - e->player.pos.x) < range) \
@@ -25,15 +25,20 @@ void			pick_up_obj(t_env *e, int nb)
 			&& e->sprites[nb].floor == e->player.floor)
 	{
 		Mix_PlayChannel(-1, e->sound.sound4, 0);
-		e->sprites[nb].visible = false;
 		if (e->sprites[nb].tex == 4)
 		{
 //			e->inv_info.index = e->ui.weapon ? 2 : 1;
 			e->inv_info.index = 2;
+			e->sprites[nb].visible = false;
 			e->ui.weapon = (e->ui.weapon == 0) ? 2 : e->ui.weapon;
 		}
-		else
+		else if (e->sprites[nb].tex == 13 && e->ui.trumpet)
+			end_game(e, "YOU WIN");
+		else if (e->sprites[nb].tex == 7)
+		{
+			e->sprites[nb].visible = false;
 			e->ui.trumpet = true;
+		}
 	}
 }
 

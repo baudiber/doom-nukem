@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 03:08:04 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:39:49 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ static void		renderer(t_env *e)
 	if (e->horizon > 0)
 //		draw_scaled(e, &e->skybox);
 	display_skybox(e);
+	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	multithreaded_render(e);
+	printf("ptdr\n");
 	draw_ui(e);
 	/*
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
@@ -107,6 +109,8 @@ void			engine_loop(t_env *e)
 				}
 				(e->event.type == SDL_MOUSEMOTION) ? mouse_aim(e) : 0;
 			}
+			if (!e->menu.check)
+				ft_menu(e);
 			world_interaction(e);
 			renderer(e);
 		}
