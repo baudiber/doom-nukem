@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:22:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:26:45 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:23:48 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void			refresh_grid_var(t_env *e)
 
 void			draw_grid(t_env *e)
 {
-//	SI VAR BOUGE PAS, NE PAS REFRESH
 	refresh_grid_var(e);
 	draw_outline_grid(e);
 	draw_line_in_grid(e);

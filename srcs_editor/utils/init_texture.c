@@ -6,11 +6,20 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/14 17:09:14 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 05:51:32 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:21:40 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
+
+static void			next_copy(t_env *e)
+{
+	e->texture.tex[21] = (unsigned int *)e->texture.image[21]->pixels;
+	e->texture.tex[22] = (unsigned int *)e->texture.image[22]->pixels;
+	e->texture.tex[23] = (unsigned int *)e->texture.image[23]->pixels;
+	e->texture.tex[24] = (unsigned int *)e->texture.image[24]->pixels;
+	e->texture.tex[25] = (unsigned int *)e->texture.image[25]->pixels;
+}
 
 static void			copy_texture(t_env *e)
 {
@@ -35,11 +44,7 @@ static void			copy_texture(t_env *e)
 	e->texture.tex[18] = (unsigned int *)e->texture.image[18]->pixels;
 	e->texture.tex[19] = (unsigned int *)e->texture.image[19]->pixels;
 	e->texture.tex[20] = (unsigned int *)e->texture.image[20]->pixels;
-	e->texture.tex[21] = (unsigned int *)e->texture.image[21]->pixels;
-	e->texture.tex[22] = (unsigned int *)e->texture.image[22]->pixels;
-	e->texture.tex[23] = (unsigned int *)e->texture.image[23]->pixels;
-	e->texture.tex[24] = (unsigned int *)e->texture.image[24]->pixels;
-	e->texture.tex[25] = (unsigned int *)e->texture.image[25]->pixels;
+	next_copy(e);
 }
 
 void				init_var_texture(t_env *e)
