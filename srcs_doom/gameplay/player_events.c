@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 18:23:53 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 21:09:32 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	end_game(t_env *e, char *msg)
 	pt.y = e->render_limit * 0.5 - 20;
 	i = 1;
 	i = -1;
-	while (++i < (WIN_W * WIN_W))
-		e->buff[i] = (e->buff[i] >> 1) & 8355711;
+//	while (++i < (WIN_W * WIN_W))
+//		e->buff[i] = (e->buff[i] >> 1) & 8355711;
 	draw_text(e, pt, END_GAME, msg);
 	SDL_UpdateWindowSurface(e->win);
 	sleep(3);
