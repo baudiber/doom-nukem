@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 21:41:12 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 04:51:05 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ double					angle_to_deg(int angle, t_env *e)
 void					init_sdl(t_env *e)
 {
 	SDL_Init(SDL_INIT_VIDEO);
-	SDL_ShowCursor(SDL_DISABLE);
 	TTF_Init();
 	if (!(e->win = SDL_CreateWindow("Doom-nukem", SDL_WINDOWPOS_CENTERED, \
 					SDL_WINDOWPOS_CENTERED, WIN_W, WIN_H, \
 					SDL_WINDOW_INPUT_GRABBED)))
 		exit_error(17, ERR_7);
 	if (!(e->screen = SDL_GetWindowSurface(e->win)))
+		exit_error(17, ERR_7);
+
+	if (!(SDL_SetRelativeMouseMode(SDL_TRUE) == 0))
 		exit_error(17, ERR_7);
 	e->buff = (Uint32 *)e->screen->pixels;
 }
@@ -50,4 +52,5 @@ void					init_player(t_env *e)
 	e->player.angle = 1;
 	e->floor_nb = e->data.tier_ind + 1;
 	e->player.hp = 100;
+	// re init inventaire
 }

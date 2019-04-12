@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 23:36:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 01:31:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static bool			count_sprite(t_data *data)
 ** SERGE ED   = 0  ----->   SERGE INGAME   = 0
 ** SHOTGUN ED = 1  ----->   SHOTGUN INGAME = 4
 ** BARREL ED  = 2  ----->   BARREL INGAME  = 5
-** SKULL ED   = 3  ----->   SKULL INGAME   = 7
+** TRUMPET ED = 3  ----->   TRUMPET INGAME = 7
 */
 
 static void			get_sprite_tex(t_env *e, int z, int y, int x)
@@ -87,7 +87,7 @@ static void			scan_sprite(t_env *e, t_data *data)
 			x = -1;
 			while (++x < data->max_x)
 			{
-				if (ft_strnchr("abc", (int)data->map[DSPRITE][z][y][x]) > 0)
+				if (ft_strnchr("abcd", (int)data->map[DSPRITE][z][y][x]) > 0)
 					(e->sprite_nb < 100) ? stock_sprite(z, y, x, e) : 0;
 			}
 		}

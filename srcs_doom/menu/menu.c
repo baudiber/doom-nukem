@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:55:17 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 04:33:46 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)
 		{
 			e->menu.i_img = 0;
 			if (ev.button.button == SDL_BUTTON_LEFT)
+			{
+				restart(e);
 				e->menu.check = 1;
+			}
+
 		}
 		mouse_menu_2(e, y, ev);
 	}
@@ -104,5 +108,8 @@ void	ft_menu(t_env *e)
 			ft_menu_2(e, ev);
 		}
 	}
-	SDL_ShowCursor(SDL_DISABLE);
+	if (!(SDL_SetRelativeMouseMode(SDL_TRUE) == 0))
+		exit_error(17, ERR_7);
+//	SDL_ShowCursor(SDL_DISABLE);
+	SDL_ShowCursor(SDL_ENABLE);
 }

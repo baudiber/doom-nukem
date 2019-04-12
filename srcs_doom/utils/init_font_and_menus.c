@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 20:15:05 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 03:44:22 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	init_rects_and_font(t_env *e)
 {
-	if (!(e->draw.font = TTF_OpenFont("font/BEBAS.ttf", 24)))
+	if (!(e->draw.font_hp = TTF_OpenFont("font/BEBAS.ttf", 50)))
 		exit_error(2, ERR_2);
-	e->draw.white.a = 0;
+	if (!(e->draw.font_end_game = TTF_OpenFont("font/BEBAS.ttf", 75)))
+		exit_error(2, ERR_2);
 	e->draw.white.r = 255;
 	e->draw.white.g = 255;
 	e->draw.white.b = 255;
+	e->draw.red.r = 255;
 }
 
 void	load_textures_splash(t_env *e)

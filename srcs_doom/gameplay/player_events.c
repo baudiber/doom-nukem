@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_events.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 21:52:13 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 05:22:47 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,50 @@ void	floor_is_lava(t_env *e)
 		lava_tick += e->time.frame_time;
 		if (lava_tick > 1.0)
 		{
-			e->player.hp -= 20;
+			e->player.hp -= 50;
 			lava_tick = 0;
 		}
 	}
 	else
 		lava_tick = 0;
 	if (e->player.hp <= 0)
-		wasted(e);
+		end_game(e, "WASTED");
 }
 
-void	wasted(t_env *e)
+void	restart(t_env *e)
 {
-	//e->player.state  = dead
-	/*
 	int		i;
 
 	i = -1;
-	while (++i < (WIN_W * WIN_W))
+	re_init_map(&e->data);
+	init_player(e);
+	e->horizon = 0;
+	e->draw.skybox_y = e->horizon - e->files.skybox->h;
+	e->ui.weapon = 0;
+	e->ui.trumpet = 0;
+	e->inv_info.index = 0;
+	while (++i < e->sprite_nb)
 	{
-		e->buff[i] = (e->buff[i] >> 1) & 8355711;
+		if (e->sprites[i].tex > 7 && e->sprites[i].tex < 13)
+			e->sprites[i].tex = 0;
+		e->sprites[i].dead = 0;
+		e->sprites[i].visible = true;
 	}
-	*/
+}
+
+void	end_game(t_env *e, char *msg)
+{
+	int		i;
+	t_point	pt;
+
+	pt.x = WIN_W * 0.5 - 120;
+	pt.y = e->render_limit * 0.5;
+	draw_text(e, pt, END_GAME, msg);
+	i = -1;
+	while (++i < (WIN_W * WIN_W))
+		e->buff[i] = (e->buff[i] >> 1) & 8355711;
+	SDL_UpdateWindowSurface(e->win);
+	sleep(3);
 	e->menu.check = 0;
-	ft_menu(e);	
+	ft_menu(e);
 }

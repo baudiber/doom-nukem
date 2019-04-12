@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/11 22:01:00 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/12 03:22:59 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,12 @@ SRCA			=				main.c										\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
 								gameplay/player_events.c					\
+								gameplay/draw_text.c						\
 								parser/parse_scan.c							\
 								parser/parse_stage.c						\
 								parser/parse_tier.c							\
 								parser/parse_stock.c						\
+								parser/parse_copy.c							\
 								parser/parse_sprite.c						\
 								parser/parse_utils.c						\
 								menu/menu.c									\
@@ -68,6 +70,7 @@ SRCA			=				main.c										\
 								utils/init_enemies_and_texture_checks.c		\
 								utils/init_font_and_menus.c					\
 								utils/init_textures.c						\
+								utils/re_init_map.c							\
 								utils/clean_up.c
 
 SRCB			=				main.c										\

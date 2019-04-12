@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 04:20:33 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:04:02 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 # define DLIGHT 3
 # define DEVENT 4
 
+# define END_GAME 1
+# define CONSOLE 2
+
 # define ERR_BASE "Usage: ./doom-nukem map"
 # define ERR_0 "Error: Can not open given file"
 # define ERR_1 "Error: Malloc failed to allocate memory"
@@ -73,7 +76,7 @@ typedef struct		s_files
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[47];
+	SDL_Surface		*image[48];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
 }					t_files;
@@ -92,6 +95,7 @@ typedef struct		s_data
 	char			**stage;
 	char			**cell;
 	unsigned int	map[5][MAX_FLOORS][64][64];
+	unsigned int	save[5][MAX_FLOORS][64][64];
 }					t_data;
 
 typedef struct		s_draw
@@ -101,9 +105,11 @@ typedef struct		s_draw
 	SDL_Rect		sky_rect2;
 	double			skybox_x;
 	int				skybox_y;
-	TTF_Font		*font;
-	SDL_Surface		*fps_surface;
+	TTF_Font		*font_end_game;
+	TTF_Font		*font_hp;
+	SDL_Surface		*text_surface;
 	SDL_Color		white;
+	SDL_Color		red;
 	Uint32			color;
 }					t_draw;
 
@@ -292,6 +298,7 @@ typedef struct		s_draw_scaled
 typedef struct		s_ui
 {
 	int				weapon;
+	bool			trumpet;
 	int				weapon_firing;
 	int				weapon_fired;
 	int				ui_size;
@@ -332,6 +339,7 @@ typedef struct		s_env
 	t_sound			sound;
 	t_minimap		minimap;
 	t_draw_scaled	face_info;
+	t_draw_scaled	trumpet_info;
 	t_draw_scaled	ui_info;
 	t_draw_scaled	inv_info;
 	t_draw_scaled	pistol_info;
@@ -366,6 +374,7 @@ extern void			init_sdl(t_env *e);
 extern void			init_player(t_env *e);
 extern void			init_sound(t_env *e);
 extern void			init_vars(t_env *e);
+extern void			restart(t_env *e);
 
 extern void			parse_init(t_data *data);
 extern void			parse_start(t_data *data, char *map);
@@ -373,6 +382,7 @@ extern void			parse_scan(t_data *data, char *map);
 extern void			parse_tier(t_data *data);
 extern void			parse_stage(t_data *data);
 extern void			parse_stock(int y, int x, t_data *data, char *cell);
+extern void			parse_copy(t_data *data);
 extern void			parse_pos(t_data *data);
 extern void			parse_sprite(t_env *e);
 extern void			parse_quit(t_data *data, int type, char *msg);
@@ -390,6 +400,7 @@ extern void			ft_menu_options(t_env *e);
 //extern void			refresh_gif(t_env *e, int i);
 extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
 extern void			gif_load_screen(t_env *e);
+extern void			re_init_map(t_data *data);
 extern void			clean_up(t_env *e);
 
 extern void			get_vertical_hit(t_env *e, register int tid);
@@ -453,7 +464,8 @@ extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
 extern void			load_textures_splash(t_env *e);
 extern void			load_textures_menu(t_env *e);
-extern void			wasted(t_env *e);
+extern void			end_game(t_env *e, char *msg);
 extern void			floor_is_lava(t_env *e);
+extern void			draw_text(t_env *e, t_point pt, int type, char *msg);
 
 #endif

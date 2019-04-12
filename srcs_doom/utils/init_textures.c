@@ -6,13 +6,13 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 02:52:25 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:19:56 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void	load_gun_textures(t_env *e)
+static void		load_gun_textures(t_env *e)
 {
 	if (!(e->files.image[0] = SDL_LoadBMP("textures/guns/PISTOL_0.bmp")))
 		exit_error(2, ERR_2);
@@ -40,7 +40,7 @@ void	load_gun_textures(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-void	load_ui_textures(t_env *e)
+static void		load_ui_textures(t_env *e)
 {
 	if (!(e->files.image[12] = SDL_LoadBMP("textures/UI/FACE.bmp")))
 		exit_error(2, ERR_2);
@@ -60,9 +60,11 @@ void	load_ui_textures(t_env *e)
 		exit_error(2, ERR_2);
 	if (!(e->files.ui_surf = SDL_LoadBMP("textures/UI/UI.bmp")))
 		exit_error(2, ERR_2);
+	if (!(e->files.image[47] = SDL_LoadBMP("textures/UI/UI_TRUMPET.bmp")))
+		exit_error(2, ERR_2);
 }
 
-void	load_sprite_textures(t_env *e)
+static void		load_sprite_textures(t_env *e)
 {
 	if (!(e->files.image[20] = SDL_LoadBMP("textures/sprites/SHOTGUN.bmp")))
 		exit_error(2, ERR_2);
@@ -78,11 +80,11 @@ void	load_sprite_textures(t_env *e)
 		exit_error(2, ERR_2);
 	if (!(e->files.image[26] = SDL_LoadBMP("textures/sprites/SERGE_FRONT.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->files.image[27] = SDL_LoadBMP("textures/sprites/SKULL.bmp")))
+	if (!(e->files.image[27] = SDL_LoadBMP("textures/sprites/TRUMPET.bmp")))
 		exit_error(2, ERR_2);
 }
 
-void	load_walls_textures(t_env *e)
+static void		load_walls_textures(t_env *e)
 {
 	if (!(e->files.image[28] = SDL_LoadBMP("textures/walls/ROCK.bmp")))
 		exit_error(2, ERR_2);
@@ -100,7 +102,7 @@ void	load_walls_textures(t_env *e)
 		exit_error(2, ERR_2);
 }
 
-void	load_floor_textures(t_env *e)
+static void		load_floor_textures(t_env *e)
 {
 	if (!(e->files.image[35] = SDL_LoadBMP("textures/floors/STONE_TILE.bmp")))
 		exit_error(2, ERR_2);
@@ -147,7 +149,7 @@ void	load_textures(t_env *e)
 	e->files.sprite[5] = (unsigned int *)e->files.image[21]->pixels;
 	//barrel 1
 	e->files.sprite[6] = (unsigned int *)e->files.image[22]->pixels;
-	//skull
+	//trumpet
 	e->files.sprite[7] = (unsigned int *)e->files.image[27]->pixels;
 	//SERGE FRONT 
 	e->files.sprite[0] = (unsigned int *)e->files.image[26]->pixels;
