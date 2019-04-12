@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 02:46:05 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:28:21 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,18 @@ static void				init_skybox(t_env *e)
 	e->skybox.w = e->files.skybox->w;
 }
 
+static void				init_trumpet(t_env *e)
+{
+	e->trumpet_info.x_start = 453;
+	e->trumpet_info.y_start = e->render_limit + 30;
+	e->trumpet_info.x_ratio = 1;
+	e->trumpet_info.y_ratio = 1;
+	e->trumpet_info.x_end = 583;
+	e->trumpet_info.y_end = e->trumpet_info.y_start + 57;
+	e->trumpet_info.buffer = (unsigned int **)&e->files.image[47]->pixels;
+	e->trumpet_info.w = e->files.image[47]->w;
+}
+
 void					init_ui_structs(t_env *e)
 {
 	e->face_info.x_start = WIN_W * 0.5 - WIN_W / 12.0 * 0.5;
@@ -82,4 +94,5 @@ void					init_ui_structs(t_env *e)
 	init_guns(e);
 	init_base_ui(e);
 	init_skybox(e);
+	init_trumpet(e);
 }
