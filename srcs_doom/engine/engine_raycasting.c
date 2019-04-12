@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 21:43:32 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:00:11 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	get_player_floor(t_env *e)
 	e->player.floor = e->player.height >> e->tile_shift;
 	e->player.map.x = (int)e->player.pos.x >> e->tile_shift;
 	e->player.map.y = (int)e->player.pos.y >> e->tile_shift;
-	floor_is_lava(e);
+	if (ray_is_in_the_map(e->player.map, e))
+		floor_is_lava(e);
 }
 
 void	angle_overflow(int *angle, t_env *e)
