@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 17:34:32 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 20:54:38 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static void		renderer(t_env *e)
 	e->draw.skybox_x += 0.2;
 	if (e->draw.skybox_x > 1226)
 		e->draw.skybox_x = 0;
-	//minimap(e);
 	e->ui.weapon_fired = 0;
 	SDL_UpdateWindowSurface(e->win);
 }

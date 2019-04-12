@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/12 18:33:34 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/12 20:51:38 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,6 @@ SRCA			=				main.c										\
 								gameplay/move_player.c						\
 								gameplay/ui.c								\
 								gameplay/sprite_interaction.c				\
-								gameplay/minimap.c							\
-								gameplay/minimap_drawplayer.c				\
-								gameplay/minimap_drawmap.c					\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
 								gameplay/player_events.c					\

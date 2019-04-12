@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 18:31:09 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 20:53:41 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	draw_crosshair(t_env *e)
 		e->buff[y + x] = 0xffffff;
 }
 
-void	draw_scaled(t_env *e, t_draw_scaled *info)
+static void		draw_scaled(t_env *e, t_draw_scaled *info)
 {
-	int		x;
-	int		y;
-	float	x_offset;
-	float	y_offset;
-	Uint32	color;
+	int			x;
+	int			y;
+	float		x_offset;
+	float		y_offset;
+	Uint32		color;
 
 	y = (int)info->y_start;
 	y_offset = 0;
