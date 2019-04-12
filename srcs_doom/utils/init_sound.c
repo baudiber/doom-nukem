@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 20:19:29 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 17:30:14 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:34:30 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void		init_sound(t_env *e)
 		exit_error(2, ERR_2);
 	if (!(e->sound.sound6 = Mix_LoadWAV("sound/Shotgun.wav")))
 		exit_error(2, ERR_2);
-	if (!(e->sound.sound7 = Mix_LoadWAV("sound/DOOT-Nukem_get.wav.wav")))
+	if (!(e->sound.sound7 = Mix_LoadWAV("sound/DOOT-Nukem_get.wav")))
 		exit_error(2, ERR_2);
-	if (!(e->sound.sound8 = Mix_LoadWAV("sound/DOOT-Nukem_die.wav.wav")))
+	if (!(e->sound.sound8 = Mix_LoadWAV("sound/DOOT-Nukem_die.wav")))
 		exit_error(2, ERR_2);
-	if (!(e->sound.sound9 = Mix_LoadWAV("sound/DOOT-Nukem_win.wav.wav")))
+	if (!(e->sound.sound9 = Mix_LoadWAV("sound/DOOT-Nukem_win.wav")))
 		exit_error(2, ERR_2);
 	Mix_VolumeMusic(128 * 0.5);
 	Mix_Volume(-1, 128 * 0.10);
