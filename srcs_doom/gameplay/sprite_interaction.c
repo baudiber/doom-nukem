@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 06:09:50 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:27:03 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,22 @@ void			pick_up_obj(t_env *e, int nb)
 			&& (fabs(e->sprites[nb].y - e->player.pos.y) < range) \
 			&& e->sprites[nb].floor == e->player.floor)
 	{
-		Mix_PlayChannel(-1, e->sound.sound4, 0);
 		if (e->sprites[nb].tex == 4)
 		{
+			Mix_PlayChannel(-1, e->sound.sound4, 0);
 //			e->inv_info.index = e->ui.weapon ? 2 : 1;
 			e->inv_info.index = 2;
 			e->sprites[nb].visible = false;
 			e->ui.weapon = (e->ui.weapon == 0) ? 2 : e->ui.weapon;
 		}
 		else if (e->sprites[nb].tex == 13 && e->ui.trumpet)
+		{
+			Mix_PlayChannel(-1, e->sound.sound4, 0);
 			end_game(e, "YOU WIN");
+		}
 		else if (e->sprites[nb].tex == 7)
 		{
+			Mix_PlayChannel(-1, e->sound.sound4, 0);
 			e->sprites[nb].visible = false;
 			e->ui.trumpet = true;
 		}
