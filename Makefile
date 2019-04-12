@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/12 02:06:24 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/12 02:36:08 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRCA			=				main.c										\
 								utils/init_enemies_and_texture_checks.c		\
 								utils/init_font_and_menus.c					\
 								utils/init_textures.c						\
+								utils/re_init_map.c							\
 								utils/clean_up.c
 
 SRCB			=				main.c										\

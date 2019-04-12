@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:29:51 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:36:41 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,6 +393,7 @@ extern void			ft_menu_options(t_env *e);
 //extern void			refresh_gif(t_env *e, int i);
 extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
 extern void			gif_load_screen(t_env *e);
+extern void			re_init_map(t_data *data);
 extern void			clean_up(t_env *e);
 
 extern void			get_vertical_hit(t_env *e, register int tid);
