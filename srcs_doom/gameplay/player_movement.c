@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 06:05:24 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:22:30 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ int		get_ceil_height(t_env *e)
 		}
 		i++;
 	}
-	i--;
-	return (((int)e->floor_nb - 1 ) * TILE_SIZE);
+	return (((int)e->floor_nb) * TILE_SIZE);
 }
 
 void	jump_anim(t_env *e)
@@ -170,7 +169,7 @@ void			move_player(t_env *e)
 		|| (e->state[SDL_SCANCODE_SPACE] && e->player_state & IS_FLY))
 		fly_mode(e);
 	jump_anim(e);
-	if (!(e->player_state & IS_JUMPING) && e->player.height > e->player.dist_to_floor)
+	if (!(e->player_state & IS_JUMPING) && (e->player.height) > e->player.dist_to_floor  && !(e->state[SDL_SCANCODE_LCTRL]))
 		get_jump_pos(e, &fall_time);
 	else
 		fall_time = 0;
