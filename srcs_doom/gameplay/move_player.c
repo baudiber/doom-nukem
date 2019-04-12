@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 14:50:24 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 06:31:54 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:36:35 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	fly_mode(t_env * e)
 			e->player.height -= 30;
 	}
 	else if (e->state[SDL_SCANCODE_SPACE])
-		e->player.height += 30;
+	{
+		if(e->player.height <= ((MAX_FLOORS * 2) * TILE_SIZE))
+			e->player.height += 30;
+	}
 }
 
 void	crouch_and_jump(t_env *e)
