@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_up.c                                         :+:      :+:    :+:   */
+/*   player_life.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 21:35:50 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:07:02 by clrichar         ###   ########.fr       */
+/*   Created: 2019/04/12 18:24:42 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/12 23:40:04 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void		clean_up(t_env *e)
+void			init_chr_life(t_env *e)
 {
-	Mix_FreeChunk(e->sound.sound1);
-	Mix_FreeChunk(e->sound.sound2);
-	Mix_FreeChunk(e->sound.sound3);
-	Mix_FreeChunk(e->sound.sound4);
-	Mix_FreeChunk(e->sound.sound5);
-	Mix_FreeChunk(e->sound.sound6);
-	Mix_FreeMusic(e->sound.music);
-	Mix_CloseAudio();
-	SDL_DestroyWindow(e->win);
-	SDL_Quit();
+	int			i;
+	char		*tmp;
+
+	i = -1;
+	tmp = NULL;
+	while (++i < 101)
+	{
+		tmp = ft_itoa(i);
+		ft_strncpy(e->player.hp_str[i], tmp, 3);
+		(tmp) ? ft_strdel(&tmp) : 0;
+	}
+	tmp ? ft_strdel(&tmp) : 0;
+}
+
+void			draw_life(t_env *e)
+{
+	t_point		pt;
+
+	pt.x = 155;
+	pt.y = 505;
+	draw_text(e, pt, HEALTH, e->player.hp_str[e->player.hp]);
 }

@@ -6,13 +6,13 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 13:12:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:04:10 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 20:32:14 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void			parse_init(t_data *data)
+static void		parse_init(t_data *data)
 {
 	data->pos_y = 0;
 	data->pos_x = 0;

@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 01:49:02 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:55:41 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,76 @@ void			get_jump_pos(t_env *e, double *fall_time)
 	}
 }
 
+void			collision(t_env *e, t_point *new_pos)
+{
+	if (!is_blocked(e, new_pos, 0))
+	{
+		e->player.pos.x = new_pos->x;
+		e->player.pace += 3;
+	}
+	if (!is_blocked(e, new_pos, 1))
+	{
+		e->player.pos.y = new_pos->y;
+		e->player.pace += 3;
+	}
+	if (e->player.pace > 360)
+		e->player.pace -= 360;
+}
+int		get_ceil_height(t_env *e)
+{
+	int i;
+	int ceil_height;
+
+	ceil_height = 0;
+	i = 1;
+	while (i < (int)e->floor_nb)
+	{
+		if (e->data.map[DWALL][e->player.floor + i][e->player.map.y][e->player.map.x])
+		{
+			ceil_height = (e->player.floor + i) * TILE_SIZE;
+			return (ceil_height);
+		}
+		i++;
+	}
+	return (((int)e->floor_nb) * TILE_SIZE);
+}
+
+void	jump_anim(t_env *e)
+{
+	static double	jump_time;
+	int				ceil_height;
+
+	ceil_height = get_ceil_height(e);
+	if (e->player_state & IS_FLY)
+		return ;
+	if((e->player_state & IS_JUMPING) && e->data.map[DWALL][e->player.floor + 1][e->player.map.y][e->player.map.x])
+	{
+		if (e->player.height >= ceil_height - 20)
+			e->player_state &= (0 << 2);
+	}
+	if ((e->player_state & IS_JUMPING) && jump_time <= 0.28)
+	{
+		jump_time += e->time.frame_time;
+	if(e->player.height < ceil_height)
+		e->player.height += (e->max_speed + 3) * e->time.delta_time;
+	}
+	else
+	{
+		e->player_state &= (0 << 2);
+		e->player_state |= IS_FALLING;
+		jump_time = 0;
+	}
+}
+
+void	get_floor_dist(t_env *e)
+{
+	if (e->player.map.x && e->player.map.y && e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x])
+		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2;
+	else
+		e->player.dist_to_floor = TILE_SIZE / 2;
+}
+
+>>>>>>> aa5d9e573c819e849e08ad922d93d10af99bd41a
 static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
 {
 	if ((e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D]) \
@@ -80,7 +150,10 @@ void			move_player(t_env *e)
 		*/
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY)) \
 		|| (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_JUMPING) && !(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
-		crouch_and_jump(e);
+		{
+			Mix_PlayChannel(-1, e->sound.sound10, 0);
+			crouch_and_jump(e);
+		}
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && e->player_state & IS_FLY) \
 		|| (e->state[SDL_SCANCODE_SPACE] && e->player_state & IS_FLY))
 		fly_mode(e);

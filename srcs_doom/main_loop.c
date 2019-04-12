@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 17:34:32 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:04:22 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,6 @@ static void		get_floor_order(t_env *e)
 	j = e->floor_nb;
 	while (--j >= e->player.floor)
 		e->floor_order[i++] = j;
-	/*
-	i = -1;
-	printf("floor order :");
-	while (++i < (int)e->floor_nb)
-		printf("%d ", e->floor_order[i]);
-	printf("\n");
-	*/
 }
 
 static void		world_interaction(t_env *e)
@@ -73,22 +66,13 @@ static void		renderer(t_env *e)
 	clear_buffer(e);
 	moving_rects(e);
 	if (e->horizon > 0)
+		display_skybox(e);
 //		draw_scaled(e, &e->skybox);
-	display_skybox(e);
 	multithreaded_render(e);
 	draw_ui(e);
-	/*
-	e->draw.str = ft_itoa(1 / e->time.frame_time);
-	e->draw.fps_surface = \
-	TTF_RenderText_Solid(e->draw.font, e->draw.str, e->draw.white);
-	SDL_BlitSurface(e->draw.fps_surface, NULL, e->screen, NULL);
-	SDL_FreeSurface(e->draw.fps_surface);
-	(e->draw.str) ? ft_strdel(&e->draw.str) : 0;
-	*/
 	e->draw.skybox_x += 0.2;
 	if (e->draw.skybox_x > 1226)
 		e->draw.skybox_x = 0;
-	//minimap(e);
 	e->ui.weapon_fired = 0;
 	SDL_UpdateWindowSurface(e->win);
 }

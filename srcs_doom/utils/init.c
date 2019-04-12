@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 18:14:47 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:07:51 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void					init_sdl(t_env *e)
 		exit_error(17, ERR_7);
 	if (!(e->screen = SDL_GetWindowSurface(e->win)))
 		exit_error(17, ERR_7);
-
 	if (!(SDL_SetRelativeMouseMode(SDL_TRUE) == 0))
 		exit_error(17, ERR_7);
 	e->buff = (Uint32 *)e->screen->pixels;
@@ -44,8 +43,6 @@ void					init_player(t_env *e)
 	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
 	e->player.win = false;
 	e->player.moving = false;
-	e->player.jumping = false;
-	e->player.falling = false;
 	e->render_limit = (WIN_H / 4) * 3.2;
 	e->ui.ui_size = WIN_H - e->render_limit;
 	e->horizon = e->render_limit / 2;
@@ -56,5 +53,4 @@ void					init_player(t_env *e)
 	e->player.angle = 1;
 	e->floor_nb = e->data.tier_ind + 1;
 	e->player.hp = 100;
-	// re init inventaire
 }

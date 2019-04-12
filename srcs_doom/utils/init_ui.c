@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 02:28:21 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:09:54 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,12 @@ void					init_ui_structs(t_env *e)
 {
 	e->face_info.x_start = WIN_W * 0.5 - WIN_W / 12.0 * 0.5;
 	e->face_info.y_start = e->render_limit * 1.005;
-	e->face_info.y_ratio = (double)(e->files.image[12]->h / ((double)e->ui.ui_size \
-							* 0.975));
+	e->face_info.y_ratio = (double)(e->files.image[12]->h \
+		/ ((double)e->ui.ui_size * 0.975));
 	e->face_info.x_ratio = e->files.image[12]->w / (WIN_W / 12.0);
 	e->face_info.x_end = e->face_info.x_start + WIN_W / 12.0;
-	e->face_info.y_end = (double)(e->face_info.y_start + ((double)e->ui.ui_size * 0.975));
+	e->face_info.y_end = (double)(e->face_info.y_start \
+		+ ((double)e->ui.ui_size * 0.975));
 	e->face_info.buffer = &e->files.face[0];
 	e->face_info.w = e->files.image[12]->w;
 	e->inv_info.x_start = WIN_W / 3.02;

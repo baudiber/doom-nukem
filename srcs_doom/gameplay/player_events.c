@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 01:49:13 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:54:56 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	floor_is_lava(t_env *e)
 		if (lava_tick > 1.0)
 		{
 			e->player.hp -= 50;
+			Mix_PlayChannel(-1, e->sound.sound11, 0);
 			lava_tick = 0;
 		}
 	}
@@ -60,8 +61,8 @@ void	end_game(t_env *e, char *msg)
 	pt.y = e->render_limit * 0.5 - 20;
 	i = 1;
 	i = -1;
-	//	while (++i < (WIN_W * WIN_W))
-	//		e->buff[i] = (e->buff[i] >> 1) & 8355711;
+	while (++i < (WIN_H * WIN_W))
+		e->buff[i] = (e->buff[i] >> 1) & 8355711;
 	draw_text(e, pt, END_GAME, msg);
 	SDL_UpdateWindowSurface(e->win);
 	sleep(3);

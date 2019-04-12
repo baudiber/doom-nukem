@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/13 01:47:44 by gagonzal         ###   ########.fr        #
+#    Updated: 2019/04/13 01:54:13 by gagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,13 +43,11 @@ SRCA			=				main.c										\
 								gameplay/player_movement.c					\
 								gameplay/player_movement2.c					\
 								gameplay/player_events.c					\
+								gameplay/player_life.c						\
 								gameplay/mouse_aim.c						\
 								gameplay/move_player.c						\
 								gameplay/ui.c								\
 								gameplay/sprite_interaction.c				\
-								gameplay/minimap.c							\
-								gameplay/minimap_drawplayer.c				\
-								gameplay/minimap_drawmap.c					\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
 								gameplay/draw_text.c						\
@@ -71,6 +69,7 @@ SRCA			=				main.c										\
 								utils/init_enemies_and_texture_checks.c		\
 								utils/init_font_and_menus.c					\
 								utils/init_textures.c						\
+								utils/load_textures.c						\
 								utils/re_init_map.c							\
 								utils/clean_up.c
 
