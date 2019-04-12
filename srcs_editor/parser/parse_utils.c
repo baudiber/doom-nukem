@@ -6,13 +6,13 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 13:12:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 23:10:30 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:43:03 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-void			parse_init(t_data *data)
+static void		parse_init(t_data *data)
 {
 	data->pos_y = 0;
 	data->pos_x = 0;

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 21:35:29 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:01:10 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void			launch_init(t_env *e)
 	init_sdl(e);
 	init_vars(e);
 	init_player(e);
+	init_chr_life(e);
 	load_textures(e);
 	load_textures_menu(e);
 	load_textures_splash(e);
