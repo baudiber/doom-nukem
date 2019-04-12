@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 23:11:17 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:36:47 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ typedef struct		s_player
 	bool			moving;
 	bool			jumping;
 	bool			falling;
-	bool			win;;
+	bool			win;
 	int				pace;
 	int				dist_to_floor;
 }					t_player;

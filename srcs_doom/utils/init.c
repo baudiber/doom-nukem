@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 23:15:46 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:39:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void					init_sdl(t_env *e)
 
 void					init_player(t_env *e)
 {
-	ft_bzero(e->player.hp_str, sizeof(e->player.hp_str));
 	e->player.pos.x = (e->data.pos_x + 0.5) * TILE_SIZE;
 	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
 	e->player.win = false;
