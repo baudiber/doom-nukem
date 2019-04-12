@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 02:50:18 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:28:33 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,16 @@ void			get_delta(int angle, t_env *e, t_point *new_pos)
 	new_pos->y += e->sin_table[angle] * (e->player.speed * e->time.delta_time);
 }
 
-void			get_jump_pos(t_env *e, t_point *new_pos, double *fall_time)
+void			get_jump_pos(t_env *e, double *fall_time)
 {
 	float g;
-	g = 9;
-	if (e->player.falling)
+	g = 9.81;
+	if ((e->player_state & IS_FALLING) && !(e->player_state & IS_FLY))
 	{
 		*fall_time += e->time.frame_time;
 		e->player.height += -0.5 * g * pow(*fall_time, 2) + \
-			*fall_time * (e->player.speed * 5) * e->sin_table[e->angle.a_270];
+			*fall_time * (e->max_speed * 8) * e->sin_table[e->angle.a_270];
 	}
-//	if (e->player.falling)
-//		e->player.height -= 5;
-//	printf("player height = %d\nfloorheight = %d\n", e->player.height, (WALL_HEIGHT / 2) * (e->player.floor + 1));
-	get_delta(e->player.angle, e, new_pos);
 }
 
 void			collision(t_env *e, t_point *new_pos)
@@ -70,36 +66,58 @@ void			collision(t_env *e, t_point *new_pos)
 	if (e->player.pace > 360)
 		e->player.pace -= 360;
 }
+int		get_ceil_height(t_env *e)
+{
+	int i;
+	int ceil_height;
+
+	ceil_height = 0;
+	i = 1;
+	while (i < (int)e->floor_nb)
+	{
+		if (e->data.map[DWALL][e->player.floor + i][e->player.map.y][e->player.map.x])
+		{
+			ceil_height = (e->player.floor + i) * TILE_SIZE;
+			return (ceil_height);
+		}
+		i++;
+	}
+	return (((int)e->floor_nb) * TILE_SIZE);
+}
 
 void	jump_anim(t_env *e)
 {
 	static double	jump_time;
-//	printf ("ceil height = %d\n player height= %d\n", (e->player.floor + 1) * TILE_SIZE, e->player.height);
-	//printf("floor_height = %d\nplayer_height = %d\n", (e->player.floor + 1) << e->tile_shift, e->player.height);
-	if (e->player.jumping && jump_time <= 0.25 )
+	int				ceil_height;
+	
+	ceil_height = get_ceil_height(e);
+	if (e->player_state & IS_FLY)
+		return ;
+	if((e->player_state & IS_JUMPING) && e->data.map[DWALL][e->player.floor + 1][e->player.map.y][e->player.map.x])
+	{
+		if (e->player.height >= ceil_height - 20)
+			e->player_state &= (0 << 2);
+	}
+	if ((e->player_state & IS_JUMPING) && jump_time <= 0.28)
 	{
 		jump_time += e->time.frame_time;
-		e->player.height += (e->player.speed + 3) * e->time.delta_time;
+	if(e->player.height < ceil_height)
+		e->player.height += (e->max_speed + 3) * e->time.delta_time;
 	}
 	else
 	{
-		e->player.jumping = 0;
+		e->player_state &= (0 << 2);
+		e->player_state |= IS_FALLING;
 		jump_time = 0;
 	}
 }
 
 void	get_floor_dist(t_env *e)
 {
-//	printf("player floor = %d\n", e->player.floor);
 	if (e->player.map.x && e->player.map.y && e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x])
-	{
-//		printf("posy = %d\nposx=%d\n", (int)(e->player.pos.y + 32) >> e->tile_shift, (int)e->player.pos.x >> e->tile_shift);
-//		printf("mapy = %d\nmapx=%d\n", e->player.map.y, e->player.map.x);
 		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2; 
-	}
 	else
 		e->player.dist_to_floor = TILE_SIZE / 2;
-//	printf("dist to floor = %d\n", e->player.dist_to_floor);
 }
 
 static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
@@ -114,7 +132,10 @@ static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
 		strafe(e, new_pos, tmpangle);
 	else if (e->state[SDL_SCANCODE_W] || e->state[SDL_SCANCODE_S])
 		walk_forward_and_backward(e, new_pos, tmpangle);
-	collision(e, new_pos);
+	if (!(e->player_state & IS_FLY))
+		collision(e, new_pos);
+	else
+		e->player.pos = *new_pos;
 }
 
 void			move_player(t_env *e)
@@ -124,15 +145,15 @@ void			move_player(t_env *e)
 	static double fall_time;
 
 	new_pos = e->player.pos;
-//	printf("%f\n", e->player.pos.x);
-	if (e->player.height <= e->player.dist_to_floor)
+	if (e->state[SDL_SCANCODE_F])
+		e->player_state ^= IS_FLY;
+	if (e->player.height <= e->player.dist_to_floor && !(e->player_state & IS_FLY))
 	{
-		e->player.falling = 0;
+		e->player_state &= (0 << 4);
 		e->player.height = e->player.dist_to_floor;
 	}
 	else
-		e->player.falling = 1;
-//	printf("%d\n", e->player.falling);
+		e->player_state |= IS_FALLING;
 	get_floor_dist(e);
 	if (e->state[SDL_SCANCODE_LSHIFT])
 	{
@@ -141,12 +162,15 @@ void			move_player(t_env *e)
 	}
 	else
 		e->player.speed = e->max_speed;
-	if (e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C] \
-		|| (e->state[SDL_SCANCODE_SPACE] && !e->player.jumping && !e->player.falling))
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY)) \
+		|| (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_JUMPING) && !(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
 		crouch_and_jump(e);
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && e->player_state & IS_FLY) \
+		|| (e->state[SDL_SCANCODE_SPACE] && e->player_state & IS_FLY))
+		fly_mode(e);
 	jump_anim(e);
-	if (!e->player.jumping && e->player.height > e->player.dist_to_floor)
-		get_jump_pos(e, &new_pos, &fall_time);
+	if (!(e->player_state & IS_JUMPING) && (e->player.height) > e->player.dist_to_floor  && !(e->state[SDL_SCANCODE_LCTRL]))
+		get_jump_pos(e, &fall_time);
 	else
 		fall_time = 0;
 	if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_W] \

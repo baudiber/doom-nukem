@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 06:23:32 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 06:46:42 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define IS_MOVING 1
 # define IS_JUMPING 2
 # define IS_FALLING 4
+# define IS_FLY		8
 
 # define VALID_CHAR "0123456789abcdez,- "
 # define WALL_TEXT_MAX 9
@@ -425,6 +426,7 @@ extern void			strafe(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_backward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			crouch_and_jump(t_env *e);
+extern void			fly_mode(t_env *e);
 extern void			mouse_aim(t_env *e);
 extern bool			check_walls(t_env *e, int height, int *offset, int x,\
 					int tid);
