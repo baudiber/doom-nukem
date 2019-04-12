@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 05:52:59 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:45:43 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,16 +143,12 @@ typedef	struct			s_env
 	char				**argv;
 }						t_env;
 
-extern int				main(int ac, char **av);
 extern void				main_loop(t_env *e);
-
 extern void				init(t_env *e);
 extern void				init_from_parser(t_env *e);
 extern void				init_var_texture(t_env *e);
 extern void				load_texture(t_env *e);
-
 extern void				redraw(t_env *e);
-extern unsigned int		*apply_texture(t_env *e);
 extern void				draw_panel_floor(t_env *e);
 extern void				draw_panel_wall(t_env *e);
 extern void				draw_panel_sprite(t_env *e);
@@ -162,7 +158,7 @@ extern void				draw_panel_text(t_env *e);
 extern void				draw_grid(t_env *e);
 extern void				draw_texture_grid(t_env *e);
 extern void				erase_texture_grid(t_env *e);
-
+extern unsigned int		*apply_texture(t_env *e);
 extern void				key_input(t_env *e);
 extern void				refresh_grid_var(t_env *e);
 extern void				change_panel(t_env *e);
@@ -170,8 +166,7 @@ extern void				change_tier(t_env *e);
 extern void				change_grid_size(t_env *e);
 extern void				select_grid_block(t_env *e);
 extern void				saving(t_env *e);
-
-extern void				parse_init(t_data *data);
+//extern void				parse_init(t_data *data);
 extern void				parse_start(t_data *data, char *map);
 extern void				parse_scan(t_data *data, char *map);
 extern void				parse_tier(t_data *data);
