@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/12 03:22:59 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/13 01:47:44 by gagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ SRCA			=				main.c										\
 								engine/engine_sprites_utils.c				\
 								engine/engine_draw_ceiling.c				\
 								gameplay/player_movement.c					\
+								gameplay/player_movement2.c					\
+								gameplay/player_events.c					\
 								gameplay/mouse_aim.c						\
 								gameplay/move_player.c						\
 								gameplay/ui.c								\
@@ -50,7 +52,6 @@ SRCA			=				main.c										\
 								gameplay/minimap_drawmap.c					\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
-								gameplay/player_events.c					\
 								gameplay/draw_text.c						\
 								parser/parse_scan.c							\
 								parser/parse_stage.c						\
