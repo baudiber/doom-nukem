@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:24:42 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 20:52:30 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:12:33 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void			init_chr_life(t_env *e)
 
 	i = -1;
 	tmp = NULL;
-	while (++i <= 101)
+	while (++i < 101)
 	{
 		tmp = ft_itoa(i);
-		ft_strncpy(e->player.hp_str[i], tmp, 4);
-		tmp ? ft_strdel(&tmp) : 0;
+		ft_strncpy(e->player.hp_str[i], tmp, 3);
+		(tmp) ? ft_strdel(&tmp) : 0;
 	}
 	tmp ? ft_strdel(&tmp) : 0;
 }

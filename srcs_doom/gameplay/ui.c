@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 20:53:41 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:15:47 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	draw_ui(t_env *e)
 	bob(e);
 	draw_scaled(e, &e->face_info);
 	draw_scaled(e, &e->inv_info);
-	draw_life(e);
+//	draw_life(e);
 	e->ui.weapon == 2 ? draw_scaled(e, &e->shotgun_info) : draw_scaled(e, &e->pistol_info);
 	e->ui.trumpet ? draw_scaled(e, &e->trumpet_info) : 0;
 }
