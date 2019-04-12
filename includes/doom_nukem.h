@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:36:41 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 03:45:01 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define DSPRITE 2
 # define DLIGHT 3
 # define DEVENT 4
+
+# define END_GAME 1
+# define CONSOLE 2
 
 # define ERR_BASE "Usage: ./doom-nukem map"
 # define ERR_0 "Error: Can not open given file"
@@ -101,9 +104,11 @@ typedef struct		s_draw
 	SDL_Rect		sky_rect2;
 	double			skybox_x;
 	int				skybox_y;
-	TTF_Font		*font;
-	SDL_Surface		*fps_surface;
+	TTF_Font		*font_end_game;
+	TTF_Font		*font_hp;
+	SDL_Surface		*text_surface;
 	SDL_Color		white;
+	SDL_Color		red;
 	Uint32			color;
 }					t_draw;
 
@@ -456,7 +461,8 @@ extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
 extern void			load_textures_splash(t_env *e);
 extern void			load_textures_menu(t_env *e);
-extern void			wasted(t_env *e);
+extern void			end_game(t_env *e, char *msg);
 extern void			floor_is_lava(t_env *e);
+extern void			draw_text(t_env *e, t_point pt, int type, char *msg);
 
 #endif

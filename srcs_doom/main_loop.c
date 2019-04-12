@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:48:54 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 03:08:04 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,14 @@ static void		renderer(t_env *e)
 	display_skybox(e);
 	multithreaded_render(e);
 	draw_ui(e);
+	/*
 	e->draw.str = ft_itoa(1 / e->time.frame_time);
 	e->draw.fps_surface = \
 	TTF_RenderText_Solid(e->draw.font, e->draw.str, e->draw.white);
 	SDL_BlitSurface(e->draw.fps_surface, NULL, e->screen, NULL);
 	SDL_FreeSurface(e->draw.fps_surface);
 	(e->draw.str) ? ft_strdel(&e->draw.str) : 0;
+	*/
 	e->draw.skybox_x += 0.2;
 	if (e->draw.skybox_x > 1226)
 		e->draw.skybox_x = 0;
