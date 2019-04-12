@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 05:46:08 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:55:37 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void			get_sprite_tex(t_env *e, int z, int y, int x)
 
 static void			stock_sprite(int z, int y, int x, t_env *e)
 {
-	get_sprite_tex(e, z, y, x);	
+	get_sprite_tex(e, z, y, x);
 	e->sprites[e->sprite_nb].y = (y + 0.5) * TILE_SIZE;
 	e->sprites[e->sprite_nb].x = (x + 0.5) * TILE_SIZE;
 	e->sprites[e->sprite_nb].z = z << e->tile_shift;
