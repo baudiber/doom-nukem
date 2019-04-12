@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 14:42:56 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 01:25:36 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static void		change_tex_when_vis(t_env *e, int nb)
 		else
 			e->sprites[nb].tex = 3;
 	}
-
 }
 
 void			draw_sprites(t_env *e, int max_col, int tid)

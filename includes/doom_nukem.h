@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 22:00:22 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:15:42 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct		s_files
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[47];
+	SDL_Surface		*image[48];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
 }					t_files;
@@ -291,6 +291,7 @@ typedef struct		s_draw_scaled
 typedef struct		s_ui
 {
 	int				weapon;
+	bool			trumpet;
 	int				weapon_firing;
 	int				weapon_fired;
 	int				ui_size;
@@ -331,6 +332,7 @@ typedef struct		s_env
 	t_sound			sound;
 	t_minimap		minimap;
 	t_draw_scaled	face_info;
+	t_draw_scaled	trumpet_info;
 	t_draw_scaled	ui_info;
 	t_draw_scaled	inv_info;
 	t_draw_scaled	pistol_info;
