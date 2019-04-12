@@ -110,7 +110,6 @@ void			draw_sprites(t_env *e, int max_col, int tid)
 	{
 		if (e->sprites[sprite].floor != e->ray[tid].layer)
 			continue;
-		pick_up_obj(e, sprite);
 		calc.map.x = e->sprites[sprite].x >> e->tile_shift;
 		calc.map.y = e->sprites[sprite].y >> e->tile_shift;
 		change_tex(e, sprite);

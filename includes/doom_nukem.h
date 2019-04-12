@@ -22,7 +22,7 @@
 # define TILE_SIZE 256
 # define WALL_HEIGHT 256
 # define FLIGHT 0
-# define MAX_THREADS 1
+# define MAX_THREADS 4
 # define MAX_VISIBLE_SPRITE 30
 # define MAX_FLOORS 6
 
@@ -45,6 +45,8 @@
 # define DEVENT 4
 
 # define END_GAME 1
+# define VERT 1
+# define HOR 0
 
 # define ERR_BASE "Usage: ./doom-nukem map"
 # define ERR_0 "Error: Can not open given file"
@@ -222,32 +224,20 @@ typedef struct		s_wall
 	double			color;
 }					t_wall;
 
-typedef struct		s_vert
+typedef struct		s_dda
 {
-	int				x;
-	int				next_x;
+	double			x;
+	double			next_x;
 	double			dist;
 	double			y;
 	double			next_y;
 	int				tex;
 	t_point_int		map;
-}					t_vert;
-
-typedef struct		s_hor
-{
-	double			dist;
-	int				y;
-	int				next_y;
-	double			x;
-	double			next_x;
-	int				tex;
-	t_point_int		map;
-}					t_hor;
+}					t_dda;
 
 typedef struct		s_ray
 {
-	t_vert			vert;
-	t_hor			hor;
+	t_dda			dda[2];
 	bool			skip;
 	int				angle;
 	int				layer;

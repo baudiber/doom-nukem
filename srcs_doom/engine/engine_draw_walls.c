@@ -29,15 +29,16 @@ static void	crop_next_wall(t_env *e, int tid)
 		e->wall[tid].bottom = 0;
 		return ;
 	}
-	else if (e->wall[tid].bottom <= e->prev_wall[tid].top)
+	//if (e->wall[tid].bottom < e->prev_wall[tid].top && e->wall[tid].bottom < e->prev_wall[tid].bottom)
+	if (e->wall[tid].bottom <= e->prev_wall[tid].top)// && e->wall[tid].bottom < e->prev_wall[tid].bottom)
 	{
 		return ;
 	}
-	else if (e->wall[tid].top >= e->prev_wall[tid].bottom)
+	if (e->wall[tid].top >= e->prev_wall[tid].bottom)// && e->wall[tid].bottom > e->prev_wall[tid].bottom)
 	{
 		return ;
 	}
-	else if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
+	if (e->wall[tid].bottom >= e->prev_wall[tid].top && e->wall[tid].top < e->prev_wall[tid].top)
 	{
 		e->wall[tid].bottom = e->prev_wall[tid].top;
 		return ;
@@ -105,7 +106,7 @@ void		draw_reversed(t_env *e, int column, int tid)
 	texture_y = TILE_SIZE;
 	crop_wall_rev(e, &texture_y, ratio, tid);
 	y = e->wall[tid].bottom + 1;
-	while (--y > e->wall[tid].top)
+	while (--y >= e->wall[tid].top)
 	{
 		color = e->files.wall[e->wall[tid].tex][((int)texture_y << e->tile_shift) + e->wall[tid].texture_x];
 		if (e->wall[tid].shadow)

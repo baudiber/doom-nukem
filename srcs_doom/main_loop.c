@@ -50,6 +50,15 @@ static void		get_floor_order(t_env *e)
 
 static void		world_interaction(t_env *e)
 {
+	int		i;
+
+	i = -1;
+	while (++i < e->sprite_nb)
+	{
+		pick_up_obj(e, i);
+	}
+	if (e->player.hp <= 0)
+		end_game(e, "WASTED");
 	get_player_floor(e);
 	get_floor_order(e);
 	move_player(e);
@@ -65,9 +74,7 @@ static void		renderer(t_env *e)
 	if (e->horizon > 0)
 //		draw_scaled(e, &e->skybox);
 	display_skybox(e);
-	printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	multithreaded_render(e);
-	printf("ptdr\n");
 	draw_ui(e);
 	/*
 	e->draw.str = ft_itoa(1 / e->time.frame_time);

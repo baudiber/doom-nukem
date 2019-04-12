@@ -28,8 +28,6 @@ void	floor_is_lava(t_env *e)
 	}
 	else
 		lava_tick = 0;
-	if (e->player.hp <= 0)
-		end_game(e, "WASTED");
 }
 
 void	restart(t_env *e)
@@ -61,10 +59,11 @@ void	end_game(t_env *e, char *msg)
 	pt.x = WIN_W * 0.5 - 120;
 	pt.y = e->render_limit * 0.5;
 	i = 1;
-	draw_text(e, pt, END_GAME, msg);
 	i = -1;
 	while (++i < (WIN_W * WIN_W))
 		e->buff[i] = (e->buff[i] >> 1) & 8355711;
-	//SDL_UpdateWindowSurface(e->win);
+	draw_text(e, pt, END_GAME, msg);
+	SDL_UpdateWindowSurface(e->win);
+	sleep(3);
 	e->menu.check = 0;
 }
