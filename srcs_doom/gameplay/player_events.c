@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 23:48:19 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:45:36 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	floor_is_lava(t_env *e)
 		if (lava_tick > 1.0)
 		{
 			e->player.hp -= 50;
+			Mix_PlayChannel(-1, e->sound.sound11, 0);
 			lava_tick = 0;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 23:36:47 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:39:27 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ typedef struct		s_sound
 	Mix_Chunk		*sound7;
 	Mix_Chunk		*sound8;
 	Mix_Chunk		*sound9;
+	Mix_Chunk		*sound10;
+	Mix_Chunk		*sound11;
 }					t_sound;
 
 typedef struct		s_time
