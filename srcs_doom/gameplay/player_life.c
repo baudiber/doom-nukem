@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 18:24:42 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 19:05:54 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:24:23 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ void			draw_life(t_env *e)
 	pt.y = 505;
 	draw_text(e, pt, HEALTH, e->player.hp_str[e->player.hp]);
 }
-
