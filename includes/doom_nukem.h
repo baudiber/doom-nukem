@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 18:53:57 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:01:18 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define DEVENT 4
 
 # define END_GAME 1
+# define HEALTH 2
 # define VERT 1
 # define HOR 0
 
