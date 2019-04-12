@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 19:01:18 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:32:30 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,16 @@ typedef struct		s_data
 typedef struct		s_draw
 {
 	char			*str;
+	int				skybox_y;
+	double			skybox_x;
+	Uint32			color;
 	SDL_Rect		sky_rect;
 	SDL_Rect		sky_rect2;
-	double			skybox_x;
-	int				skybox_y;
 	TTF_Font		*font_end_game;
 	TTF_Font		*font_hp;
 	SDL_Surface		*text_surface;
 	SDL_Color		white;
 	SDL_Color		red;
-	Uint32			color;
 }					t_draw;
 
 typedef struct		s_menu
@@ -163,35 +163,35 @@ typedef struct		s_time
 
 typedef struct		s_sprite
 {
-	int				tex;
 	bool			visible;
-	double			dead;
+	int				tex;
 	int				x;
 	int				y;
 	int				z;
 	int				floor;
-	double			dist;
 	int				height;
 	int				screen_x;
+	double			dead;
+	double			dist;
 }					t_sprite;
 
 typedef struct		s_player
 {
-	t_point			pos;
-	t_point_int		map;
-	int				plane_dist;
-	int				hp;
-	char			hp_str[101][4];
-	int				floor;
-	int				height;
-	int				angle;
-	int				speed;
 	bool			moving;
 	bool			jumping;
 	bool			falling;
 	bool			win;;
+	char			hp_str[101][4];
+	int				plane_dist;
+	int				hp;
+	int				floor;
+	int				height;
+	int				angle;
+	int				speed;
 	int				pace;
 	int				dist_to_floor;
+	t_point			pos;
+	t_point_int		map;
 }					t_player;
 
 typedef struct		s_sprite_calculation
@@ -205,25 +205,25 @@ typedef struct		s_sprite_calculation
 
 typedef struct		s_sprite_draw
 {
-	Uint32			color;
 	int				offsave;
+	double			ratio;
+	Uint32			color;
 	t_point_int		texture;
 	t_point_int		start;
 	t_point_int		end;
 	t_point_int		offset;
-	double			ratio;
 }					t_sprite_draw;
 
 typedef struct		s_wall
 {
 	bool			hor;
 	bool			is_prev;
+	bool			botwall;
 	int				tex;
 	int				top;
 	int				bottom;
 	int				texture_x;
 	int				texture_y;
-	bool			botwall;
 	int				shadow;
 	double			dist;
 	double			height;
@@ -232,22 +232,22 @@ typedef struct		s_wall
 
 typedef struct		s_dda
 {
+	int				tex;
 	double			x;
 	double			next_x;
 	double			dist;
 	double			y;
 	double			next_y;
-	int				tex;
 	t_point_int		map;
 }					t_dda;
 
 typedef struct		s_ray
 {
-	t_dda			dda[2];
 	bool			skip;
 	int				angle;
 	int				layer;
 	int				max_column;
+	t_dda			dda[2];
 }					t_ray;
 
 typedef struct		s_floor
@@ -256,8 +256,8 @@ typedef struct		s_floor
 	int				y;
 	int				tex;
 	int				color;
-	t_point_int		map;
 	double			dist;
+	t_point_int		map;
 }					t_floor;
 
 typedef struct		s_angles
@@ -279,21 +279,21 @@ typedef struct		s_angles
 
 typedef struct		s_draw_scaled
 {
+	int				w;
+	unsigned int	**buffer;
+	Uint32			index;
 	double			x_start;
 	double			y_start;
 	double			x_end;
 	double			y_end;
-	int				w;
-	unsigned int	**buffer;
 	double			x_ratio;
 	double			y_ratio;
-	Uint32			index;
 }					t_draw_scaled;
 
 typedef struct		s_ui
 {
-	int				weapon;
 	bool			trumpet;
+	int				weapon;
 	int				weapon_firing;
 	int				weapon_fired;
 	int				ui_size;
@@ -303,19 +303,20 @@ typedef struct		s_ui
 
 typedef struct		s_env
 {
-	Uint32			*buff;
-	SDL_Window		*win;
-	SDL_Surface		*screen;
-	SDL_Event		event;
-	const Uint8		*state;
-	pthread_t		tids[MAX_THREADS];
-	t_ray			ray[MAX_THREADS];
-	t_wall			wall[MAX_THREADS];
-	t_wall			tmp[MAX_THREADS];
-	t_wall			prev_wall[MAX_THREADS];
-	t_floor			floor[MAX_THREADS];
-	t_angles		angle;
+	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
+	bool			barrel_tick;
+	int				sprite_nb;
+	int				horizon;
+	int				tile_shift;
+	int				thread_col_size;
+	int				render_limit;
+	int				max_speed;
+	int				player_state;
 	unsigned int	floor_order[MAX_FLOORS];
+	Uint32			floor_nb;
+	Uint32			*buff;
+	const Uint8		*state;
+	double			wall_dist[5][WIN_W];
 	double			sin_table[7681];
 	double			i_sin_table[7681];
 	double			cos_table[7681];
@@ -341,21 +342,20 @@ typedef struct		s_env
 	t_draw_scaled	shotgun_info;
 	t_draw_scaled	skybox;
 	t_ui			ui;
-	int				sprite_nb;
-	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
-	double			wall_dist[5][WIN_W];
-	int				horizon;
-	Uint32			floor_nb;
-	int				tile_shift;
-	int				thread_col_size;
-	int				render_limit;
-	int				max_speed;
-	bool			barrel_tick;
 	t_point			prev_mouse;
 	t_point			mouse;
 	t_draw			draw;
 	t_time			time;
-	int				player_state;
+	t_ray			ray[MAX_THREADS];
+	t_wall			wall[MAX_THREADS];
+	t_wall			tmp[MAX_THREADS];
+	t_wall			prev_wall[MAX_THREADS];
+	t_floor			floor[MAX_THREADS];
+	t_angles		angle;
+	SDL_Window		*win;
+	SDL_Surface		*screen;
+	SDL_Event		event;
+	pthread_t		tids[MAX_THREADS];
 }					t_env;
 
 extern int			main(int argc, char **argv);
@@ -385,15 +385,11 @@ extern void			parse_quit(t_data *data, int type, char *msg);
 extern void			exit_error(int type, char *msg);
 
 extern void			load_screen(t_env *e);
-//extern void			load_screen_2(t_env *e, int check, SDL_Event ev);
 extern void			ft_menu(t_env *e);
 extern void			ft_menu_2(t_env *e, SDL_Event ev);
-//extern void			ft_menu_2_2(t_env *e, SDL_Event ev);
 extern void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y);
 extern void			mouse_menu_2(t_env *e, int y, SDL_Event ev);
 extern void			ft_menu_options(t_env *e);
-//extern void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y);
-//extern void			refresh_gif(t_env *e, int i);
 extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
 extern void			gif_load_screen(t_env *e);
 extern void			re_init_map(t_data *data);
