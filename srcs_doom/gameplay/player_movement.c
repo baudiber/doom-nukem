@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 00:49:23 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:01:29 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void			collision(t_env *e, t_point *new_pos)
 void	jump_anim(t_env *e)
 {
 	static double	jump_time;
-	printf ("ceil height = %d\n player height= %d\n", (e->player.floor + 1) * TILE_SIZE, e->player.height);
+//	printf ("ceil height = %d\n player height= %d\n", (e->player.floor + 1) * TILE_SIZE, e->player.height);
 	//printf("floor_height = %d\nplayer_height = %d\n", (e->player.floor + 1) << e->tile_shift, e->player.height);
 	if (e->player.jumping && jump_time <= 0.25 )
 	{
@@ -170,6 +170,16 @@ void			mouse_aim(t_env *e)
 	e->draw.skybox_x -= x * 2;
 	e->horizon -= y * 2;
 	e->draw.skybox_y -= y * 2;
+	if (e->horizon > 1000 && y < 0)
+	{
+		e->horizon = 1000;
+		e->draw.skybox_y -= -y * 2;
+	}
+	if (e->horizon < -750 && y > 0)
+	{
+		e->horizon = -750;
+		e->draw.skybox_y -= -y * 2;
+	}
 //	mouse_aim_x(e);
 //	mouse_aim_y(e);
 	angle_overflow(&e->player.angle, e);
