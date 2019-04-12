@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 18:14:47 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 23:39:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void					init_player(t_env *e)
 	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
 	e->player.win = false;
 	e->player.moving = false;
-	e->player.jumping = false;
-	e->player.falling = false;
 	e->render_limit = (WIN_H / 4) * 3.2;
 	e->ui.ui_size = WIN_H - e->render_limit;
 	e->horizon = e->render_limit / 2;

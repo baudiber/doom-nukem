@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 20:19:29 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 18:05:02 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:42:45 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void		init_sound(t_env *e)
 	if (!(e->sound.sound8 = Mix_LoadWAV("sound/DOOT-Nukem_die.wav")))
 		exit_error(2, ERR_2);
 	if (!(e->sound.sound9 = Mix_LoadWAV("sound/DOOT-Nukem_win.wav")))
+		exit_error(2, ERR_2);
+	if (!(e->sound.sound10 = Mix_LoadWAV("sound/JUMP.wav")))
+		exit_error(2, ERR_2);
+	if (!(e->sound.sound11 = Mix_LoadWAV("sound/PAIN.wav")))
 		exit_error(2, ERR_2);
 	Mix_VolumeMusic(128 * 0.5);
 	Mix_Volume(-1, 128 * 0.20);

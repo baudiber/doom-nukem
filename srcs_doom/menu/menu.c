@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 04:33:46 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:00:44 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void			refresh_gif(t_env *e, int i)
 	SDL_Delay(150);
 }
 
-void	gif_load_screen(t_env *e)
+void				gif_load_screen(t_env *e)
 {
 	refresh_gif(e, 10);
 	refresh_gif(e, 11);
@@ -38,10 +38,10 @@ void	gif_load_screen(t_env *e)
 	refresh_gif(e, 11);
 }
 
-void	load_screen(t_env *e)
+void				load_screen(t_env *e)
 {
-	SDL_Event	ev;
-	int			check;
+	SDL_Event		ev;
+	int				check;
 
 	sleep(1);
 	check = 0;
@@ -61,9 +61,9 @@ void	load_screen(t_env *e)
 	}
 }
 
-void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)
+void				mouse_menu(t_env *e, int x, int y, SDL_Event ev)
 {
-	int save;
+	int				save;
 
 	save = e->menu.i_img;
 	if (x > 270 && x < 520)
@@ -76,7 +76,6 @@ void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)
 				restart(e);
 				e->menu.check = 1;
 			}
-
 		}
 		mouse_menu_2(e, y, ev);
 	}
@@ -84,13 +83,13 @@ void	mouse_menu(t_env *e, int x, int y, SDL_Event ev)
 		Mix_PlayChannel(-1, e->sound.sound1, 0);
 }
 
-void	ft_menu(t_env *e)
+void				ft_menu(t_env *e)
 {
-	SDL_Event	ev;
-	int			x;
-	int			y;
-	int			x2;
-	int			y2;
+	SDL_Event		ev;
+	int				x;
+	int				y;
+	int				x2;
+	int				y2;
 
 	SDL_SetRelativeMouseMode(SDL_FALSE);
 	SDL_ShowCursor(SDL_ENABLE);
@@ -110,6 +109,5 @@ void	ft_menu(t_env *e)
 	}
 	if (!(SDL_SetRelativeMouseMode(SDL_TRUE) == 0))
 		exit_error(17, ERR_7);
-//	SDL_ShowCursor(SDL_DISABLE);
 	SDL_ShowCursor(SDL_ENABLE);
 }

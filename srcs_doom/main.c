@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:02:31 by clrichar         ###   ########.fr       */
+/*   Created: 2019/04/13 01:04:09 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/13 01:04:11 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void				launch_init(t_env *e)
 	init_sdl(e);
 	init_vars(e);
 	init_player(e);
+	init_chr_life(e);
 	load_textures(e);
 	load_textures_menu(e);
 	load_textures_splash(e);

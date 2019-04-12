@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 17:31:54 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:39:27 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define DEVENT 4
 
 # define END_GAME 1
+# define HEALTH 2
 # define VERT 1
 # define HOR 0
 
@@ -125,17 +126,17 @@ typedef struct		s_menu
 	SDL_Surface		*image[18];
 }					t_menu;
 
-typedef struct		s_minimap
-{
-	int				i;
-	int				j;
-	int				i2;
-	int				j2;
-	int				x;
-	int				y;
-	double			pady;
-	double			padx;
-}					t_minimap;
+//typedef struct		s_minimap
+//{
+//	int				i;
+//	int				j;
+//	int				i2;
+//	int				j2;
+//	int				x;
+//	int				y;
+//	double			pady;
+//	double			padx;
+//}					t_minimap;
 
 typedef struct		s_sound
 {
@@ -149,6 +150,8 @@ typedef struct		s_sound
 	Mix_Chunk		*sound7;
 	Mix_Chunk		*sound8;
 	Mix_Chunk		*sound9;
+	Mix_Chunk		*sound10;
+	Mix_Chunk		*sound11;
 }					t_sound;
 
 typedef struct		s_time
@@ -180,6 +183,7 @@ typedef struct		s_player
 	t_point_int		map;
 	int				plane_dist;
 	int				hp;
+	char			hp_str[101][4];
 	int				floor;
 	int				height;
 	int				angle;
@@ -187,7 +191,7 @@ typedef struct		s_player
 	bool			moving;
 	bool			jumping;
 	bool			falling;
-	bool			win;;
+	bool			win;
 	int				pace;
 	int				dist_to_floor;
 }					t_player;
@@ -330,7 +334,6 @@ typedef struct		s_env
 	t_sprite		sprites[100];
 	t_files			files;
 	t_sound			sound;
-	t_minimap		minimap;
 	t_draw_scaled	face_info;
 	t_draw_scaled	trumpet_info;
 	t_draw_scaled	ui_info;
@@ -356,20 +359,18 @@ typedef struct		s_env
 	int				player_state;
 }					t_env;
 
-extern int			main(int argc, char **argv);
-extern void			m_parser(int fd, t_env *e);
-extern void			load_textures(t_env *e);
-extern void			load_textures_menu(t_env *e);
 extern void			engine_loop(t_env *e);
 extern void			init_rects_and_font(t_env *e);
-extern void			drawing(t_env *e, int x);
 extern void			init_sdl(t_env *e);
+extern void			init_chr_life(t_env *e);
 extern void			init_player(t_env *e);
 extern void			init_sound(t_env *e);
 extern void			init_vars(t_env *e);
+extern void			init_ui_structs(t_env *e);
+extern void			load_textures(t_env *e);
+extern void			load_textures_splash(t_env *e);
+extern void			load_textures_menu(t_env *e);
 extern void			restart(t_env *e);
-
-extern void			parse_init(t_data *data);
 extern void			parse_start(t_data *data, char *map);
 extern void			parse_scan(t_data *data, char *map);
 extern void			parse_tier(t_data *data);
@@ -380,25 +381,16 @@ extern void			parse_pos(t_data *data);
 extern void			parse_sprite(t_env *e);
 extern void			parse_quit(t_data *data, int type, char *msg);
 extern void			exit_error(int type, char *msg);
-
 extern void			load_screen(t_env *e);
-//extern void			load_screen_2(t_env *e, int check, SDL_Event ev);
 extern void			ft_menu(t_env *e);
 extern void			ft_menu_2(t_env *e, SDL_Event ev);
-//extern void			ft_menu_2_2(t_env *e, SDL_Event ev);
 extern void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y);
 extern void			mouse_menu_2(t_env *e, int y, SDL_Event ev);
 extern void			ft_menu_options(t_env *e);
-//extern void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y);
-//extern void			refresh_gif(t_env *e, int i);
 extern void			ft_slider(t_env *e, int x, int y, SDL_Event ev);
-extern void			gif_load_screen(t_env *e);
 extern void			re_init_map(t_data *data);
 extern void			clean_up(t_env *e);
-
 extern void			get_vertical_hit(t_env *e, register int tid);
-extern void			vertical_dda(t_env *e, register int tid);
-extern void			horizontal_dda(t_env *e, register int tid);
 extern void			get_horizontal_hit(t_env *e, register int tid);
 extern bool			ray_is_in_the_map(t_point_int pt, t_env *e);
 extern void			angle_overflow(int *angle, t_env *e);
@@ -415,7 +407,7 @@ extern void			draw_sprites(t_env *e, int max_col, int tid);
 extern void			move_player(t_env *e);
 extern void			get_delta(int angle, t_env *e, t_point *new_pos);
 extern void			walk_forward_and_backward(t_env *e, t_point *new_pos,\
-					int *tmpangle);
+		int *tmpangle);
 extern void			strafe(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_backward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
@@ -423,40 +415,27 @@ extern void			crouch_and_jump(t_env *e);
 extern void			fly_mode(t_env *e);
 extern void			mouse_aim(t_env *e);
 extern bool			check_walls(t_env *e, int height, int *offset, int x,\
-					int tid);
+		int tid);
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
-					int sprite);
+		int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
-					t_sprite *sprite, int tid);
-extern void			clip_end(int *end, int y);
-extern void			clip_start(int *start, int *offset);
-extern void			mouse_aim_x(t_env *e);
-extern void			mouse_aim_y(t_env *e);
+		t_sprite *sprite, int tid);
 extern void			pick_up_obj(t_env *e, int nb);
-extern void			minimap(t_env *e);
 extern void			draw_player_small(t_env *e);
 extern void			draw_player_big(t_env *e);
+extern void			draw_life(t_env *e);
 extern void			draw_map_small(t_env *e);
 extern void			draw_map_big(t_env *e);
-//extern void			init_struct_minimap(t_env *e);
 extern void			weapon_switch(t_env *e);
 extern void			weapon_fire(t_env *e);
-
-extern void			draw_ui_base(t_env *e);
 extern void			draw_ui(t_env *e);
 extern void			animations(t_env *e);
-extern void			init_ui_structs(t_env *e);
-extern void			draw_scaled(t_env *e, t_draw_scaled *info);
-
 extern void			draw_ceilings(t_env *e, int x, int tid);
-extern void			fake_parse(t_env *e);
 extern void			get_player_floor(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
 extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
-extern void			load_textures_splash(t_env *e);
-extern void			load_textures_menu(t_env *e);
 extern void			end_game(t_env *e, char *msg);
 extern void			floor_is_lava(t_env *e);
 extern void			draw_text(t_env *e, t_point pt, int type, char *msg);

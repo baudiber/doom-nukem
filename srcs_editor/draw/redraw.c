@@ -6,13 +6,13 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 14:13:59 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 20:57:27 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:22:41 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
 
-static void						fill_rect(t_env *e)
+static void					fill_rect(t_env *e)
 {
 	int						i;
 	int						j;
@@ -55,8 +55,6 @@ unsigned int				*apply_texture(t_env *e)
 		type = 0;
 	else if (e->type == 1)
 		type = NWALL;
-//	type = le nombre de toute les textures avant ce type la si type == 2 \
-//	alors compter toutes les texture de type 0 et type 1 et les additionner
 	else if (e->type == 2)
 		type = NWALL + NFLOOR;
 	else if (e->type == 3)
@@ -101,10 +99,7 @@ void						redraw(t_env *e)
 	int x;
 	int y;
 
-	// ERROR SDL
 	fill_rect(e);
-
-	// FU
 	y = -1;
 	while (++y < e->grid.y)
 	{
