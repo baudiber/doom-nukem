@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 00:18:18 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 04:51:05 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,5 @@ void					init_player(t_env *e)
 	e->player.angle = 1;
 	e->floor_nb = e->data.tier_ind + 1;
 	e->player.hp = 100;
+	// re init inventaire
 }

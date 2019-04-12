@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 03:45:01 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 04:37:52 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,7 @@ extern void			init_sdl(t_env *e);
 extern void			init_player(t_env *e);
 extern void			init_sound(t_env *e);
 extern void			init_vars(t_env *e);
+extern void			restart(t_env *e);
 
 extern void			parse_init(t_data *data);
 extern void			parse_start(t_data *data, char *map);

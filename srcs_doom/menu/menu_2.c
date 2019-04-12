@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 02:37:46 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 04:35:22 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ static void			ft_menu_2_2(t_env *e, SDL_Event ev)
 {
 	if (e->menu.i_img == 0)
 		if (ev.key.keysym.sym == '\r' && ev.type == SDL_KEYDOWN)
+		{
+			restart(e);
 			e->menu.check = 1;
+		}
 	if (e->menu.i_img == 1)
 		if (ev.key.keysym.sym == '\r' && ev.type == SDL_KEYDOWN)
 			ft_menu_options(e);
