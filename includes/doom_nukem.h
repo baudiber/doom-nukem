@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 17:31:54 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:53:57 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ typedef struct		s_player
 	t_point_int		map;
 	int				plane_dist;
 	int				hp;
+	char			hp_str[101][4];
 	int				floor;
 	int				height;
 	int				angle;
@@ -364,6 +365,7 @@ extern void			engine_loop(t_env *e);
 extern void			init_rects_and_font(t_env *e);
 extern void			drawing(t_env *e, int x);
 extern void			init_sdl(t_env *e);
+extern void			init_chr_life(t_env *e);
 extern void			init_player(t_env *e);
 extern void			init_sound(t_env *e);
 extern void			init_vars(t_env *e);
@@ -436,6 +438,7 @@ extern void			pick_up_obj(t_env *e, int nb);
 extern void			minimap(t_env *e);
 extern void			draw_player_small(t_env *e);
 extern void			draw_player_big(t_env *e);
+extern void			draw_life(t_env *e);
 extern void			draw_map_small(t_env *e);
 extern void			draw_map_big(t_env *e);
 //extern void			init_struct_minimap(t_env *e);
