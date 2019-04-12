@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 21:35:50 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 21:36:21 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:07:02 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		clean_up(t_env *e)
 {
-	// check eventual malloc in env here
 	Mix_FreeChunk(e->sound.sound1);
 	Mix_FreeChunk(e->sound.sound2);
 	Mix_FreeChunk(e->sound.sound3);
