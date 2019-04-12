@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 00:39:27 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:20:26 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -434,6 +434,11 @@ extern void			draw_ceilings(t_env *e, int x, int tid);
 extern void			get_player_floor(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
+extern void			load_gun_textures(t_env *e);
+extern void			load_ui_textures(t_env *e);
+extern void			load_sprite_textures(t_env *e);
+extern void			load_walls_textures(t_env *e);
+extern void			load_floor_textures(t_env *e);
 extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
 extern void			end_game(t_env *e, char *msg);
