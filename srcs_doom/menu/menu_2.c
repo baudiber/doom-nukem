@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 04:35:22 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:23:19 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void			ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y)
 	SDL_UpdateWindowSurface(e->win);
 	SDL_BlitSurface(e->menu.image[e->menu.i_img], NULL, \
 		e->screen, NULL);
-	if ((ev.key.keysym.sym == SDLK_ESCAPE && ev.type == SDL_KEYDOWN))
+	if ((ev.key.keysym.sym == SDLK_ESCAPE && ev.type == SDL_KEYDOWN \
+			&& e->player.hp > 0 && e->player.win == false))
 		e->menu.check = 1;
 }
 

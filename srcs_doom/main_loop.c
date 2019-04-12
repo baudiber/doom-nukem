@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 06:46:27 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:27:23 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ static void		world_interaction(t_env *e)
 
 	i = -1;
 	while (++i < e->sprite_nb)
-	{
 		pick_up_obj(e, i);
-	}
 	if (e->player.hp <= 0)
+	{
+		Mix_PlayChannel(-1, e->sound.sound4, 0);
 		end_game(e, "WASTED");
+	}
 	get_player_floor(e);
 	get_floor_order(e);
 	move_player(e);
