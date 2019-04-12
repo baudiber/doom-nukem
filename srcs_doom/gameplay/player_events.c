@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_events.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 21:52:13 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:42:25 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	wasted(t_env *e)
 	}
 	*/
 	e->menu.check = 0;
-	ft_menu(e);	
+	ft_menu(e);
 }

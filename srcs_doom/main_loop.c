@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:19:17 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:48:54 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,9 @@ void			engine_loop(t_env *e)
 			e->time.last_time = e->time.new_time;
 			while (SDL_PollEvent(&e->event))
 			{
-				if (e->event.type == SDL_QUIT || e->state[SDL_SCANCODE_ESCAPE])
+				if (e->event.type == SDL_QUIT \
+					|| (e->event.key.keysym.sym == SDLK_ESCAPE \
+					&& e->event.type == SDL_KEYDOWN))
 				{
 					e->menu.check = 0;
 					ft_menu(e);
