@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/11 22:01:00 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/12 02:06:24 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRCA			=				main.c										\
 								parser/parse_stage.c						\
 								parser/parse_tier.c							\
 								parser/parse_stock.c						\
+								parser/parse_copy.c							\
 								parser/parse_sprite.c						\
 								parser/parse_utils.c						\
 								menu/menu.c									\

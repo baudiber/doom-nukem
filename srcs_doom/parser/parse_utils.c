@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 13:12:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 15:09:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:04:10 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void			parse_init(t_data *data)
 	data->stage = NULL;
 	data->cell = NULL;
 	ft_memset(data->map, 0, sizeof(data->map));
+	ft_memset(data->save, 0, sizeof(data->save));
 	if (!(data->scan = ft_strnew(0)))
 		exit_error(1, ERR_1);
 }
@@ -36,6 +37,7 @@ void			parse_start(t_data *data, char *map)
 	parse_tier(data);
 	data->max_y = data->tier_size;
 	parse_pos(data);
+	parse_copy(data);
 }
 
 void			parse_quit(t_data *data, int type, char *msg)

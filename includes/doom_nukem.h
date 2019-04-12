@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:15:42 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 02:29:51 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct		s_data
 	char			**stage;
 	char			**cell;
 	unsigned int	map[5][MAX_FLOORS][64][64];
+	unsigned int	save[5][MAX_FLOORS][64][64];
 }					t_data;
 
 typedef struct		s_draw
@@ -374,6 +375,7 @@ extern void			parse_scan(t_data *data, char *map);
 extern void			parse_tier(t_data *data);
 extern void			parse_stage(t_data *data);
 extern void			parse_stock(int y, int x, t_data *data, char *cell);
+extern void			parse_copy(t_data *data);
 extern void			parse_pos(t_data *data);
 extern void			parse_sprite(t_env *e);
 extern void			parse_quit(t_data *data, int type, char *msg);
