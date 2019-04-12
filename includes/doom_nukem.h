@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 17:31:54 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:45:33 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,8 +412,11 @@ extern void			multithreaded_render(t_env *e);
 extern void			*raycaster_mt(void *arg);
 extern int			thread_nb(t_env *e);
 extern void			draw_sprites(t_env *e, int max_col, int tid);
+
+extern void			check_state(t_env *e);
 extern void			move_player(t_env *e);
 extern void			get_delta(int angle, t_env *e, t_point *new_pos);
+extern void			get_jump_pos(t_env *e, double *fall_time);
 extern void			walk_forward_and_backward(t_env *e, t_point *new_pos,\
 					int *tmpangle);
 extern void			strafe(t_env *e, t_point *new_pos, int *tmpangle);
@@ -424,6 +427,12 @@ extern void			fly_mode(t_env *e);
 extern void			mouse_aim(t_env *e);
 extern bool			check_walls(t_env *e, int height, int *offset, int x,\
 					int tid);
+
+extern bool			is_blocked(t_env *e, t_point *new_pos, int y);
+extern void			collision(t_env *e, t_point *new_pos);
+extern void			get_floor_dist(t_env *e);
+extern void			jump_anim(t_env *e);
+
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
 					int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\

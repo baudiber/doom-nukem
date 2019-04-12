@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 21:09:32 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:49:13 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	floor_is_lava(t_env *e)
 	static float	lava_tick;
 
 	if (e->data.map[DEVENT][e->player.floor][e->player.map.y]\
-		[e->player.map.x] == 1)
+			[e->player.map.x] == 1)
 	{
 		lava_tick += e->time.frame_time;
 		if (lava_tick > 1.0)
@@ -60,10 +60,31 @@ void	end_game(t_env *e, char *msg)
 	pt.y = e->render_limit * 0.5 - 20;
 	i = 1;
 	i = -1;
-//	while (++i < (WIN_W * WIN_W))
-//		e->buff[i] = (e->buff[i] >> 1) & 8355711;
+	//	while (++i < (WIN_W * WIN_W))
+	//		e->buff[i] = (e->buff[i] >> 1) & 8355711;
 	draw_text(e, pt, END_GAME, msg);
 	SDL_UpdateWindowSurface(e->win);
 	sleep(3);
 	e->menu.check = 0;
+}
+
+void	check_state(t_env *e)
+{
+	if (e->state[SDL_SCANCODE_F])
+		e->player_state ^= IS_FLY;
+	if (e->player.height <= e->player.dist_to_floor && !(e->player_state & IS_FLY))
+	{
+		e->player_state &= (0 << 4);
+		e->player.height = e->player.dist_to_floor;
+	}
+	else
+		e->player_state |= IS_FALLING;
+	get_floor_dist(e);
+	if (e->state[SDL_SCANCODE_LSHIFT])
+	{
+		e->player.speed = e->max_speed * 2;
+		e->face_info.index = 3;
+	}
+	else
+		e->player.speed = e->max_speed;
 }
