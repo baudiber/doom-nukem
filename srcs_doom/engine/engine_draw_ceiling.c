@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:28:48 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 20:04:55 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:34:10 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_ceilings(t_env *e, int x, int tid)
 			{
 				ceil.y = ceil.y % TILE_SIZE;
 				ceil.x = ceil.x % TILE_SIZE;
-				e->buff[y * WIN_W + x] = e->files.floor[1][(ceil.y << e->tile_shift) + ceil.x];
+				e->buff[y * WIN_W + x] = e->files.floor[5][(ceil.y << e->tile_shift) + ceil.x];
 			}
 		}
 	}

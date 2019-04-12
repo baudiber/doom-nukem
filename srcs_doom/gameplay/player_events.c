@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 06:38:42 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:23:53 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	end_game(t_env *e, char *msg)
 	t_point	pt;
 
 	pt.x = WIN_W * 0.5 - 120;
-	pt.y = e->render_limit * 0.5;
+	pt.y = e->render_limit * 0.5 - 20;
 	i = 1;
 	i = -1;
 	while (++i < (WIN_W * WIN_W))
