@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 16:29:16 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:44:52 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:19:20 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static void		ft_slider_2(t_env *e, int x)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 6;
-		Mix_VolumeMusic(128 * 0.025);
+		Mix_VolumeMusic(128 * 0.25);
 		Mix_Volume(-1, 128 * 0.025);
 	}
 	if (x >= 421 && x <= 477)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 7;
-		Mix_VolumeMusic(128 * 0.05);
+		Mix_VolumeMusic(128 * 0.50);
 		Mix_Volume(-1, 128 * 0.05);
 	}
 	if (x >= 478 && x <= 533)
 	{
 		if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 			e->menu.i_img = 8;
-		Mix_VolumeMusic(128 * 0.10);
+		Mix_VolumeMusic(128 * 1);
 		Mix_Volume(-1, 128 * 0.10);
 	}
 }
@@ -52,7 +52,7 @@ void		ft_slider(t_env *e, int x, int y, SDL_Event ev)
 		{
 			if (e->menu.i_img >= 4 && e->menu.i_img <= 8)
 				e->menu.i_img = 5;
-			Mix_VolumeMusic(128 * 0.01);
+			Mix_VolumeMusic(128 * 0.1);
 			Mix_Volume(-1, 128 * 0.01);
 		}
 		ft_slider_2(e, x);
