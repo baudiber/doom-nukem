@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:52:26 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 04:33:14 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	clip_end(int *end, int y)
 	}
 }
 
-static void		change_tex(t_env *e, int nb)
+void		change_tex(t_env *e, int nb)
 {
 	if (e->sprites[nb].dead && e->sprites[nb].dead < 12)
 	{
@@ -46,7 +46,7 @@ static void		change_tex(t_env *e, int nb)
 	}
 }
 
-void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, \
+void		get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, \
 	int tid)
 {
 	draw->ratio = (float)TILE_SIZE / sprite->height;
@@ -62,7 +62,7 @@ void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, \
 	clip_end(&draw->end.x, 0);
 }
 
-void	sprite_rotation(t_env *e, t_sprite_calculation *calc, int nb)
+void		sprite_rotation(t_env *e, t_sprite_calculation *calc, int nb)
 {
 	int		spread;
 

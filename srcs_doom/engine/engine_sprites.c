@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:52:38 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 04:31:30 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,21 @@ static void		change_tex_when_vis(t_env *e, int nb)
 	}
 }
 
+static bool		is_visible(t_sprite_calculation *calc, int sprite, int tid)
+{
+	t_env	*e;
+
+	e = call();
+	if (e->sprites[sprite].floor != e->ray[tid].layer)
+		return (false);
+	calc->map.x = e->sprites[sprite].x >> e->tile_shift;
+	calc->map.y = e->sprites[sprite].y >> e->tile_shift;
+	if (!e->spotvis[e->ray[tid].layer][calc->map.y][calc->map.x] \
+		|| !e->sprites[sprite].visible)
+		return (false);
+	return (true);
+}
+
 void			draw_sprites(t_env *e, int max_col, int tid)
 {
 	t_sprite				visible[MAX_VISIBLE_SPRITE];
@@ -103,15 +118,8 @@ void			draw_sprites(t_env *e, int max_col, int tid)
 	visnb = 0;
 	while (++sprite < e->sprite_nb && visnb < MAX_VISIBLE_SPRITE)
 	{
-		if (e->sprites[sprite].floor != e->ray[tid].layer)
-			continue;
-		calc.map.x = e->sprites[sprite].x >> e->tile_shift;
-		calc.map.y = e->sprites[sprite].y >> e->tile_shift;
 		change_tex(e, sprite);
-		if (!e->spotvis[e->ray[tid].layer][calc.map.y][calc.map.x] \
-			|| !e->sprites[sprite].visible)
-			continue;
-		else
+		if (is_visible(&calc, sprite, tid))
 		{
 			sprite_rotation(e, &calc, sprite);
 			if (calc.screen_x > max_col || calc.screen_x \

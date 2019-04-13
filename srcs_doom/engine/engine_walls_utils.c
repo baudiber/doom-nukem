@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:59:29 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:51:58 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 04:33:37 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		get_wall_type(t_env *e, int tid, int column, int i)
 	}
 }
 
-bool	check_walls(int height, int *offset, int x, int tid)
+bool		check_walls(int height, int *offset, int x, int tid)
 {
 	t_env *e;
 

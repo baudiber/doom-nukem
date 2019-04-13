@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 04:00:15 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 04:23:09 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -459,5 +459,6 @@ extern void			crop_wall(t_env *e, float *texture_y, double ratio, \
 extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
 	int tid);
 extern void			get_wall_type(t_env *e, int tid, int column, int i);
+extern void			change_tex(t_env *e, int nb);
 
 #endif
