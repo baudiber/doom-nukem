@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 16:46:45 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:26:01 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ typedef	struct			s_env
 	void				(*f[5])(struct s_env *e);
 	int					panel_index;
 	int					argc;
+	int					sprite_nb;
 	char				**argv;
 }						t_env;
 

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:16:55 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:45:35 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:41:44 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void				draw_texture_grid(t_env *e)
 			text_assign(e, y, x, texture);
 		e->texture.y += e->texture.ratioy;
 	}
+	if (e->type == 2 && e->tab[e->type][e->tier][e->grid.mouseposgridy][e->grid.mouseposgridx] == 0)
+		e->sprite_nb--;
 	if (e->grid.mouseposgridy < e->grid.y && e->grid.mouseposgridx < e->grid.x)
-		e->tab[e->type][e->tier][e->grid.mouseposgridy][\
-			e->grid.mouseposgridx] = e->texture.texture;
+		e->tab[e->type][e->tier][e->grid.mouseposgridy]\
+		[e->grid.mouseposgridx] = e->texture.texture;
 }

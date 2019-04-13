@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 20:33:26 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:33:05 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void					main_loop(t_env *e)
 					draw_grid(e);
 				}
 			}
+			ft_putnbr(e->sprite_nb);
+			ft_putchar('\n');
 			SDL_UpdateWindowSurface(e->window.win);
 		}
 	}
