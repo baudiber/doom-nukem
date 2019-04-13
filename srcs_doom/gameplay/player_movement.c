@@ -6,32 +6,11 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 00:46:34 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 01:55:41 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
-
-bool			is_blocked(t_env *e, t_point *new_pos, int y)
-{
-	t_point_int		pt;
-
-	pt.x = (int)new_pos->x >> e->tile_shift;
-	pt.y = (int)new_pos->y >> e->tile_shift;
-	if (!ray_is_in_the_map(pt, e))
-		return (false);
-	if (y)
-	{
-		if (e->data.map[DWALL][e->player.floor][pt.y][e->player.map.x])
-			return (true);
-	}
-	else if (!y)
-	{
-		if (e->data.map[DWALL][e->player.floor][e->player.map.y][pt.x])
-			return (true);
-	}
-	return (false);
-}
 
 void			get_delta(int angle, t_env *e, t_point *new_pos)
 {
@@ -42,6 +21,7 @@ void			get_delta(int angle, t_env *e, t_point *new_pos)
 void			get_jump_pos(t_env *e, double *fall_time)
 {
 	float g;
+
 	g = 9.81;
 	if ((e->player_state & IS_FALLING) && !(e->player_state & IS_FLY))
 	{
@@ -120,6 +100,7 @@ void	get_floor_dist(t_env *e)
 		e->player.dist_to_floor = TILE_SIZE / 2;
 }
 
+>>>>>>> aa5d9e573c819e849e08ad922d93d10af99bd41a
 static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
 {
 	if ((e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D]) \
@@ -140,11 +121,15 @@ static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
 
 void			move_player(t_env *e)
 {
-	int			tmpangle;
-	t_point		new_pos;
-	static double fall_time;
+	int				tmpangle;
+	t_point			new_pos;
+	static double	fall_time;
 
+	if (!ray_is_in_the_map(e->player.map, e))
+		restart(e);
 	new_pos = e->player.pos;
+	check_state(e);
+	/*
 	if (e->state[SDL_SCANCODE_F])
 		e->player_state ^= IS_FLY;
 	if (e->player.height <= e->player.dist_to_floor && !(e->player_state & IS_FLY))
@@ -162,6 +147,7 @@ void			move_player(t_env *e)
 	}
 	else
 		e->player.speed = e->max_speed;
+		*/
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY)) \
 		|| (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_JUMPING) && !(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
 		{
@@ -211,8 +197,6 @@ void			mouse_aim(t_env *e)
 			e->draw.skybox_y -= y * 2;
 		}
 	}
-//	mouse_aim_x(e);
-//	mouse_aim_y(e);
 	angle_overflow(&e->player.angle, e);
 	if (e->draw.skybox_x > 1199)
 		e->draw.skybox_x = 0;
