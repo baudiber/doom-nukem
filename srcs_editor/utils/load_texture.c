@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 17:03:42 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/12 05:52:10 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:36:51 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,17 @@ static void			load_sprite_texture(t_env *e)
 	if (!(e->texture.image[23] = SDL_LoadBMP(\
 					"textures/editor_textures/SKELETOR.bmp")))
 		exit_error(2, ERR_2);
+	if (!(e->texture.image[24] = SDL_LoadBMP(\
+					"textures/editor_textures/HEALTH_PACK.bmp")))
+		exit_error(2, ERR_2);
 }
 
 static void			load_light_event_texture(t_env *e)
 {
-	if (!(e->texture.image[24] = SDL_LoadBMP(\
+	if (!(e->texture.image[25] = SDL_LoadBMP(\
 					"textures/editor_textures/SHADOW.bmp")))
 		exit_error(2, ERR_2);
-	if (!(e->texture.image[25] = SDL_LoadBMP(\
+	if (!(e->texture.image[26] = SDL_LoadBMP(\
 					"textures/editor_textures/DMG.bmp")))
 		exit_error(2, ERR_2);
 }
