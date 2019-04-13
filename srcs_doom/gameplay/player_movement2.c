@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 00:55:50 by gagonzal          #+#    #+#             */
-/*   Updated: 2019/04/13 03:04:30 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:13:21 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				get_ceil_height(t_env *e)
 
 void			get_floor_dist(t_env *e)
 {
-	if (e->player.map.x && e->player.map.y && e->player.floor && \
+	if (e->player.map.x >= 0 && e->player.map.y >= 0 && e->player.floor && \
 		e->data.map[DWALL][e->player.floor - 1][e->player.map.y]\
 			[e->player.map.x])
 		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2;
