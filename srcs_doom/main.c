@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:04:09 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 03:58:39 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:36:37 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ static bool				basic_err(void)
 		ret = 1;
 	if (ret == 0 && MAX_VISIBLE_SPRITE != 30)
 		ret = 1;
-	if (ret == 0 && (WIN_W < 320 && WIN_W > 1280))
-		ret = 1;
-	if (ret == 0 && (WIN_H < 200 && WIN_H > 800))
+	if (ret == 0 && (WIN_W != 800 || WIN_H != 600))
 		ret = 1;
 	if (ret == 0 && TILE_SIZE != 256)
 		ret = 1;
