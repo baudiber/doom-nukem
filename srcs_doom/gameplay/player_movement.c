@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 02:43:27 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:51:59 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,15 @@ void			mouse_aim(t_env *e)
 	SDL_GetRelativeMouseState(&x, &y);
 	e->player.angle += x * 2;
 	e->draw.skybox_x -= x * 2;
-	if (y > 0)
+	if (y > 0 && e->horizon > -750)
 	{
-		if (e->horizon > -750)
-		{
-			e->horizon -= y * 2;
-			e->draw.skybox_y -= y * 2;
-		}
+		e->horizon -= y * 2;
+		e->draw.skybox_y -= y * 2;
 	}
-	else if (y < 0)
+	else if (y < 0 && e->horizon < 1000)
 	{
-		if (e->horizon < 1000)
-		{
-			e->horizon -= y * 2;
-			e->draw.skybox_y -= y * 2;
-		}
+		e->horizon -= y * 2;
+		e->draw.skybox_y -= y * 2;
 	}
 	angle_overflow(&e->player.angle, e);
 	if (e->draw.skybox_x > 1199)

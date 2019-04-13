@@ -6,7 +6,7 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 00:55:50 by gagonzal          #+#    #+#             */
-/*   Updated: 2019/04/13 02:02:37 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:04:30 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ bool			is_blocked(t_env *e, t_point *new_pos, int y)
 	return (false);
 }
 
-
 void			collision(t_env *e, t_point *new_pos)
 {
 	if (!is_blocked(e, new_pos, 0))
@@ -50,7 +49,7 @@ void			collision(t_env *e, t_point *new_pos)
 		e->player.pace -= 360;
 }
 
-int		get_ceil_height(t_env *e)
+int				get_ceil_height(t_env *e)
 {
 	int i;
 	int ceil_height;
@@ -59,7 +58,8 @@ int		get_ceil_height(t_env *e)
 	i = 1;
 	while (i < (int)e->floor_nb)
 	{
-		if (e->data.map[DWALL][e->player.floor + i][e->player.map.y][e->player.map.x])
+		if (e->data.map[DWALL][e->player.floor + i][e->player.map.y]\
+			[e->player.map.x])
 		{
 			ceil_height = (e->player.floor + 1) * TILE_SIZE;
 			return (ceil_height);
@@ -69,23 +69,26 @@ int		get_ceil_height(t_env *e)
 	return (((int)e->floor_nb) * TILE_SIZE);
 }
 
-void	get_floor_dist(t_env *e)
+void			get_floor_dist(t_env *e)
 {
-	if (e->player.map.x && e->player.map.y && e->player.floor && e->data.map[DWALL][e->player.floor - 1][e->player.map.y][e->player.map.x])
-		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2; 
+	if (e->player.map.x && e->player.map.y && e->player.floor && \
+		e->data.map[DWALL][e->player.floor - 1][e->player.map.y]\
+			[e->player.map.x])
+		e->player.dist_to_floor = e->player.floor * TILE_SIZE + WALL_HEIGHT / 2;
 	else
 		e->player.dist_to_floor = TILE_SIZE / 2;
 }
 
-void	jump_anim(t_env *e)
+void			jump_anim(t_env *e)
 {
 	static double	jump_time;
 	int				ceil_height;
-	
+
 	ceil_height = get_ceil_height(e);
 	if (e->player_state & IS_FLY)
 		return ;
-	if((e->player_state & IS_JUMPING) && e->data.map[DWALL][e->player.floor + 1][e->player.map.y][e->player.map.x])
+	if ((e->player_state & IS_JUMPING) && e->data.map[DWALL]\
+		[e->player.floor + 1][e->player.map.y][e->player.map.x])
 	{
 		if (e->player.height >= ceil_height - 20)
 			e->player_state &= (0 << 2);
@@ -93,8 +96,8 @@ void	jump_anim(t_env *e)
 	if ((e->player_state & IS_JUMPING) && jump_time <= 0.28)
 	{
 		jump_time += e->time.frame_time;
-	if(e->player.height < ceil_height)
-		e->player.height += (e->max_speed + 3) * e->time.delta_time;
+		if (e->player.height < ceil_height)
+			e->player.height += (e->max_speed + 3) * e->time.delta_time;
 	}
 	else
 	{

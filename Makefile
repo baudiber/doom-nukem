@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/13 01:54:13 by gagonzal         ###   ########.fr        #
+#    Updated: 2019/04/13 03:15:43 by gagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCA			=				main.c										\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
 								gameplay/draw_text.c						\
+								gameplay/fly_mode.c							\
 								parser/parse_scan.c							\
 								parser/parse_stage.c						\
 								parser/parse_tier.c							\

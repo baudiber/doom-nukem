@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 02:47:57 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:56:06 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	floor_is_lava(t_env *e)
 			[e->player.map.x] == 1)
 	{
 		lava_tick += e->time.frame_time;
-		if (lava_tick > 0.1)
+		if (lava_tick > 1.0)
 		{
-			e->player.hp -= 10;
+			e->player.hp -= 50;
 			Mix_PlayChannel(-1, e->sound.sound11, 0);
 			lava_tick = 0;
 		}
@@ -73,7 +73,8 @@ void	check_state(t_env *e)
 {
 	if (e->state[SDL_SCANCODE_F])
 		e->player_state ^= IS_FLY;
-	if (e->player.height <= e->player.dist_to_floor && !(e->player_state & IS_FLY))
+	if (e->player.height <= e->player.dist_to_floor && \
+		!(e->player_state & IS_FLY))
 	{
 		e->player_state &= (0 << 4);
 		e->player.height = e->player.dist_to_floor;
@@ -92,13 +93,16 @@ void	check_state(t_env *e)
 
 void	fly_or_fall(t_env *e)
 {
-	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY)) \
-		|| (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_JUMPING) && !(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
-		{
-			Mix_PlayChannel(-1, e->sound.sound10, 0);
-			crouch_and_jump(e);
-		}
-	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && e->player_state & IS_FLY) \
-		|| (e->state[SDL_SCANCODE_SPACE] && e->player_state & IS_FLY))
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && \
+		!(e->player_state & IS_FLY)) || (e->state[SDL_SCANCODE_SPACE] && \
+			!(e->player_state & IS_JUMPING) && \
+				!(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
+	{
+		Mix_PlayChannel(-1, e->sound.sound10, 0);
+		crouch_and_jump(e);
+	}
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && \
+		e->player_state & IS_FLY) || (e->state[SDL_SCANCODE_SPACE] && \
+			e->player_state & IS_FLY))
 		fly_mode(e);
 }
