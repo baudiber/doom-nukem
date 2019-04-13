@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 02:08:41 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:34:00 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,6 +426,8 @@ extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
 		int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
 		t_sprite *sprite, int tid);
+
+extern void			bob(t_env *e);
 extern void			pick_up_obj(t_env *e, int nb);
 extern void			draw_player_small(t_env *e);
 extern void			fly_or_fall(t_env *e);

@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/13 03:15:43 by gagonzal         ###   ########.fr        #
+#    Updated: 2019/04/13 03:35:55 by clrichar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,10 @@ SRCA			=				main.c										\
 								gameplay/player_movement2.c					\
 								gameplay/player_events.c					\
 								gameplay/player_life.c						\
-								gameplay/mouse_aim.c						\
 								gameplay/move_player.c						\
+								gameplay/pickup.c							\
 								gameplay/ui.c								\
+								gameplay/bob.c								\
 								gameplay/sprite_interaction.c				\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
