@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 18:20:51 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:53:34 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,6 @@ void					init_player(t_env *e)
 	e->player.angle = e->angle.a_270 + 1;
 	e->floor_nb = e->data.tier_ind + 1;
 	e->player.hp = 100;
+	e->player.map.x = (int)e->player.pos.x >> e->tile_shift;
+	e->player.map.y = (int)e->player.pos.y >> e->tile_shift;
 }
