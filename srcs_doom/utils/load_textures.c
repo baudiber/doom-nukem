@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 01:13:06 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:59:04 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void		load_sprite_textures(t_env *e)
 	if (!(e->files.image[27] = SDL_LoadBMP("textures/sprites/TRUMPET.bmp")))
 		exit_error(2, ERR_2);
 	if (!(e->files.image[48] = SDL_LoadBMP("textures/sprites/SKELETOR.bmp")))
+		exit_error(2, ERR_2);
+	if (!(e->files.image[49] = SDL_LoadBMP("textures/sprites/HEALTH_PACK.bmp")))
 		exit_error(2, ERR_2);
 }
 

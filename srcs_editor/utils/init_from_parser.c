@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 16:40:17 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 19:02:27 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:49:15 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static void			stock(t_env *e, int i, int j)
 			e->tab[i][j][k][l] = e->data.map[i][j][k][l];
 			if (e->data.map[i][j][k][l] == 'z')
 				e->tab[i][j][k][l] = 1;
-			if (e->data.map[i][j][k][l] >= 'a' \
-					&& e->data.map[i][j][k][l] <= 'e')
+			if (ft_strnchr(VALID_SPRITE, e->data.map[i][j][k][l]) > 0)
 				e->tab[i][j][k][l] = e->data.map[i][j][k][l] - 95;
 		}
 	}

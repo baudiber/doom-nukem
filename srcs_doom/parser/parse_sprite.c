@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 00:55:37 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:07:47 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static bool			count_sprite(t_data *data)
 			x = -1;
 			while (++x < data->max_x)
 			{
-				if (ft_strnchr("abc", (int)data->map[DSPRITE][z][y][x]) > 0)
+				if (ft_strnchr(VALID_SPRITE, \
+					(int)data->map[DSPRITE][z][y][x]) > 0)
 					ret++;
 			}
 		}
@@ -60,6 +61,8 @@ static void			get_sprite_tex(t_env *e, int z, int y, int x)
 		e->sprites[e->sprite_nb].tex = 7;
 	else if (value == 4)
 		e->sprites[e->sprite_nb].tex = 13;
+	else if (value == 5)
+		e->sprites[e->sprite_nb].tex = 14;
 	else
 		e->sprites[e->sprite_nb].tex = 0;
 }
@@ -90,7 +93,8 @@ static void			scan_sprite(t_env *e, t_data *data)
 			x = -1;
 			while (++x < data->max_x)
 			{
-				if (ft_strnchr("abcde", (int)data->map[DSPRITE][z][y][x]) > 0)
+				if (ft_strnchr(VALID_SPRITE, \
+					(int)data->map[DSPRITE][z][y][x]) > 0)
 					(e->sprite_nb < 100) ? stock_sprite(z, y, x, e) : 0;
 			}
 		}
