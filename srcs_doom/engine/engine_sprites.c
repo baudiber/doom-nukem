@@ -6,41 +6,42 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 01:25:36 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:52:38 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-static void		draw_visible(t_env *e, t_sprite *sprite, int tid)
+static void		draw_visible(t_sprite *sprite, int tid)
 {
 	t_sprite_draw	draw;
+	t_env			*e;
 	int				x;
 
+	e = call();
 	get_screen_coord(e, &draw, sprite, tid);
 	while (++draw.start.y < draw.end.y)
 	{
 		x = draw.start.x - 1;
-		draw.texture.y = (int)(draw.offset.y * draw.ratio);
+		draw.texture.y = (int)(draw.offset.y++ * draw.ratio);
 		if (draw.texture.y > TILE_SIZE - 1)
 			break ;
 		draw.offset.x = draw.offsave;
 		while (++x < draw.end.x)
 		{
-			if (check_walls(e, sprite->height, &draw.offset.x, x, tid))
+			if (check_walls(sprite->height, &draw.offset.x, x, tid))
 				continue ;
-			draw.texture.x = (int)(draw.offset.x * draw.ratio);
+			draw.texture.x = (int)(draw.offset.x++ * draw.ratio);
 			draw.color = e->files.sprite[sprite->tex][draw.texture.x \
 			+ (draw.texture.y << e->tile_shift)];
 			if ((draw.color ^ 0xFF00FFFF))
 				e->buff[draw.start.y * WIN_W + x] = draw.color;
-			draw.offset.x++;
 		}
-		draw.offset.y++;
 	}
 }
 
-static void		sort_sprites(t_env *e, t_sprite *farthest, int visnb, t_sprite *ptr, int tid)
+static void		sort_sprites(t_sprite *farthest, int visnb, t_sprite *ptr, \
+	int tid)
 {
 	int			height;
 	int			biggest;
@@ -64,17 +65,8 @@ static void		sort_sprites(t_env *e, t_sprite *farthest, int visnb, t_sprite *ptr
 			}
 			step++;
 		}
-		draw_visible(e, farthest, tid);
+		draw_visible(farthest, tid);
 		farthest->height = ~0u >> 1;
-	}
-}
-
-static void		change_tex(t_env *e, int nb)
-{
-	if (e->sprites[nb].dead && e->sprites[nb].dead < 12)
-	{
-		e->sprites[nb].dead += 0.1;
-		e->sprites[nb].tex = (int)e->sprites[nb].dead;
 	}
 }
 
@@ -84,11 +76,14 @@ static void		change_tex_when_vis(t_env *e, int nb)
 		e->sprites[nb].tex = 5 + e->barrel_tick;
 	if (e->sprites[nb].tex < 4)
 	{
-		if (e->player.angle >= e->angle.a_135 && e->player.angle < e->angle.a_225)
+		if (e->player.angle >= e->angle.a_135 && e->player.angle \
+			< e->angle.a_225)
 			e->sprites[nb].tex = 2;
-		else if (e->player.angle >= e->angle.a_225 && e->player.angle < e->angle.a_315)
+		else if (e->player.angle >= e->angle.a_225 && e->player.angle \
+			< e->angle.a_315)
 			e->sprites[nb].tex = 0;
-		else if (e->player.angle >= e->angle.a_45 && e->player.angle < e->angle.a_135)
+		else if (e->player.angle >= e->angle.a_45 && e->player.angle \
+			< e->angle.a_135)
 			e->sprites[nb].tex = 1;
 		else
 			e->sprites[nb].tex = 3;
@@ -127,5 +122,5 @@ void			draw_sprites(t_env *e, int max_col, int tid)
 			*ptr++ = e->sprites[sprite];
 		}
 	}
-	sort_sprites(e, &visible[0], visnb, ptr, tid);
+	sort_sprites(&visible[0], visnb, ptr, tid);
 }

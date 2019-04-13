@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/11 14:21:51 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:47:48 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,32 +26,6 @@ static void				get_coord_and_dist(t_env *e, int tid)
 				- e->player.pos.y) * e->i_sin_table[e->ray[tid].angle];
 }
 
-static void				get_wall_type(t_env *e, int tid, int column, int i)
-{
-	if (e->ray[tid].skip)
-	{
-		e->ray[tid].dda[i].tex = e->data.map[DWALL][e->ray[tid].layer]\
-			[e->ray[tid].dda[i].map.y][e->ray[tid].dda[i].map.x];
-		e->wall[tid].dist = e->ray[tid].dda[i].dist;
-		e->wall[tid].tex = e->data.map[DWALL][e->ray[tid].layer]\
-			[e->ray[tid].dda[i].map.y][e->ray[tid].dda[i].map.x];
-		e->wall[tid].shadow = e->data.map[DLIGHT][e->ray[tid].layer]\
-			[e->ray[tid].dda[i].map.y][e->ray[tid].dda[i].map.x];
-		e->wall[tid].texture_x = i ? (Uint32)(e->ray[tid].dda[i].y) \
-			% TILE_SIZE : (Uint32)(e->ray[tid].dda[i].x) % TILE_SIZE;
-		get_wall_height(e, column, tid);
-		if (e->prev_wall[tid].is_prev) 
-			e->prev_wall[tid] = e->tmp[tid];
-		else 
-			e->prev_wall[tid] = e->wall[tid];
-		if (!e->wall[tid].botwall)
-			draw_wall(e, column, tid);
-		else
-			draw_reversed(e, column, tid);
-		e->prev_wall[tid].is_prev = true;
-	}
-}
-
 static bool				dda(t_env *e, int tid, int column, int i)
 {
 	if (!ray_is_in_the_map(e->ray[tid].dda[i].map, e))
@@ -59,7 +33,7 @@ static bool				dda(t_env *e, int tid, int column, int i)
 	if (e->data.map[DWALL][e->ray[tid].layer][e->ray[tid].dda[i].map.y]\
 		[e->ray[tid].dda[i].map.x])
 	{
-		get_wall_type(e, tid, column, i);	
+		get_wall_type(e, tid, column, i);
 		e->ray[tid].dda[i].x += e->ray[tid].dda[i].next_x;
 		e->ray[tid].dda[i].y += e->ray[tid].dda[i].next_y;
 		e->ray[tid].skip = false;
@@ -87,8 +61,10 @@ void					double_dda(t_env *e, int tid, int column)
 				return ;
 		}
 		else
+		{
 			if (!dda(e, tid, column, VERT))
 				return ;
+		}
 	}
 }
 

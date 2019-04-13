@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 00:39:27 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:57:52 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -397,7 +397,7 @@ extern void			angle_overflow(int *angle, t_env *e);
 extern double		angle_to_rad(int angle, t_env *e);
 extern void			get_wall_height(t_env *e, int column, register int tid);
 extern void			draw_wall(t_env *e, int column, register int tid);
-extern void			floor_casting(t_env *e, int	column, register int tid);
+extern void			draw_floor(t_env *e, int column, register int tid);
 extern void			moving_rects(t_env *e);
 extern void			display_skybox(t_env *e);
 extern void			multithreaded_render(t_env *e);
@@ -414,7 +414,7 @@ extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			crouch_and_jump(t_env *e);
 extern void			fly_mode(t_env *e);
 extern void			mouse_aim(t_env *e);
-extern bool			check_walls(t_env *e, int height, int *offset, int x,\
+extern bool			check_walls(int height, int *offset, int x,\
 		int tid);
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
 		int sprite);
@@ -439,5 +439,11 @@ extern void			rest_of_texture_pointing(t_env *e);
 extern void			end_game(t_env *e, char *msg);
 extern void			floor_is_lava(t_env *e);
 extern void			draw_text(t_env *e, t_point pt, int type, char *msg);
+extern t_env		*call(void);
+extern void			crop_wall(t_env *e, float *texture_y, double ratio, \
+	int tid);
+extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
+	int tid);
+extern void			get_wall_type(t_env *e, int tid, int column, int i);
 
 #endif

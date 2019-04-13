@@ -6,13 +6,13 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/10 01:45:36 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:52:26 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void	clip_start(int *start, int *offset)
+static void	clip_start(int *start, int *offset)
 {
 	if (*start < 0)
 	{
@@ -23,7 +23,7 @@ void	clip_start(int *start, int *offset)
 		*offset = 0;
 }
 
-void	clip_end(int *end, int y)
+static void	clip_end(int *end, int y)
 {
 	if (y)
 	{
@@ -37,7 +37,17 @@ void	clip_end(int *end, int y)
 	}
 }
 
-void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, int tid)
+static void		change_tex(t_env *e, int nb)
+{
+	if (e->sprites[nb].dead && e->sprites[nb].dead < 12)
+	{
+		e->sprites[nb].dead += 0.1;
+		e->sprites[nb].tex = (int)e->sprites[nb].dead;
+	}
+}
+
+void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, \
+	int tid)
 {
 	draw->ratio = (float)TILE_SIZE / sprite->height;
 	draw->end.y = ceil(((e->player.plane_dist / sprite->dist) \
@@ -51,26 +61,6 @@ void	get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, int tid)
 	clip_start(&draw->start.x, &draw->offsave);
 	clip_end(&draw->end.x, 0);
 }
-
-bool	check_walls(t_env *e, int height, int *offset, int x, int tid)
-{
-	if (e->wall_dist[e->ray[tid].layer][x] > height)
-	{
-		++*offset;
-		return (true);
-	}
-	return (false);
-}
-
-/*
-** t.y = dist of the Sprite from the Player
-** S		-   t.y
-**  		|
-**  		|
-**      	|
-**-|--------P---
-** <--t.x--->
-*/
 
 void	sprite_rotation(t_env *e, t_sprite_calculation *calc, int nb)
 {

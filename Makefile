@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/12 20:51:38 by clrichar         ###   ########.fr        #
+#    Updated: 2019/04/13 02:29:36 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCA			=				main.c										\
 								engine/engine_sprites.c						\
 								engine/engine_sprites_utils.c				\
 								engine/engine_draw_ceiling.c				\
+								engine/engine_walls_utils.c					\
 								gameplay/player_movement.c					\
 								gameplay/player_life.c						\
 								gameplay/mouse_aim.c						\
