@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 21:14:41 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:50:25 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,14 @@ static void		world_interaction(t_env *e)
 static void		renderer(t_env *e)
 {
 	clear_buffer(e);
-	moving_rects(e);
 	if (e->horizon > 0)
 		draw_skybox(e);
-//		display_skybox(e);
 	get_player_pos(e);
 	multithreaded_render(e);
 	draw_ui(e);
-	e->draw.skybox_x += 0.2;
-	if (e->draw.skybox_x > 1226)
-		e->draw.skybox_x = 0;
+	e->skybox_info.x_start += e->time.delta_time * 0.25;
+	if (e->skybox_info.x_start > 800)
+		e->skybox_info.x_start -= 800;
 	e->ui.weapon_fired = 0;
 	SDL_UpdateWindowSurface(e->win);
 }

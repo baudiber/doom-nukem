@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 20:23:47 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:20:34 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void				init_guns(t_env *e)
 {
 	e->pistol_info.x_start = WIN_W * 0.5 - WIN_W / 3.82 * 0.5;
 	e->pistol_info.y_start = e->render_limit - (e->render_limit / 1.451);
-	e->pistol_info.y_start += e->pistol_info.y_start * 0.25;
+	e->pistol_info.y_start += 49;
 	e->pistol_info.y_ratio = e->files.image[0]->h / (e->render_limit / 1.451);
 	e->pistol_info.x_ratio = e->files.image[0]->w / (WIN_W / 3.82);
 	e->pistol_info.x_end = e->inv_info.x_start + WIN_W / 3.82;

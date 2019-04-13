@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 21:20:31 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:27:29 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void	fly_or_fall(t_env *e)
 			!(e->player_state & IS_JUMPING) && \
 				!(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
 	{
-		Mix_PlayChannel(-1, e->sound.sound10, 0);
+		if (!e->state[SDL_SCANCODE_LCTRL] && !e->state[SDL_SCANCODE_C])
+			Mix_PlayChannel(-1, e->sound.sound10, 0);
 		crouch_and_jump(e);
 	}
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && \

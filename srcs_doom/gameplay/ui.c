@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 19:08:17 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:17:40 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ void			draw_scaled(t_env *e, t_draw_scaled *info)
 	Uint32		color;
 
 	y = (int)info->y_start;
+	y = y < 0 ? 0 : y;
 	y_offset = 0;
 	while (++y < (int)info->y_end)
 	{
 		x_offset = 0;
 		x = (int)info->x_start;
+		x = x < 0 ? 0 : x;
 		while (++x < (int)info->x_end)
 		{
 			color = info->buffer[info->index][(int)y_offset \
@@ -36,28 +38,6 @@ void			draw_scaled(t_env *e, t_draw_scaled *info)
 		}
 		y_offset += info->y_ratio;
 	}
-}
-
-void			display_skybox(t_env *e)
-{
-	SDL_Rect	temp;
-
-	temp = e->draw.sky_rect;
-	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
-	temp = e->draw.sky_rect2;
-	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
-}
-
-void			moving_rects(t_env *e)
-{
-	e->draw.sky_rect.x = (int)e->draw.skybox_x;
-	e->draw.sky_rect.y = e->draw.skybox_y;
-	e->draw.sky_rect.w = e->files.skybox->w;
-	e->draw.sky_rect.h = e->files.skybox->h;
-	e->draw.sky_rect2.x = (int)e->draw.skybox_x - 1226;
-	e->draw.sky_rect2.y = e->draw.skybox_y;
-	e->draw.sky_rect2.w = e->files.skybox->w;
-	e->draw.sky_rect2.h = e->files.skybox->h;
 }
 
 void			draw_crosshair(t_env *e)

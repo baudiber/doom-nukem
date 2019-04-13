@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 19:36:56 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:41:20 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,25 +84,23 @@ void			mouse_aim(t_env *e)
 
 	SDL_GetRelativeMouseState(&x, &y);
 	e->player.angle += x * 2;
-	e->draw.skybox_x -= x * 2;
+	//e->draw.skybox_x -= x * 2;
+	e->skybox_info.x_start += x * 2;
 	if (y > 0 && e->horizon > -750)
 	{
 		e->horizon -= y * 2;
 		e->skybox_info.y_end -= y * 2;
-		//e->draw.skybox_y -= y * 2;
 	}
 	else if (y < 0 && e->horizon < 1000)
 	{
 		e->horizon -= y * 2;
 		e->skybox_info.y_end -= y * 2;
-		//e->draw.skybox_y -= y * 2;
 	}
-	//crop_skybox(e);
 	angle_overflow(&e->player.angle, e);
-	if (e->draw.skybox_x > 1199)
-		e->draw.skybox_x = 0;
-	else if (e->draw.skybox_x < 0)
-		e->draw.skybox_x = 1199;
+	if (e->skybox_info.x_start > 800)
+		e->skybox_info.x_start -= 800;
+	else if (e->skybox_info.x_start < 0)
+		e->skybox_info.x_start += 800;
 	e->prev_mouse.x = e->event.motion.x;
 	e->prev_mouse.y = e->event.motion.y;
 }

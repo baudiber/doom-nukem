@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 19:37:42 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:26:54 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 
 # define VALID_CHAR "0123456789abcdefz,- "
 # define VALID_SPRITE "abcdef"
-# define WALL_TEXT_MAX 9
-# define FLOOR_TEXT_MAX 9
-# define LIGHT_TEXT_MAX 9
-# define EVENT_TEXT_MAX 9
+# define WALL_TEXT_MAX 8
+# define FLOOR_TEXT_MAX 5
+# define LIGHT_TEXT_MAX 1
+# define EVENT_TEXT_MAX 1
 
 # define DWALL 0
 # define DFLOOR 1
@@ -191,8 +191,8 @@ typedef struct		s_player
 	int				angle;
 	int				speed;
 	bool			moving;
-	bool			jumping;
-	bool			falling;
+//	bool			jumping;
+//	bool			falling;
 	bool			win;
 	int				pace;
 	int				dist_to_floor;
