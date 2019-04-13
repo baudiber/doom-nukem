@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 19:27:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 21:41:03 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:07:17 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	erase_texture_grid(t_env *e)
 			e->buff[WIN_W * y + x] = 0xE0E0E0;
 		}
 	}
-	if (e->type == 2 && e->tab[e->type][e->tier][e->grid.mouseposgridy][e->grid.mouseposgridx] != 0)
+	if (e->type == 2 && e->tab[e->type][e->tier]\
+		[e->grid.mouseposgridy][e->grid.mouseposgridx] != 0)
 		e->sprite_nb++;
 	e->tab[e->type][e->tier][e->grid.mouseposgridy][e->grid.mouseposgridx] = 0;
 }
