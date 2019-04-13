@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 14:36:59 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:20:34 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void				init_guns(t_env *e)
 {
 	e->pistol_info.x_start = WIN_W * 0.5 - WIN_W / 3.82 * 0.5;
 	e->pistol_info.y_start = e->render_limit - (e->render_limit / 1.451);
-	e->pistol_info.y_start += e->pistol_info.y_start * 0.25;
+	e->pistol_info.y_start += 49;
 	e->pistol_info.y_ratio = e->files.image[0]->h / (e->render_limit / 1.451);
 	e->pistol_info.x_ratio = e->files.image[0]->w / (WIN_W / 3.82);
 	e->pistol_info.x_end = e->inv_info.x_start + WIN_W / 3.82;
@@ -50,14 +50,12 @@ static void				init_base_ui(t_env *e)
 
 static void				init_skybox(t_env *e)
 {
-	e->skybox_info.x_start = -1;
-	e->skybox_info.y_start = -1;
+	e->skybox_info.x_start = 0;
 	e->skybox_info.x_ratio = 1;
 	e->skybox_info.y_ratio = 1;
-	e->skybox_info.y_end = e->skybox_info.y_start + e->files.skybox->h;
+	e->skybox_info.y_end = e->horizon;
 	e->skybox_info.buffer = (unsigned int **)&e->files.skybox->pixels;
 	e->skybox_info.w = e->files.skybox->w;
-	e->skybox_info.x_end = e->skybox_info.x_start + e->files.skybox->w;
 }
 
 static void				init_trumpet(t_env *e)

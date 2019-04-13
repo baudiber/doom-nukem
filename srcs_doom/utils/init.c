@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:38 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 15:47:07 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:18:34 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void					init_player(t_env *e)
 	e->player.pos.y = (e->data.pos_y + 0.5) * TILE_SIZE;
 	e->player.win = false;
 	e->player.moving = false;
-	e->render_limit = (WIN_H / 4) * 3.2;
+	e->render_limit = 480;
 	e->ui.ui_size = WIN_H - e->render_limit;
 	e->horizon = e->render_limit / 2;
 	e->max_speed = TILE_SIZE / 25;
@@ -53,4 +53,6 @@ void					init_player(t_env *e)
 	e->player.angle = e->angle.a_270 + 1;
 	e->floor_nb = e->data.tier_ind + 1;
 	e->player.hp = 100;
+	e->player.map.x = (int)e->player.pos.x >> e->tile_shift;
+	e->player.map.y = (int)e->player.pos.y >> e->tile_shift;
 }

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 16:06:07 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:26:54 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 
 # define VALID_CHAR "0123456789abcdefz,- "
 # define VALID_SPRITE "abcdef"
-# define WALL_TEXT_MAX 9
-# define FLOOR_TEXT_MAX 9
-# define LIGHT_TEXT_MAX 9
-# define EVENT_TEXT_MAX 9
+# define WALL_TEXT_MAX 8
+# define FLOOR_TEXT_MAX 5
+# define LIGHT_TEXT_MAX 1
+# define EVENT_TEXT_MAX 1
 
 # define DWALL 0
 # define DFLOOR 1
@@ -79,6 +79,7 @@ typedef struct		s_files
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
+	unsigned int	*sky;
 	SDL_Surface		*image[50];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
@@ -190,8 +191,8 @@ typedef struct		s_player
 	int				angle;
 	int				speed;
 	bool			moving;
-	bool			jumping;
-	bool			falling;
+//	bool			jumping;
+//	bool			falling;
 	bool			win;
 	int				pace;
 	int				dist_to_floor;
@@ -286,8 +287,6 @@ typedef struct		s_draw_scaled
 	double			y_start;
 	double			x_end;
 	double			y_end;
-	double			x_offset;
-	double			y_offset;
 	int				w;
 	unsigned int	**buffer;
 	double			x_ratio;
@@ -443,7 +442,7 @@ extern void			weapon_fire(t_env *e);
 extern void			draw_ui(t_env *e);
 extern void			animations(t_env *e);
 extern void			draw_ceilings(t_env *e, int x, int tid);
-extern void			get_player_floor(t_env *e);
+extern void			get_player_pos(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
 extern void			load_gun_textures(t_env *e);
@@ -464,6 +463,8 @@ extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
 extern void			get_wall_type(t_env *e, int tid, int column, int i);
 extern void			change_tex(t_env *e, int nb);
 extern void			draw_scaled(t_env *e, t_draw_scaled *info);
+// rm?
 extern void			crop_skybox(t_env *e);
+extern void			draw_skybox(t_env *e);
 
 #endif

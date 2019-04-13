@@ -6,22 +6,40 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 14:56:01 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 15:17:52 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:01:16 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void	crop_skybox(t_env *e)
+void	draw_skybox(t_env *e)
 {
-	printf("ystart %f yend %f\n", e->skybox_info.y_start, e->skybox_info.y_end);
-	if (e->skybox_info.y_start < 0)
+	t_point		pos;
+	t_point_int	tex;
+
+	if (e->skybox_info.y_end > e->render_limit)
 	{
-		e->skybox_info.y_offset = -(e->skybox_info.y_start);
-		e->skybox_info.y_start = 0;
+		tex.y = e->files.skybox->h - (e->skybox_info.y_end - e->render_limit);
+		pos.y = e->render_limit;
 	}
-	else
-		e->skybox_info.y_offset = 0;
-	if (e->skybox_info.y_end >= e->render_limit)
-		e->skybox_info.y_end = e->render_limit;
+	else 
+	{
+		tex.y = e->files.skybox->h - 1;
+		pos.y = e->skybox_info.y_end;
+	}
+	while (tex.y > 0 && pos.y > 0)
+	{
+		tex.x = e->skybox_info.x_start - 1;
+		pos.x = -1;
+		while (++pos.x < WIN_W && pos.x >= 0)
+		{
+			if (tex.x >= WIN_W)
+				tex.x = 0;
+			e->buff[(int)pos.y * WIN_W + (int)pos.x] = e->files.sky[tex.y \
+					* WIN_W + (int)tex.x];
+			tex.x++;
+		}
+		pos.y--;
+		tex.y--;
+	}
 }

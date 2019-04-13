@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 16:40:17 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 16:49:15 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:00:34 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void				init_from_parser(t_env *e)
 	e->parsed = 1;
 	init(e);
 	copy_from_parser(e);
+	e->sprite_nb = 100 - e->data.sprite_nb;
 }

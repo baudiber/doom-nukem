@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:11:49 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 15:59:34 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:20:18 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ static void			text_cpy_1(t_env *e)
 	e->files.floor[3] = (unsigned int *)e->files.image[38]->pixels;
 	e->files.floor[4] = (unsigned int *)e->files.image[39]->pixels;
 	e->files.floor[5] = (unsigned int *)e->files.image[40]->pixels;
+	e->files.sky = (unsigned int *)e->files.skybox->pixels;
 }
 
 void				load_textures(t_env *e)

@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 04:33:14 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:25:22 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		change_tex(t_env *e, int nb)
 {
 	if (e->sprites[nb].dead && e->sprites[nb].dead < 12)
 	{
-		e->sprites[nb].dead += 0.1;
+		e->sprites[nb].dead += e->time.frame_time * 0.5;
 		e->sprites[nb].tex = (int)e->sprites[nb].dead;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 16:07:47 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:09:57 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ static bool			count_sprite(t_data *data)
 	}
 	return (ret < 100) ? true : false;
 }
-
-/*
-** SERGE ED    = 0  ----->   SERGE INGAME    = 0
-** SHOTGUN ED  = 1  ----->   SHOTGUN INGAME  = 4
-** BARREL ED   = 2  ----->   BARREL INGAME   = 5
-** TRUMPET ED  = 3  ----->   TRUMPET INGAME  = 7
-** SKELETOR ED = 4  ----->   SKELETOR INGAME = 13
-*/
 
 static void			get_sprite_tex(t_env *e, int z, int y, int x)
 {
