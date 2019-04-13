@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/23 19:18:11 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:36:25 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:13:45 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		gun_animations_2(t_env *e)
 		e->event.button.button = 0;
 	}
 	if (e->ui.weapon_firing == 2 && e->shotgun_info.index == 3 \
-			&& e->pistol_info.index == 3)
+		&& e->pistol_info.index == 3)
 	{
 		e->ui.weapon_firing = 0;
 		e->shotgun_info.index = 0;

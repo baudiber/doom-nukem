@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:04:09 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 23:41:01 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:55:49 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static bool				basic_err(void)
 	if (ret == 0 && TILE_SIZE != 256)
 		ret = 1;
 	if (ret == 0 && (DWALL != 0 || DFLOOR != 1 || DSPRITE != 2 || DLIGHT != 3 \
-			|| DEVENT != 4))
+		|| DEVENT != 4))
 		ret = 1;
 	return (ret == 0) ? true : false;
 }

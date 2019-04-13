@@ -6,7 +6,7 @@
 /*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 14:56:01 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 23:32:07 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:12:37 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void				draw_skybox(t_env *e)
 		{
 			tex.x = (tex.x >= WIN_W) ? 0 : tex.x;
 			e->buff[(int)pos.y * WIN_W + (int)pos.x] = e->files.sky[tex.y \
-					* WIN_W + (int)tex.x];
+				* WIN_W + (int)tex.x];
 			tex.x++;
 		}
 		pos.y--;
