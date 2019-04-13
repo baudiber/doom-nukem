@@ -6,15 +6,14 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:37 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 04:23:45 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:18:35 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void			get_player_floor(t_env *e)
+void			get_player_pos(t_env *e)
 {
-	e->player.floor = e->player.height >> e->tile_shift;
 	e->player.map.x = (int)e->player.pos.x >> e->tile_shift;
 	e->player.map.y = (int)e->player.pos.y >> e->tile_shift;
 	if (ray_is_in_the_map(e->player.map, e))

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 15:09:19 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:18:32 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		world_interaction(t_env *e)
 		Mix_PlayChannel(-1, e->sound.sound8, 0);
 		end_game(e, "WASTED");
 	}
-	get_player_floor(e);
+	e->player.floor = e->player.height >> e->tile_shift;
 	get_floor_order(e);
 	move_player(e);
 	weapon_fire(e);
@@ -68,6 +68,7 @@ static void		renderer(t_env *e)
 	if (e->horizon > 0)
 		draw_scaled(e, &e->skybox_info);
 //		display_skybox(e);
+	get_player_pos(e);
 	multithreaded_render(e);
 	draw_ui(e);
 	e->draw.skybox_x += 0.2;
