@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:49:07 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 18:58:26 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:26:28 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void				init_draw_var(t_env *e)
 	i = -1;
 	e->wellcome_screen = 1;
 	e->panel_index = 0;
+	e->sprite_nb = 100;
 	e->f[0] = draw_panel_wall;
 	e->f[1] = draw_panel_floor;
 	e->f[2] = draw_panel_sprite;
