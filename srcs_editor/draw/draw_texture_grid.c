@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 18:16:55 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 22:17:46 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:54:52 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void				draw_texture_grid(t_env *e)
 	e->texture.y = 0;
 	y = e->grid.mouseposgridy * e->grid.pady + MARGIN;
 	while (++y < ((e->grid.mouseposgridy + 1) * e->grid.pady + MARGIN) \
-	&& e->grid.mouseposgridy < e->grid.y)
+		&& e->grid.mouseposgridy < e->grid.y)
 	{
 		e->texture.x = 0;
 		x = e->grid.mouseposgridx * e->grid.padx + MARGIN + PANEL;
 		while (++x < ((e->grid.mouseposgridx + 1) * e->grid.padx + MARGIN \
-		+ PANEL) && e->grid.mouseposgridx < e->grid.x)
+				+ PANEL) && e->grid.mouseposgridx < e->grid.x)
 			text_assign(e, y, x, texture);
 		e->texture.y += e->texture.ratioy;
 	}

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:59:52 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 22:03:20 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:59:58 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void				welcome(t_env *e)
 {
 	e->draw[0].text = TTF_RenderText_Solid(e->draw[0].font,\
-		"Press     Enter", e->draw[0].white);
+			"Press     Enter", e->draw[0].white);
 	e->draw[0].position.x = WIN_W / 2 - 390;
 	e->draw[0].position.y = WIN_H / 2 - 100;
 	SDL_BlitSurface(e->draw[0].text, NULL, e->window.screen,\
@@ -36,7 +36,7 @@ void					main_loop(t_env *e)
 		while (SDL_PollEvent(&e->window.event))
 		{
 			if (e->window.event.type == SDL_QUIT \
-					|| (e->window.event.type == SDL_KEYDOWN \
+				|| (e->window.event.type == SDL_KEYDOWN \
 					&& e->window.event.key.keysym.sym == SDLK_ESCAPE))
 				exit(0);
 			if (e->wellcome_screen == 1)
