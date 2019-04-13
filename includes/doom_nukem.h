@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 20:32:38 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:58:22 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 
 # define VALID_CHAR "0123456789abcdefz,- "
 # define VALID_SPRITE "abcdef"
-# define WALL_TEXT_MAX 9
-# define FLOOR_TEXT_MAX 9
-# define LIGHT_TEXT_MAX 9
-# define EVENT_TEXT_MAX 9
+# define WALL_TEXT_MAX 8
+# define FLOOR_TEXT_MAX 5
+# define LIGHT_TEXT_MAX 1
+# define EVENT_TEXT_MAX 1
 
 # define DWALL 0
 # define DFLOOR 1
