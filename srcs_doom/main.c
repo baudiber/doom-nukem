@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:04:09 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 21:36:37 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:41:01 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@ static void				launch_init(t_env *e)
 
 void					exit_error(int type, char *msg)
 {
-//	t_env			*e;
-
-//	e = call();
-//	clean_up(e);
 	ft_putendl(msg);
 	exit(type);
 }
@@ -86,6 +82,9 @@ int						main(int argc, char **argv)
 	parse_start(&e->data, argv[1]);
 	parse_sprite(e);
 	launch_init(e);
+	e->state = SDL_GetKeyboardState(NULL);
+	load_screen(e);
+	ft_menu(e);
 	engine_loop(e);
 	return (0);
 }

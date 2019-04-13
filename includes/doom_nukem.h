@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 21:26:54 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:50:16 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,6 @@ typedef struct		s_data
 typedef struct		s_draw
 {
 	char			*str;
-	SDL_Rect		sky_rect;
-	SDL_Rect		sky_rect2;
-	double			skybox_x;
-	int				skybox_y;
 	TTF_Font		*font_end_game;
 	TTF_Font		*font_hp;
 	SDL_Surface		*text_surface;
@@ -127,18 +123,6 @@ typedef struct		s_menu
 	int				save_img2;
 	SDL_Surface		*image[18];
 }					t_menu;
-
-//typedef struct		s_minimap
-//{
-//	int				i;
-//	int				j;
-//	int				i2;
-//	int				j2;
-//	int				x;
-//	int				y;
-//	double			pady;
-//	double			padx;
-//}					t_minimap;
 
 typedef struct		s_sound
 {
@@ -191,8 +175,6 @@ typedef struct		s_player
 	int				angle;
 	int				speed;
 	bool			moving;
-//	bool			jumping;
-//	bool			falling;
 	bool			win;
 	int				pace;
 	int				dist_to_floor;
@@ -355,7 +337,6 @@ typedef struct		s_env
 	int				max_speed;
 	bool			barrel_tick;
 	t_point			prev_mouse;
-	t_point			mouse;
 	t_draw			draw;
 	t_time			time;
 	int				player_state;
@@ -428,7 +409,6 @@ extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
 	int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
 	t_sprite *sprite, int tid);
-
 extern void			bob(t_env *e);
 extern void			pick_up_obj(t_env *e, int nb);
 extern void			draw_player_small(t_env *e);
@@ -463,8 +443,6 @@ extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
 extern void			get_wall_type(t_env *e, int tid, int column, int i);
 extern void			change_tex(t_env *e, int nb);
 extern void			draw_scaled(t_env *e, t_draw_scaled *info);
-// rm?
-extern void			crop_skybox(t_env *e);
 extern void			draw_skybox(t_env *e);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:11:49 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 19:20:18 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:44:09 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,4 @@ void				load_textures(t_env *e)
 	text_cpy_2(e);
 	text_cpy_3(e);
 	rest_of_texture_pointing(e);
-	e->draw.skybox_y = e->horizon - e->files.skybox->h;
 }

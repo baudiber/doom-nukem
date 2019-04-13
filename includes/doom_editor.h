@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 21:54:52 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:42:48 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ extern void				change_tier(t_env *e);
 extern void				change_grid_size(t_env *e);
 extern void				select_grid_block(t_env *e);
 extern void				saving(t_env *e);
-//extern void				parse_init(t_data *data);
 extern void				parse_start(t_data *data, char *map);
 extern void				parse_scan(t_data *data, char *map);
 extern void				parse_tier(t_data *data);
