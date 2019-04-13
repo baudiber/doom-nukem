@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:57:07 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:08:41 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -428,6 +428,7 @@ extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
 		t_sprite *sprite, int tid);
 extern void			pick_up_obj(t_env *e, int nb);
 extern void			draw_player_small(t_env *e);
+extern void			fly_or_fall(t_env *e);
 extern void			draw_player_big(t_env *e);
 extern void			draw_life(t_env *e);
 extern void			draw_map_small(t_env *e);

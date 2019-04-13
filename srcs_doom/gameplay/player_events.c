@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 01:54:56 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:08:12 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,17 @@ void	check_state(t_env *e)
 	}
 	else
 		e->player.speed = e->max_speed;
+}
+
+void	fly_or_fall(t_env *e)
+{
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && !(e->player_state & IS_FLY)) \
+		|| (e->state[SDL_SCANCODE_SPACE] && !(e->player_state & IS_JUMPING) && !(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
+		{
+			Mix_PlayChannel(-1, e->sound.sound10, 0);
+			crouch_and_jump(e);
+		}
+	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && e->player_state & IS_FLY) \
+		|| (e->state[SDL_SCANCODE_SPACE] && e->player_state & IS_FLY))
+		fly_mode(e);
 }

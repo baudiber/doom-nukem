@@ -6,9 +6,10 @@
 /*   By: gagonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 00:55:50 by gagonzal          #+#    #+#             */
-/*   Updated: 2019/04/13 01:08:13 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:02:37 by gagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "doom_nukem.h"
 
 bool			is_blocked(t_env *e, t_point *new_pos, int y)
