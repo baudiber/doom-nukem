@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:10:55 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/10 15:02:46 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:04:44 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static bool			check_data(char *line, t_data *data)
 		ret = 1;
 	if (ret == 0 && data->max_x == 0)
 		data->max_x = (int)ft_countword(line, ' ');
-	else if (!ft_strequ(line, "-\0")
-			&& data->max_x != (int)ft_countword(line, ' '))
+	else if (!ft_strequ(line, "-\0") \
+		&& data->max_x != (int)ft_countword(line, ' '))
 		ret = 1;
 	if (data->max_y > (324) || data->max_x > 64)
 		ret = 1;
@@ -67,7 +67,7 @@ static void			scan_data(t_data *data, int fd, char *line)
 	while ((rd = get_next_line(fd, &line)) > 0)
 	{
 		if (!line || (line && line[0] == '\0') \
-				|| check_data(line, data) == false)
+			|| check_data(line, data) == false)
 		{
 			(line) ? ft_strdel(&line) : 0;
 			parse_quit(data, 4, ERR_4);
@@ -85,8 +85,8 @@ void				parse_scan(t_data *data, char *map)
 	((fd = open(map, O_DIRECTORY)) >= 0) ? parse_quit(data, 0, ERR_0) : 0;
 	((fd = open(map, O_RDONLY)) < 0) ? parse_quit(data, 0, ERR_0) : 0;
 	scan_data(data, fd, NULL);
-	if (data->max_x < 1 || data->max_y < 1 || data->max_x > 64
-			|| data->max_y > 324 || !data->scan)
+	if (data->max_x < 1 || data->max_y < 1 || data->max_x > 64 \
+		|| data->max_y > 324 || !data->scan)
 		parse_quit(data, 4, ERR_4);
 	if (!check_player(data))
 		parse_quit(data, 5, ERR_5);

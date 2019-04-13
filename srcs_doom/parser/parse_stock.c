@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/09 15:09:39 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:07:31 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static bool			check_stock(t_data *data)
 	if (!data->cell || !data->cell[0] || !data->cell[1])
 		ret = 1;
 	if (ret == 0 && (!is_full_digit(data->cell[0]) \
-				&& !is_full_ascii(data->cell[0])))
+			&& !is_full_ascii(data->cell[0])))
 		ret = 1;
 	if (ret == 0 && !is_full_digit(data->cell[1]))
 		ret = 1;

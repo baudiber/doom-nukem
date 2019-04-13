@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 03:47:48 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:15:10 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ void					get_horizontal_hit(t_env *e, int tid)
 void					get_vertical_hit(t_env *e, int tid)
 {
 	if (e->ray[tid].angle == e->angle.a_90 || e->ray[tid].angle \
-			== e->angle.a_270)
+		== e->angle.a_270)
 		e->ray[tid].dda[VERT].dist = 2147483647;
 	else
 	{
 		e->ray[tid].dda[VERT].dist = 0.1;
 		if (e->ray[tid].angle < e->angle.a_90 || e->ray[tid].angle \
-				> e->angle.a_270)
+			> e->angle.a_270)
 		{
 			e->ray[tid].dda[VERT].x = (e->player.map.x << e->tile_shift) \
 				+ TILE_SIZE;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine_draw_walls.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:59:41 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 02:00:43 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:17:45 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void		get_wall_height(t_env *e, int column, int tid)
 		e->wall[tid].height = WALL_HEIGHT * e->player.plane_dist \
 			/ e->wall[tid].dist;
 		e->wall[tid].bottom = round(((e->player.plane_dist / e->wall[tid].dist)\
-			* e->player.height + e->horizon) - e->wall[tid].height \
-			* e->ray[tid].layer);
+					* e->player.height + e->horizon) - e->wall[tid].height \
+					* e->ray[tid].layer);
 		if (!e->prev_wall[tid].is_prev)
 			e->wall_dist[e->ray[tid].layer][column] = e->wall[tid].height;
 		e->wall[tid].top = e->wall[tid].bottom - (int)e->wall[tid].height;

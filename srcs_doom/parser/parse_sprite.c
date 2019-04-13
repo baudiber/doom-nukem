@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 12:45:18 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 21:09:57 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:06:30 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool			count_sprite(t_data *data)
 			while (++x < data->max_x)
 			{
 				if (ft_strnchr(VALID_SPRITE, \
-					(int)data->map[DSPRITE][z][y][x]) > 0)
+						(int)data->map[DSPRITE][z][y][x]) > 0)
 					ret++;
 			}
 		}
@@ -86,7 +86,7 @@ static void			scan_sprite(t_env *e, t_data *data)
 			while (++x < data->max_x)
 			{
 				if (ft_strnchr(VALID_SPRITE, \
-					(int)data->map[DSPRITE][z][y][x]) > 0)
+						(int)data->map[DSPRITE][z][y][x]) > 0)
 					(e->sprite_nb < 100) ? stock_sprite(z, y, x, e) : 0;
 			}
 		}

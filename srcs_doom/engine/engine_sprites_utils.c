@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine_sprite_utils.c                              :+:      :+:    :+:   */
+/*   engine_sprites_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 15:44:04 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 22:25:22 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:22:10 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void		get_screen_coord(t_env *e, t_sprite_draw *draw, t_sprite *sprite, \
 {
 	draw->ratio = (float)TILE_SIZE / sprite->height;
 	draw->end.y = ceil(((e->player.plane_dist / sprite->dist) \
-		* e->player.height + e->horizon) - sprite->height * e->ray[tid].layer);
+				* e->player.height + e->horizon) - sprite->height \
+				* e->ray[tid].layer);
 	draw->start.y = draw->end.y - sprite->height;
 	clip_start(&draw->start.y, &draw->offset.y);
 	draw->start.y--;
@@ -70,12 +71,12 @@ void		sprite_rotation(t_env *e, t_sprite_calculation *calc, int nb)
 	calc->r.x = e->sprites[nb].x - e->player.pos.x;
 	calc->r.y = e->sprites[nb].y - e->player.pos.y;
 	calc->t.x = calc->r.x * e->sin_table[e->player.angle] \
-	- calc->r.y * e->cos_table[e->player.angle];
+		- calc->r.y * e->cos_table[e->player.angle];
 	calc->t.y = calc->r.x * e->cos_table[e->player.angle] \
-	+ calc->r.y * e->sin_table[e->player.angle];
+		+ calc->r.y * e->sin_table[e->player.angle];
 	e->sprites[nb].dist = calc->t.y;
 	if (fabs(calc->t.x) < spread && e->ui.weapon_fired && !e->sprites[nb].dead \
-			&& e->sprites[nb].tex < 4)
+		&& e->sprites[nb].tex < 4)
 		e->sprites[nb].dead = 8;
 	calc->height = TILE_SIZE * e->player.plane_dist / calc->t.y;
 	e->sprites[nb].height = calc->height;

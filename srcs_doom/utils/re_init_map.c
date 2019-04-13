@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 02:33:40 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 02:35:02 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:12:36 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void			assign(t_data *data, int i, int j)
 			if (data->save[i][j][k][l] == 'z')
 				data->map[i][j][k][l] = 1;
 			if (data->save[i][j][k][l] >= 'a' \
-					&& data->save[i][j][k][l] <= 'e')
+				&& data->save[i][j][k][l] <= 'e')
 				data->map[i][j][k][l] = data->save[i][j][k][l] - 95;
 		}
 	}

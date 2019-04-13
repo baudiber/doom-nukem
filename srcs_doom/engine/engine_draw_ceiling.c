@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine_draw_ceiling.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 18:28:48 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:48:42 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:16:16 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	draw_ceilings(t_env *e, int x, int tid)
 		if (ray_is_in_the_map(ceil.map, e))
 		{
 			if (e->data.map[DWALL][e->ray[tid].layer + 1]\
-					[ceil.map.y][ceil.map.x] && !e->data.map[DWALL]\
-					[e->ray[tid].layer][ceil.map.y][ceil.map.x])
+				[ceil.map.y][ceil.map.x] && !e->data.map[DWALL]\
+				[e->ray[tid].layer][ceil.map.y][ceil.map.x])
 			{
 				ceil.y = ceil.y % TILE_SIZE;
 				ceil.x = ceil.x % TILE_SIZE;

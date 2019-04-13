@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 07:09:19 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 00:58:24 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:25:56 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void				ft_menu_3(t_env *e, SDL_Event ev, int *x, int *y)
 void				ft_menu_2(t_env *e, SDL_Event ev)
 {
 	if ((ev.key.keysym.sym == 's' || ev.key.keysym.sym == SDLK_DOWN) \
-	&& ev.type == SDL_KEYDOWN)
+		&& ev.type == SDL_KEYDOWN)
 	{
 		Mix_PlayChannel(-1, e->sound.sound1, 0);
 		if (e->menu.i_img < 2)
@@ -77,7 +77,7 @@ void				ft_menu_2(t_env *e, SDL_Event ev)
 			e->menu.i_img = 0;
 	}
 	if ((ev.key.keysym.sym == 'w' || ev.key.keysym.sym == SDLK_UP) \
-	&& ev.type == SDL_KEYDOWN)
+		&& ev.type == SDL_KEYDOWN)
 	{
 		Mix_PlayChannel(-1, e->sound.sound1, 0);
 		if (e->menu.i_img > 0)

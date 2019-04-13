@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_enemies_and_texture_checks.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/11 02:32:36 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:10:03 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	check_textures_size(t_env *e)
 	while (++i < 9)
 	{
 		if (e->files.image[i]->w != TILE_SIZE \
-				|| e->files.image[i]->h != TILE_SIZE)
+			|| e->files.image[i]->h != TILE_SIZE)
 			exit_error(2, ERR_0);
 	}
 }

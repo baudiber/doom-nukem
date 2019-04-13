@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:12:20 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 01:00:44 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:27:31 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void				load_screen(t_env *e)
 		while (SDL_PollEvent(&ev))
 		{
 			if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
-				&& ev.type == SDL_KEYDOWN))
+					&& ev.type == SDL_KEYDOWN))
 			{
 				clean_up(e);
 				exit(0);

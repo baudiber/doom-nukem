@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 18:56:03 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 00:59:50 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:26:54 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static void			mouse_menu_options(t_env *e, int x, int y, SDL_Event ev)
 	e->menu.i_img = e->menu.save_img;
 	save = e->menu.i_img;
 	if ((x >= 250 && x <= 280) && (y >= 300 && y <= 337) \
-	&& ev.button.button == SDL_BUTTON_LEFT && ev.button.state == SDL_PRESSED)
+		&& ev.button.button == SDL_BUTTON_LEFT \
+		&& ev.button.state == SDL_PRESSED)
 		mouse_menu_options_2(e);
 	ft_slider(e, x, y, ev);
 	e->menu.save_img = e->menu.i_img;
@@ -48,7 +49,7 @@ static void			mouse_menu_options(t_env *e, int x, int y, SDL_Event ev)
 static void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y)
 {
 	if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
-		&& ev.type == SDL_KEYDOWN))
+			&& ev.type == SDL_KEYDOWN))
 	{
 		e->menu.i_img = 1;
 		e->menu.check_options = 1;

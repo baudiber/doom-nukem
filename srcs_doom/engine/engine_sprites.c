@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine_sprites.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 19:32:39 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 04:31:30 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:24:28 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		draw_visible(t_sprite *sprite, int tid)
 				continue ;
 			draw.texture.x = (int)(draw.offset.x++ * draw.ratio);
 			draw.color = e->files.sprite[sprite->tex][draw.texture.x \
-			+ (draw.texture.y << e->tile_shift)];
+				+ (draw.texture.y << e->tile_shift)];
 			if ((draw.color ^ 0xFF00FFFF))
 				e->buff[draw.start.y * WIN_W + x] = draw.color;
 		}

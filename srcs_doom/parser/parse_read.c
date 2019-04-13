@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 17:10:55 by clrichar          #+#    #+#             */
-/*   Updated: 2019/03/29 17:45:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:03:33 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void				parse_read(t_data *data, char *map)
 	if ((fd = open(map, O_RDONLY)) < 0)
 		parse_quit(data, 7);
 	get_data(data, fd, NULL);
-	if (data->max_x < 1 || data->max_y < 1 || data->max_x > 128
-			|| data->max_y > 128 || !data->scan)
+	if (data->max_x < 1 || data->max_y < 1 || data->max_x > 128 \
+		|| data->max_y > 128 || !data->scan)
 		parse_quit(data, 7);
 	if (!check_player(data))
 		parse_quit(data, 6);
