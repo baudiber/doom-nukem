@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:41:40 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 19:44:41 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:00:31 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static bool				basic_err(void)
 	if (ret == 0 && TEX_SIZE != 256)
 		ret = 1;
 	if (ret == 0 && (DWALL != 0 || DFLOOR != 1 || DSPRITE != 2 || DLIGHT != 3 \
-		|| DEVENT != 4))
+			|| DEVENT != 4))
 		ret = 1;
 	return (ret == 0) ? true : false;
 }
