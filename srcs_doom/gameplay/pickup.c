@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 03:35:22 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 17:26:37 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:00:07 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void			pick_up_obj(t_env *e, int nb)
 	int		range;
 
 	if ((e->sprites[nb].tex != 4 && e->sprites[nb].tex != 7 \
-		&& e->sprites[nb].tex != 13 && e->sprites[nb].tex != 14) \
+			&& e->sprites[nb].tex != 13 && e->sprites[nb].tex != 14) \
 			|| !e->sprites[nb].visible)
 		return ;
 	range = TILE_SIZE * 0.75;
 	if ((fabs(e->sprites[nb].x - e->player.pos.x) < range) \
 		&& (fabs(e->sprites[nb].y - e->player.pos.y) < range) \
-			&& e->sprites[nb].floor == e->player.floor)
+		&& e->sprites[nb].floor == e->player.floor)
 		do_pickup_1(e, nb);
 }

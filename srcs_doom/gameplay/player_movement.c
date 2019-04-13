@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 23:24:44 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:10:43 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ void			get_jump_pos(t_env *e, double *fall_time)
 	if ((e->player_state & IS_FALLING) && !(e->player_state & IS_FLY))
 	{
 		*fall_time += e->time.frame_time;
-		e->player.height += -0.5 * g * pow(*fall_time, 2) + \
-			*fall_time * (e->max_speed * 8) * e->sin_table[e->angle.a_270];
+		e->player.height += -0.5 * g * pow(*fall_time, 2) \
+			+ *fall_time * (e->max_speed * 8) * e->sin_table[e->angle.a_270];
 	}
 }
 
 static void		move_player_2(t_env *e, int *tmpangle, t_point *new_pos)
 {
 	if ((e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D]) \
-	&& e->state[SDL_SCANCODE_W])
+		&& e->state[SDL_SCANCODE_W])
 		strafe_forward(e, new_pos, tmpangle);
 	else if (e->state[SDL_SCANCODE_S] && (e->state[SDL_SCANCODE_A] \
-		|| e->state[SDL_SCANCODE_D]))
+			|| e->state[SDL_SCANCODE_D]))
 		strafe_backward(e, new_pos, tmpangle);
 	else if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_D])
 		strafe(e, new_pos, tmpangle);
@@ -67,7 +67,7 @@ void			move_player(t_env *e)
 	else
 		fall_time = 0;
 	if (e->state[SDL_SCANCODE_A] || e->state[SDL_SCANCODE_W] \
-			|| e->state[SDL_SCANCODE_S] || e->state[SDL_SCANCODE_D])
+		|| e->state[SDL_SCANCODE_S] || e->state[SDL_SCANCODE_D])
 		e->player.moving = true;
 	else
 	{

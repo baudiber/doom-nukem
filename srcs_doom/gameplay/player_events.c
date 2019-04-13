@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 21:27:29 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/14 00:06:16 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	floor_is_lava(t_env *e)
 	static float	lava_tick;
 
 	if (e->data.map[DEVENT][e->player.floor][e->player.map.y]\
-			[e->player.map.x] == 1)
+		[e->player.map.x] == 1)
 	{
 		lava_tick += e->time.frame_time;
 		if (lava_tick > 0.1)
@@ -94,16 +94,16 @@ void	check_state(t_env *e)
 void	fly_or_fall(t_env *e)
 {
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && \
-		!(e->player_state & IS_FLY)) || (e->state[SDL_SCANCODE_SPACE] && \
+			!(e->player_state & IS_FLY)) || (e->state[SDL_SCANCODE_SPACE] && \
 			!(e->player_state & IS_JUMPING) && \
-				!(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
+			!(e->player_state & IS_FALLING) && !(e->player_state & IS_FLY)))
 	{
 		if (!e->state[SDL_SCANCODE_LCTRL] && !e->state[SDL_SCANCODE_C])
 			Mix_PlayChannel(-1, e->sound.sound10, 0);
 		crouch_and_jump(e);
 	}
 	if (((e->state[SDL_SCANCODE_LCTRL] || e->state[SDL_SCANCODE_C]) && \
-		e->player_state & IS_FLY) || (e->state[SDL_SCANCODE_SPACE] && \
+			e->player_state & IS_FLY) || (e->state[SDL_SCANCODE_SPACE] && \
 			e->player_state & IS_FLY))
 		fly_mode(e);
 }
