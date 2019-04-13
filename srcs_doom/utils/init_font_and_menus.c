@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_font_and_menus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baudiber <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/30 19:50:09 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 05:50:02 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 02:17:00 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_rects_and_font(t_env *e)
 	e->draw.white.r = 255;
 	e->draw.white.g = 255;
 	e->draw.white.b = 255;
-	e->draw.red.r = 255;
+	e->draw.red.r = 200;
 }
 
 void	load_textures_splash(t_env *e)
