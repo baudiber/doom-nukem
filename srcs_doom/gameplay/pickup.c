@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 03:35:22 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 16:17:31 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:26:37 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,8 @@ static void		do_pickup_2(t_env *e, int nb)
 {
 	if (e->sprites[nb].tex == 14 && e->player.hp < 100)
 	{
-		e->player.hp += 10;
+		e->player.hp += 30;
 		e->player.hp = (e->player.hp > 100) ? 100 : e->player.hp;
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
-		ft_putendl("WE GET SAVED");
 		e->sprites[nb].visible = false;
 	}
 }

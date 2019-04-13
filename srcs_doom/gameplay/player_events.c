@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 14:24:46 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:25:29 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	floor_is_lava(t_env *e)
 			[e->player.map.x] == 1)
 	{
 		lava_tick += e->time.frame_time;
-		if (lava_tick > 1.0)
+		if (lava_tick > 0.1)
 		{
-			e->player.hp -= 50;
+			e->player.hp -= 10;
 			Mix_PlayChannel(-1, e->sound.sound11, 0);
 			lava_tick = 0;
 		}
