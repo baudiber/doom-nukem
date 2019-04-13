@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 04:21:48 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:09:19 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ static void		renderer(t_env *e)
 	clear_buffer(e);
 	moving_rects(e);
 	if (e->horizon > 0)
-		display_skybox(e);
-//		draw_scaled(e, &e->skybox);
+		draw_scaled(e, &e->skybox_info);
+//		display_skybox(e);
 	multithreaded_render(e);
 	draw_ui(e);
 	e->draw.skybox_x += 0.2;

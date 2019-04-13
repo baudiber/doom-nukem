@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 04:23:09 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:10:00 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,8 @@ typedef struct		s_draw_scaled
 	double			y_start;
 	double			x_end;
 	double			y_end;
+	double			x_offset;
+	double			y_offset;
 	int				w;
 	unsigned int	**buffer;
 	double			x_ratio;
@@ -340,7 +342,7 @@ typedef struct		s_env
 	t_draw_scaled	inv_info;
 	t_draw_scaled	pistol_info;
 	t_draw_scaled	shotgun_info;
-	t_draw_scaled	skybox;
+	t_draw_scaled	skybox_info;
 	t_ui			ui;
 	int				sprite_nb;
 	bool			spotvis[5][MAX_MAPSIZE][MAX_MAPSIZE];
@@ -460,5 +462,7 @@ extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
 	int tid);
 extern void			get_wall_type(t_env *e, int tid, int column, int i);
 extern void			change_tex(t_env *e, int nb);
+extern void			draw_scaled(t_env *e, t_draw_scaled *info);
+extern void			crop_skybox(t_env *e);
 
 #endif

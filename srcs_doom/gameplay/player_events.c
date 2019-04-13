@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 17:07:59 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 02:56:06 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 14:24:46 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	restart(t_env *e)
 	i = -1;
 	re_init_map(&e->data);
 	init_player(e);
-	e->horizon = 0;
 	e->draw.skybox_y = e->horizon - e->files.skybox->h;
 	e->ui.weapon = 0;
 	e->ui.trumpet = 0;

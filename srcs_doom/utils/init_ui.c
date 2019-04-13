@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 01:09:54 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 14:36:59 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void				init_guns(t_env *e)
 
 static void				init_base_ui(t_env *e)
 {
-	e->ui_info.x_start = 0;
+	e->ui_info.x_start = -1;
 	e->ui_info.y_start = e->render_limit - 1;
 	e->ui_info.y_ratio = (double)(e->files.ui_surf->h / (double)e->ui.ui_size);
 	e->ui_info.x_ratio = (double)(e->files.ui_surf->w / (double)WIN_W);
@@ -50,14 +50,14 @@ static void				init_base_ui(t_env *e)
 
 static void				init_skybox(t_env *e)
 {
-	e->skybox.x_start = 0;
-	e->skybox.y_start = 0;
-	e->skybox.x_ratio = (double)(e->files.skybox->w / (double)(WIN_W / 2));
-	e->skybox.y_ratio = (double)(e->files.skybox->h / (double)(WIN_H / 2));
-	e->skybox.x_end = WIN_W;
-	e->skybox.y_end = (WIN_H / 2);
-	e->skybox.buffer = (unsigned int **)&e->files.skybox->pixels;
-	e->skybox.w = e->files.skybox->w;
+	e->skybox_info.x_start = -1;
+	e->skybox_info.y_start = -1;
+	e->skybox_info.x_ratio = 1;
+	e->skybox_info.y_ratio = 1;
+	e->skybox_info.y_end = e->skybox_info.y_start + e->files.skybox->h;
+	e->skybox_info.buffer = (unsigned int **)&e->files.skybox->pixels;
+	e->skybox_info.w = e->files.skybox->w;
+	e->skybox_info.x_end = e->skybox_info.x_start + e->files.skybox->w;
 }
 
 static void				init_trumpet(t_env *e)

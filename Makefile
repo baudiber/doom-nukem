@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/13 04:00:41 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/13 15:14:45 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCA			=				main.c										\
 								gameplay/pickup.c							\
 								gameplay/ui.c								\
 								gameplay/bob.c								\
+								gameplay/skybox.c								\
 								gameplay/sprite_interaction.c				\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\

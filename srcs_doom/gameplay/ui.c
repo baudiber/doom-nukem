@@ -6,13 +6,13 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 03:32:16 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:05:13 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-static void		draw_scaled(t_env *e, t_draw_scaled *info)
+void			draw_scaled(t_env *e, t_draw_scaled *info)
 {
 	int			x;
 	int			y;
@@ -21,10 +21,10 @@ static void		draw_scaled(t_env *e, t_draw_scaled *info)
 	Uint32		color;
 
 	y = (int)info->y_start;
-	y_offset = 0;
+	y_offset = info->y_offset;
 	while (++y < (int)info->y_end)
 	{
-		x_offset = 0;
+		x_offset = info->y_offset;
 		x = (int)info->x_start;
 		while (++x < (int)info->x_end)
 		{

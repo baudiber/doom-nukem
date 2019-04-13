@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 19:09:47 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 02:51:59 by gagonzal         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:14:15 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,18 @@ void			mouse_aim(t_env *e)
 	if (y > 0 && e->horizon > -750)
 	{
 		e->horizon -= y * 2;
-		e->draw.skybox_y -= y * 2;
+		e->skybox_info.y_start -= y * 2;
+		e->skybox_info.y_end -= y * 2;
+		//e->draw.skybox_y -= y * 2;
 	}
 	else if (y < 0 && e->horizon < 1000)
 	{
 		e->horizon -= y * 2;
-		e->draw.skybox_y -= y * 2;
+		e->skybox_info.y_start -= y * 2;
+		e->skybox_info.y_end -= y * 2;
+		//e->draw.skybox_y -= y * 2;
 	}
+	crop_skybox(e);
 	angle_overflow(&e->player.angle, e);
 	if (e->draw.skybox_x > 1199)
 		e->draw.skybox_x = 0;
