@@ -6,11 +6,38 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/21 13:12:35 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/12 23:43:03 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:53:50 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_editor.h"
+
+static bool		count_sprite(t_data *data)
+{
+	int			z;
+	int			y;
+	int			x;
+	int			ret;
+
+	ret = 0;
+	z = -1;
+	while (++z < data->tier_ind)
+	{
+		y = -1;
+		while (++y < data->max_y)
+		{
+			x = -1;
+			while (++x < data->max_x)
+			{
+				if (ft_strnchr(VALID_SPRITE, \
+					(int)data->map[DSPRITE][z][y][x]) > 0)
+					ret++;
+			}
+		}
+	}
+	data->sprite_nb = ret;
+	return (ret < 100) ? true : false;
+}
 
 static void		parse_init(t_data *data)
 {
@@ -36,6 +63,8 @@ void			parse_start(t_data *data, char *map)
 	parse_tier(data);
 	data->max_y = data->tier_size;
 	parse_pos(data);
+	if (!count_sprite(data))
+		exit_error(1, ERR_6);
 }
 
 void			parse_quit(t_data *data, int type, char *msg)

@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 20:58:41 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:52:21 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct			s_data
 	int					pos_z;
 	int					max_x;
 	int					max_y;
+	int					sprite_nb;
 	char				*scan;
 	char				**tier;
 	char				**stage;
