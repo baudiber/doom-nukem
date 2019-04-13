@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 15:05:13 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:08:17 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void			draw_scaled(t_env *e, t_draw_scaled *info)
 	Uint32		color;
 
 	y = (int)info->y_start;
-	y_offset = info->y_offset;
+	y_offset = 0;
 	while (++y < (int)info->y_end)
 	{
-		x_offset = info->y_offset;
+		x_offset = 0;
 		x = (int)info->x_start;
 		while (++x < (int)info->x_end)
 		{

@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 19:03:24 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 19:37:42 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct		s_files
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
+	unsigned int	*sky;
 	SDL_Surface		*image[50];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
@@ -286,8 +287,6 @@ typedef struct		s_draw_scaled
 	double			y_start;
 	double			x_end;
 	double			y_end;
-	double			x_offset;
-	double			y_offset;
 	int				w;
 	unsigned int	**buffer;
 	double			x_ratio;
@@ -464,6 +463,8 @@ extern void			crop_wall_rev(t_env *e, float *texture_y, double ratio, \
 extern void			get_wall_type(t_env *e, int tid, int column, int i);
 extern void			change_tex(t_env *e, int nb);
 extern void			draw_scaled(t_env *e, t_draw_scaled *info);
+// rm?
 extern void			crop_skybox(t_env *e);
+extern void			draw_skybox(t_env *e);
 
 #endif

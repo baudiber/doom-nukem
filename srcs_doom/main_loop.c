@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/16 18:14:36 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 18:18:32 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:14:41 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void		clear_buffer(t_env *e)
 	y = -1;
 	while (++y < (e->render_limit * WIN_W))
 	{
-		if (y < e->horizon * WIN_W)
+		if (y < (e->horizon * WIN_W) - 10)
 			e->buff[y] = 0;
 		else
 			e->buff[y] = 0xfeaa1b;
@@ -66,7 +66,7 @@ static void		renderer(t_env *e)
 	clear_buffer(e);
 	moving_rects(e);
 	if (e->horizon > 0)
-		draw_scaled(e, &e->skybox_info);
+		draw_skybox(e);
 //		display_skybox(e);
 	get_player_pos(e);
 	multithreaded_render(e);

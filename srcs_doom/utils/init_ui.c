@@ -6,7 +6,7 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/24 14:47:32 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/13 14:36:59 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:23:47 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@ static void				init_base_ui(t_env *e)
 
 static void				init_skybox(t_env *e)
 {
-	e->skybox_info.x_start = -1;
-	e->skybox_info.y_start = -1;
+	e->skybox_info.x_start = 0;
 	e->skybox_info.x_ratio = 1;
 	e->skybox_info.y_ratio = 1;
-	e->skybox_info.y_end = e->skybox_info.y_start + e->files.skybox->h;
+	e->skybox_info.y_end = e->horizon;
 	e->skybox_info.buffer = (unsigned int **)&e->files.skybox->pixels;
 	e->skybox_info.w = e->files.skybox->w;
-	e->skybox_info.x_end = e->skybox_info.x_start + e->files.skybox->w;
 }
 
 static void				init_trumpet(t_env *e)
