@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 01:11:49 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:18:13 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:59:34 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void			text_cpy_2(t_env *e)
 	e->files.sprite[11] = (unsigned int *)e->files.image[44]->pixels;
 	e->files.sprite[12] = (unsigned int *)e->files.image[45]->pixels;
 	e->files.sprite[13] = (unsigned int *)e->files.image[48]->pixels;
+	e->files.sprite[14] = (unsigned int *)e->files.image[49]->pixels;
 }
 
 static void			text_cpy_1(t_env *e)

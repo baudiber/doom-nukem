@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 15:10:00 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 16:06:07 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # define IS_FALLING 4
 # define IS_FLY		8
 
-# define VALID_CHAR "0123456789abcdez,- "
+# define VALID_CHAR "0123456789abcdefz,- "
+# define VALID_SPRITE "abcdef"
 # define WALL_TEXT_MAX 9
 # define FLOOR_TEXT_MAX 9
 # define LIGHT_TEXT_MAX 9
@@ -71,14 +72,14 @@
 typedef struct		s_files
 {
 	unsigned int	*wall[9];
-	unsigned int	*sprite[14];
+	unsigned int	*sprite[15];
 	unsigned int	*floor[6];
 	unsigned int	*ui;
 	unsigned int	*face[5];
 	unsigned int	*inv[3];
 	unsigned int	*pistol[6];
 	unsigned int	*shotgun[6];
-	SDL_Surface		*image[49];
+	SDL_Surface		*image[50];
 	SDL_Surface		*skybox;
 	SDL_Surface		*ui_surf;
 }					t_files;
