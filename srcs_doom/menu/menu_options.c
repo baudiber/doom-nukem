@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 18:56:03 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/11 21:44:17 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 00:59:50 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void			mouse_menu_options_2(t_env *e)
 	}
 }
 
-static void		mouse_menu_options(t_env *e, int x, int y, SDL_Event ev)
+static void			mouse_menu_options(t_env *e, int x, int y, SDL_Event ev)
 {
 	int save;
 
@@ -45,7 +45,7 @@ static void		mouse_menu_options(t_env *e, int x, int y, SDL_Event ev)
 	e->menu.save_img = e->menu.i_img;
 }
 
-static void		ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y)
+static void			ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y)
 {
 	if (ev.type == SDL_QUIT || (ev.key.keysym.sym == SDLK_ESCAPE \
 		&& ev.type == SDL_KEYDOWN))
@@ -61,7 +61,7 @@ static void		ft_menu_options_2(t_env *e, SDL_Event ev, int x, int y)
 	}
 }
 
-void		ft_menu_options(t_env *e)
+void				ft_menu_options(t_env *e)
 {
 	int			x;
 	int			y;

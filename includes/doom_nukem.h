@@ -6,7 +6,7 @@
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 15:05:51 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 03:57:52 by baudiber         ###   ########.fr       */
+/*   Updated: 2019/04/13 04:00:15 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -404,10 +404,12 @@ extern void			multithreaded_render(t_env *e);
 extern void			*raycaster_mt(void *arg);
 extern int			thread_nb(t_env *e);
 extern void			draw_sprites(t_env *e, int max_col, int tid);
+extern void			check_state(t_env *e);
 extern void			move_player(t_env *e);
 extern void			get_delta(int angle, t_env *e, t_point *new_pos);
+extern void			get_jump_pos(t_env *e, double *fall_time);
 extern void			walk_forward_and_backward(t_env *e, t_point *new_pos,\
-		int *tmpangle);
+	int *tmpangle);
 extern void			strafe(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_backward(t_env *e, t_point *new_pos, int *tmpangle);
 extern void			strafe_forward(t_env *e, t_point *new_pos, int *tmpangle);
@@ -415,13 +417,20 @@ extern void			crouch_and_jump(t_env *e);
 extern void			fly_mode(t_env *e);
 extern void			mouse_aim(t_env *e);
 extern bool			check_walls(int height, int *offset, int x,\
-		int tid);
+	int tid);
+extern bool			is_blocked(t_env *e, t_point *new_pos, int y);
+extern void			collision(t_env *e, t_point *new_pos);
+extern void			get_floor_dist(t_env *e);
+extern void			jump_anim(t_env *e);
 extern void			sprite_rotation(t_env *e, t_sprite_calculation *calc,\
-		int sprite);
+	int sprite);
 extern void			get_screen_coord(t_env *e, t_sprite_draw *draw,\
-		t_sprite *sprite, int tid);
+	t_sprite *sprite, int tid);
+
+extern void			bob(t_env *e);
 extern void			pick_up_obj(t_env *e, int nb);
 extern void			draw_player_small(t_env *e);
+extern void			fly_or_fall(t_env *e);
 extern void			draw_player_big(t_env *e);
 extern void			draw_life(t_env *e);
 extern void			draw_map_small(t_env *e);
@@ -434,6 +443,11 @@ extern void			draw_ceilings(t_env *e, int x, int tid);
 extern void			get_player_floor(t_env *e);
 extern void			double_dda(t_env *e, int tid, int column);
 extern void			draw_reversed(t_env *e, int column, int tid);
+extern void			load_gun_textures(t_env *e);
+extern void			load_ui_textures(t_env *e);
+extern void			load_sprite_textures(t_env *e);
+extern void			load_walls_textures(t_env *e);
+extern void			load_floor_textures(t_env *e);
 extern void			load_death_textures(t_env *e);
 extern void			rest_of_texture_pointing(t_env *e);
 extern void			end_game(t_env *e, char *msg);

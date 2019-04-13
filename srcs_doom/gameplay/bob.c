@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_up.c                                         :+:      :+:    :+:   */
+/*   bob.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 21:35:50 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:07:02 by clrichar         ###   ########.fr       */
+/*   Created: 2019/04/13 03:30:11 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/13 03:32:07 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
 
-void		clean_up(t_env *e)
+void			bob(t_env *e)
 {
-	Mix_FreeChunk(e->sound.sound1);
-	Mix_FreeChunk(e->sound.sound2);
-	Mix_FreeChunk(e->sound.sound3);
-	Mix_FreeChunk(e->sound.sound4);
-	Mix_FreeChunk(e->sound.sound5);
-	Mix_FreeChunk(e->sound.sound6);
-	Mix_FreeMusic(e->sound.music);
-	Mix_CloseAudio();
-	SDL_DestroyWindow(e->win);
-	SDL_Quit();
+	if (e->player.moving)
+	{
+		e->pistol_info.y_start = e->ui.pistol_ystart \
+			+ round(sin(math_degrees_to_radians(e->player.pace)) * 30);
+		e->shotgun_info.y_start = e->ui.shotgun_ystart \
+			+ round(sin(math_degrees_to_radians(e->player.pace)) * 20);
+	}
 }

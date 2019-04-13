@@ -6,52 +6,11 @@
 /*   By: baudiber <baudiber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/17 22:51:51 by baudiber          #+#    #+#             */
-/*   Updated: 2019/04/12 23:35:57 by clrichar         ###   ########.fr       */
+/*   Updated: 2019/04/13 03:32:16 by clrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "doom_nukem.h"
-
-void	display_skybox(t_env *e)
-{
-	SDL_Rect temp;
-
-	temp = e->draw.sky_rect;
-	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
-	temp = e->draw.sky_rect2;
-	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
-}
-
-void	moving_rects(t_env *e)
-{
-	e->draw.sky_rect.x = (int)e->draw.skybox_x;
-	e->draw.sky_rect.y = e->draw.skybox_y;
-	e->draw.sky_rect.w = e->files.skybox->w;
-	e->draw.sky_rect.h = e->files.skybox->h;
-	e->draw.sky_rect2.x = (int)e->draw.skybox_x - 1226;
-	e->draw.sky_rect2.y = e->draw.skybox_y;
-	e->draw.sky_rect2.w = e->files.skybox->w;
-	e->draw.sky_rect2.h = e->files.skybox->h;
-}
-
-void	draw_crosshair(t_env *e)
-{
-	int		x;
-	int		y;
-	int		end;
-
-	y = (e->render_limit * 0.5 - 5);
-	end = y + 8;
-	x = WIN_W * 0.5;
-	while (++y < end)
-		e->buff[y * WIN_W + x] = 0xffffff;
-	y -= 4;
-	y *= WIN_W;
-	x -= 4;
-	end = x + 8;
-	while (++x < end)
-		e->buff[y + x] = 0xffffff;
-}
 
 static void		draw_scaled(t_env *e, t_draw_scaled *info)
 {
@@ -79,18 +38,48 @@ static void		draw_scaled(t_env *e, t_draw_scaled *info)
 	}
 }
 
-void	bob(t_env *e)
+void			display_skybox(t_env *e)
 {
-	if (e->player.moving)
-	{
-		e->pistol_info.y_start = e->ui.pistol_ystart \
-			+ round(sin(math_degrees_to_radians(e->player.pace)) * 30);
-		e->shotgun_info.y_start = e->ui.shotgun_ystart \
-			+ round(sin(math_degrees_to_radians(e->player.pace)) * 20);
-	}
+	SDL_Rect	temp;
+
+	temp = e->draw.sky_rect;
+	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
+	temp = e->draw.sky_rect2;
+	SDL_BlitSurface(e->files.skybox, NULL, e->screen, &temp);
 }
 
-void	draw_ui(t_env *e)
+void			moving_rects(t_env *e)
+{
+	e->draw.sky_rect.x = (int)e->draw.skybox_x;
+	e->draw.sky_rect.y = e->draw.skybox_y;
+	e->draw.sky_rect.w = e->files.skybox->w;
+	e->draw.sky_rect.h = e->files.skybox->h;
+	e->draw.sky_rect2.x = (int)e->draw.skybox_x - 1226;
+	e->draw.sky_rect2.y = e->draw.skybox_y;
+	e->draw.sky_rect2.w = e->files.skybox->w;
+	e->draw.sky_rect2.h = e->files.skybox->h;
+}
+
+void			draw_crosshair(t_env *e)
+{
+	int		x;
+	int		y;
+	int		end;
+
+	y = (e->render_limit * 0.5 - 5);
+	end = y + 8;
+	x = WIN_W * 0.5;
+	while (++y < end)
+		e->buff[y * WIN_W + x] = 0xffffff;
+	y -= 4;
+	y *= WIN_W;
+	x -= 4;
+	end = x + 8;
+	while (++x < end)
+		e->buff[y + x] = 0xffffff;
+}
+
+void			draw_ui(t_env *e)
 {
 	draw_scaled(e, &e->ui_info);
 	draw_crosshair(e);
@@ -98,6 +87,9 @@ void	draw_ui(t_env *e)
 	draw_scaled(e, &e->face_info);
 	draw_scaled(e, &e->inv_info);
 	draw_life(e);
-	e->ui.weapon == 2 ? draw_scaled(e, &e->shotgun_info) : draw_scaled(e, &e->pistol_info);
+	if (e->ui.weapon == 2)
+		draw_scaled(e, &e->shotgun_info);
+	else
+		draw_scaled(e, &e->pistol_info);
 	e->ui.trumpet ? draw_scaled(e, &e->trumpet_info) : 0;
 }

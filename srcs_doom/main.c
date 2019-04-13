@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clrichar <clrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/16 18:14:39 by clrichar          #+#    #+#             */
-/*   Updated: 2019/04/13 01:25:58 by baudiber         ###   ########.fr       */
+/*   Created: 2019/04/13 01:04:09 by clrichar          #+#    #+#             */
+/*   Updated: 2019/04/13 03:58:39 by baudiber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 t_env					*call(void)
 {
 	static t_env		e;
-	return(&e);
+
+	return (&e);
 }
 
 static bool				basic_err(void)
@@ -42,7 +43,7 @@ static bool				basic_err(void)
 	return (ret == 0) ? true : false;
 }
 
-static void			launch_init(t_env *e)
+static void				launch_init(t_env *e)
 {
 	init_sdl(e);
 	init_vars(e);
@@ -56,7 +57,7 @@ static void			launch_init(t_env *e)
 	init_sound(e);
 }
 
-void				exit_error(int type, char *msg)
+void					exit_error(int type, char *msg)
 {
 //	t_env			*e;
 
@@ -66,9 +67,9 @@ void				exit_error(int type, char *msg)
 	exit(type);
 }
 
-int					main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
-	t_env			*e;
+	t_env				*e;
 
 	e = call();
 	if (argc != 2)

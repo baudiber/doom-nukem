@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/13 02:29:36 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/13 04:00:41 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,15 +42,18 @@ SRCA			=				main.c										\
 								engine/engine_draw_ceiling.c				\
 								engine/engine_walls_utils.c					\
 								gameplay/player_movement.c					\
+								gameplay/player_movement2.c					\
+								gameplay/player_events.c					\
 								gameplay/player_life.c						\
-								gameplay/mouse_aim.c						\
 								gameplay/move_player.c						\
+								gameplay/pickup.c							\
 								gameplay/ui.c								\
+								gameplay/bob.c								\
 								gameplay/sprite_interaction.c				\
 								gameplay/weapon_switch.c					\
 								gameplay/weapon_fire.c						\
-								gameplay/player_events.c					\
 								gameplay/draw_text.c						\
+								gameplay/fly_mode.c							\
 								parser/parse_scan.c							\
 								parser/parse_stage.c						\
 								parser/parse_tier.c							\
@@ -69,6 +72,7 @@ SRCA			=				main.c										\
 								utils/init_enemies_and_texture_checks.c		\
 								utils/init_font_and_menus.c					\
 								utils/init_textures.c						\
+								utils/load_textures.c						\
 								utils/re_init_map.c							\
 								utils/clean_up.c
 
