@@ -6,7 +6,7 @@
 /*   By: roddavid <roddavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 20:00:05 by roddavid          #+#    #+#             */
-/*   Updated: 2019/04/13 21:26:01 by roddavid         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:54:52 by roddavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@
 
 # define VALID_CHAR "0123456789abcdefz,- "
 # define VALID_SPRITE "abcdef"
-# define WALL_TEXT_MAX 9
-# define FLOOR_TEXT_MAX 9
-# define LIGHT_TEXT_MAX 9
-# define EVENT_TEXT_MAX 9
+# define WALL_TEXT_MAX 8
+# define FLOOR_TEXT_MAX 5
+# define LIGHT_TEXT_MAX 1
+# define EVENT_TEXT_MAX 1
 
 # define DWALL 0
 # define DFLOOR 1
@@ -74,6 +74,7 @@ typedef struct			s_data
 	int					pos_z;
 	int					max_x;
 	int					max_y;
+	int					sprite_nb;
 	char				*scan;
 	char				**tier;
 	char				**stage;
