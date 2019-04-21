@@ -6,7 +6,7 @@
 #    By: clrichar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/20 15:08:30 by clrichar          #+#    #+#              #
-#    Updated: 2019/04/10 01:23:10 by baudiber         ###   ########.fr        #
+#    Updated: 2019/04/13 15:14:45 by baudiber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ NAMEB				:=				doom-editor
 #------------------------------------------------------------------------------#
 #                               DIRECTORIES                                    #
 
-SRC_DIR				:=			./srcs
 INC_DIR				:=			./includes
-OBJ_DIR				:=			./objs
+SRC_DIRA			:=			./srcs_doom
+SRC_DIRB			:=			./srcs_editor
+OBJ_DIRA			:=			./objs_doom
+OBJ_DIRB			:=			./objs_editor
 LIB_DIR				:=			./libft
 LIBFT				:=			./libft/libft.a
 
@@ -28,69 +30,78 @@ LIBFT				:=			./libft/libft.a
 #------------------------------------------------------------------------------#
 #                                  FILES                                       #
 
-SRCA			=				main.c								\
-								main_loop.c							\
-								engine/engine_dda.c					\
-								engine/engine_draw_walls.c			\
-								engine/engine_floor_casting.c		\
-								engine/engine_multithreading.c		\
-								engine/engine_raycasting.c			\
-								engine/engine_sprites.c				\
-								engine/engine_sprites_utils.c		\
-								engine/engine_draw_ceiling.c		\
-								gameplay/player_movement.c			\
-								gameplay/mouse_aim.c				\
-								gameplay/move_player.c				\
-								gameplay/ui.c						\
-								gameplay/sprite_interaction.c		\
-								gameplay/minimap.c					\
-								gameplay/minimap_drawplayer.c		\
-								gameplay/minimap_drawmap.c			\
-								gameplay/weapon_switch.c			\
-								gameplay/weapon_fire.c				\
-								parser/parse_scan.c					\
-								parser/parse_stage.c				\
-								parser/parse_tier.c					\
-								parser/parse_stock.c				\
-								parser/parse_sprite.c				\
-								parser/parse_utils.c				\
-								menu/menu.c							\
-								menu/menu_2.c						\
-								menu/menu_options.c					\
-								menu/menu_options_slider.c			\
-								utils/init.c						\
-								utils/init_vars.c					\
-								utils/init_sound.c					\
-								utils/init_ui.c						\
-								utils/init_textures.c
+SRCA			=				main.c										\
+								main_loop.c									\
+								engine/engine_dda.c							\
+								engine/engine_draw_walls.c					\
+								engine/engine_floor_casting.c				\
+								engine/engine_multithreading.c				\
+								engine/engine_raycasting.c					\
+								engine/engine_sprites.c						\
+								engine/engine_sprites_utils.c				\
+								engine/engine_draw_ceiling.c				\
+								engine/engine_walls_utils.c					\
+								gameplay/player_movement.c					\
+								gameplay/player_movement2.c					\
+								gameplay/player_events.c					\
+								gameplay/player_life.c						\
+								gameplay/move_player.c						\
+								gameplay/pickup.c							\
+								gameplay/ui.c								\
+								gameplay/bob.c								\
+								gameplay/skybox.c								\
+								gameplay/sprite_interaction.c				\
+								gameplay/weapon_switch.c					\
+								gameplay/weapon_fire.c						\
+								gameplay/draw_text.c						\
+								gameplay/fly_mode.c							\
+								parser/parse_scan.c							\
+								parser/parse_stage.c						\
+								parser/parse_tier.c							\
+								parser/parse_stock.c						\
+								parser/parse_copy.c							\
+								parser/parse_sprite.c						\
+								parser/parse_utils.c						\
+								menu/menu.c									\
+								menu/menu_2.c								\
+								menu/menu_options.c							\
+								menu/menu_options_slider.c					\
+								utils/init.c								\
+								utils/init_vars.c							\
+								utils/init_sound.c							\
+								utils/init_ui.c								\
+								utils/init_enemies_and_texture_checks.c		\
+								utils/init_font_and_menus.c					\
+								utils/init_textures.c						\
+								utils/load_textures.c						\
+								utils/re_init_map.c							\
+								utils/clean_up.c
 
-SRCB			=				editor/main.c						\
-								editor/init.c						\
-								editor/init_texture.c				\
-								editor/init_tab.c					\
-								editor/engine_loop.c				\
-								editor/editor.c					\
-								editor/load_texture.c				\
-								editor/draw_grid.c					\
-								editor/draw_panel.c				\
-								editor/draw_panel_text.c			\
-								editor/draw_texture_grid.c			\
-								editor/erase_texture_grid.c		\
-								editor/key_input.c					\
-								editor/key_gridsize.c				\
-								editor/key_panel.c					\
-								editor/key_draw.c					\
-								editor/redraw.c					\
-								editor/saving.c					\
-								parser/parse_scan.c					\
-								parser/parse_stage.c				\
-								parser/parse_tier.c					\
-								parser/parse_stock.c				\
-								parser/parse_sprite.c				\
-								parser/parse_utils.c				\
+SRCB			=				main.c										\
+								main_loop.c									\
+								utils/init.c								\
+								utils/init_from_parser.c					\
+								utils/init_texture.c						\
+								utils/load_texture.c						\
+								utils/saving.c								\
+								draw/redraw.c								\
+								draw/draw_grid.c							\
+								draw/draw_panel.c							\
+								draw/draw_panel_text.c						\
+								draw/draw_texture_grid.c					\
+								draw/erase_texture_grid.c					\
+								input/key_input.c							\
+								input/key_gridsize.c						\
+								input/key_panel.c							\
+								input/key_draw.c							\
+								parser/parse_scan.c							\
+								parser/parse_stage.c						\
+								parser/parse_tier.c							\
+								parser/parse_stock.c						\
+								parser/parse_utils.c						\
 
-OBJA				:=			$(addprefix $(OBJ_DIR)/,$(SRCA:.c=.o))
-OBJB				:=			$(addprefix $(OBJ_DIR)/,$(SRCB:.c=.o))
+OBJA				:=			$(addprefix $(OBJ_DIRA)/,$(SRCA:.c=.o))
+OBJB				:=			$(addprefix $(OBJ_DIRB)/,$(SRCB:.c=.o))
 
 #==============================================================================#
 #------------------------------------------------------------------------------#
@@ -107,7 +118,7 @@ O			=	\033[33m
 #                            COMPILER & FLAGS                                  #
 
 CC					:=			gcc
-CFLAGS				:=			-Wall -Wextra -Werror
+CFLAGS				:=			-g -Wall -Wextra -Werror
 OFLAGS				:=			-pipe
 CFLAGS				+=			$(OFLAGS)
 CLIB				:=			-L $(LIB_DIR) -lft
@@ -126,8 +137,11 @@ L_FT				:=			$(LIB_DIR)
 
 all:					$(NAMEA) $(NAMEB)
 
+doom:					$(NAMEA)
 
-$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(HEADER_DOOM) $(OBJA) 
+editor:					$(NAMEB)
+
+$(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIRA) $(OBJA)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗  $(O) ███$(R)╗  $(O)    ███$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O)  ██$(R)╗$(O)██$(R)╗ $(O) ██$(R)╗$(O)███████$(R)╗$(O)███$(R)╗ $(O)  ███$(R)╗\n"
@@ -136,12 +150,11 @@ $(NAMEA):				$(LIBFT) $(ARTA) $(OBJ_DIR) $(HEADER_DOOM) $(OBJA)
 	@printf "\t$(O)██$(R)║ $(O) ██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║╚════╝$(O)██$(R)║╚$(O)██$(R)╗$(O)██$(R)║$(O)██$(R)║ $(O)  ██$(R)║$(O)██$(R)╔═$(O)██$(R)╗ $(O)██$(R)╔══╝ $(O) ██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║\n"
 	@printf "\t$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝$(O)██$(R)║ ╚═╝$(O) ██$(R)║ $(O)     ██$(R)║ ╚$(O)████$(R)║╚$(O)██████$(R)╔╝$(O)██$(R)║ $(O) ██$(R)╗$(O)███████$(R)╗$(O)██$(R)║ ╚═╝$(O) ██$(R)║\n"
 	@printf "\t$(R)╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝\n$(W)"
+	@$(CC) $(OBJA) -o $(NAMEA) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer -lpthread
+	@printf '\033[40m %s\n\033[0m$(W)' "          Compilation of $(NAMEA) is done.        "
 	@printf "\n"
-	@$(CC) $(OBJA) -o $(NAMEA) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer
-	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEA) is done."
-	@printf ""
 
-$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(HEADER_EDITOR) $(OBJB)
+$(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIRB) $(OBJB)
 	@printf "\n"
 	@printf "\n"
 	@printf "\t$(O)██████$(R)╗  $(O)██████$(R)╗  $(O)██████$(R)╗ $(O)███$(R)╗   $(O)███$(R)╗      $(O)███████$(R)╗$(O)██████$(R)╗ $(O)██$(R)╗$(O)████████$(R)╗ $(O)██████$(R)╗ $(O)██████$(R)╗ \n"
@@ -149,33 +162,41 @@ $(NAMEB):				$(LIBFT) $(ARTB) $(OBJ_DIR) $(HEADER_EDITOR) $(OBJB)
 	@printf "\t$(O)██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)╔$(O)████$(R)╔$(O)██$(R)║$(O)█████$(R)╗$(O)█████$(R)╗ $(O) ██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║$(O)██████$(R)╔╝\n"
 	@printf "\t$(O)██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║$(O)██$(R)║╚$(O)██$(R)╔╝$(O)██$(R)║╚════╝$(O)██$(R)╔══╝ $(O) ██$(R)║  $(O)██$(R)║$(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║   $(O)██$(R)║$(O)██$(R)╔══$(O)██$(R)╗\n"
 	@printf "\t$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝╚$(O)██████$(R)╔╝$(O)██$(R)║ ╚═╝ $(O)██$(R)║      $(O)███████$(R)╗$(O)██████$(R)╔╝$(O)██$(R)║   $(O)██$(R)║   ╚$(O)██████$(R)╔╝$(O)██$(R)║  $(O)██$(R)║\n"
-	@printf "\t╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝\n"
-	@printf "\n"
+	@printf "\t╚═════╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝      ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝\n$(W)"
 	@$(CC) $(OBJB) -o $(NAMEB) $(CLIB) `sdl2-config --libs` -lSDL2_ttf -lSDL2_mixer
-	@printf '\033[33m[ 100%% ]\033[0m \033[40m %s\n\033[0m' "Compilation of $(NAMEB) is done."
-	@printf ""
+	@printf '\033[40m %s\n\033[0m$(W)' "          Compilation of $(NAMEB) is done.               "
+	@printf "\n"
 
-$(OBJ_DIR)/%.o:			$(SRC_DIR)/%.c
+$(OBJ_DIRA)/%.o:			$(SRC_DIRA)/%.c $(HEADER_DOOM)
 	@printf "\033[33mCOMPILING\033[0m %s                                 \r" $<
 	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(OBJ_DIR)/engine
-	@mkdir -p $(OBJ_DIR)/parser
-	@mkdir -p $(OBJ_DIR)/utils
-	@mkdir -p $(OBJ_DIR)/gameplay
-	@mkdir -p $(OBJ_DIR)/menu
-	@mkdir -p $(OBJ_DIR)/editor
+$(OBJ_DIRB)/%.o:			$(SRC_DIRB)/%.c $(HEADER_EDITOR)
+	@printf "\033[33mCOMPILING\033[0m %s                                 \r" $<
+	@$(CC) -o $@ -c $< $(CFLAGS) -I $(INC_DIR) `sdl2-config --cflags`
 
+$(OBJ_DIRA):
+	@mkdir -p $@
+	@mkdir -p $@/engine
+	@mkdir -p $@/parser
+	@mkdir -p $@/utils
+	@mkdir -p $@/gameplay
+	@mkdir -p $@/menu
+
+$(OBJ_DIRB):
+	@mkdir -p $@
+	@mkdir -p $@/draw
+	@mkdir -p $@/input
+	@mkdir -p $@/parser
+	@mkdir -p $@/utils
 
 $(LIBFT):
 	@make -C $(L_FT) --no-print-directory
 #	@brew install sdl2_ttf sdl2_mixer
 
 clean:
-	@make -C $(L_FT) clean --no-print-directory  
-	@rm -rf $(OBJ_DIR)
+	@make -C $(L_FT) clean --no-print-directory
+	@rm -rf $(OBJ_DIRA) $(OBJ_DIRB)
 	@printf '\033[33m[ KILL ] %s\n\033[0m' "Clean of $(NAME) is done ---"
 
 
@@ -187,4 +208,4 @@ fclean: 				clean
 
 re:						fclean all
 
-.PHONY: all clean fclean re build cbuild
+.PHONY: all clean fclean re build cbuild doom editor
