@@ -1,4 +1,4 @@
-# doom-nukem (42 Subject)  
+# doom-nukem (42 Subject) Language: C
 
 **Compiles on:** macOS
 
