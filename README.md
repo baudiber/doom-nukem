@@ -1,6 +1,6 @@
 # doom-nukem (42 Subject)  
 
-Compiles on: macOS  
+**Compiles on:** macOS
 
 An improvement on Wolfenstein3D type engine to simulate 3D like in doom 1993.  
 The engine supports multiple floor heights.  
